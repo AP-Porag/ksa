@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class UsersController extends Controller
 {
@@ -29,22 +31,26 @@ class UsersController extends Controller
     public function create()
     {
         set_page_meta('Create User');
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create',compact('roles'));
     }
 
     public function store(UserRequest $request)
     {
+        $data = $request->validated();
 
         try {
-            $data = $request->validated();
             if (Auth::user()->user_type != User::USER_TYPE_ADMIN){
                 $data['user_type'] = Auth::user()->user_type;
             }else{
                 $user_type = $data['user_type'];
                 $data['user_type'] = $user_type;
             }
-            $this->userService->storeOrUpdate($data, null);
+            $user = $this->userService->storeOrUpdate($data, null);
+            $user->assignRole([$request->input('role')]);
+
             record_created_flash();
+            return redirect()->route('admin.users.index');
         } catch (\Exception $e) {
         }
         return back();
@@ -55,7 +61,8 @@ class UsersController extends Controller
         try {
             set_page_meta('Edit User');
             $user = $this->userService->get($id);
-            return view('admin.users.edit', compact('user'));
+            $roles = Role::select('id', 'name')->get();
+            return view('admin.users.edit', compact('user','roles'));
         } catch (\Exception $e) {
             log_error($e);
         }
@@ -65,8 +72,13 @@ class UsersController extends Controller
     public function update(UserRequest $request, $id)
     {
         $data = $request->validated();
+
         try {
             $this->userService->storeOrUpdate($data, $id);
+
+            $user = User::find($id);
+            $user->syncRoles([$request->input('role')]);
+
             record_updated_flash();
             return redirect()->route('admin.users.index');
         } catch (\Exception $e) {
@@ -82,7 +94,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+
         try {
+            $user = User::find($id);
+
+            foreach ($user->roles as $role){
+                $user->removeRole($role);
+            }
             $this->userService->delete($id);
             record_deleted_flash();
             return back();

@@ -1,9 +1,10 @@
 <script src="{{ asset('admin/js/admin-app.js') }}"></script>
+
 <script src="{{ asset('admin/libs/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/libs/metismenu/metisMenu.min.js') }}"></script>
 <script src="{{ asset('admin/libs/simplebar/simplebar.min.js') }}"></script>
-{{-- <script src="{{ asset('admin/libs/node-waves/waves.min.js') }}"></script> --}}
+ <script src="{{ asset('admin/libs/node-waves/waves.min.js') }}"></script>
 
 <script src="{{ asset('admin/libs/select2/js/select2.min.js') }}"></script>
 
@@ -17,37 +18,38 @@
 <script src="{{ asset('admin/js/custom-dev.js') }}"></script>
 
 
+
 <script>
     toastr.options =
-    {
-        "closeButton": true,
-        "progressBar": true,
-        "timeOut": 2000
-    }
+        {
+            "closeButton": true,
+            "progressBar": true,
+            "timeOut": 2000
+        }
 
     @if(Session::has('success'))
-        toastr.success("{{ session('success') }}");
+    toastr.success("{{ session('success') }}");
     @endif
     @if(Session::has('error'))
-        toastr.error("{{ session('error') }}");
+    toastr.error("{{ session('error') }}");
     @endif
     @if(Session::has('update'))
-        toastr.info("{{ session('update') }}");
+    toastr.info("{{ session('update') }}");
     @endif
     @if(Session::has('delete'))
     toastr.success("{{ session('delete') }}");
     @endif
     @if(Session::has('info'))
-        toastr.info("{{ session('info') }}");
+    toastr.info("{{ session('info') }}");
     @endif
     @if(Session::has('warning'))
-        toastr.warning("{{ session('warning') }}");
+    toastr.warning("{{ session('warning') }}");
     @endif
 
     @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            toastr.error("{{ $error }}");
-        @endforeach
+    @foreach ($errors->all() as $error)
+    toastr.error("{{ $error }}");
+    @endforeach
     @endif
 
     // Toaster notify
@@ -62,7 +64,7 @@
     function showValidationError(err) {
         let error_string = '<div class="error-sa-v text-left">';
         for (const [key, value] of Object.entries(
-        err.response.data.errors
+            err.response.data.errors
         )) {
             error_string = error_string + value[0] + "<br>";
 
