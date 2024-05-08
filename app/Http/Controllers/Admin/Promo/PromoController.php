@@ -39,21 +39,32 @@ class PromoController extends Controller
         try {
             $data = $request->validated();
 
-            if ($request->has('no_end_date') && $data['no_end_date'] == 'on'){
-                $data['end_data'] = "31-12-2099";
-            }else{
-                $data['end_data'] = $request->end_data;
-            }
-
+//            if ($request->has('no_end_date') && $data['no_end_date'] == 'on'){
+//                $data['end_date'] = "2099-12-31";
+////            $date = strtotime('2099-12-31');
+////            $data['end_date'] = date('Y-m-d',$date);;
+//            }else{
+//                $data['end_date'] = $request->end_date;
+//            }
+//        dd($data['end_date']);
             $data['priority']= Promo::PRIORITY_NORMAL;
             $data['is_select_customer']= false;
             $data['status']= Promo::STATUS_ACTIVE;
+
+
             $promo = $this->promoService->storeOrUpdate($data, null);
             record_created_flash();
             return redirect()->route('admin.promos.index');
         } catch (\Exception $e) {
         }
         return back();
+    }
+
+    public function show($id)
+    {
+        set_page_meta('View Promo Code');
+        $item = $this->promoService->get($id);
+        return view('admin.promos.show', compact('item'));
     }
 
     public function edit($id)
@@ -99,5 +110,15 @@ class PromoController extends Controller
         } catch (\Exception $e) {
             return back();
         }
+    }
+
+    public function makeSPC($id)
+    {
+
+        $promo = Promo::find($id);
+        $promo->priority = Promo::PRIORITY_SPECIAL;
+        $promo->save();
+
+        return back();
     }
 }

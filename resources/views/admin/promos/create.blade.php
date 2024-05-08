@@ -17,11 +17,12 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">Promo Code Name <span class="error">*</span></label>
-                                                <input type="text" name="name" class="form-control" required="" placeholder="Name"
+                                                <input type="text" id="promo_name" name="name" class="form-control" required="" placeholder="Name"
                                                        value="{{ old('name') }}">
                                                 @error('name')
                                                 <p class="error">{{ $message }}</p>
                                                 @enderror
+                                                <p class="error" id="error_msg_name" style="display:none;"></p><br>
                                             </div>
                                         </div>
                                     </div>
@@ -119,14 +120,15 @@
         startDate.flatpickr({
             enableTime: false,
             minDate: "today",
-            dateFormat:'d-m-Y',
+            // dateFormat:'d-m-Y',
+            dateFormat:'Y-m-d',
             onChange: function (selectedDates, dateStr, instance) {
                 startDate = selectedDates;
                 console.log(startDate)
                 endDate.flatpickr({
                     enableTime: false,
                     minDate: new Date(selectedDates),
-                    dateFormat:'d-m-Y',
+                    dateFormat:'Y-m-d',
                 });
             },
         });
@@ -134,7 +136,8 @@
         endDate.flatpickr({
             enableTime: false,
             minDate: "today",
-            dateFormat:'d-m-Y',
+            // dateFormat:'d-m-Y',
+            dateFormat:'Y-m-d',
             onChange: function(selectedDates, dateStr, instance) {
                 $("#no_end_date").addClass("disable_checkbox");
             },
@@ -143,13 +146,25 @@
         $("#no_end_date").change(function() {
             if(this.checked) {
                 $("#end_date").addClass("disable_checkbox");
-                $("#end_date").val("31-12-2099");
+                // $("#end_date").val("31-12-2099");
+                $("#end_date").val("2099-12-31");
                 console.log('checked')
             }else {
                 console.log('unchecked')
                 $("#end_date").removeClass("disable_checkbox");
                 $("#end_date").val("");
             }
+        });
+
+        $(document).ready(function(){
+            $('#promo_name').on('keyup',function(e) {
+                if (e.which === 32) {
+                    $('#error_msg_name').append('No spaces are allowed!').show();
+                }else {
+                    $('#error_msg_name').append('').hide();
+                }
+
+            });
         });
     </script>
 @endpush
@@ -171,26 +186,6 @@
         }
         .show-div{
             display: block;
-        }
-
-        .input-icon {
-            position: relative;
-        }
-
-        .input-icon > i {
-            position: absolute;
-            display: block;
-            transform: translate(0, -50%);
-            top: 72%;
-            pointer-events: none;
-            width: 25px;
-            text-align: center;
-            font-style: normal;
-        }
-
-        .input-icon > input {
-            padding-left: 25px;
-            padding-right: 0;
         }
     </style>
 @endpush

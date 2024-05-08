@@ -18,7 +18,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">Name <span class="error">*</span></label>
-                                                <input type="text" name="name" class="form-control" required="" placeholder="Name"
+                                                <input type="text" readonly name="name" id="promo_name" class="form-control md-readonly" required="" placeholder="Name"
                                                        value="{{ $item->name,old('name') }}">
                                                 @error('name')
                                                 <p class="error">{{ $message }}</p>
@@ -33,10 +33,11 @@
                                 <div class="card shipping_address_card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-6 input-icon">
                                                 <label class="form-label">Base Value <span class="error">*</span></label>
                                                 <input type="number" name="value" class="form-control" required="" placeholder="Base Value"
                                                        value="{{$item->value, old('value') }}">
+                                                <i>$</i>
                                                 @error('value')
                                                 <p class="error">{{ $message }}</p>
                                                 @enderror
@@ -86,6 +87,30 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-12" id="customer_id_box">
+                                <div class="card shipping_address_card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="mb-3 col-md-8">
+                                                <label class="form-label">Select Customer <span class="error">*</span></label>
+                                                <select class="select2 form-control" multiple name="customers[]"
+                                                        data-placeholder="Choose ..." id="customers">
+                                                    @foreach($customers as $customer)
+                                                        <option value="{{$customer->id}}" @if($item->customers->count() > 0 ) @foreach($item->customers as $cm) @if($cm->customer_id == $customer->id) selected @endif @endforeach   @endif class="text-capitalize">{{$customer->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('customer_id')
+                                                <p class="error">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3 col-md-4">
+                                                <a class="btn btn-info waves-effect" id="add_new_customer_button" style="margin-top: 28px;" href="{{route('admin.customers.create')}}">Add New Customer</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -118,14 +143,14 @@
         startDate.flatpickr({
             enableTime: false,
             minDate: "today",
-            dateFormat:'d-m-Y',
+            dateFormat:'Y-m-d',
             onChange: function (selectedDates, dateStr, instance) {
                 startDate = selectedDates;
                 console.log(startDate)
                 endDate.flatpickr({
                     enableTime: false,
                     minDate: new Date(selectedDates),
-                    dateFormat:'d-m-Y',
+                    dateFormat:'Y-m-d',
                 });
             },
         });
@@ -133,7 +158,7 @@
         endDate.flatpickr({
             enableTime: false,
             minDate: "today",
-            dateFormat:'d-m-Y',
+            dateFormat:'Y-m-d',
             onChange: function(selectedDates, dateStr, instance) {
                 $("#no_end_date").addClass("disable_checkbox");
             },
@@ -142,13 +167,35 @@
         $("#no_end_date").change(function() {
             if(this.checked) {
                 $("#end_date").addClass("disable_checkbox");
-                $("#end_date").val("31-12-2099");
+                $("#end_date").val("2099-12-31");
                 console.log('checked')
             }else {
                 console.log('unchecked')
                 $("#end_date").removeClass("disable_checkbox");
                 $("#end_date").val("");
             }
+        });
+
+        $(document).ready(function(){
+            if($('#promo_name').val().length >= 5) {
+                $("#add_new_customer_button").removeClass("disable-click");
+            } else{
+                $("#add_new_customer_button").addClass("disable-click");
+            }
+            // $("#add_new_customer_button").addClass("disable-click");
+            $('#promo_name').on('keyup',function(e) {
+                if (e.which === 32) {
+                    $('#error_msg_name').append('No spaces are allowed!').show();
+                }else {
+                    $('#error_msg_name').append('').hide();
+                    if($(this).val().length >= 5) {
+                        $("#add_new_customer_button").removeClass("disable-click");
+                    } else{
+                        $("#add_new_customer_button").addClass("disable-click");
+                    }
+                }
+
+            });
         });
     </script>
 @endpush
@@ -159,6 +206,11 @@
     <style>
         .shipping_address_card{
             background: #eeeeee;
+        }
+        .disable-click{
+            pointer-events:none;
+            background: #cfcfcf;
+            border: 1px solid #cfcfcf;
         }
     </style>
 @endpush

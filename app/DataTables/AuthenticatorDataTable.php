@@ -27,12 +27,13 @@ class AuthenticatorDataTable extends DataTable
             ->addColumn('action', function ($item) {
                 $buttons = '';
                 $buttons .= '<a class="dropdown-item" href="' . route('admin.authenticators.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Edit </a>';
+                $buttons .= '<a class="dropdown-item" href="' . route('admin.authenticators.change-status', $item->id) . '" title="Change Status"><i class="fas fa-fw fa-check-circle"></i> Change Status </a>';
 
                 // TO-DO: need to chnage the super admin ID to 1, while Super admin ID will 1
                 $buttons .= '<form action="' . route('admin.authenticators.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
                         <input type="hidden" name="_method" value="DELETE">
-                        <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Delete</button></form>
+                        <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Discard</button></form>
                         ';
 
                 return '<div class="btn-group dropleft">
@@ -84,7 +85,7 @@ class AuthenticatorDataTable extends DataTable
             //->dom('Bfrtip')
             ->orderBy(1)
             ->selectStyleSingle()
-            ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Action']);
+            ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Actions']);
 //             ->buttons([
 //                        Button::make('excel'),
 //                        Button::make('csv'),
@@ -103,7 +104,7 @@ class AuthenticatorDataTable extends DataTable
     {
 
         return [
-            Column::make('name', 'name')->title('Name')->searchable(true),
+            Column::make('name', 'name')->title('Name of TPA')->searchable(true),
             Column::make('status', 'status')->title('Status'),
             Column::make('products', 'products')->title('Items'),
         ];

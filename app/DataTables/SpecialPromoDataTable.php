@@ -26,7 +26,7 @@ class SpecialPromoDataTable extends DataTable
             ->addColumn('action', function ($item) {
                 $buttons = '';
                 $buttons .= '<a class="dropdown-item" href="' . route('admin.slpromos.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Edit </a>';
-
+                $buttons .= '<a class="dropdown-item" href="' . route('admin.slpromos.makeNPC', $item->id) . '" title="Make NPC"><i class="mdi mdi-check-bold"></i> Make NPC </a>';
                 // TO-DO: need to chnage the super admin ID to 1, while Super admin ID will 1
                 $buttons .= '<form action="' . route('admin.slpromos.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
@@ -50,6 +50,10 @@ class SpecialPromoDataTable extends DataTable
             ->editColumn('status',function ($item){
                 $badge = $item->status == Promo::STATUS_ACTIVE ? "bg-success" : "bg-danger";
                 return '<span class="badge ' . $badge . '">' . Str::upper($item->status) . '</span>';
+            })
+            ->editColumn('value',function ($item){
+                return '$ '.$item->value;
+
             })
             ->rawColumns([
                 'action',
@@ -81,7 +85,7 @@ class SpecialPromoDataTable extends DataTable
             //->dom('Bfrtip')
             ->orderBy(1)
             ->selectStyleSingle()
-            ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Action']);
+            ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Actions']);
 //             ->buttons([
 //                        Button::make('excel'),
 //                        Button::make('csv'),

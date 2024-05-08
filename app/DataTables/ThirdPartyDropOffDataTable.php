@@ -90,7 +90,7 @@ class ThirdPartyDropOffDataTable extends DataTable
             //->dom('Bfrtip')
             ->orderBy(1)
             ->selectStyleSingle()
-            ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Action']);
+            ->addAction(['width' => '55px', 'class' => 'text-center', 'printable' => false, 'exportable' => false, 'title' => 'Actions']);
 //             ->buttons([
 //                        Button::make('excel'),
 //                        Button::make('csv'),
@@ -109,7 +109,7 @@ class ThirdPartyDropOffDataTable extends DataTable
     {
 
         return [
-            Column::make('name', 'name')->title('Name')->searchable(true),
+            Column::make('name', 'name')->title('Name of TPDOC')->searchable(true),
             Column::make('contact_name', 'contact_name')->title('Contact Name'),
             Column::make('email', 'email')->title('Email'),
         ];

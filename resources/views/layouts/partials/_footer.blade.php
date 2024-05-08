@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                © {{ date('Y') }} iCert Inc.
+                © {{ date('Y') }} KSA Inc.
             </div>
         </div>
     </div>

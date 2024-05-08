@@ -38,7 +38,7 @@ class ThirdPartyDropOffController extends Controller
 
         try {
             $data = $request->all();
-            dd($data);
+//            dd($data);
             $thirdParty = $this->thirdPartyDropOffService->storeOrUpdate($data, null);
 
             if ($thirdParty){
@@ -121,6 +121,21 @@ class ThirdPartyDropOffController extends Controller
             return back();
         } catch (\Exception $e) {
             return back();
+        }
+    }
+
+    public function findIfExists(Request $request)
+    {
+//        dd($request->all());
+
+        $thirdParty = ThirdParty::where('name',$request->name)->with('products')->first();
+
+        if ($thirdParty != null){
+            $data = ['status'=>200,'message'=>'Already Exist','data'=>$thirdParty];
+            return response()->json($data);
+        }else{
+            $data = ['status'=>300,'message'=>'Not Exist','data'=>$thirdParty];
+            return response()->json($data);
         }
     }
 }

@@ -18,11 +18,12 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">Promo Code Name <span class="error">*</span></label>
-                                                <input type="text" name="name" class="form-control" required="" placeholder="Name"
+                                                <input type="text" readonly id="promo_name" name="name" class="form-control md-readonly" required="" placeholder="Name"
                                                        value="{{ $item->name,old('name') }}">
                                                 @error('name')
                                                 <p class="error">{{ $message }}</p>
                                                 @enderror
+                                                <p class="error" id="error_msg_name" style="display:none;"></p><br>
                                             </div>
                                         </div>
                                     </div>
@@ -33,10 +34,11 @@
                                 <div class="card shipping_address_card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-6 input-icon">
                                                 <label class="form-label">Base Value <span class="error">*</span></label>
-                                                <input type="number" name="value" class="form-control" required="" placeholder="Base Value"
+                                                <input type="number" id="base_value" name="value" class="form-control" required="" placeholder="Base Value"
                                                        value="{{$item->value, old('value') }}">
+                                                <i>$</i>
                                                 @error('value')
                                                 <p class="error">{{ $message }}</p>
                                                 @enderror
@@ -44,7 +46,7 @@
 
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">Number of items <span class="error">*</span></label>
-                                                <input type="number" name="number_of_items" class="form-control" required="" placeholder="Number of items"
+                                                <input type="number" id="number_of_items" name="number_of_items" class="form-control" required="" placeholder="Number of items"
                                                        value="{{ $item->number_of_items,old('number_of_items') }}">
                                                 @error('number_of_items')
                                                 <p class="error">{{ $message }}</p>
@@ -53,7 +55,7 @@
 
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">Start Date <span class="error">*</span></label>
-                                                <input type="date" name="start_date" class="form-control datepicker-start-date" required="" placeholder="Start Date"
+                                                <input type="date" name="start_date" id="start_date" class="form-control datepicker-start-date" required="" placeholder="Start Date"
                                                        value="{{custom_date($item->start_date,'Y-m-d'), old('start_date') }}">
                                                 @error('start_date')
                                                 <p class="error">{{ $message }}</p>
@@ -115,18 +117,19 @@
         let startDate = $('.datepicker-start-date');
         let endDate = $('.datepicker-end-date');
         let noEndDate = $('.no_end_date');
+        const today = new Date();
 
         startDate.flatpickr({
             enableTime: false,
             minDate: "today",
-            dateFormat:'d-m-Y',
+            dateFormat:'Y-m-d',
             onChange: function (selectedDates, dateStr, instance) {
                 startDate = selectedDates;
                 console.log(startDate)
                 endDate.flatpickr({
                     enableTime: false,
                     minDate: new Date(selectedDates),
-                    dateFormat:'d-m-Y',
+                    dateFormat:'Y-m-d',
                 });
             },
         });
@@ -134,7 +137,7 @@
         endDate.flatpickr({
             enableTime: false,
             minDate: "today",
-            dateFormat:'d-m-Y',
+            dateFormat:'Y-m-d',
             onChange: function(selectedDates, dateStr, instance) {
                 $("#no_end_date").addClass("disable_checkbox");
             },
@@ -143,13 +146,51 @@
         $("#no_end_date").change(function() {
             if(this.checked) {
                 $("#end_date").addClass("disable_checkbox");
-                $("#end_date").val("31-12-2099");
+                $("#end_date").val("2099-12-31");
                 console.log('checked')
             }else {
                 console.log('unchecked')
                 $("#end_date").removeClass("disable_checkbox");
                 $("#end_date").val("");
             }
+        });
+
+        $( document ).ready(function() {
+            // console.log( "ready!" );
+
+            // console.log(today)
+            // console.log(startDate.val())
+            if ( new Date(startDate.val()) <= new Date(today)) {
+                // console.log("the date is past or today");
+                $("#start_date").addClass("disable_checkbox");
+                $("#base_value").addClass("disable_checkbox");
+                $("#number_of_items").addClass("disable_checkbox");
+            } else {
+                // console.log("the date is for future");
+                $("#start_date").removeClass("disable_checkbox");
+                $("#base_value").removeClass("disable_checkbox");
+                $("#number_of_items").removeClass("disable_checkbox");
+            }
+
+            if ( new Date(endDate.val()) <= new Date(today)) {
+                // console.log("the date is past or today");
+                $("#end_date").addClass("disable_checkbox");
+            } else {
+                // console.log("the date is for future");
+                $("#end_date").removeClass("disable_checkbox");
+            }
+
+        });
+
+        $(document).ready(function(){
+            $('#promo_name').on('keyup',function(e) {
+                if (e.which === 32) {
+                    $('#error_msg_name').append('No spaces are allowed!').show();
+                }else {
+                    $('#error_msg_name').append().hide();
+                }
+
+            });
         });
     </script>
 @endpush
@@ -165,25 +206,6 @@
         .disable_checkbox{
             pointer-events: none;
             background: #d0d0d0 !important;
-        }
-        .input-icon {
-            position: relative;
-        }
-
-        .input-icon > i {
-            position: absolute;
-            display: block;
-            transform: translate(0, -50%);
-            top: 72%;
-            pointer-events: none;
-            width: 25px;
-            text-align: center;
-            font-style: normal;
-        }
-
-        .input-icon > input {
-            padding-left: 25px;
-            padding-right: 0;
         }
     </style>
 @endpush

@@ -16,11 +16,11 @@
                                         <img src="{{asset('storage/settings/logo-light.png')}}" alt="" height="60">
                                     </div>
                                     <div class="details_box" style="padding-top: 25px;padding-bottom: 25px;">
-                                        <p>iCert Certification Services</p>
+                                        <p>{{auth()->user()->user_type}} Certification Services</p>
                                         <p>Order Processing Software</p>
                                     </div>
                                     <div class="details_box">
-                                        <p>Copyright <script>document.write(new Date().getFullYear())</script> iCert Inc. All rights reserved</p>
+                                        <p>Copyright <script>document.write(new Date().getFullYear())</script> {{auth()->user()->user_type}} Inc. All rights reserved</p>
                                         <div class="d-flex justify-content-between">
                                             <p>Version {{env('SOFTWARE_VERSION')}}</p>
                                             <a href="#">

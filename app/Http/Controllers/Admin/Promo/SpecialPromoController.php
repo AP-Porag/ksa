@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Promo;
 
 use App\DataTables\SpecialPromoDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdditionalCustomerRequest;
 use App\Http\Requests\PromoRequest;
 use App\Http\Requests\SpecilPromoRequest;
 use App\Models\Customer;
@@ -55,12 +56,20 @@ class SpecialPromoController extends Controller
             }
 
             record_created_flash();
-            return redirect()->route('admin.slpromos.index');
+            return response(['status' => 200,'message'=>'Created successfully']);
+//            return redirect()->route('admin.slpromos.index');
         } catch (\Exception $e) {
+            return response(['status' => 500,'message'=>'Server Error!']);
         }
         return back();
     }
 
+    public function show($id)
+    {
+        set_page_meta('View Special Promo Code');
+        $item = $this->promoService->get($id);
+        return view('admin.promos.special_promos.show', compact('item'));
+    }
     public function edit($id)
     {
         try {
@@ -98,7 +107,7 @@ class SpecialPromoController extends Controller
             }
 
             record_updated_flash();
-            return redirect()->route('admin.slpromos.index');
+            return redirect()->route('admin.promos.index');
         } catch (\Exception $e) {
             return back();
         }
@@ -119,5 +128,46 @@ class SpecialPromoController extends Controller
         } catch (\Exception $e) {
             return back();
         }
+    }
+
+    public function makeNPC($id)
+    {
+
+        $promo = Promo::find($id);
+        $promo->priority = Promo::PRIORITY_NORMAL;
+        $promo->save();
+
+        return back();
+    }
+
+    public function attachAditionalCustomer($id)
+    {
+        set_page_meta('Attach Additional');
+        $item = $this->promoService->get($id);
+        $customers = Customer::orderBy('id','ASC')->get();
+        return view('admin.promos.special_promos.additional', compact('item','customers'));
+    }
+
+    public function saveAditionalCustomer(AdditionalCustomerRequest $request)
+    {
+
+        try {
+            $data = $request->validated();
+            if ($data['promo_id']){
+                foreach ($data['customers'] as $customer){
+                    $customerPromo = CustomerPromo::create([
+                        'customer_id'=>$customer,
+                        'promo_id'=>$data['promo_id']
+                    ]);
+                }
+            }
+
+            record_created_flash();
+            return redirect()->route('admin.slpromos.show',$data['promo_id']);
+        } catch (\Exception $e) {
+            something_wrong_flash();
+            return redirect()->route('admin.slpromos.show',$data['promo_id']);
+        }
+        return redirect()->route('admin.slpromos.show',$data['promo_id']);
     }
 }

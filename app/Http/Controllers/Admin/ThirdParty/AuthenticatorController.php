@@ -30,7 +30,12 @@ class AuthenticatorController extends Controller
     {
         set_page_meta('Create Third Party Authenticators');
 
-        $products = Product::orderBy('id','ASC')->get();
+        $products = Product::orderBy('id','ASC')
+            ->where('name','!=','Rack Pack')
+            ->where('name','!=','Set')
+            ->where('name','!=','Reholder')
+            ->where('name','!=','Crossover')
+            ->get();
         return view('admin.authenticators.create',compact('products'));
     }
 
@@ -62,8 +67,15 @@ class AuthenticatorController extends Controller
     {
         try {
             set_page_meta('Edit Third Party Authenticators');
-            $item = $this->authenticatorService->get($id);
-            $products = Product::orderBy('id','ASC')->get();
+//            $item = $this->authenticatorService->get($id);
+            $item = $this->authenticatorService->get($id,['products']);
+            $products = Product::orderBy('id','ASC')
+                ->where('name','!=','Rack Pack')
+                ->where('name','!=','Set')
+                ->where('name','!=','Reholder')
+                ->where('name','!=','Crossover')
+                ->get();
+
             return view('admin.authenticators.edit', compact('item','products'));
         } catch (\Exception $e) {
             log_error($e);
@@ -95,7 +107,7 @@ class AuthenticatorController extends Controller
             }
 
             record_updated_flash();
-            return redirect()->route('admin.authenticators.index');
+//            return redirect()->route('admin.authenticators.index');
         } catch (\Exception $e) {
             return back();
         }
@@ -110,21 +122,54 @@ class AuthenticatorController extends Controller
     public function destroy($id)
     {
         try {
-            $AuthenticatorsProducts = AuthenticatorProduct::where('authenticator_id',$id)->get();
-
-            if ($AuthenticatorsProducts->count() > 0){
-                //find the third party authenticator and update to suspend
-                $authenticator =  Authenticator::find($id);
-                $authenticator->status = Authenticator::STATUS_SUSPEND;
-                $authenticator->save();
-            }else{
-                $this->authenticatorService->delete($id);
-            }
+//            $AuthenticatorsProducts = AuthenticatorProduct::where('authenticator_id',$id)->get();
+//
+//            if ($AuthenticatorsProducts->count() > 0){
+//                //find the third party authenticator and update to suspend
+//                $authenticator =  Authenticator::find($id);
+//                $authenticator->status = Authenticator::STATUS_SUSPEND;
+//                $authenticator->save();
+//            }else{
+//                $this->authenticatorService->delete($id);
+//            }
+            $this->authenticatorService->delete($id);
 
             record_deleted_flash();
             return back();
         } catch (\Exception $e) {
             return back();
+        }
+    }
+
+    public function changeStatus($id)
+    {
+        set_page_meta('Change Status');
+        $item = Authenticator::find($id);
+        return view('admin.authenticators.change_status', compact('item'));
+    }
+
+    public function saveStatus(Request $request,$id)
+    {
+        $item = Authenticator::find($id);
+        $item->status = $request->status;
+        $item->save();
+
+        record_updated_flash();
+        return redirect()->route('admin.authenticators.index');
+    }
+
+    public function findIfExists(Request $request)
+    {
+//        dd($request->all());
+
+        $item = Authenticator::where('name',$request->name)->with('products')->first();
+
+        if ($item != null){
+            $data = ['status'=>200,'message'=>'Already Exist','data'=>$item];
+            return response()->json($data);
+        }else{
+            $data = ['status'=>300,'message'=>'Not Exist','data'=>$item];
+            return response()->json($data);
         }
     }
 }
