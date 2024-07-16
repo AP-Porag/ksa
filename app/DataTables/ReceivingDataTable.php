@@ -3,6 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Entry;
+use App\Models\Receivig;
+use App\Models\Receiving;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +14,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class EntryDataTable extends DataTable
+class ReceivingDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -25,10 +27,10 @@ class EntryDataTable extends DataTable
             ->addColumn('action', function ($item) {
                 $buttons = '';
 //                $buttons .= '<a class="dropdown-item" href="' . route('admin.entries.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Continue Order </a>';
-                $buttons .= '<a class="dropdown-item" href="' . route('admin.entries.show', $item->id) . '" title="View"><i class="mdi mdi-eye-circle"></i> Continue Order </a>';
+                $buttons .= '<a class="dropdown-item" href="' . route('admin.receiving.show', $item->id) . '" title="View"><i class="mdi mdi-eye-circle"></i> Continue Receiving </a>';
 
                 // TO-DO: need to chnage the super admin ID to 1, while Super admin ID will 1
-                $buttons .= '<form action="' . route('admin.entries.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
+                $buttons .= '<form action="' . route('admin.receiving.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Delete</button></form>
@@ -41,25 +43,20 @@ class EntryDataTable extends DataTable
                 </div>
                 </div>';
             })
-            ->editColumn('email', function ($item) {
+            ->editColumn('entry_id', function ($item) {
+                return $item->entry->entrySKU;
+            })
+            ->editColumn('customer_id', function ($item) {
+                return $item->customer->name;
+            })
+            ->editColumn('item_qty', function ($item) {
                 return $item->customer->email;
             })
-            ->editColumn('contact_name', function ($item) {
+            ->editColumn('id', function ($item) {
                 return $item->customer->contact_name;
             })
-            ->editColumn('id', function ($item) {
-                $receivingCOunt = $item->receivings->count();
-
-                if($receivingCOunt > 0){
-                    $status = 'Already Received/Receiving of Order Finished (ROF)';
-                }else{
-                    $status = 'No Receiving';
-                }
-
-                return $status;
-            })
             ->rawColumns([
-                'action','email','contact_name','status'
+                'action','item_qty','id','customer_id'
             ])
             ->setRowId('id');
 
@@ -68,9 +65,9 @@ class EntryDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(Entry $model): QueryBuilder
+    public function query(Receivig $model): QueryBuilder
     {
-        return $model->newQuery()->orderBy('id', 'DESC')->select('entries.*');
+        return $model->newQuery()->orderBy('id', 'DESC')->select('receivigs.*');
 
     }
 
@@ -105,12 +102,11 @@ class EntryDataTable extends DataTable
     {
 
         return [
-            Column::make('entrySKU', 'entrySKU')->title('ID')->searchable(true),
-            Column::make('customer_name', 'customer_name')->title('Name')->searchable(false),
+            Column::make('entry_id', 'entry_id')->title('Entry ID')->searchable(true),
+            Column::make('customer_id', 'customer_id')->title('Name')->searchable(false),
 //            Column::make('qty', 'qty')->title('Order Quantity'),
-            Column::make('email', 'email')->title('Email')->searchable(false),
-            Column::make('contact_name', 'contact_name')->title('Contact Name')->searchable(false),
-            Column::make('id', 'id')->title('Receiving Status')->searchable(false),
+            Column::make('id', 'id')->title('Email')->searchable(false),
+            Column::make('item_qty', 'item_qty')->title('Contact Name')->searchable(false),
         ];
     }
 
@@ -119,6 +115,6 @@ class EntryDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Entry_' . date('YmdHis');
+        return 'Receiving' . date('YmdHis');
     }
 }

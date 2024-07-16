@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ThirdParty\AuthenticatorController;
 use App\Http\Controllers\Admin\ThirdParty\ThirdPartyDropOffController;
 use App\Http\Controllers\Admin\User\UsersController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\Receiving\ReceivingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,8 @@ Route::get('/', function () {
 });
 
 Route::get('/execute-command', function () {
-    Artisan::call('storage:link');
+//    return redirect()->route('login');
+//    Artisan::call('storage:link');
     Artisan::call('migrate:fresh --seed');
     dd('All commands executed successfully');
 });
@@ -85,6 +87,16 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::post('/entries/entry/item/destroy',[EntryController::class,'itemDestroy'] )->name('entries.entry.item.destroy');
     Route::post('/entries/add/new/item',[EntryController::class,'newItemAdd'] )->name('entries.add.new.item');
     Route::post('/entries/edit/new/item',[EntryController::class,'newItemEdit'] )->name('entries.edit.new.item');
+
+    //receiving
+    Route::resource('receiving', ReceivingController::class);
+    Route::post('/receiving/get-order/info/byId',[ReceivingController::class,'getOrderInfo'] )->name('receiving.getOrderInfo');
+    Route::get('/receiving/get-order/info/{id}',[ReceivingController::class,'getOrderInfoByID'] )->name('receiving.getOrderInfoByID');
+    Route::post('/receiving/add/new/item',[ReceivingController::class,'newItemAdd'] )->name('receiving.add.new.item');
+    Route::post('/receiving/edit/new/item',[ReceivingController::class,'newItemEdit'] )->name('receiving.edit.new.item');
+    Route::post('/receiving/add-additional/pieces',[ReceivingController::class,'addAdditionalPieces'] )->name('receiving.addAdditional.pieces');
+    Route::post('/receiving/entry/item/destroy',[ReceivingController::class,'itemDestroy'] )->name('receiving.entry.item.destroy');
+
     //customers
     Route::resource('customers', CustomerController::class);
 

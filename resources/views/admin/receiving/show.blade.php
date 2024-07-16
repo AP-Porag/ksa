@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-3 text-capitalize">Order Details</h4>
+                        <h4 class="card-title mb-3 text-capitalize">Receiving Details</h4>
                         <div class="">
                             <button type="button" class="btn btn-sm btn-primary text-capitalize" style="padding-top: 8px;" data-bs-toggle="modal" data-bs-target="#addNewItemModal">
                                 Add new item
@@ -21,7 +21,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-4">
-                                            <form action="{{route('admin.entries.add.new.item')}}" method="POST">
+                                            <form action="{{route('admin.receiving.add.new.item')}}" method="POST">
                                                 @method('post')
                                                 @csrf
                                                 <div class="form-group mb-3">
@@ -777,7 +777,7 @@
                                                         </div>
                                                     </div>
 {{--                                                    <p class="quantity-warning-text text-danger" id="quantity-warning-text">Quantity is required</p>--}}
-                                                    <input type="number" hidden="" class="form-control" name="entry_id" value="{{$entry->id}}" style="width: 33%;margin: 0 auto;">
+                                                    <input type="number" hidden="" class="form-control" name="receiving_id" value="{{$entry->id}}" style="width: 33%;margin: 0 auto;">
 {{--                                                    <input type="number" hidden="" class="form-control" name="item_name" value="Card" style="width: 33%;margin: 0 auto;">--}}
                                                 </div>
                                                 <div class="w-100 d-flex justify-content-end">
@@ -793,7 +793,7 @@
                                 <!-- /.modal-dialog -->
                             </div>
 
-                            <a href="{{route('admin.entries.index')}}" class="btn btn-sm btn-secondary text-capitalize" style="padding-top: 8px;">Back to the list</a>
+                            <a href="{{route('admin.receiving.index')}}" class="btn btn-sm btn-secondary text-capitalize" style="padding-top: 8px;">Back to the list</a>
 
                         </div>
                     </div>
@@ -992,8 +992,8 @@
                         <div class="card-body">
                             <div class="">
                                 <div class="d-flex justify-content-between mb-4">
-                                    <h5 class="card-title text-capitalize">{{$entry->customer_name}}</h5>
-                                    <h5 class="card-title text-capitalize">Order # {{$entry->entrySKU}}</h5>
+                                    <h5 class="card-title text-capitalize">{{$entry->customer->name}}</h5>
+{{--                                    <h5 class="card-title text-capitalize">Order # {{$entry->entrySKU}}</h5>--}}
                                 </div>
 
                                 <div class="row">
@@ -1098,7 +1098,7 @@
                                                                         </span>
                                                                                     </div>
                                                                                     <div class="mb-4 text-center">
-                                                                                        <form action="{{route('admin.entries.addAdditional.pieces')}}" method="POST">
+                                                                                        <form action="{{route('admin.receiving.addAdditional.pieces')}}" method="POST">
                                                                                             @method('POST')
                                                                                             @csrf
                                                                                             <div class="form-group mb-3">
@@ -1130,7 +1130,7 @@
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         <div class="mb-4">
-                                                                                            <form action="{{route('admin.entries.edit.new.item')}}" method="POST">
+                                                                                            <form action="{{route('admin.receiving.edit.new.item')}}" method="POST">
                                                                                                 @method('post')
                                                                                                 @csrf
                                                                                                 <div class="form-group mb-3" style="text-align: left;">
@@ -1716,6 +1716,7 @@
                                                                                                                                                 placeholder=""
                                                                                                                                                 name="reholder_certification_number"
                                                                                                                                                 id="reholder_certification_number"
+                                                                                                                                                value="{{$item->reholder_certification_number}}"
                                                                                                                                             />
                                                                                                                                         </div>
                                                                                                                                     </div>
@@ -1734,6 +1735,7 @@
                                                                                                                                         placeholder=""
                                                                                                                                         name="reholder_estimated_value"
                                                                                                                                         id="reholder_estimated_value"
+                                                                                                                                        value="{{$item->reholder_estimated_value}}"
                                                                                                                                     />
                                                                                                                                 </div>
                                                                                                                             </div>
@@ -1956,7 +1958,7 @@
                                                                         </span>
                                                                                     </div>
                                                                                     <div class="mb-4 text-center">
-                                                                                        <form action="{{route('admin.entries.entry.item.destroy')}}" method="POST">
+                                                                                        <form action="{{route('admin.receiving.entry.item.destroy')}}" method="POST">
                                                                                             @method('post')
                                                                                             @csrf
                                                                                             <div class="form-group mb-3">

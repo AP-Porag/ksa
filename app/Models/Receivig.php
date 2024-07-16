@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Entry extends Model
+class Receivig extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,12 @@ class Entry extends Model
 
     public function items()
     {
-        return  $this->hasMany(EntryItems::class,'entry_id');
+        return  $this->hasMany(ReceivingItem::class,'receiving_id');
     }
 
-    public function receivings(){
-        return $this->hasMany(Receivig::class,'entry_id');
+    public function entry()
+    {
+        return  $this->belongsTo(Entry::class,'entry_id');
     }
     public function customer()
     {

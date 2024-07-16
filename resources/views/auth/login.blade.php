@@ -12,7 +12,7 @@
                                 <h4 class="font-size-18 p-2 text-center text-white">Welcome Back !</h4>
                                 <p class="text-muted text-center">Log in to continue.</p>
                                 <a href="index.html" class="logo logo-admin">
-                                    <img src="{{asset('admin/images/logo-light.png')}}" height="40" alt="KSA Certification Service">
+                                    <img src="{{asset('admin/images/logo-light.png')}}" height="40" alt="ICert Certification Service">
                                 </a>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="mt-5 text-center">
-                        <p>Copyright <span class="text-warning">©</span> <span class="text-info"><script>document.write(new Date().getFullYear())</script></span> KSA Certification Services</p>
+                        <p>Copyright <span class="text-warning">©</span> <span class="text-info"><script>document.write(new Date().getFullYear())</script></span> ICert Certification Services</p>
                     </div>
 
 

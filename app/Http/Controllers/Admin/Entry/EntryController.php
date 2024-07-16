@@ -26,6 +26,17 @@ class EntryController extends Controller
     public function index(EntryDataTable $dataTable)
     {
         set_page_meta('Entry');
+//        $item = Entry::find(1);
+//        $receivingCOunt = $item->receivings->count();
+//
+//        if($receivingCOunt > 0){
+//            $status = 'Already Received/Receiving of Order Finished (ROF)';
+//        }else{
+//            $status = 'No Receiving';
+//        }
+//
+//        return $status;
+
         return $dataTable->render('admin.entry.index');
     }
 
@@ -508,13 +519,13 @@ class EntryController extends Controller
             $madedSKU = $splitedLastSKUId[1].$splitedLastSKUId[2];
 //            return $madedSKU;
             $settingPlusOne = $madedSKU+1;
-            $newSKUId = 'KS'.date('y').$settingPlusOne;
+            $newSKUId = 'IC'.date('y').$settingPlusOne;
 //            return $newSKUId;
         }else{
 //            $setting = config('settings.admin_order_sku');
             $setting = 20000;
             $settingPlusOne = $setting+1;
-            $newSKUId = 'KS'.date('y').$settingPlusOne;
+            $newSKUId = 'IC'.date('y').$settingPlusOne;
         }
 
         return $newSKUId;
