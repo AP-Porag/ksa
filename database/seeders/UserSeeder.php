@@ -33,10 +33,10 @@ class UserSeeder extends Seeder
                 'date_of_hire'     => '2000-10-21',
             ],
             [
-                'first_name'        => 'Icert',
+                'first_name'        => 'KSA',
                 'last_name'         => 'Last',
-                'username'         => 'icertlast',
-                'email'             => 'icert@app.com',
+                'username'         => 'KSAlast',
+                'email'             => 'ksa@app.com',
                 'email_verified_at' => now(),
                 'password'          => Hash::make("12345678"),   // 12345678
                 'user_type'         => User::USER_TYPE_ICERT,
