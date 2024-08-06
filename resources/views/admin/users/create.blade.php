@@ -17,7 +17,7 @@
                                         <label class="form-label">User ID
 {{--                                            <span class="error">*</span>--}}
                                         </label>
-                                        <input type="text" name="userId" class="form-control" required=""
+                                        <input type="text" name="userId" class="form-control"
                                                value="{{ old('userId') }}">
                                         @error('userId')
                                         <p class="error">{{ $message }}</p>
