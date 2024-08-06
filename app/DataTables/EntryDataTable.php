@@ -51,9 +51,9 @@ class EntryDataTable extends DataTable
                 $receivingCOunt = $item->receivings->count();
 
                 if($receivingCOunt > 0){
-                    $status = 'Already Received/Receiving of Order Finished (ROF)';
+                    $status = 'Order Received';
                 }else{
-                    $status = 'No Receiving';
+                    $status = 'Not Yet Received';
                 }
 
                 return $status;

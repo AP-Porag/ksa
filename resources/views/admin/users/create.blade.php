@@ -14,7 +14,9 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="mb-3 col-md-12">
-                                        <label class="form-label">User ID <span class="error">*</span></label>
+                                        <label class="form-label">User ID
+{{--                                            <span class="error">*</span>--}}
+                                        </label>
                                         <input type="text" name="userId" class="form-control" required=""
                                                value="{{ old('userId') }}">
                                         @error('userId')
@@ -92,9 +94,8 @@
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label mb-2 w-100">User Type <span class="error">*</span></label>
                                         <select class="form-select" name="user_type">
-                                            <option selected disabled>Select user type</option>
-                                            <option value="{{\App\Models\User::USER_TYPE_ICERT}}">iCert</option>
-                                            <option value="{{\App\Models\User::USER_TYPE_KSA}}">KSA</option>
+                                            <option @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_ICERT ) selected @endif value="{{\App\Models\User::USER_TYPE_ICERT}}">iCert</option>
+                                            <option @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_KSA ) selected @endif value="{{\App\Models\User::USER_TYPE_KSA}}">KSA</option>
                                         </select>
                                     </div>
 
@@ -115,8 +116,27 @@
                                             @enderror
                                         </div>
                                     </div>
+
+                                </div>
+
+                                <div class="row" style="position: absolute;bottom: 0;">
+                                    <div class="col-md-12">
+                                        @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_ICERT || auth()->user()->user_type == \App\Models\User::USER_TYPE_KSA)
+                                            <div class="mb-3 col-md-12">
+                                                <label class="form-label mb-2 w-100">
+                                                    @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_ICERT)
+                                                        <span>iCert</span>
+                                                    @endif
+                                                    @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_KSA)
+                                                        <span>KSA</span>
+                                                    @endif
+                                                    Product orders only </label>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="row mt-4">

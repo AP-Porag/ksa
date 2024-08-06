@@ -33,7 +33,7 @@
                                         <h6>Order details</h6>
                                     </div>
                                     <div class="d-flex justify-content-end">
-                                        <a href="#" id="create-receiving-btn" class="btn btn-primary-theme btn-sm text-white" style="margin-right: 15px;">Create receiving against this order</a>
+                                        <a href="#" id="create-receiving-btn" class="btn btn-primary-theme btn-sm text-white" style="margin-right: 15px;">Receive this order</a>
                                         <button class="btn btn-secondary btn-sm reset">Reset</button>
                                     </div>
                                 </div>
@@ -57,21 +57,24 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="text-end">
+                                    <a class="btn btn-secondary" href="{{route('admin.entries.index')}}">Cancel</a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-3">Receiving</h4>
+{{--            <div class="card">--}}
+{{--                <div class="card-body">--}}
+{{--                    <div class="d-flex justify-content-between">--}}
+{{--                        <h4 class="card-title mb-3">Receiving</h4>--}}
 {{--                        <a href="{{route('admin.entries.create')}}" class="btn btn-sm btn-primary text-capitalize" style="padding-top: 8px;">Create New Entry</a>--}}
-                    </div>
-                    {!! $dataTable->table(['class'=>'table-responsive']) !!}
-                </div>
-            </div>
+{{--                    </div>--}}
+{{--                    {!! $dataTable->table(['class'=>'table-responsive']) !!}--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 

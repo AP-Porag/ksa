@@ -95,7 +95,7 @@ class PermissionSeeder extends Seeder
                 'View',
             ],
             'All Customers' => [
-                'Customer',
+                'Customers',
             ],
         ];
 

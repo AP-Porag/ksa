@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'email'             => 'ksa@app.com',
                 'email_verified_at' => now(),
                 'password'          => Hash::make("12345678"),   // 12345678
-                'user_type'         => User::USER_TYPE_ICERT,
+                'user_type'         => User::USER_TYPE_KSA,
                 'status'            => GlobalConstant::STATUS_ACTIVE,
                 'remember_token'    => Str::random(60),
                 'phone'             => '012345678910',

@@ -14,12 +14,15 @@
                 </a> --}}
 
                 <a href="#" class="logo">
-                    <span class="logo-sm">
-                        <img src="{{asset('storage/settings/logo-sm.png')}}" alt="" height="39">
-                    </span>
                     <span class="logo-lg">
-                        <img src="{{asset('storage/settings/logo-light.png')}}" alt="" height="55">
+                        <h5 style="color: #acaaac;font-size: 20px;padding-top: 20px;">KSA Certification</h5>
                     </span>
+{{--                    <span class="logo-sm">--}}
+{{--                        <img src="{{asset('storage/settings/logo-sm.png')}}" alt="" height="39">--}}
+{{--                    </span>--}}
+{{--                    <span class="logo-lg">--}}
+{{--                        <img src="{{asset('storage/settings/logo-light.png')}}" alt="" height="55">--}}
+{{--                    </span>--}}
                 </a>
             </div>
 

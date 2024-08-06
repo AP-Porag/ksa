@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            'userId' => ['required', Rule::unique('users')->ignore($this->user)],
+            'userId' => ['nullable', Rule::unique('users')->ignore($this->user)],
             'first_name' => ['required'],
             'last_name'  => ['nullable'],
             'username'  => ['nullable'],

@@ -1987,6 +1987,11 @@
                                     </div>
                                 </div>
                             </div>
+                                <div class=""></div>
+                                <div class="text-end mt-4">
+                                    <a class="btn btn-primary" style="margin-right: 15px;" href="{{route('admin.entries.index')}}">Entry Complete</a>
+                                    <a class="btn btn-secondary" href="{{route('admin.entries.index')}}">Continue Later</a>
+                                </div>
                         </div>
                     </div>
                 </div>
