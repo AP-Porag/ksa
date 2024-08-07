@@ -2284,8 +2284,9 @@
             if(notSelected){
                 if (showItemTypeCardBox){
                     console.log('showItemTypeCardBox  '+showItemTypeCardBox)
+                    console.log($('#card_description_one').val())
 
-                    if(!$('#card_description_one').val() || !$('#card_description_two').val() || !$('#card_description_three').val() || !$('#card_authenticator_name').val() || !$('#card_authenticator_cert_no').val() || !$('#card_estimated_value').val()){
+                    if(!$('#card_description_one').val() || !$('#card_estimated_value').val()){
                         $(this).attr("type","button");
                         $('#warning_text_box').show();
                     }else {
@@ -2297,7 +2298,7 @@
                 if(showItemTypeAutoAthenticationBox){
                     console.log('showItemTypeAutoAthenticationBox  '+showItemTypeAutoAthenticationBox)
 
-                    if(!$('#auto_authentication_description_one').val() || !$('#auto_authentication_description_two').val() || !$('#auto_authentication_description_three').val() || !$('#auto_authentication_authenticator_name').val() || !$('#auto_authentication_authenticator_cert_no').val() || !$('#auto_authentication_estimated_value').val()){
+                    if(!$('#auto_authentication_description_one').val() || !$('#auto_authentication_estimated_value').val()){
                         $(this).attr("type","button");
                         $('#warning_text_box').show();
                     }else {
@@ -2308,7 +2309,7 @@
                 if(showItemTypeCombinedServiceBox){
                     console.log('showItemTypeCombinedServiceBox  '+showItemTypeCombinedServiceBox)
 
-                    if(!$('#combined_service_description_one').val() || !$('#combined_service_description_two').val() || !$('#combined_service_description_three').val() || !$('#combined_service_authenticator_name').val() || !$('#combined_service_authenticator_cert_no').val() || !$('#combined_service_estimated_value').val()){
+                    if(!$('#combined_service_description_one').val() || !$('#combined_service_estimated_value').val()){
                         $(this).attr("type","button");
                         $('#warning_text_box').show();
                     }else {
@@ -2330,7 +2331,7 @@
                 if(showItemTypeCrossoverBoxOne || showItemTypeCrossoverBoxTwo){
                     console.log('showItemTypeCrossoverBoxOne  '+showItemTypeCrossoverBoxOne)
 
-                    if(!$('#crossover_description_one').val() || !$('#crossover_description_two').val() || !$('#crossover_description_three').val() || !$('#crossover_item_type').val() || !$('#crossover_minimum_grade').val() || !$('#crossover_autographed').val() || !$('#crossover_authenticator_name').val() || !$('#crossover_estimated_value').val() || !$('#crossover_authenticator_cert_no').val() ){
+                    if(!$('#crossover_description_one').val() || !$('#crossover_item_type').val() || !$('#crossover_minimum_grade').val() || !$('#crossover_estimated_value').val() ){
                         $(this).attr("type","button");
                         $('#warning_text_box').show();
                     }else {

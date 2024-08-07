@@ -1,9 +1,9 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_EditEntry_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_CreateReceiving_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25,8 +25,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 // import {isReadonly} from "vue";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "EditEntry",
-  props: ["customers", "promos", "parties", "authenticators", "item", "entries"],
+  name: "CreateReceiving",
+  props: ["authenticators", "entr"],
   components: {
     VuePhoneNumberInput: (vue_phone_number_input__WEBPACK_IMPORTED_MODULE_0___default())
   },
@@ -289,50 +289,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         "name": "WA"
       }],
       isAllSelected: false,
-      // customers: [
-      //     {
-      //         "id":1,
-      //         "name":"Customer 1"
-      //     },
-      //     {
-      //         "id":2,
-      //         "name":"Customer 2"
-      //     },
-      //     {
-      //         "id":3,
-      //         "name":"Customer 3"
-      //     },
-      //     {
-      //         "id":4,
-      //         "name":"Customer 4"
-      //     },
-      //     {
-      //         "id":5,
-      //         "name":"Customer 5"
-      //     },
-      // ],
-      // promoCodes: [
-      //     {
-      //         'id':1,
-      //         'name':'promo - 1',
-      //     },
-      //     {
-      //         'id':2,
-      //         'name':'promo - 2',
-      //     },
-      //     {
-      //         'id':3,
-      //         'name':'promo - 3',
-      //     },
-      //     {
-      //         'id':4,
-      //         'name':'promo - 1',
-      //     },
-      //     {
-      //         'id':5,
-      //         'name':'promo - 1',
-      //     },
-      // ],
       shippingMethods: [{
         'id': 1,
         'name': 'Delivery'
@@ -377,24 +333,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'id': 5,
         'name': 'iCert Booth'
       }],
-      // thirdParties: [
-      //     {
-      //         'id':1,
-      //         'name':'Third party - 1',
-      //     },
-      //     {
-      //         'id':2,
-      //         'name':'Third party - 2',
-      //     },
-      //     {
-      //         'id':3,
-      //         'name':'Third party - 3',
-      //     },
-      //     {
-      //         'id':4,
-      //         'name':'Third party - 4',
-      //     },
-      // ],
       gradingLocations: [{
         'id': 1,
         'name': 'KSA'
@@ -440,28 +378,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'id': 1,
         'name': 'Card'
       }],
-      // authenticators:[
-      //     {
-      //         'id':1,
-      //         'name':'Auth 1'
-      //     },
-      //     {
-      //         'id':2,
-      //         'name':'Auth 2'
-      //     },
-      //     {
-      //         'id':3,
-      //         'name':'Auth 3'
-      //     },
-      //     {
-      //         'id':4,
-      //         'name':'Auth 4'
-      //     },
-      //     {
-      //         'id':5,
-      //         'name':'Auth 5'
-      //     },
-      // ],
       minimumGrades: [{
         'id': 1,
         'name': '0'
@@ -527,293 +443,183 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'name': '10 (P)'
       }],
       form_data: {
-        customer: '',
-        name: '',
         customerId: '',
-        // email:'',
-        contact_name: '',
+        entryID: '',
         item_qty: 1,
-        billing_address_line_one: '',
-        billing_address_line_two: '',
-        billing_country: '',
-        billing_province: '',
-        billing_city: '',
-        billing_postal: '',
-        billing_phone: '',
-        same_as_billing: false,
-        autographed: false,
-        shipping_name: '',
-        shipping_company_name: '',
-        shipping_address_line_one: '',
-        shipping_address_line_two: '',
-        shipping_country: '',
-        shipping_province: '',
-        shipping_city: '',
-        shipping_postal: '',
-        shipping_phone: '',
-        status: 'active',
-        submission_date: '',
-        products: [],
-        itemType: '',
-        //next
-        grading_location: '',
-        promo_code: '',
-        payment_made: '',
-        pay_on_pickup: '',
-        cod: '',
-        shopify_order_number: '',
-        shipping_method: '',
-        pickup_location: '',
-        show_pickup_location: '',
-        third_party_drop_center: '',
-        use_customer_account: '',
-        customer_account_number: '',
-        crossover_item_type: '',
-        authenticator_name: '',
-        authenticator_name_two: '',
-        authenticator_name_three: '',
-        authenticator_name_four: '',
-        crossover_minimum_grade: '',
-        //item type card
-        card_description_one: '',
-        card_description_two: '',
-        card_description_three: '',
-        card_serial_number: '',
-        card_autographed: '',
-        card_authenticator_name: '',
-        card_authenticator_cert_no: '',
-        card_estimated_value: '',
-        //item type auto authentication
-        auto_authentication_description_one: '',
-        auto_authentication_description_two: '',
-        auto_authentication_description_three: '',
-        auto_authentication_serial_number: '',
-        auto_authentication_autographed: '',
-        auto_authentication_authenticator_name: '',
-        auto_authentication_authenticator_cert_no: '',
-        auto_authentication_estimated_value: '',
-        //item type combined service
-        combined_service_description_one: '',
-        combined_service_description_two: '',
-        combined_service_description_three: '',
-        combined_service_serial_number: '',
-        combined_service_autographed: '',
-        combined_service_authenticator_name: '',
-        combined_service_authenticator_cert_no: '',
-        combined_service_estimated_value: '',
-        //item type combined service
-        reholder_certification_number: '',
-        reholder_estimated_value: '',
-        //item type crossover
-        crossover_description_one: '',
-        crossover_description_two: '',
-        crossover_description_three: '',
-        crossover_serial_number: '',
-        crossover_autographed: '',
-        crossover_authenticator_name: '',
-        crossover_authenticator_cert_no: '',
-        crossover_estimated_value: ''
+        items: [{
+          itemType: '',
+          //item type card
+          card_description_one: '',
+          card_description_two: '',
+          card_description_three: '',
+          card_serial_number: '',
+          card_autographed: '',
+          card_authenticator_name: '',
+          card_authenticator_cert_no: '',
+          card_estimated_value: '',
+          //item type auto authentication
+          auto_authentication_description_one: '',
+          auto_authentication_description_two: '',
+          auto_authentication_description_three: '',
+          auto_authentication_serial_number: '',
+          auto_authentication_autographed: '',
+          auto_authentication_authenticator_name: '',
+          auto_authentication_authenticator_cert_no: '',
+          auto_authentication_estimated_value: '',
+          //item type combined service
+          combined_service_description_one: '',
+          combined_service_description_two: '',
+          combined_service_description_three: '',
+          combined_service_serial_number: '',
+          combined_service_autographed: '',
+          combined_service_authenticator_name: '',
+          combined_service_authenticator_cert_no: '',
+          combined_service_estimated_value: '',
+          //item type combined service
+          reholder_certification_number: '',
+          reholder_estimated_value: '',
+          //item type crossover
+          crossover_description_one: '',
+          crossover_description_two: '',
+          crossover_description_three: '',
+          crossover_serial_number: '',
+          crossover_autographed: '',
+          crossover_authenticator_name: '',
+          crossover_authenticator_cert_no: '',
+          crossover_estimated_value: '',
+          crossover_item_type: '',
+          crossover_minimum_grade: '',
+          //card box type
+          showItemTypeCardBox: false,
+          showItemTypeAutoAthenticationBox: false,
+          showItemTypeCombinedServiceBox: false,
+          showItemTypeReholderBox: false,
+          showItemTypeCrossoverBox: false
+        }]
       }
     };
   },
-  mounted: function mounted() {
-    var self = this;
-    self.form_data.customer = {
-      id: self.item.customer_id,
-      name: self.item.customer_name
-    }, self.form_data.name = self.item.customer_name, self.form_data.customerId = self.item.customer_id,
-    // email:'',
-    self.form_data.contact_name = self.item.contact_name, self.form_data.item_qty = self.item.item_qty, self.form_data.billing_address_line_one = self.item.billing_address_line_one, self.form_data.billing_address_line_two = self.item.billing_address_line_two, self.form_data.billing_country = self.item.billing_country, self.form_data.billing_province = self.item.billing_province, self.form_data.billing_city = self.item.billing_city, self.form_data.billing_postal = self.item.billing_postal, self.form_data.billing_phone = self.item.billing_phone, self.form_data.same_as_billing = self.item.same_as_billing, self.form_data.autographed = self.item.autographed, self.form_data.shipping_name = self.item.shipping_name, self.form_data.shipping_company_name = self.item.shipping_company_name, self.form_data.shipping_address_line_one = self.item.shipping_address_line_one;
-    self.form_data.shipping_address_line_two = self.item.shipping_address_line_two, self.form_data.shipping_country = self.item.shipping_country, self.form_data.shipping_province = self.item.shipping_province, self.form_data.shipping_city = self.item.shipping_city, self.form_data.shipping_postal = self.item.shipping_postal, self.form_data.shipping_phone = self.item.shipping_phone, self.form_data.status = self.item.status, self.form_data.submission_date = self.item.submission_date, self.form_data.products = self.item.products, self.form_data.itemType = self.item.itemType,
-    //next
-    self.form_data.grading_location = self.item.grading_location, self.form_data.promo_code = self.item.promo_code, self.form_data.payment_made = self.item.payment_made, self.form_data.pay_on_pickup = self.item.pay_on_pickup, self.form_data.cod = self.item.cod, self.form_data.shopify_order_number = self.item.shopify_order_number, self.form_data.shipping_method = self.item.shipping_method, self.form_data.pickup_location = self.item.pickup_location, self.form_data.show_pickup_location = self.item.show_pickup_location, self.form_data.third_party_drop_center = self.item.third_party_drop_center, self.form_data.use_customer_account = self.item.use_customer_account, self.form_data.customer_account_number = self.item.customer_account_number, self.form_data.crossover_item_type = self.item.crossover_item_type, self.form_data.authenticator_name = self.item.authenticator_name, self.form_data.authenticator_name_two = self.item.authenticator_name_two, self.form_data.authenticator_name_three = self.item.authenticator_name_three, self.form_data.authenticator_name_four = self.item.authenticator_name_four, self.form_data.crossover_minimum_grade = self.item.crossover_minimum_grade,
-    //item type card
-    self.form_data.card_description_one = self.item.card_description_one, self.form_data.card_description_two = self.item.card_description_two, self.form_data.card_description_three = self.item.card_description_three, self.form_data.card_serial_number = self.item.card_serial_number, self.form_data.card_autographed = self.item.card_autographed, self.form_data.card_authenticator_name = self.item.card_authenticator_name, self.form_data.card_authenticator_cert_no = self.item.card_authenticator_cert_no, self.form_data.card_estimated_value = self.item.card_estimated_value,
-    //item type auto authentication
-    self.form_data.auto_authentication_description_one = self.item.auto_authentication_description_one, self.form_data.auto_authentication_description_two = self.item.auto_authentication_description_two, self.form_data.auto_authentication_description_three = self.item.auto_authentication_description_three, self.form_data.auto_authentication_serial_number = self.item.auto_authentication_serial_number, self.form_data.auto_authentication_autographed = self.item.auto_authentication_autographed, self.form_data.auto_authentication_authenticator_name = self.item.auto_authentication_authenticator_name, self.form_data.auto_authentication_authenticator_cert_no = self.item.auto_authentication_authenticator_cert_no, self.form_data.auto_authentication_estimated_value = self.item.auto_authentication_estimated_value,
-    //item type combined service
-    self.form_data.combined_service_description_one = self.item.combined_service_description_one, self.form_data.combined_service_description_two = self.item.combined_service_description_two, self.form_data.combined_service_description_three = self.item.combined_service_description_three, self.form_data.combined_service_serial_number = self.item.combined_service_serial_number, self.form_data.combined_service_autographed = self.item.combined_service_autographed, self.form_data.combined_service_authenticator_name = self.item.combined_service_authenticator_name, self.form_data.combined_service_authenticator_cert_no = self.item.combined_service_authenticator_cert_no, self.form_data.combined_service_estimated_value = self.item.combined_service_estimated_value,
-    //item type combined service
-    self.form_data.reholder_certification_number = self.item.reholder_certification_number, self.form_data.reholder_estimated_value = self.item.reholder_estimated_value,
-    //item type crossover
-    self.form_data.crossover_description_one = self.item.crossover_description_one, self.form_data.crossover_description_two = self.item.crossover_description_two, self.form_data.crossover_description_three = self.item.crossover_description_three, self.form_data.crossover_serial_number = self.item.crossover_serial_number, self.form_data.crossover_autographed = self.item.crossover_autographed, self.form_data.crossover_authenticator_name = self.item.crossover_authenticator_name, self.form_data.crossover_authenticator_cert_no = self.item.crossover_authenticator_cert_no;
-    self.form_data.crossover_estimated_value = self.item.crossover_estimated_value;
-    if (self.form_data.shipping_method == "Pickup") {
-      self.showPickupLocationBox = true;
-    } else if (self.form_data.shipping_method == "Show Pickup") {
-      self.showShowPickupLocationBox = true;
-    } else if (self.form_data.shipping_method == "Return to Third Party") {
-      self.showThirdPartyBox = true;
-    } else if (self.form_data.shipping_method == "Delivery") {
-      self.showPickupLocationBox = false;
-      self.showShowPickupLocationBox = false;
-      self.showThirdPartyBox = false;
-      self.showUPSBox = false;
-    } else {
-      self.showUPSBox = true;
-    }
-  },
   methods: {
-    submit: function submit() {
+    submit: function submit(e) {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var form, requiredFields;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              if (!_this.checkSixthStep()) {
-                _context.next = 4;
-                break;
-              }
-              Swal.fire({
-                // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
-                title: "Do you want to update this order: <br> ".concat(_this.form_data.name),
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Yes",
-                denyButtonText: "No",
-                icon: "question"
-              }).then(function (result) {
-                console.log(result);
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                  // Swal.fire("Saved!", "", "success");
-                  // window.location.href = `/admin/entries/10`;
-                  // Submit form
+              form = document.getElementById('myForm');
+              requiredFields = form.querySelectorAll('[required]');
+              requiredFields.forEach(function (field) {
+                if (field.value.trim() === '') {} else {
+                  e.preventDefault();
+                  console.log('submit');
+                  Swal.fire({
+                    // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
+                    // title: `Do you want to save this receiving: <br> ${this.form_data.name}`,
+                    title: "Do you want to save this receiving",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    denyButtonText: "No",
+                    icon: "question"
+                  }).then(function (result) {
+                    console.log(result);
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      // Swal.fire("Saved!", "", "success");
+                      // window.location.href = `/admin/entries/10`;
+                      // Submit form
 
-                  axios.put("/admin/entries/".concat(_this.item.id), _this.form_data).then(function (response) {
-                    console.log(response);
-                    Swal.fire("Update!", "", "success").then(function (result) {
-                      if (result.isConfirmed) {
-                        if (response.status == 200) {
-                          window.location.href = "/admin/entries/".concat(response.data.id);
+                      axios.post("/admin/receiving", _this.form_data).then(function (response) {
+                        console.log(response);
+                        Swal.fire("Saved!", "", "success").then(function (result) {
+                          if (result.isConfirmed) {
+                            if (response.status == 200) {
+                              window.location.href = "/admin/receiving/".concat(response.data.data.id);
+                            }
+                          }
+                        });
+                      })["catch"](function (err) {
+                        try {
+                          self.showValidationError(err);
+                        } catch (e) {
+                          self.showSomethingWrong();
                         }
-                      }
-                    });
-
-                    // window.location.reload()
-                    // window.location.href = "/admin/thirds";
-                  })["catch"](function (err) {
-                    try {
-                      self.showValidationError(err);
-                    } catch (e) {
-                      self.showSomethingWrong();
+                      });
+                      // Swal.fire("Saved!", "", "success");
+                    } else if (result.isDismissed) {
+                      window.location.href = "/admin/receiving";
+                    } else if (result.isDenied) {
+                      console.log(result.isDenied);
+                      // Swal.fire("Changes are not saved", "", "info");
                     }
                   });
-                  // Swal.fire("Saved!", "", "success");
-                } else if (result.isDismissed) {
-                  window.location.href = "/admin/entries";
-                } else if (result.isDenied) {
-                  console.log(result.isDenied);
-                  // Swal.fire("Changes are not saved", "", "info");
                 }
               });
-              _context.next = 5;
-              break;
-            case 4:
-              return _context.abrupt("return");
-            case 5:
+
+              // if (this.checkSeventhStep()){
+              //
+              //     Swal.fire({
+              //         // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
+              //         // title: `Do you want to save this receiving: <br> ${this.form_data.name}`,
+              //         title: `Do you want to save this receiving`,
+              //         showDenyButton: true,
+              //         showCancelButton: true,
+              //         confirmButtonText: "Yes",
+              //         denyButtonText: `No`,
+              //         icon: "question",
+              //     }).then((result) => {
+              //         console.log(result)
+              //         /* Read more about isConfirmed, isDenied below */
+              //         if (result.isConfirmed) {
+              //             // Swal.fire("Saved!", "", "success");
+              //             // window.location.href = `/admin/entries/10`;
+              //             // Submit form
+              //
+              //             axios
+              //                 .post("/admin/receiving", this.form_data)
+              //                 .then(function (response) {
+              //                     console.log(response)
+              //                     Swal.fire("Saved!", "", "success").then((result)=>{
+              //                         if (result.isConfirmed){
+              //                             if (response.status == 200){
+              //                                 window.location.href = `/admin/receiving/${response.data.data.id}`;
+              //                             }
+              //                         }
+              //                     });
+              //                 })
+              //                 .catch(function (err) {
+              //                     try {
+              //                         self.showValidationError(err);
+              //                     } catch (e) {
+              //                         self.showSomethingWrong();
+              //                     }
+              //                 });
+              //             // Swal.fire("Saved!", "", "success");
+              //         }else if (result.isDismissed){
+              //             window.location.href = "/admin/receiving";
+              //         }else if (result.isDenied) {
+              //             console.log(result.isDenied)
+              //             // Swal.fire("Changes are not saved", "", "info");
+              //         }
+              //     });
+              //
+              // }else {
+              //     return;
+              // }
+            case 3:
             case "end":
               return _context.stop();
           }
         }, _callee);
       }))();
     },
-    checkFirstStep: function checkFirstStep() {
-      var _this2 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _this2.v$.$touch();
-              if (!_this2.v$.form_data.name.$invalid) {
-                _context2.next = 4;
-                break;
-              }
-              _this2.show_error_one = true;
-              return _context2.abrupt("return", false);
-            case 4:
-              _this2.completed_step_count = 1;
-              _this2.form_wizard_subtitle = 'Please Continue to next';
-              return _context2.abrupt("return", true);
-            case 7:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2);
-      }))();
-    },
-    checkSecondStep: function checkSecondStep() {
-      this.v$.$touch();
-      if (this.v$.form_data.grading_location.$invalid) {
-        this.show_error_two = true;
-        return false;
-      }
-      this.completed_step_count = 2;
-      this.form_wizard_subtitle = 'Please Continue to next';
-      return true;
-    },
-    checkThirdStep: function checkThirdStep() {
-      this.v$.$touch();
-      if (this.v$.form_data.billing_address_line_one.$invalid || this.v$.form_data.billing_country.$invalid || this.v$.form_data.billing_province.$invalid || this.v$.form_data.billing_city.$invalid || this.v$.form_data.billing_postal.$invalid || this.v$.form_data.billing_phone.$invalid) {
-        this.show_error_three = true;
-        return false;
-      }
-      this.completed_step_count = 3;
-      this.form_wizard_subtitle = 'Almost Done';
-      return true;
-    },
-    checkFourthStep: function checkFourthStep() {
-      this.v$.$touch();
-      if (this.v$.form_data.shipping_address_line_one.$invalid || this.v$.form_data.shipping_country.$invalid || this.v$.form_data.shipping_province.$invalid || this.v$.form_data.shipping_city.$invalid || this.v$.form_data.shipping_postal.$invalid || this.v$.form_data.shipping_phone.$invalid) {
-        this.show_error_four = true;
-        return false;
-      }
-      this.completed_step_count = 4;
-      this.form_wizard_subtitle = 'Almost Done';
-      return true;
-    },
-    checkFifthStep: function checkFifthStep() {
-      this.v$.$touch();
-      if (this.v$.form_data.submission_date.$invalid) {
-        this.show_error_five = true;
-        return false;
-      } else {
-        return true;
-      }
-    },
-    checkSixthStep: function checkSixthStep() {
-      this.v$.$touch();
-      if (this.v$.form_data.shipping_method.$invalid) {
-        this.show_error_six = true;
-        return false;
-      } else if (this.v$.form_data.pickup_location.$invalid) {
-        this.show_error_seven = true;
-        return false;
-      } else if (this.v$.form_data.show_pickup_location.$invalid) {
-        this.show_error_eight = true;
-        return false;
-      } else if (this.v$.form_data.third_party_drop_center.$invalid) {
-        this.show_error_nine = true;
-        return false;
-      } else if (this.v$.form_data.customer_account_number.$invalid) {
-        this.show_error_ten = true;
-        return false;
-      } else {
-        return true;
-      }
-    },
     checkSeventhStep: function checkSeventhStep() {
       this.v$.$touch();
-      if (this.v$.form_data.itemType.$invalid) {
+      if (this.v$.form_data.items.$invalid) {
         this.show_error_eleven = true;
         return false;
       } else if (this.v$.form_data.card_description_one.$invalid) {
-        this.show_error_twelve = true;
-        return false;
-      } else if (this.v$.form_data.card_description_two.$invalid) {
-        this.show_error_twelve = true;
-        return false;
-      } else if (this.v$.form_data.card_description_three.$invalid) {
         this.show_error_twelve = true;
         return false;
       } else if (this.v$.form_data.card_authenticator_name.$invalid) {
@@ -828,12 +634,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else if (this.v$.form_data.auto_authentication_description_one.$invalid) {
         this.show_error_thirteen = true;
         return false;
-      } else if (this.v$.form_data.auto_authentication_description_two.$invalid) {
-        this.show_error_thirteen = true;
-        return false;
-      } else if (this.v$.form_data.auto_authentication_description_three.$invalid) {
-        this.show_error_thirteen = true;
-        return false;
       } else if (this.v$.form_data.auto_authentication_authenticator_name.$invalid) {
         this.show_error_thirteen = true;
         return false;
@@ -844,12 +644,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.show_error_thirteen = true;
         return false;
       } else if (this.v$.form_data.combined_service_description_one.$invalid) {
-        this.show_error_fourteen = true;
-        return false;
-      } else if (this.v$.form_data.combined_service_description_two.$invalid) {
-        this.show_error_fourteen = true;
-        return false;
-      } else if (this.v$.form_data.combined_service_description_three.$invalid) {
         this.show_error_fourteen = true;
         return false;
       } else if (this.v$.form_data.combined_service_authenticator_name.$invalid) {
@@ -868,12 +662,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.show_error_fifteen = true;
         return false;
       } else if (this.v$.form_data.crossover_description_one.$invalid) {
-        this.show_error_sixteen = true;
-        return false;
-      } else if (this.v$.form_data.crossover_description_two.$invalid) {
-        this.show_error_sixteen = true;
-        return false;
-      } else if (this.v$.form_data.crossover_description_three.$invalid) {
         this.show_error_sixteen = true;
         return false;
       } else if (this.v$.form_data.crossover_authenticator_name.$invalid) {
@@ -941,7 +729,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     cancel: function cancel() {
-      window.location.assign("/admin/entries");
+      window.location.assign("/admin/receiving");
     },
     selectAllCats: function selectAllCats() {
       if (this.isAllSelected) {
@@ -963,18 +751,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     customerNameChangeEvent: function customerNameChangeEvent() {
-      var _this3 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var self;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              self = _this3;
-              console.log(_this3.form_data.customer);
-              _this3.form_data.name = _this3.form_data.customer.name;
-              _this3.form_data.customerId = _this3.form_data.customer.id;
-              console.log(_this3.form_data.customerId);
-              _context3.next = 7;
+              self = _this2;
+              console.log(_this2.form_data.customer);
+              _this2.form_data.name = _this2.form_data.customer.name;
+              _this2.form_data.customerId = _this2.form_data.customer.id;
+              console.log(_this2.form_data.customerId);
+              _context2.next = 7;
               return axios.get("/admin/entries/get-customer/info/".concat(self.form_data.customerId)).then(function (res) {
                 // console.log(res)
                 self.form_data.billing_address_line_one = res.data.data.billing_address_line_one;
@@ -1003,9 +791,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 7:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
-        }, _callee3);
+        }, _callee2);
       }))();
     },
     customerNameSelectEvent: function customerNameSelectEvent(_ref) {
@@ -1016,41 +804,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         text: text
       });
     },
-    itemTypeChangeEvent: function itemTypeChangeEvent() {
-      if (this.form_data.itemType == 'Card') {
-        this.showItemTypeCardBox = true;
-        this.showItemTypeAutoAthenticationBox = false;
-        this.showItemTypeCombinedServiceBox = false;
-        this.showItemTypeReholderBox = false;
-        this.showItemTypeCrossoverBox = false;
+    itemTypeChangeEvent: function itemTypeChangeEvent(index, itemType) {
+      if (this.form_data.items[index].itemType == 'Card') {
+        this.form_data.items[index].showItemTypeCardBox = true;
+        this.form_data.items[index].showItemTypeAutoAthenticationBox = false;
+        this.form_data.items[index].showItemTypeCombinedServiceBox = false;
+        this.form_data.items[index].showItemTypeReholderBox = false;
+        this.form_data.items[index].showItemTypeCrossoverBox = false;
       }
-      if (this.form_data.itemType == 'Auto Authentication') {
-        this.showItemTypeCardBox = false;
-        this.showItemTypeAutoAthenticationBox = true;
-        this.showItemTypeCombinedServiceBox = false;
-        this.showItemTypeReholderBox = false;
-        this.showItemTypeCrossoverBox = false;
+      console.log(this.form_data.items[index].showItemTypeCardBox);
+      if (this.form_data.items[index].itemType == 'Auto Authentication') {
+        this.form_data.items[index].showItemTypeCardBox = false;
+        this.form_data.items[index].showItemTypeAutoAthenticationBox = true;
+        this.form_data.items[index].showItemTypeCombinedServiceBox = false;
+        this.form_data.items[index].showItemTypeReholderBox = false;
+        this.form_data.items[index].showItemTypeCrossoverBox = false;
       }
-      if (this.form_data.itemType == 'Combined Service') {
-        this.showItemTypeCardBox = false;
-        this.showItemTypeAutoAthenticationBox = false;
-        this.showItemTypeCombinedServiceBox = true;
-        this.showItemTypeReholderBox = false;
-        this.showItemTypeCrossoverBox = false;
+      if (this.form_data.items[index].itemType == 'Combined Service') {
+        this.form_data.items[index].showItemTypeCardBox = false;
+        this.form_data.items[index].showItemTypeAutoAthenticationBox = false;
+        this.form_data.items[index].showItemTypeCombinedServiceBox = true;
+        this.form_data.items[index].showItemTypeReholderBox = false;
+        this.form_data.items[index].showItemTypeCrossoverBox = false;
       }
-      if (this.form_data.itemType == 'Reholder') {
-        this.showItemTypeCardBox = false;
-        this.showItemTypeAutoAthenticationBox = false;
-        this.showItemTypeCombinedServiceBox = false;
-        this.showItemTypeReholderBox = true;
-        this.showItemTypeCrossoverBox = false;
+      if (this.form_data.items[index].itemType == 'Reholder') {
+        this.form_data.items[index].showItemTypeCardBox = false;
+        this.form_data.items[index].showItemTypeAutoAthenticationBox = false;
+        this.form_data.items[index].showItemTypeCombinedServiceBox = false;
+        this.form_data.items[index].showItemTypeReholderBox = true;
+        this.form_data.items[index].showItemTypeCrossoverBox = false;
       }
-      if (this.form_data.itemType == 'Crossover') {
-        this.showItemTypeCardBox = false;
-        this.showItemTypeAutoAthenticationBox = false;
-        this.showItemTypeCombinedServiceBox = false;
-        this.showItemTypeReholderBox = false;
-        this.showItemTypeCrossoverBox = true;
+      if (this.form_data.items[index].itemType == 'Crossover') {
+        this.form_data.items[index].showItemTypeCardBox = false;
+        this.form_data.items[index].showItemTypeAutoAthenticationBox = false;
+        this.form_data.items[index].showItemTypeCombinedServiceBox = false;
+        this.form_data.items[index].showItemTypeReholderBox = false;
+        this.form_data.items[index].showItemTypeCrossoverBox = true;
       }
     },
     shippingMethodsChangeEvent: function shippingMethodsChangeEvent() {
@@ -1116,276 +905,223 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     dummyStep: function dummyStep() {
       return true;
+    },
+    addGroup: function addGroup() {
+      this.form_data.items.push({
+        itemType: '',
+        //item type card
+        card_description_one: '',
+        card_description_two: '',
+        card_description_three: '',
+        card_serial_number: '',
+        card_autographed: '',
+        card_authenticator_name: '',
+        card_authenticator_cert_no: '',
+        card_estimated_value: '',
+        //item type auto authentication
+        auto_authentication_description_one: '',
+        auto_authentication_description_two: '',
+        auto_authentication_description_three: '',
+        auto_authentication_serial_number: '',
+        auto_authentication_autographed: '',
+        auto_authentication_authenticator_name: '',
+        auto_authentication_authenticator_cert_no: '',
+        auto_authentication_estimated_value: '',
+        //item type combined service
+        combined_service_description_one: '',
+        combined_service_description_two: '',
+        combined_service_description_three: '',
+        combined_service_serial_number: '',
+        combined_service_autographed: '',
+        combined_service_authenticator_name: '',
+        combined_service_authenticator_cert_no: '',
+        combined_service_estimated_value: '',
+        //item type combined service
+        reholder_certification_number: '',
+        reholder_estimated_value: '',
+        //item type crossover
+        crossover_description_one: '',
+        crossover_description_two: '',
+        crossover_description_three: '',
+        crossover_serial_number: '',
+        crossover_autographed: '',
+        crossover_authenticator_name: '',
+        crossover_authenticator_cert_no: '',
+        crossover_estimated_value: '',
+        crossover_item_type: '',
+        crossover_minimum_grade: '',
+        //card box type
+        showItemTypeCardBox: false,
+        showItemTypeAutoAthenticationBox: false,
+        showItemTypeCombinedServiceBox: false,
+        showItemTypeReholderBox: false,
+        showItemTypeCrossoverBox: false
+      });
+    },
+    deleteGroup: function deleteGroup(index) {
+      this.form_data.items.splice(index, 1);
     }
+  },
+  mounted: function mounted() {
+    this.form_data.entryID = this.entr.id;
+    this.form_data.customerId = this.entr.customer_id;
+    console.log(this.form_data.entryID);
+    console.log(this.form_data.customerId);
   },
   validations: {
     form_data: {
-      name: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      grading_location: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      contact_name: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      email: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-        email: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.email
-      },
-      billing_address_line_one: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      // billing_address_line_two:{},
-      billing_country: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      billing_province: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      billing_city: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      billing_postal: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      billing_phone: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      // same_as_billing:{},
-      // shipping_name:{},
-      shipping_company_name: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      shipping_address_line_one: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      // shipping_address_line_two:{},
-      shipping_country: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      shipping_province: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      shipping_city: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      shipping_postal: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      shipping_phone: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      status: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      products: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      submission_date: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      shipping_method: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      pickup_location: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showPickupLocationBox; // return true if this field is required
-        })
-      },
-
-      show_pickup_location: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showShowPickupLocationBox; // return true if this field is required
-        })
-      },
-
-      third_party_drop_center: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showThirdPartyBox; // return true if this field is required
-        })
-      },
-
-      customer_account_number: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showUPSBox; // return true if this field is required
-        })
-      },
-
-      itemType: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
-      //item type card
-      card_description_one: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCardBox; // return true if this field is required
-        })
-      },
-
-      card_description_two: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCardBox; // return true if this field is required
-        })
-      },
-
-      card_description_three: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCardBox; // return true if this field is required
-        })
-      },
-
-      card_authenticator_name: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.card_autographed; // return true if this field is required
-        })
-      },
-
-      card_authenticator_cert_no: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.card_autographed; // return true if this field is required
-        })
-      },
-
-      card_estimated_value: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCardBox; // return true if this field is required
-        })
-      },
-
-      //item type auto athentication
-      auto_authentication_description_one: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeAutoAthenticationBox; // return true if this field is required
-        })
-      },
-
-      auto_authentication_description_two: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeAutoAthenticationBox; // return true if this field is required
-        })
-      },
-
-      auto_authentication_description_three: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeAutoAthenticationBox; // return true if this field is required
-        })
-      },
-
-      auto_authentication_authenticator_name: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.auto_authentication_autographed; // return true if this field is required
-        })
-      },
-
-      auto_authentication_authenticator_cert_no: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.auto_authentication_autographed; // return true if this field is required
-        })
-      },
-
-      auto_authentication_estimated_value: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeAutoAthenticationBox; // return true if this field is required
-        })
-      },
-
-      //item type combined service
-      combined_service_description_one: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCombinedServiceBox; // return true if this field is required
-        })
-      },
-
-      combined_service_description_two: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCombinedServiceBox; // return true if this field is required
-        })
-      },
-
-      combined_service_description_three: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCombinedServiceBox; // return true if this field is required
-        })
-      },
-
-      combined_service_authenticator_name: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.combined_service_autographed; // return true if this field is required
-        })
-      },
-
-      combined_service_authenticator_cert_no: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.combined_service_autographed; // return true if this field is required
-        })
-      },
-
-      combined_service_estimated_value: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCombinedServiceBox; // return true if this field is required
-        })
-      },
-
-      //item type reholder
-      reholder_certification_number: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeReholderBox; // return true if this field is required
-        })
-      },
-
-      reholder_estimated_value: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeReholderBox; // return true if this field is required
-        })
-      },
-
-      //item type crossover
-      crossover_description_one: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCrossoverBox; // return true if this field is required
-        })
-      },
-
-      crossover_description_two: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCrossoverBox; // return true if this field is required
-        })
-      },
-
-      crossover_description_three: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCrossoverBox; // return true if this field is required
-        })
-      },
-
-      crossover_authenticator_name: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.crossover_autographed; // return true if this field is required
-        })
-      },
-
-      crossover_authenticator_cert_no: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.crossover_autographed; // return true if this field is required
-        })
-      },
-
-      crossover_estimated_value: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCrossoverBox; // return true if this field is required
-        })
-      },
-
-      crossover_minimum_grade: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCrossoverBox; // return true if this field is required
-        })
-      },
-
-      crossover_item_type: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCrossoverBox; // return true if this field is required
-        })
+      items: {
+        $each: {
+          itemType: {
+            required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
+          }
+          //item type card
+          // card_description_one:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCardBox // return true if this field is required
+          //     }),
+          // },
+          // // card_description_two:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeCardBox // return true if this field is required
+          // //     }),
+          // // },
+          // // card_description_three:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeCardBox // return true if this field is required
+          // //     }),
+          // // },
+          // card_authenticator_name:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.card_autographed;// return true if this field is required
+          //     }),
+          // },
+          // card_authenticator_cert_no:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.card_autographed; // return true if this field is required
+          //     }),
+          // },
+          // card_estimated_value:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCardBox // return true if this field is required
+          //     }),
+          // },
+          // //item type auto athentication
+          // auto_authentication_description_one:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeAutoAthenticationBox // return true if this field is required
+          //     }),
+          // },
+          // // auto_authentication_description_two:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeAutoAthenticationBox // return true if this field is required
+          // //     }),
+          // // },
+          // // auto_authentication_description_three:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeAutoAthenticationBox // return true if this field is required
+          // //     }),
+          // // },
+          // auto_authentication_authenticator_name:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.auto_authentication_autographed; // return true if this field is required
+          //     }),
+          // },
+          // auto_authentication_authenticator_cert_no:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.auto_authentication_autographed; // return true if this field is required
+          //     }),
+          // },
+          // auto_authentication_estimated_value:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeAutoAthenticationBox // return true if this field is required
+          //     }),
+          // },
+          // //item type combined service
+          // combined_service_description_one:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCombinedServiceBox // return true if this field is required
+          //     }),
+          // },
+          // // combined_service_description_two:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeCombinedServiceBox // return true if this field is required
+          // //     }),
+          // // },
+          // // combined_service_description_three:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeCombinedServiceBox // return true if this field is required
+          // //     }),
+          // // },
+          // combined_service_authenticator_name:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.combined_service_autographed; // return true if this field is required
+          //     }),
+          // },
+          // combined_service_authenticator_cert_no:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.combined_service_autographed; // return true if this field is required
+          //     }),
+          // },
+          // combined_service_estimated_value:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCombinedServiceBox // return true if this field is required
+          //     }),
+          // },
+          // //item type reholder
+          // reholder_certification_number:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeReholderBox // return true if this field is required
+          //     }),
+          // },
+          // reholder_estimated_value:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeReholderBox // return true if this field is required
+          //     }),
+          // },
+          //
+          // //item type crossover
+          // crossover_description_one:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCrossoverBox // return true if this field is required
+          //     }),
+          // },
+          // // crossover_description_two:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeCrossoverBox // return true if this field is required
+          // //     }),
+          // // },
+          // // crossover_description_three:{
+          // //     required: requiredIf(function () {
+          // //         return this.showItemTypeCrossoverBox // return true if this field is required
+          // //     }),
+          // // },
+          // crossover_authenticator_name:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.crossover_autographed; // return true if this field is required
+          //     }),
+          // },
+          // crossover_authenticator_cert_no:{
+          //     required: requiredIf(function () {
+          //         return this.form_data.crossover_autographed; // return true if this field is required
+          //     }),
+          // },
+          // crossover_estimated_value:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCrossoverBox // return true if this field is required
+          //     }),
+          // },
+          // crossover_minimum_grade:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCrossoverBox // return true if this field is required
+          //     }),
+          // },
+          // crossover_item_type:{
+          //     required: requiredIf(function () {
+          //         return this.showItemTypeCrossoverBox // return true if this field is required
+          //     }),
+          // },
+        }
       }
     }
   }
@@ -1393,10 +1129,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=template&id=66c506ad&scoped=true&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=template&id=66c506ad&scoped=true& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1405,14 +1141,1838 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render=function render(){var _vm=this,_c=_vm._self._c;return _c("div",{},[_c("form",[_c("form-wizard",{attrs:{color:"#3476ae",title:"",subtitle:"","next-button-text":"Continue","finish-button-text":"Save"},on:{"on-complete":_vm.submit},scopedSlots:_vm._u([{key:"footer",fn:function fn(props){return[_c("div",{staticClass:"wizard-footer-left"},[props.activeTabIndex>0?_c("wizard-button",{style:props.fillButtonStyle,nativeOn:{click:function click($event){return props.prevTab();}}},[_vm._v("Back")]):_vm._e()],1),_vm._v(" "),_c("div",{staticClass:"wizard-footer-right"},[_c("wizard-button",{staticClass:"wizard-footer-right finish-button",staticStyle:{background:"orange","margin-left":"15px",color:"white"},nativeOn:{click:function click($event){return _vm.cancel.apply(null,arguments);}}},[_vm._v("Cancel")]),_vm._v(" "),!props.isLastStep?_c("wizard-button",{staticClass:"wizard-footer-right",style:props.fillButtonStyle,nativeOn:{click:function click($event){return props.nextTab();}}},[_vm._v("Continue")]):_c("wizard-button",{staticClass:"wizard-footer-right",style:props.fillButtonStyle,nativeOn:{click:function click($event){return _vm.submit.apply(null,arguments);}}},[_vm._v("Save")])],1)];}}])},[_vm._v(" "),_c("tab-content",{attrs:{title:"Customer Info",icon:"ti-user","before-change":_vm.checkFirstStep}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Customer Name\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.customer,expression:"form_data.customer",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:[function($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.form_data,"customer",$event.target.multiple?$$selectedVal:$$selectedVal[0]);},_vm.customerNameChangeEvent]}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.customers,function(customer,index){return _c("option",{key:customer.id,domProps:{value:customer}},[_vm._v(_vm._s(customer.name))]);})],2),_vm._v(" "),_vm.v$.form_data.name.required.$invalid&&_vm.show_error_one?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Customer name is required\n                                                ")]):_vm._e()])])])])])])])]),_vm._v(" "),_c("tab-content",{attrs:{title:"Grading Location",icon:"ti-map-alt","before-change":_vm.checkSecondStep}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("h3",{staticClass:"mb-only-name"},[_vm._v(_vm._s(_vm.v$.form_data.name.$model))])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Select the grading location for this order\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.grading_location.$model,expression:"v$.form_data.grading_location.$model",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.v$.form_data.grading_location,"$model",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.gradingLocations,function(location,index){return _c("option",{key:location.id,domProps:{value:location.id}},[_vm._v(_vm._s(location.name))]);})],2),_vm._v(" "),_vm.v$.form_data.grading_location.required.$invalid&&_vm.show_error_two?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Grading location is required\n                                                ")]):_vm._e()])])])])])])])]),_vm._v(" "),_c("tab-content",{attrs:{title:"Billing Address",icon:"ti-infinite","before-change":_vm.checkThirdStep}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("h3",{staticClass:"mb-only-name"},[_vm._v(_vm._s(_vm.v$.form_data.name.$model))])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Address Line one\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.billing_address_line_one.$model,expression:"v$.form_data.billing_address_line_one.$model",modifiers:{trim:true}}],ref:"billing_address_line_one",staticClass:"form-control mb-text-only",attrs:{autofocus:"",type:"text",placeholder:""},domProps:{value:_vm.v$.form_data.billing_address_line_one.$model},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.billing_address_line_one,"$model",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.billing_address_line_one.required.$invalid&&_vm.show_error_three?_c("div",{staticClass:"error"},[_vm._v("\n                                                    One Address Line is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Address Line two\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.billing_address_line_two,expression:"form_data.billing_address_line_two",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.form_data.billing_address_line_two},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.form_data,"billing_address_line_two",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    City\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.billing_city.$model,expression:"v$.form_data.billing_city.$model",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.v$.form_data.billing_city.$model},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.billing_city,"$model",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.billing_city.required.$invalid&&_vm.show_error_three?_c("div",{staticClass:"error"},[_vm._v("\n                                                    City is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Province/State\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.billing_province.$model,expression:"v$.form_data.billing_province.$model",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.v$.form_data.billing_province,"$model",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.provinces,function(province,index){return _c("option",{key:province.id,domProps:{value:province.name.toLowerCase()}},[_vm._v(_vm._s(province.name))]);})],2),_vm._v(" "),_vm.v$.form_data.billing_province.required.$invalid&&_vm.show_error_three?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Province is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    postal/Zip code\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.billing_postal.$model,expression:"v$.form_data.billing_postal.$model",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.v$.form_data.billing_postal.$model},on:{input:[function($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.billing_postal,"$model",$event.target.value.trim());},function(event){return _vm.v$.form_data.billing_postal.$model=event.target.value.toUpperCase();}],blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.billing_postal.required.$invalid&&_vm.show_error_three?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Postal is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                        Country\n                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.billing_country.$model,expression:"v$.form_data.billing_country.$model",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.v$.form_data.billing_country,"$model",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.countries,function(country,index){return _c("option",{key:country.id,domProps:{value:country.name.toLowerCase()}},[_vm._v(_vm._s(country.name))]);})],2),_vm._v(" "),_vm.v$.form_data.billing_country.required.$invalid&&_vm.show_error_three?_c("div",{staticClass:"error"},[_vm._v("\n                                                        Country is required\n                                                    ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                        Telephone#\n                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("VuePhoneNumberInput",{staticClass:"mb-text-only",staticStyle:{"background-color":"#e8f0fe !important"},attrs:{id:"phoneNumber1","default-country-code":"CA","only-countries":_vm.countries_phone},model:{value:_vm.v$.form_data.billing_phone.$model,callback:function callback($$v){_vm.$set(_vm.v$.form_data.billing_phone,"$model",typeof $$v==="string"?$$v.trim():$$v);},expression:"v$.form_data.billing_phone.$model"}}),_vm._v(" "),_vm.v$.form_data.billing_phone.required.$invalid&&_vm.show_error_three?_c("div",{staticClass:"error"},[_vm._v("\n                                                        Phone is required\n                                                    ")]):_vm._e()],1)])])])])])])])]),_vm._v(" "),_c("tab-content",{attrs:{title:"Shipping Address",icon:"ti-infinite","before-change":_vm.checkFourthStep}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("h3",{staticClass:"mb-only-name"},[_vm._v(_vm._s(_vm.v$.form_data.name.$model))])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start"},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                    Same as billing address\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.same_as_billing,expression:"form_data.same_as_billing",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:""},domProps:{checked:Array.isArray(_vm.form_data.same_as_billing)?_vm._i(_vm.form_data.same_as_billing,null)>-1:_vm.form_data.same_as_billing},on:{change:[function($event){var $$a=_vm.form_data.same_as_billing,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(_vm.form_data,"same_as_billing",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(_vm.form_data,"same_as_billing",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(_vm.form_data,"same_as_billing",$$c);}},function($event){return _vm.sameAsBillingChanged($event);}]}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Customer Name (if different)\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.shipping_name,expression:"form_data.shipping_name",modifiers:{trim:true}}],ref:"shipping_name",staticClass:"form-control mb-text-only",attrs:{autofocus:"",type:"text",placeholder:""},domProps:{value:_vm.form_data.shipping_name},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.form_data,"shipping_name",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Contact Name (if different)\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.shipping_company_name.$model,expression:"v$.form_data.shipping_company_name.$model",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.v$.form_data.shipping_company_name.$model},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.shipping_company_name,"$model",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Address Line one\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.shipping_address_line_one.$model,expression:"v$.form_data.shipping_address_line_one.$model",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.v$.form_data.shipping_address_line_one.$model},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.shipping_address_line_one,"$model",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.shipping_address_line_one.required.$invalid&&_vm.show_error_four?_c("div",{staticClass:"error"},[_vm._v("\n                                                    One Address is required for shipping\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Address Line two\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.shipping_address_line_two,expression:"form_data.shipping_address_line_two",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.form_data.shipping_address_line_two},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.form_data,"shipping_address_line_two",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    City\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.shipping_city.$model,expression:"v$.form_data.shipping_city.$model",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.v$.form_data.shipping_city.$model},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.shipping_city,"$model",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.shipping_city.required.$invalid&&_vm.show_error_four?_c("div",{staticClass:"error"},[_vm._v("\n                                                    city is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Province/State\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.shipping_province.$model,expression:"v$.form_data.shipping_province.$model",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.v$.form_data.shipping_province,"$model",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.provinces,function(province,index){return _c("option",{key:province.id,domProps:{value:province.name.toLowerCase()}},[_vm._v(_vm._s(province.name))]);})],2),_vm._v(" "),_vm.v$.form_data.shipping_province.required.$invalid&&_vm.show_error_four?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Province is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    postal/Zip code\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.shipping_postal.$model,expression:"v$.form_data.shipping_postal.$model",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"text",placeholder:""},domProps:{value:_vm.v$.form_data.shipping_postal.$model},on:{input:[function($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.shipping_postal,"$model",$event.target.value.trim());},function(event){return _vm.v$.form_data.shipping_postal.$model=event.target.value.toUpperCase();}],blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.shipping_postal.required.$invalid&&_vm.show_error_four?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Postal is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                        Country\n                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.shipping_country.$model,expression:"v$.form_data.shipping_country.$model",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.v$.form_data.shipping_country,"$model",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.countries,function(country,index){return _c("option",{key:country.id,domProps:{value:country.name.toLowerCase()}},[_vm._v(_vm._s(country.name))]);})],2),_vm._v(" "),_vm.v$.form_data.shipping_country.required.$invalid&&_vm.show_error_four?_c("div",{staticClass:"error"},[_vm._v("\n                                                        Country is required\n                                                    ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                        Telephone#\n                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("VuePhoneNumberInput",{staticClass:"mb-text-only",attrs:{id:"phoneNumber1","default-country-code":"CA","only-countries":_vm.countries_phone},model:{value:_vm.v$.form_data.shipping_phone.$model,callback:function callback($$v){_vm.$set(_vm.v$.form_data.shipping_phone,"$model",typeof $$v==="string"?$$v.trim():$$v);},expression:"v$.form_data.shipping_phone.$model"}}),_vm._v(" "),_vm.v$.form_data.shipping_phone.required.$invalid&&_vm.show_error_four?_c("div",{staticClass:"error"},[_vm._v("\n                                                        Phone is required\n                                                    ")]):_vm._e()],1)])])])])])])])]),_vm._v(" "),_c("tab-content",{attrs:{title:"Extra Fields",icon:"ti-server","before-change":_vm.checkFifthStep}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("h3",{staticClass:"mb-only-name"},[_vm._v(_vm._s(_vm.v$.form_data.name.$model))])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Submission date\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.submission_date.$model,expression:"v$.form_data.submission_date.$model",modifiers:{trim:true}}],ref:"billing_address_line_one",staticClass:"form-control mb-text-only",attrs:{autofocus:"",type:"date",placeholder:""},domProps:{value:_vm.v$.form_data.submission_date.$model},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.submission_date,"$model",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.submission_date.required.$invalid&&_vm.show_error_five?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Submission date is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Promo code\n                                                ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.promo_code,expression:"form_data.promo_code",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.form_data,"promo_code",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_vm.promos.length>0?_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]):_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("There is no promo code")]),_vm._v(" "),_vm._l(_vm.promos,function(promo,index){return _c("option",{key:promo.id,domProps:{value:promo.id}},[_vm._v(_vm._s(promo.name))]);})],2)])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                    Payment Made\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.payment_made,expression:"form_data.payment_made",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:""},domProps:{checked:Array.isArray(_vm.form_data.payment_made)?_vm._i(_vm.form_data.payment_made,null)>-1:_vm.form_data.payment_made},on:{change:function change($event){var $$a=_vm.form_data.payment_made,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(_vm.form_data,"payment_made",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(_vm.form_data,"payment_made",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(_vm.form_data,"payment_made",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3 d-flex justify-content-end",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                    Pay on pickup\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.pay_on_pickup,expression:"form_data.pay_on_pickup",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:""},domProps:{checked:Array.isArray(_vm.form_data.pay_on_pickup)?_vm._i(_vm.form_data.pay_on_pickup,null)>-1:_vm.form_data.pay_on_pickup},on:{change:function change($event){var $$a=_vm.form_data.pay_on_pickup,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(_vm.form_data,"pay_on_pickup",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(_vm.form_data,"pay_on_pickup",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(_vm.form_data,"pay_on_pickup",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3 d-flex justify-content-end",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                    COD\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.cod,expression:"form_data.cod",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:""},domProps:{checked:Array.isArray(_vm.form_data.cod)?_vm._i(_vm.form_data.cod,null)>-1:_vm.form_data.cod},on:{change:function change($event){var $$a=_vm.form_data.cod,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(_vm.form_data,"cod",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(_vm.form_data,"cod",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(_vm.form_data,"cod",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-3"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Shopify order number\n                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.shopify_order_number,expression:"form_data.shopify_order_number",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"number",placeholder:""},domProps:{value:_vm.form_data.shopify_order_number},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.form_data,"shopify_order_number",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])])])])]),_vm._v(" "),_c("tab-content",{attrs:{title:"Shipping Method",icon:"ti-credit-card"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Shipping Method\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.shipping_method,expression:"form_data.shipping_method",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:[function($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.form_data,"shipping_method",$event.target.multiple?$$selectedVal:$$selectedVal[0]);},_vm.shippingMethodsChangeEvent]}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.shippingMethods,function(shipping,index){return _c("option",{key:shipping.id,domProps:{value:shipping.name}},[_vm._v(_vm._s(shipping.name))]);})],2),_vm._v(" "),_vm.v$.form_data.shipping_method.required.$invalid&&_vm.show_error_six?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Shipping method is required\n                                                ")]):_vm._e()])]),_vm._v(" "),_vm.showPickupLocationBox?_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Pickup location\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.pickup_location,expression:"form_data.pickup_location",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.form_data,"pickup_location",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.pickUpLocations,function(pickup,index){return _c("option",{key:pickup.id,domProps:{value:pickup.name}},[_vm._v(_vm._s(pickup.name))]);})],2),_vm._v(" "),_vm.v$.form_data.pickup_location.required.$invalid&&_vm.show_error_seven?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Pickup location is required\n                                                ")]):_vm._e()])]):_vm._e(),_vm._v(" "),_vm.showShowPickupLocationBox?_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Pickup Location\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.show_pickup_location,expression:"form_data.show_pickup_location",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.form_data,"show_pickup_location",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_vm._l(_vm.pickUpLocations,function(showPickup,index){return _c("option",{key:showPickup.id,domProps:{value:showPickup.name}},[_vm._v(_vm._s(showPickup.name))]);})],2),_vm._v(" "),_vm.v$.form_data.show_pickup_location.required.$invalid&&_vm.show_error_eight?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Pickup location is required\n                                                ")]):_vm._e()])]):_vm._e(),_vm._v(" "),_vm.showThirdPartyBox?_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                    Third party drop off center\n                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.third_party_drop_center,expression:"form_data.third_party_drop_center",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(_vm.form_data,"third_party_drop_center",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},[_vm.parties.length>0?_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]):_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("There is no third party")]),_vm._v(" "),_vm._l(_vm.parties,function(third,index){return _c("option",{key:third.id,domProps:{value:third.id}},[_vm._v(_vm._s(third.name))]);})],2),_vm._v(" "),_vm.v$.form_data.third_party_drop_center.required.$invalid&&_vm.show_error_nine?_c("div",{staticClass:"error"},[_vm._v("\n                                                    Third party drop off center is required\n                                                ")]):_vm._e()])]):_vm._e(),_vm._v(" "),_vm.showUPSBox?_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                            Use Customer Account\n                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.form_data.use_customer_account,expression:"form_data.use_customer_account",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:""},domProps:{checked:Array.isArray(_vm.form_data.use_customer_account)?_vm._i(_vm.form_data.use_customer_account,null)>-1:_vm.form_data.use_customer_account},on:{change:function change($event){var $$a=_vm.form_data.use_customer_account,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(_vm.form_data,"use_customer_account",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(_vm.form_data,"use_customer_account",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(_vm.form_data,"use_customer_account",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                            Customer Account number\n                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:_vm.v$.form_data.customer_account_number.$model,expression:"v$.form_data.customer_account_number.$model",modifiers:{trim:true}}],staticClass:"form-control mb-text-only",attrs:{type:"number",placeholder:""},domProps:{value:_vm.v$.form_data.customer_account_number.$model},on:{input:function input($event){if($event.target.composing)return;_vm.$set(_vm.v$.form_data.customer_account_number,"$model",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}}),_vm._v(" "),_vm.v$.form_data.customer_account_number.required.$invalid&&_vm.show_error_ten?_c("div",{staticClass:"error"},[_vm._v("\n                                                            Customer account number is required\n                                                        ")]):_vm._e()])])])]):_vm._e()])])])])])]),_vm._v(" "),_c("tab-content",{attrs:{title:"Item Type",icon:"ti-gift"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"table-responsive"},[_c("table",{staticClass:"table table-bordered mb-0"},[_c("thead",{staticClass:"text-center"},[_c("tr",[_c("th",[_vm._v("Item Type")]),_vm._v(" "),_c("th",[_vm._v("Sub Type")]),_vm._v(" "),_c("th",[_vm._v("Description")]),_vm._v(" "),_c("th",[_vm._v("Autographed")]),_vm._v(" "),_c("th",[_vm._v("Actions")])])]),_vm._v(" "),_c("tbody",_vm._l(_vm.entries,function(entry,index){return _c("tr",{key:entry.id},[_c("td",{staticClass:"text-capitalize"},[_vm._v(_vm._s(entry.itemType))]),_vm._v(" "),_c("td",[_vm._v(_vm._s(entry.itemType=="Crossover"?entry.crossover_item_type:"N/A"))]),_vm._v(" "),entry.itemType=="Card"?_c("td",[_c("span",[_vm._v(_vm._s(entry.card_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.card_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.card_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Card"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.card_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),entry.itemType=="Auto Authentication"?_c("td",[_c("span",[_vm._v(_vm._s(entry.auto_authentication_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.auto_authentication_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.auto_authentication_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Auto Authentication"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.auto_authentication_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),entry.itemType=="Combined Service"?_c("td",[_c("span",[_vm._v(_vm._s(entry.combined_service_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.combined_service_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.combined_service_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Combined Service"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.combined_service_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),entry.itemType=="Reholder"?_c("td",[_c("span",[_vm._v("N/A")]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v("N/A")]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v("N/A")])]):_vm._e(),_vm._v(" "),entry.itemType=="Reholder"?_c("td",{staticClass:"text-center"},[_vm._v("N/A")]):_vm._e(),_vm._v(" "),entry.itemType=="Crossover"?_c("td",[_c("span",[_vm._v(_vm._s(entry.crossover_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.crossover_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.crossover_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Crossover"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.crossover_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),_c("td",{},[_c("div",{staticClass:"d-flex justify-content-center"},[_c("div",{staticStyle:{"margin-right":"15px"}},[_c("button",{staticClass:"btn btn-sm btn-secondary",attrs:{type:"button","data-bs-toggle":"modal","data-bs-target":"#staticBackdropEdit-1"}},[_vm._v("\n                                                                        Confirm Receiving\n                                                                    ")]),_vm._v(" "),_c("div",{staticClass:"modal fade",staticStyle:{display:"none"},attrs:{id:"staticBackdropEdit-1","data-bs-backdrop":"static","data-bs-keyboard":"false",tabindex:"-1","aria-labelledby":"staticBackdropLabel","aria-hidden":"true"}},[_c("div",{staticClass:"modal-dialog modal-lg"},[_c("div",{staticClass:"modal-content"},[_c("div",{staticClass:"modal-header"},[_c("h5",{staticClass:"modal-title",attrs:{id:"staticBackdropLabel"}},[_vm._v("Confirm Receiving")])]),_vm._v(" "),_c("div",{staticClass:"modal-body"},[_c("div",{staticClass:"mb-4"},[_c("form",{attrs:{action:"#",method:"POST"}},[_c("div",{staticClass:"form-group mb-3",staticStyle:{"text-align":"left"}},[_c("div",{staticClass:"row"},[entry.itemType=="Card"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                        Qty\n                                                                                                                    ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",value:"1",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                                                "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_description_one",id:"card_description_one"},domProps:{value:entry.card_description_one}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Description #2\n                                                                                                                            ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_description_two",id:"card_description_two"},domProps:{value:entry.card_description_two}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Description #3\n                                                                                                                            ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_description_three",id:"card_description_three"},domProps:{value:entry.card_description_three}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Serial Number   (Only if printed directly on item)\n                                                                                                                            ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_serial_number",id:"card_serial_number"},domProps:{value:entry.card_serial_number}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                                        Autographed\n                                                                                                                                    ")]),_vm._v(" "),_c("input",{staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"card_autographed",id:"card_autographed"},domProps:{value:entry.card_autographed}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                                        Authenticator Name\n                                                                                                                                    ")]),_vm._v(" "),_c("select",{staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"card_authenticator_name",id:"card_authenticator_name"}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_c("option",{attrs:{value:""}})])])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                        Authenticator Cert. No.\n                                                                                                                                    ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_authenticator_cert_no",id:"card_authenticator_cert_no"},domProps:{value:entry.card_authenticator_name}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                        Estimated Value\n                                                                                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",id:"card_estimated_value",name:"card_estimated_value"},domProps:{value:entry.card_estimated_value}})])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Auto Authentication"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Qty\n                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",value:"1",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_description_one",id:"auto_authentication_description_one"},domProps:{value:entry.auto_authentication_description_one}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Description #2\n                                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_description_two",id:"auto_authentication_description_two"},domProps:{value:entry.auto_authentication_description_two}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Description #3\n                                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_description_three",id:"auto_authentication_description_three"},domProps:{value:entry.auto_authentication_description_three}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Serial Number   (Only if printed directly on item)\n                                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_serial_number",id:"auto_authentication_serial_number"},domProps:{value:entry.auto_authentication_serial_number}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                                    Autographed\n                                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"auto_authentication_autographed",id:"auto_authentication_autographed"},domProps:{value:entry.auto_authentication_autographed}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                                    Authenticator Name\n                                                                                                                                ")]),_vm._v(" "),_c("select",{staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"auto_authentication_authenticator_name",id:"auto_authentication_authenticator_name"}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_c("option",{attrs:{value:""}})])])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                    Authenticator Cert. No.\n                                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"number",placeholder:"",name:"auto_authentication_authenticator_cert_no",id:"auto_authentication_authenticator_cert_no"},domProps:{value:entry.auto_authentication_authenticator_cert_no}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Estimated Value\n                                                                                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"number",placeholder:"",name:"auto_authentication_estimated_value",id:"auto_authentication_estimated_value"},domProps:{value:entry.auto_authentication_estimated_value}})])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Combined Service"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Qty\n                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",value:"1",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_description_one",id:"combined_service_description_one"},domProps:{value:entry.combined_service_description_one}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Description #2\n                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_description_two",id:"combined_service_description_two"},domProps:{value:entry.combined_service_description_two}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Description #3\n                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_description_three",id:"combined_service_description_three"},domProps:{value:entry.combined_service_description_three}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Serial Number   (Only if printed directly on item)\n                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_serial_number",id:"combined_service_serial_number"},domProps:{value:entry.combined_service_serial_number}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                            Autographed\n                                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"combined_service_autographed",id:"combined_service_autographed"},domProps:{value:entry.combined_service_autographed}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Authenticator Name\n                                                                                                                        ")]),_vm._v(" "),_c("select",{staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"combined_service_authenticator_name",id:"combined_service_authenticator_name"}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_c("option",{attrs:{value:""}})])])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Authenticator Cert. No.\n                                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_authenticator_cert_no",id:"combined_service_authenticator_cert_no"},domProps:{value:entry.combined_service_authenticator_cert_no}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Estimated Value\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_estimated_value",id:"combined_service_estimated_value"},domProps:{value:entry.combined_service_estimated_value}})])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Reholder"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                        Qty\n                                                                                                    ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",readonly:"",value:"1"}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                Certification Number\n                                                                                                                "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"reholder_certification_number",id:"reholder_certification_number"},domProps:{value:entry.reholder_certification_number}})])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                        Estimated Value\n                                                                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"reholder_estimated_value",id:"reholder_estimated_value"},domProps:{value:entry.reholder_estimated_value}})])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Crossover"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                    Qty\n                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_description_one",id:"crossover_description_one"},domProps:{value:entry.crossover_description_one}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Description #2\n                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_description_two",id:"crossover_description_two"},domProps:{value:entry.crossover_description_two}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Description #3\n                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_description_three",id:"crossover_description_three"},domProps:{value:entry.crossover_description_three}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Serial Number   (Only if printed directly on item)\n                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_serial_number",id:"crossover_serial_number"},domProps:{value:entry.crossover_serial_number}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                    Autographed\n                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"crossover_autographed",id:"crossover_autographed"},domProps:{value:entry.crossover_autographed}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                    Authenticator Name\n                                                                                                                ")]),_vm._v(" "),_c("select",{staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"crossover_authenticator_name",id:"crossover_authenticator_name"}},[_c("option",{attrs:{selected:"",disabled:""}},[_vm._v("Open this select menu")]),_vm._v(" "),_c("option",{attrs:{value:""}})])])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Authenticator Cert. No.\n                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_authenticator_cert_no",id:"crossover_authenticator_cert_no"},domProps:{value:entry.crossover_authenticator_cert_no}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Estimated Value\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_estimated_value",id:"crossover_estimated_value"},domProps:{value:entry.crossover_estimated_value}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                            Minimum Grade\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"crossover_minimum_grade",id:"crossover_minimum_grade"}},_vm._l(_vm.minimumGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.id}},[_vm._v(_vm._s(grade.name))]);}),0)])])])])])])])]):_vm._e()]),_vm._v(" "),_c("input",{staticClass:"form-control",staticStyle:{width:"33%",margin:"0 auto"},attrs:{type:"number",hidden:"",name:"item_id",value:""}}),_vm._v(" "),_c("div",{staticClass:"w-100 d-flex justify-content-end"},[_c("button",{staticClass:"btn btn-primary",staticStyle:{"margin-right":"15px"},attrs:{type:"button",id:"edit_item_submit_btn"}},[_vm._v("Confirm")]),_vm._v(" "),_c("button",{staticClass:"btn btn-secondary",attrs:{type:"button",id:"cancel_btn","data-bs-dismiss":"modal"}},[_vm._v("Cancel")])])])])])])])])])])])])]);}),0)])])])])])])])])])],1)],1)]);};var staticRenderFns=[];render._withStripped=true;
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "row"
+  }, [_c("form", {
+    attrs: {
+      action: "",
+      id: "myForm"
+    }
+  }, [_vm._l(_vm.form_data.items, function (item, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "card"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "d-flex justify-content-end"
+    }, [_c("button", {
+      staticClass: "btn btn-sm btn-danger",
+      staticStyle: {
+        "margin-bottom": "15px"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteGroup(index);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash"
+    }), _vm._v(" Delete")])]), _vm._v(" "), _c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "card shipping_address_card"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-6"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(0, true), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.itemType,
+        expression: "item.itemType",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-select mb-text-only",
+      attrs: {
+        required: "",
+        "aria-label": "Default select example"
+      },
+      on: {
+        change: [function ($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(item, "itemType", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }, function ($event) {
+          return _vm.itemTypeChangeEvent(index, item.itemType);
+        }]
+      }
+    }, [_c("option", {
+      attrs: {
+        selected: "",
+        disabled: ""
+      }
+    }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.itemTypes, function (type, index) {
+      return _c("option", {
+        key: type.id,
+        domProps: {
+          value: type.name
+        }
+      }, [_vm._v(_vm._s(type.name))]);
+    })], 2), _vm._v(" "), !item.itemType.required && _vm.show_error_eleven ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                        Item type is required\n                                                    ")]) : _vm._e()])]), _vm._v(" "), item.showItemTypeCrossoverBox ? _c("div", {
+      staticClass: "col-md-6"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(1, true), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_item_type,
+        expression: "item.crossover_item_type",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-select mb-text-only",
+      attrs: {
+        required: "",
+        "aria-label": "Default select example"
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(item, "crossover_item_type", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        selected: "",
+        disabled: ""
+      }
+    }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.crossoverItemTypes, function (coType, index) {
+      return _c("option", {
+        key: coType.id,
+        domProps: {
+          value: coType.name
+        }
+      }, [_vm._v(_vm._s(coType.name))]);
+    })], 2)])]) : _vm._e()])])])]), _vm._v(" "), item.showItemTypeCardBox ? _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "card shipping_address_card"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-1"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                        Qty\n                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: _vm.form_data.item_qty,
+        expression: "form_data.item_qty",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        readonly: ""
+      },
+      domProps: {
+        value: _vm.form_data.item_qty
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(_vm.form_data, "item_qty", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-9"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(2, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_description_one,
+        expression: "item.card_description_one",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.card_description_one
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "card_description_one", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.card_description_one.required && _vm.show_error_twelve ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                Description one is required\n                                                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #2\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_description_two,
+        expression: "item.card_description_two",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.card_description_two
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "card_description_two", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #3\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_description_three,
+        expression: "item.card_description_three",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.card_description_three
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "card_description_three", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-6"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Serial Number   (Only if printed directly on item)\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_serial_number,
+        expression: "item.card_serial_number",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.card_serial_number
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "card_serial_number", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3 d-flex justify-content-start",
+      staticStyle: {
+        "margin-top": "25px"
+      }
+    }, [_c("label", {
+      staticClass: "form-label text-capitalize",
+      staticStyle: {
+        "margin-top": "6px",
+        "margin-right": "15px"
+      }
+    }, [_vm._v("\n                                                                        Autographed\n                                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_autographed,
+        expression: "item.card_autographed",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-check",
+      attrs: {
+        type: "checkbox",
+        placeholder: ""
+      },
+      domProps: {
+        checked: Array.isArray(item.card_autographed) ? _vm._i(item.card_autographed, null) > -1 : item.card_autographed
+      },
+      on: {
+        change: function change($event) {
+          var $$a = item.card_autographed,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+          if (Array.isArray($$a)) {
+            var $$v = null,
+              $$i = _vm._i($$a, $$v);
+            if ($$el.checked) {
+              $$i < 0 && _vm.$set(item, "card_autographed", $$a.concat([$$v]));
+            } else {
+              $$i > -1 && _vm.$set(item, "card_autographed", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.$set(item, "card_autographed", $$c);
+          }
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100 text-capitalize"
+    }, [_vm._v("\n                                                                        Authenticator Name\n                                                                        "), item.card_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_authenticator_name,
+        expression: "item.card_authenticator_name",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-select mb-text-only",
+      attrs: {
+        required: item.card_autographed,
+        "aria-label": "Default select example"
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(item, "card_authenticator_name", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        selected: "",
+        disabled: ""
+      }
+    }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.authenticators, function (authenticator, index) {
+      return _c("option", {
+        key: authenticator.id,
+        domProps: {
+          value: authenticator.id
+        }
+      }, [_vm._v(_vm._s(authenticator.name))]);
+    })], 2), _vm._v(" "), item.card_authenticator_name.required && _vm.show_error_twelve ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                        Authenticator name is required\n                                                                    ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                        Authenticator Cert. No.\n                                                                        "), item.card_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_authenticator_cert_no,
+        expression: "item.card_authenticator_cert_no",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        required: item.card_autographed
+      },
+      domProps: {
+        value: item.card_authenticator_cert_no
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "card_authenticator_cert_no", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.card_authenticator_cert_no.required && _vm.show_error_twelve ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                        Authenticator cert no. is required\n                                                                    ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-2"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(3, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.card_estimated_value,
+        expression: "item.card_estimated_value",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "number",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.card_estimated_value
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "card_estimated_value", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.card_estimated_value.required && _vm.show_error_twelve ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                        Estimated value is required\n                                                    ")]) : _vm._e()])])])])])]) : _vm._e(), _vm._v(" "), item.showItemTypeAutoAthenticationBox ? _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "card shipping_address_card"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-1"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                        Qty\n                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: _vm.form_data.item_qty,
+        expression: "form_data.item_qty",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        readonly: ""
+      },
+      domProps: {
+        value: _vm.form_data.item_qty
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(_vm.form_data, "item_qty", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-9"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(4, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_description_one,
+        expression: "item.auto_authentication_description_one",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.auto_authentication_description_one
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "auto_authentication_description_one", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.auto_authentication_description_one.required && _vm.show_error_thirteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                Description one is required\n                                                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #2\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_description_two,
+        expression: "item.auto_authentication_description_two",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.auto_authentication_description_two
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "auto_authentication_description_two", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #3\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_description_three,
+        expression: "item.auto_authentication_description_three",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.auto_authentication_description_three
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "auto_authentication_description_three", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-6"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Serial Number   (Only if printed directly on item)\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_serial_number,
+        expression: "item.auto_authentication_serial_number",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.auto_authentication_serial_number
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "auto_authentication_serial_number", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3 d-flex justify-content-start",
+      staticStyle: {
+        "margin-top": "25px"
+      }
+    }, [_c("label", {
+      staticClass: "form-label text-capitalize",
+      staticStyle: {
+        "margin-top": "6px",
+        "margin-right": "15px"
+      }
+    }, [_vm._v("\n                                                                        Autographed\n                                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_autographed,
+        expression: "item.auto_authentication_autographed",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-check",
+      attrs: {
+        type: "checkbox",
+        placeholder: ""
+      },
+      domProps: {
+        checked: Array.isArray(item.auto_authentication_autographed) ? _vm._i(item.auto_authentication_autographed, null) > -1 : item.auto_authentication_autographed
+      },
+      on: {
+        change: function change($event) {
+          var $$a = item.auto_authentication_autographed,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+          if (Array.isArray($$a)) {
+            var $$v = null,
+              $$i = _vm._i($$a, $$v);
+            if ($$el.checked) {
+              $$i < 0 && _vm.$set(item, "auto_authentication_autographed", $$a.concat([$$v]));
+            } else {
+              $$i > -1 && _vm.$set(item, "auto_authentication_autographed", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.$set(item, "auto_authentication_autographed", $$c);
+          }
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100 text-capitalize"
+    }, [_vm._v("\n                                                                        Authenticator Name\n                                                                        "), item.auto_authentication_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_authenticator_name,
+        expression: "item.auto_authentication_authenticator_name",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-select mb-text-only",
+      attrs: {
+        required: item.auto_authentication_autographed,
+        "aria-label": "Default select example"
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(item, "auto_authentication_authenticator_name", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        selected: "",
+        disabled: ""
+      }
+    }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.authenticators, function (authenticator, index) {
+      return _c("option", {
+        key: authenticator.id,
+        domProps: {
+          value: authenticator.id
+        }
+      }, [_vm._v(_vm._s(authenticator.name))]);
+    })], 2), _vm._v(" "), item.auto_authentication_authenticator_name.required && _vm.show_error_thirteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                        Authenticator name is required\n                                                                    ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                        Authenticator Cert. No.\n                                                                        "), item.auto_authentication_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_authenticator_cert_no,
+        expression: "item.auto_authentication_authenticator_cert_no",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        required: item.auto_authentication_autographed
+      },
+      domProps: {
+        value: item.auto_authentication_authenticator_cert_no
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "auto_authentication_authenticator_cert_no", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.auto_authentication_authenticator_cert_no.required && _vm.show_error_thirteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                        Authenticator cert. no. is required\n                                                                    ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-2"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(5, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.auto_authentication_estimated_value,
+        expression: "item.auto_authentication_estimated_value",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "number",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.auto_authentication_estimated_value
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "auto_authentication_estimated_value", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.auto_authentication_estimated_value.required && _vm.show_error_thirteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                        Estimated value is required\n                                                    ")]) : _vm._e()])])])])])]) : _vm._e(), _vm._v(" "), item.showItemTypeCombinedServiceBox ? _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "card shipping_address_card"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-1"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                        Qty\n                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: _vm.form_data.item_qty,
+        expression: "form_data.item_qty",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        readonly: ""
+      },
+      domProps: {
+        value: _vm.form_data.item_qty
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(_vm.form_data, "item_qty", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-9"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(6, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_description_one,
+        expression: "item.combined_service_description_one",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.combined_service_description_one
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "combined_service_description_one", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.combined_service_description_one.required && _vm.show_error_fourteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                Description one is required\n                                                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #2\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_description_two,
+        expression: "item.combined_service_description_two",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.combined_service_description_two
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "combined_service_description_two", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #3\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_description_three,
+        expression: "item.combined_service_description_three",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.combined_service_description_three
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "combined_service_description_three", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-6"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Serial Number   (Only if printed directly on item)\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_serial_number,
+        expression: "item.combined_service_serial_number",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.combined_service_serial_number
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "combined_service_serial_number", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3 d-flex justify-content-start",
+      staticStyle: {
+        "margin-top": "25px"
+      }
+    }, [_c("label", {
+      staticClass: "form-label text-capitalize",
+      staticStyle: {
+        "margin-top": "6px",
+        "margin-right": "15px"
+      }
+    }, [_vm._v("\n                                                                        Autographed\n                                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_autographed,
+        expression: "item.combined_service_autographed",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-check",
+      attrs: {
+        type: "checkbox",
+        placeholder: ""
+      },
+      domProps: {
+        checked: Array.isArray(item.combined_service_autographed) ? _vm._i(item.combined_service_autographed, null) > -1 : item.combined_service_autographed
+      },
+      on: {
+        change: function change($event) {
+          var $$a = item.combined_service_autographed,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+          if (Array.isArray($$a)) {
+            var $$v = null,
+              $$i = _vm._i($$a, $$v);
+            if ($$el.checked) {
+              $$i < 0 && _vm.$set(item, "combined_service_autographed", $$a.concat([$$v]));
+            } else {
+              $$i > -1 && _vm.$set(item, "combined_service_autographed", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.$set(item, "combined_service_autographed", $$c);
+          }
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100 text-capitalize"
+    }, [_vm._v("\n                                                                        Authenticator Name\n                                                                        "), item.combined_service_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_authenticator_name,
+        expression: "item.combined_service_authenticator_name",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-select mb-text-only",
+      attrs: {
+        required: item.combined_service_autographed,
+        "aria-label": "Default select example"
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(item, "combined_service_authenticator_name", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        selected: "",
+        disabled: ""
+      }
+    }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.authenticators, function (authenticator, index) {
+      return _c("option", {
+        key: authenticator.id,
+        domProps: {
+          value: authenticator.id
+        }
+      }, [_vm._v(_vm._s(authenticator.name))]);
+    })], 2), _vm._v(" "), item.combined_service_authenticator_name.required && _vm.show_error_fourteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                        Authenticator Name is required\n                                                                    ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                        Authenticator Cert. No.\n                                                                        "), item.combined_service_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_authenticator_cert_no,
+        expression: "item.combined_service_authenticator_cert_no",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        required: item.combined_service_autographed
+      },
+      domProps: {
+        value: item.combined_service_authenticator_cert_no
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "combined_service_authenticator_cert_no", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.combined_service_authenticator_cert_no.required && _vm.show_error_fourteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                        Authenticator cert. no. is required\n                                                                    ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-2"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(7, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.combined_service_estimated_value,
+        expression: "item.combined_service_estimated_value",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "number",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.combined_service_estimated_value
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "combined_service_estimated_value", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.combined_service_estimated_value.required && _vm.show_error_fourteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                        Estimated value is required\n                                                    ")]) : _vm._e()])])])])])]) : _vm._e(), _vm._v(" "), item.showItemTypeReholderBox ? _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "card shipping_address_card"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-1"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                        Qty\n                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: _vm.form_data.item_qty,
+        expression: "form_data.item_qty",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        readonly: ""
+      },
+      domProps: {
+        value: _vm.form_data.item_qty
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(_vm.form_data, "item_qty", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-9"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(8, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.reholder_certification_number,
+        expression: "item.reholder_certification_number",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.reholder_certification_number
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "reholder_certification_number", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.reholder_certification_number.required && _vm.show_error_fifteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                                Certification number is required\n                                                            ")]) : _vm._e()])])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-2"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(9, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.reholder_estimated_value,
+        expression: "item.reholder_estimated_value",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "number",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.reholder_estimated_value
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "reholder_estimated_value", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    }), _vm._v(" "), item.reholder_estimated_value.required && _vm.show_error_fifteen ? _c("div", {
+      staticClass: "error"
+    }, [_vm._v("\n                                                        Estimated value is required\n                                                    ")]) : _vm._e()])])])])])]) : _vm._e(), _vm._v(" "), item.showItemTypeCrossoverBox ? _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "card shipping_address_card"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-1"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                        Qty\n                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: _vm.form_data.item_qty,
+        expression: "form_data.item_qty",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        readonly: ""
+      },
+      domProps: {
+        value: _vm.form_data.item_qty
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(_vm.form_data, "item_qty", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-9"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(10, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_description_one,
+        expression: "item.crossover_description_one",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.crossover_description_one
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "crossover_description_one", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #2\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_description_two,
+        expression: "item.crossover_description_two",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.crossover_description_two
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "crossover_description_two", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Description #3\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_description_three,
+        expression: "item.crossover_description_three",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.crossover_description_three
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "crossover_description_three", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-6"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                Serial Number   (Only if printed directly on item)\n                                                                ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_serial_number,
+        expression: "item.crossover_serial_number",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.crossover_serial_number
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "crossover_serial_number", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3 d-flex justify-content-start",
+      staticStyle: {
+        "margin-top": "25px"
+      }
+    }, [_c("label", {
+      staticClass: "form-label text-capitalize",
+      staticStyle: {
+        "margin-top": "6px",
+        "margin-right": "15px"
+      }
+    }, [_vm._v("\n                                                                        Autographed\n                                                                    ")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_autographed,
+        expression: "item.crossover_autographed",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-check",
+      attrs: {
+        type: "checkbox",
+        placeholder: ""
+      },
+      domProps: {
+        checked: Array.isArray(item.crossover_autographed) ? _vm._i(item.crossover_autographed, null) > -1 : item.crossover_autographed
+      },
+      on: {
+        change: function change($event) {
+          var $$a = item.crossover_autographed,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+          if (Array.isArray($$a)) {
+            var $$v = null,
+              $$i = _vm._i($$a, $$v);
+            if ($$el.checked) {
+              $$i < 0 && _vm.$set(item, "crossover_autographed", $$a.concat([$$v]));
+            } else {
+              $$i > -1 && _vm.$set(item, "crossover_autographed", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.$set(item, "crossover_autographed", $$c);
+          }
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100 text-capitalize"
+    }, [_vm._v("\n                                                                        Authenticator Name\n                                                                        "), item.crossover_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_authenticator_name,
+        expression: "item.crossover_authenticator_name",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-select mb-text-only",
+      attrs: {
+        required: item.crossover_autographed,
+        "aria-label": "Default select example"
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(item, "crossover_authenticator_name", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        selected: "",
+        disabled: ""
+      }
+    }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.authenticators, function (authenticator, index) {
+      return _c("option", {
+        key: authenticator.id,
+        domProps: {
+          value: authenticator.id
+        }
+      }, [_vm._v(_vm._s(authenticator.name))]);
+    })], 2)])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_c("label", {
+      staticClass: "form-label w-100"
+    }, [_vm._v("\n                                                                        Authenticator Cert. No.\n                                                                        "), item.crossover_autographed ? _c("span", {
+      staticClass: "error"
+    }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_authenticator_cert_no,
+        expression: "item.crossover_authenticator_cert_no",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        placeholder: "",
+        required: item.crossover_autographed
+      },
+      domProps: {
+        value: item.crossover_authenticator_cert_no
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "crossover_authenticator_cert_no", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])])])])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-2"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(11, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_estimated_value,
+        expression: "item.crossover_estimated_value",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-control",
+      attrs: {
+        required: "",
+        type: "number",
+        placeholder: ""
+      },
+      domProps: {
+        value: item.crossover_estimated_value
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item, "crossover_estimated_value", $event.target.value.trim());
+        },
+        blur: function blur($event) {
+          return _vm.$forceUpdate();
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-12"
+    }, [_c("div", {
+      staticClass: "mb-3"
+    }, [_vm._m(12, true), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model.trim",
+        value: item.crossover_minimum_grade,
+        expression: "item.crossover_minimum_grade",
+        modifiers: {
+          trim: true
+        }
+      }],
+      staticClass: "form-select mb-text-only",
+      attrs: {
+        "aria-label": "Default select example"
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(item, "crossover_minimum_grade", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        selected: "",
+        disabled: ""
+      }
+    }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.minimumGrades, function (grade, index) {
+      return _c("option", {
+        key: grade.id,
+        domProps: {
+          value: grade.id
+        }
+      }, [_vm._v(_vm._s(grade.name))]);
+    })], 2)])])])])])])])]) : _vm._e()])])])]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12",
+    staticStyle: {
+      "margin-bottom": "15px"
+    }
+  }, [_c("div", {
+    staticClass: "d-flex justify-content-end"
+  }, [_c("button", {
+    staticClass: "btn btn-info",
+    staticStyle: {
+      "margin-right": "15px"
+    },
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: _vm.addGroup
+    }
+  }, [_vm._v("Add New Item")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "submit"
+    },
+    on: {
+      click: _vm.submit
+    }
+  }, [_vm._v("Save")])])])], 2)]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100 text-capitalize"
+  }, [_vm._v("\n                                                        Select the item type to be entered\n                                                        "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100 text-capitalize"
+  }, [_vm._v("\n                                                        Crossover Item Type\n                                                        "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                                Description #1   (Year,Manufacturer,Set,Other)\n                                                                "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                        Estimated Value\n                                                        "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                                Description #1   (Year,Manufacturer,Set,Other)\n                                                                "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                        Estimated Value\n                                                        "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                                Description #1   (Year,Manufacturer,Set,Other)\n                                                                "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                        Estimated Value\n                                                        "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                                Certification Number\n                                                                "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                        Estimated Value\n                                                        "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                                Description #1   (Year,Manufacturer,Set,Other)\n                                                                "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100"
+  }, [_vm._v("\n                                                                Estimated Value\n                                                                "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("label", {
+    staticClass: "form-label w-100 text-capitalize"
+  }, [_vm._v("\n                                                                Minimum Grade\n                                                                "), _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")])]);
+}];
+render._withStripped = true;
+
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1426,17 +2986,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-66c506ad]::-webkit-outer-spin-button,\ninput[data-v-66c506ad]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-66c506ad] {\n    -moz-appearance: textfield;\n}\ntable[data-v-66c506ad] {\n    width: 100%;\n\n    /* border-collapse: collapse; */\n    border-spacing: 0;\n}\n\n/* To display the block as level element */\ntable tbody[data-v-66c506ad],\ntable thead[data-v-66c506ad] {\n    display: block;\n}\nthead[data-v-66c506ad]{\n    background: cornflowerblue;\n    color:white;\n}\nthead tr th[data-v-66c506ad] {\n    height: 40px;\n}\ntable tbody[data-v-66c506ad] {\n\n    /* Set the height of table body */\n    height: 300px;\n\n    /* Set vertical scroll */\n    overflow-y: auto;\n\n    /* Hide the horizontal scroll */\n    overflow-x: hidden;\n}\ntbody td[data-v-66c506ad],\nthead th[data-v-66c506ad] {\n    width: 240px;\n}\ntd[data-v-66c506ad] {\n    text-align: center;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-6ad107a9]::-webkit-outer-spin-button,\ninput[data-v-6ad107a9]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-6ad107a9] {\n    -moz-appearance: textfield;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1446,7 +3006,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_style_index_0_id_66c506ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_style_index_0_id_6ad107a9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css&");
 
             
 
@@ -1455,18 +3015,18 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_style_index_0_id_66c506ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_style_index_0_id_6ad107a9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_style_index_0_id_66c506ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_style_index_0_id_6ad107a9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
-/***/ "./resources/js/components/EditEntry.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/components/EditEntry.vue ***!
-  \***********************************************/
+/***/ "./resources/js/components/CreateReceiving.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/CreateReceiving.vue ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1474,9 +3034,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _EditEntry_vue_vue_type_template_id_66c506ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditEntry.vue?vue&type=template&id=66c506ad&scoped=true& */ "./resources/js/components/EditEntry.vue?vue&type=template&id=66c506ad&scoped=true&");
-/* harmony import */ var _EditEntry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditEntry.vue?vue&type=script&lang=js& */ "./resources/js/components/EditEntry.vue?vue&type=script&lang=js&");
-/* harmony import */ var _EditEntry_vue_vue_type_style_index_0_id_66c506ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css& */ "./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css&");
+/* harmony import */ var _CreateReceiving_vue_vue_type_template_id_6ad107a9_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true& */ "./resources/js/components/CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true&");
+/* harmony import */ var _CreateReceiving_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateReceiving.vue?vue&type=script&lang=js& */ "./resources/js/components/CreateReceiving.vue?vue&type=script&lang=js&");
+/* harmony import */ var _CreateReceiving_vue_vue_type_style_index_0_id_6ad107a9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css& */ "./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1487,27 +3047,27 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _EditEntry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditEntry_vue_vue_type_template_id_66c506ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _EditEntry_vue_vue_type_template_id_66c506ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _CreateReceiving_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateReceiving_vue_vue_type_template_id_6ad107a9_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CreateReceiving_vue_vue_type_template_id_6ad107a9_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "66c506ad",
+  "6ad107a9",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/EditEntry.vue"
+component.options.__file = "resources/js/components/CreateReceiving.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/EditEntry.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/EditEntry.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
+/***/ "./resources/js/components/CreateReceiving.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/CreateReceiving.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1515,37 +3075,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditEntry.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateReceiving.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/EditEntry.vue?vue&type=template&id=66c506ad&scoped=true&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/EditEntry.vue?vue&type=template&id=66c506ad&scoped=true& ***!
-  \******************************************************************************************/
+/***/ "./resources/js/components/CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true& ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_template_id_66c506ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_template_id_66c506ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_template_id_6ad107a9_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_template_id_6ad107a9_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_template_id_66c506ad_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditEntry.vue?vue&type=template&id=66c506ad&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=template&id=66c506ad&scoped=true&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_template_id_6ad107a9_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=template&id=6ad107a9&scoped=true&");
 
 
 /***/ }),
 
-/***/ "./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css& ***!
-  \********************************************************************************************************/
+/***/ "./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css& ***!
+  \**************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EditEntry_vue_vue_type_style_index_0_id_66c506ad_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditEntry.vue?vue&type=style&index=0&id=66c506ad&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateReceiving_vue_vue_type_style_index_0_id_6ad107a9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CreateReceiving.vue?vue&type=style&index=0&id=6ad107a9&scoped=true&lang=css&");
 
 
 /***/ }),

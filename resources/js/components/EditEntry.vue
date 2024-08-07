@@ -919,865 +919,831 @@
                         </div>
                     </div>
                 </tab-content>
-<!--                <tab-content-->
-<!--                    title="Item Type"-->
-<!--                    icon="ti-gift"-->
-<!--                >-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-12">-->
-<!--                            <div class="card shipping_address_card">-->
-<!--                                <div class="card-body">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-6">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100 text-capitalize">-->
-<!--                                                    Select the item type to be entered-->
-<!--                                                    <span class="error">*</span>-->
-<!--                                                </label>-->
-<!--                                                <select class="form-select mb-text-only" aria-label="Default select example"-->
-<!--                                                        v-model.trim="form_data.itemType"-->
-<!--                                                        @change="itemTypeChangeEvent"-->
-<!--                                                >-->
-<!--                                                    <option selected disabled>Open this select menu</option>-->
-<!--                                                    <option v-for="(type,index) in itemTypes" :value="type.name" :key="type.id">{{type.name}}</option>-->
-<!--                                                </select>-->
-<!--                                                &lt;!&ndash;                                            <Select2 v-model="form_data.itemType" :options="itemTypes" @change="itemTypeChangeEvent($event)" />&ndash;&gt;-->
-<!--                                                <div class="error" v-if="v$.form_data.itemType.required.$invalid && show_error_eleven">-->
-<!--                                                    Item type is required-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                <tab-content
+                    title="Item Type"
+                    icon="ti-gift"
+                >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card shipping_address_card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered mb-0">
 
-<!--                                        <div class="col-md-6" v-if="showItemTypeCrossoverBox">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100 text-capitalize">-->
-<!--                                                    Crossover Item Type-->
-<!--                                                    <span class="error">*</span>-->
-<!--                                                </label>-->
-<!--                                                <select class="form-select mb-text-only" aria-label="Default select example"-->
-<!--                                                        v-model.trim="v$.form_data.crossover_item_type.$model"-->
-<!--                                                >-->
-<!--                                                    <option selected disabled>Open this select menu</option>-->
-<!--                                                    <option v-for="(coType,index) in crossoverItemTypes" :value="coType.name" :key="coType.id">{{coType.name}}</option>-->
-<!--                                                </select>-->
-<!--                                                &lt;!&ndash;                                            <Select2 v-model="form_data.crossover_item_type" :options="crossoverItemTypes" />&ndash;&gt;-->
-<!--                                                <div class="error" v-if="v$.form_data.crossover_item_type.required.$invalid && show_error_sixteen">-->
-<!--                                                    Crossover item type is required-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash;item type card&ndash;&gt;-->
-<!--                        <div class="col-md-12" v-if="showItemTypeCardBox">-->
-<!--                            <div class="card shipping_address_card">-->
-<!--                                <div class="card-body">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-1">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Qty-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="form_data.item_qty"-->
-<!--                                                    readonly-->
-<!--                                                />-->
-<!--&lt;!&ndash;                                                <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    contact name is required&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="col-md-9">-->
-<!--                                            <div class="row">-->
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #1   (Year,Manufacturer,Set,Other)-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.card_description_one.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.card_description_one.required.$invalid && show_error_twelve">-->
-<!--                                                            Description one is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #2-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.card_description_two.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.card_description_two.required.$invalid && show_error_twelve">-->
-<!--                                                            Description two is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #3-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.card_description_three.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.card_description_three.required.$invalid && show_error_twelve">-->
-<!--                                                            Description three is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-6">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Serial Number   (Only if printed directly on item)-->
-<!--&lt;!&ndash;                                                            <span class="error">*</span>&ndash;&gt;-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="form_data.card_serial_number"-->
-<!--                                                        />-->
-<!--&lt;!&ndash;                                                        <div class="error" v-if="v$.form_data.card_serial_number.required.$invalid && show_error_twelve">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                            Serial number is required&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        </div>&ndash;&gt;-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="row">-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">-->
-<!--                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">-->
-<!--                                                                    Autographed-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="checkbox"-->
-<!--                                                                    class="form-check"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="form_data.card_autographed"-->
-<!--                                                                />-->
-<!--                                                                &lt;!&ndash;                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                                Same as Billing is required&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100 text-capitalize">-->
-<!--                                                                    Authenticator Name-->
-<!--                                                                    <span class="error" v-if="form_data.card_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <select class="form-select mb-text-only" aria-label="Default select example"-->
-<!--                                                                        v-model.trim="v$.form_data.card_authenticator_name.$model"-->
-<!--                                                                >-->
-<!--                                                                    <option selected disabled>Open this select menu</option>-->
-<!--                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>-->
-<!--                                                                </select>-->
-<!--                                                                &lt;!&ndash;                                                            <Select2 v-model="form_data.authenticator_name" :options="authenticators" />&ndash;&gt;-->
-<!--                                                                <div class="error" v-if="v$.form_data.card_authenticator_name.required.$invalid && show_error_twelve">-->
-<!--                                                                    Authenticator name is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100">-->
-<!--                                                                    Authenticator Cert. No.-->
-<!--                                                                    <span class="error" v-if="form_data.card_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="text"-->
-<!--                                                                    class="form-control"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="v$.form_data.card_authenticator_cert_no.$model"-->
-<!--                                                                />-->
-<!--                                                                <div class="error" v-if="v$.form_data.card_authenticator_cert_no.required.$invalid && show_error_twelve">-->
-<!--                                                                    Authenticator cert no. is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="col-md-2">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Estimated Value-->
-<!--                                                    <span class="error">*</span>-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="v$.form_data.card_estimated_value.$model"-->
-<!--                                                />-->
-<!--                                                <div class="error" v-if="v$.form_data.card_estimated_value.required.$invalid && show_error_twelve">-->
-<!--                                                    Estimated value is required-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                    <thead class="text-center">
+                                                    <tr>
+                                                        <th>Item Type</th>
+                                                        <th>Sub Type</th>
+                                                        <th>Description</th>
+                                                        <th>Autographed</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
 
 
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                                                    <tr v-for="(entry,index) in entries" :key="entry.id">
+                                                        <td class="text-capitalize">{{entry.itemType}}</td>
+                                                        <td>{{entry.itemType == 'Crossover' ? entry.crossover_item_type: 'N/A'}}</td>
 
-<!--                        &lt;!&ndash;item type auto authentication&ndash;&gt;-->
-<!--                        <div class="col-md-12" v-if="showItemTypeAutoAthenticationBox">-->
-<!--                            <div class="card shipping_address_card">-->
-<!--                                <div class="card-body">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-1">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Qty-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="form_data.item_qty"-->
-<!--                                                    readonly-->
-<!--                                                />-->
-<!--&lt;!&ndash;                                                <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    contact name is required&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="col-md-9">-->
-<!--                                            <div class="row">-->
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #1   (Year,Manufacturer,Set,Other)-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.auto_authentication_description_one.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.auto_authentication_description_one.required.$invalid && show_error_thirteen">-->
-<!--                                                            Description one is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #2-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.auto_authentication_description_two.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.auto_authentication_description_two.required.$invalid && show_error_thirteen">-->
-<!--                                                            Description two is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #3-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.auto_authentication_description_three.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.auto_authentication_description_three.required.$invalid && show_error_thirteen">-->
-<!--                                                            Description three is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-6">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Serial Number   (Only if printed directly on item)-->
-<!--&lt;!&ndash;                                                            <span class="error">*</span>&ndash;&gt;-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="form_data.auto_authentication_serial_number"-->
-<!--                                                        />-->
-<!--&lt;!&ndash;                                                        <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                            contact name is required&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        </div>&ndash;&gt;-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="row">-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">-->
-<!--                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">-->
-<!--                                                                    Autographed-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="checkbox"-->
-<!--                                                                    class="form-check"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="form_data.auto_authentication_autographed"-->
-<!--                                                                />-->
-<!--                                                                &lt;!&ndash;                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                                Same as Billing is required&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100 text-capitalize">-->
-<!--                                                                    Authenticator Name-->
-<!--                                                                    <span class="error" v-if="form_data.auto_authentication_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <select class="form-select mb-text-only" aria-label="Default select example"-->
-<!--                                                                        v-model.trim="v$.form_data.auto_authentication_authenticator_name.$model"-->
-<!--                                                                >-->
-<!--                                                                    <option selected disabled>Open this select menu</option>-->
-<!--                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>-->
-<!--                                                                </select>-->
-<!--                                                                &lt;!&ndash;                                                            <Select2 v-model="form_data.authenticator_name_two" :options="authenticators" />&ndash;&gt;-->
-<!--                                                                <div class="error" v-if="v$.form_data.auto_authentication_authenticator_name.required.$invalid && show_error_thirteen">-->
-<!--                                                                    Authenticator name is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100">-->
-<!--                                                                    Authenticator Cert. No.-->
-<!--                                                                    <span class="error" v-if="form_data.auto_authentication_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="text"-->
-<!--                                                                    class="form-control"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="v$.form_data.auto_authentication_authenticator_cert_no.$model"-->
-<!--                                                                />-->
-<!--                                                                <div class="error" v-if="v$.form_data.auto_authentication_authenticator_cert_no.required.$invalid && show_error_thirteen">-->
-<!--                                                                    Authenticator cert. no. is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="col-md-2">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Estimated Value-->
-<!--                                                    <span class="error">*</span>-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="v$.form_data.auto_authentication_estimated_value.$model"-->
-<!--                                                />-->
-<!--                                                <div class="error" v-if="v$.form_data.auto_authentication_estimated_value.required.$invalid && show_error_thirteen">-->
-<!--                                                    Estimated value is required-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                        <td v-if="entry.itemType == 'Card'">
+                                                            <span>{{entry.card_description_one}}</span>
+                                                            <br>
+                                                            <span>{{entry.card_description_two}}</span>
+                                                            <br>
+                                                            <span>{{entry.card_description_three}}</span>
+                                                        </td>
+                                                        <td class="text-center" v-if="entry.itemType == 'Card'">{{entry.card_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        &lt;!&ndash;item type combined service&ndash;&gt;-->
-<!--                        <div class="col-md-12" v-if="showItemTypeCombinedServiceBox">-->
-<!--                            <div class="card shipping_address_card">-->
-<!--                                <div class="card-body">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-1">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Qty-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="form_data.item_qty"-->
-<!--                                                    readonly-->
-<!--                                                />-->
-<!--&lt;!&ndash;                                                <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    contact name is required&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="col-md-9">-->
-<!--                                            <div class="row">-->
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #1   (Year,Manufacturer,Set,Other)-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.combined_service_description_one.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.combined_service_description_one.required.$invalid && show_error_fourteen">-->
-<!--                                                            Description one is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #2-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.combined_service_description_two.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.combined_service_description_two.required.$invalid && show_error_fourteen">-->
-<!--                                                            Description two is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #3-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.combined_service_description_three.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.combined_service_description_three.required.$invalid && show_error_fourteen">-->
-<!--                                                            Description three is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-6">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Serial Number   (Only if printed directly on item)-->
-<!--&lt;!&ndash;                                                            <span class="error">*</span>&ndash;&gt;-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="form_data.combined_service_serial_number"-->
-<!--                                                        />-->
-<!--                                                        &lt;!&ndash;                                                        <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;                                                            contact name is required&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;                                                        </div>&ndash;&gt;-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="row">-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">-->
-<!--                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">-->
-<!--                                                                    Autographed-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="checkbox"-->
-<!--                                                                    class="form-check"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="form_data.combined_service_autographed"-->
-<!--                                                                />-->
-<!--                                                                &lt;!&ndash;                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                                Same as Billing is required&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100 text-capitalize">-->
-<!--                                                                    Authenticator Name-->
-<!--                                                                    <span class="error" v-if="form_data.combined_service_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <select class="form-select mb-text-only" aria-label="Default select example"-->
-<!--                                                                        v-model.trim="v$.form_data.combined_service_authenticator_name.$model"-->
-<!--                                                                >-->
-<!--                                                                    <option selected disabled>Open this select menu</option>-->
-<!--                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>-->
-<!--                                                                </select>-->
-<!--                                                                &lt;!&ndash;                                                            <Select2 v-model="form_data.authenticator_name_two" :options="authenticators" />&ndash;&gt;-->
-<!--                                                                <div class="error" v-if="v$.form_data.combined_service_authenticator_name.required.$invalid && show_error_fourteen">-->
-<!--                                                                    Authenticator Name is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100">-->
-<!--                                                                    Authenticator Cert. No.-->
-<!--                                                                    <span class="error" v-if="form_data.combined_service_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="text"-->
-<!--                                                                    class="form-control"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="v$.form_data.combined_service_authenticator_cert_no.$model"-->
-<!--                                                                />-->
-<!--                                                                <div class="error" v-if="v$.form_data.combined_service_authenticator_cert_no.required.$invalid && show_error_fourteen">-->
-<!--                                                                    Authenticator cert. no. is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="col-md-2">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Estimated Value-->
-<!--                                                    <span class="error">*</span>-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="v$.form_data.combined_service_estimated_value.$model"-->
-<!--                                                />-->
-<!--                                                <div class="error" v-if="v$.form_data.combined_service_estimated_value.required.$invalid && show_error_fourteen">-->
-<!--                                                    Estimated value is required-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                        <td v-if="entry.itemType == 'Auto Authentication'">
+                                                            <span>{{entry.auto_authentication_description_one}}</span>
+                                                            <br>
+                                                            <span>{{entry.auto_authentication_description_two}}</span>
+                                                            <br>
+                                                            <span>{{entry.auto_authentication_description_three}}</span>
+                                                        </td>
+                                                        <td class="text-center" v-if="entry.itemType == 'Auto Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                                                        <td v-if="entry.itemType == 'Combined Service'">
+                                                            <span>{{entry.combined_service_description_one}}</span>
+                                                            <br>
+                                                            <span>{{entry.combined_service_description_two}}</span>
+                                                            <br>
+                                                            <span>{{entry.combined_service_description_three}}</span>
+                                                        </td>
+                                                        <td class="text-center" v-if="entry.itemType == 'Combined Service'">{{entry.combined_service_autographed == 1 ? 'Yes' : 'No'}}</td>
 
-<!--                        &lt;!&ndash;item type reholder&ndash;&gt;-->
-<!--                        <div class="col-md-12" v-if="showItemTypeReholderBox">-->
-<!--                            <div class="card shipping_address_card">-->
-<!--                                <div class="card-body">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-1">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Qty-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="form_data.item_qty"-->
-<!--                                                    readonly-->
-<!--                                                />-->
-<!--&lt;!&ndash;                                                <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    contact name is required&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                        <td v-if="entry.itemType == 'Reholder'">
+                                                            <span>N/A</span>
+                                                            <br>
+                                                            <span>N/A</span>
+                                                            <br>
+                                                            <span>N/A</span>
+                                                        </td>
+                                                        <td class="text-center" v-if="entry.itemType == 'Reholder'">N/A</td>
 
-<!--                                        <div class="col-md-9">-->
-<!--                                            <div class="row">-->
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Certification Number-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.reholder_certification_number.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.reholder_certification_number.required.$invalid && show_error_fifteen">-->
-<!--                                                            Certification number is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                        <td v-if="entry.itemType == 'Crossover'">
+                                                            <span>{{entry.crossover_description_one}}</span>
+                                                            <br>
+                                                            <span>{{entry.crossover_description_two}}</span>
+                                                            <br>
+                                                            <span>{{entry.crossover_description_three}}</span>
+                                                        </td>
+                                                        <td class="text-center" v-if="entry.itemType == 'Crossover'">{{entry.crossover_autographed == 1 ? 'Yes' : 'No'}}</td>
 
-<!--                                        <div class="col-md-2">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Estimated Value-->
-<!--                                                    <span class="error">*</span>-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="v$.form_data.reholder_estimated_value.$model"-->
-<!--                                                />-->
-<!--                                                <div class="error" v-if="v$.form_data.reholder_estimated_value.required.$invalid && show_error_fifteen">-->
-<!--                                                    Estimated value is required-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                        <td class="">
+                                                            <div class="d-flex justify-content-center">
+                                                                <div class="" style="margin-right: 15px;">
+                                                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit-1">
+                                                                        Confirm Receiving
+                                                                    </button>
+                                                                    <div class="modal fade" id="staticBackdropEdit-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-lg">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm Receiving</h5>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="mb-4">
+                                                                                        <form action="#" method="POST">
+                                                                                            <div class="form-group mb-3" style="text-align: left;">
+                                                                                                <div class="row">
+
+                                                                                                <!--item type card-->
+                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Card'">
+                                                                                                <div class="card shipping_address_card">
+                                                                                                    <div class="card-body">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-md-1">
+                                                                                                                <div class="mb-3">
+                                                                                                                    <label class="form-label w-100">
+                                                                                                                        Qty
+                                                                                                                    </label>
+                                                                                                                    <input
+                                                                                                                        type="text"
+                                                                                                                        class="form-control"
+                                                                                                                        placeholder=""
+                                                                                                                        value="1"
+                                                                                                                        readonly
+                                                                                                                    />
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="col-md-9">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-md-12">
+                                                                                                                        <div class="mb-3">
+                                                                                                                            <label class="form-label w-100">
+                                                                                                                                Description #1   (Year,Manufacturer,Set,Other)
+                                                                                                                                <span class="error">*</span>
+                                                                                                                            </label>
+                                                                                                                            <input
+                                                                                                                                type="text"
+                                                                                                                                class="form-control"
+                                                                                                                                placeholder=""
+                                                                                                                                name="card_description_one"
+                                                                                                                                id="card_description_one"
+                                                                                                                                :value="entry.card_description_one"
+                                                                                                                            />
+                                                                                                                        </div>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="col-md-12">
+                                                                                                                        <div class="mb-3">
+                                                                                                                            <label class="form-label w-100">
+                                                                                                                                Description #2
+                                                                                                                            </label>
+                                                                                                                            <input
+                                                                                                                                type="text"
+                                                                                                                                class="form-control"
+                                                                                                                                placeholder=""
+                                                                                                                                name="card_description_two"
+                                                                                                                                id="card_description_two"
+                                                                                                                                :value="entry.card_description_two"
+                                                                                                                            />
+                                                                                                                        </div>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="col-md-12">
+                                                                                                                        <div class="mb-3">
+                                                                                                                            <label class="form-label w-100">
+                                                                                                                                Description #3
+                                                                                                                            </label>
+                                                                                                                            <input
+                                                                                                                                type="text"
+                                                                                                                                class="form-control"
+                                                                                                                                placeholder=""
+                                                                                                                                name="card_description_three"
+                                                                                                                                id="card_description_three"
+                                                                                                                                :value="entry.card_description_three"
+                                                                                                                            />
+                                                                                                                        </div>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="col-md-6">
+                                                                                                                        <div class="mb-3">
+                                                                                                                            <label class="form-label w-100">
+                                                                                                                                Serial Number   (Only if printed directly on item)
+                                                                                                                            </label>
+                                                                                                                            <input
+                                                                                                                                type="text"
+                                                                                                                                class="form-control"
+                                                                                                                                placeholder=""
+                                                                                                                                name="card_serial_number"
+                                                                                                                                id="card_serial_number"
+                                                                                                                                :value="entry.card_serial_number"
+                                                                                                                            />
+                                                                                                                        </div>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="col-md-12">
+                                                                                                                        <div class="row">
+                                                                                                                            <div class="col-md-4">
+                                                                                                                                <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
+                                                                                                                                    <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                                                                                                        Autographed
+                                                                                                                                    </label>
+                                                                                                                                    <input
+                                                                                                                                        type="checkbox"
+                                                                                                                                        class="form-check"
+                                                                                                                                        placeholder=""
+                                                                                                                                        name="card_autographed"
+                                                                                                                                        id="card_autographed"
+                                                                                                                                        :value="entry.card_autographed"
+                                                                                                                                    />
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                            <div class="col-md-4">
+                                                                                                                                <div class="mb-3">
+                                                                                                                                    <label class="form-label w-100 text-capitalize">
+                                                                                                                                        Authenticator Name
+                                                                                                                                    </label>
+                                                                                                                                    <select class="form-select mb-text-only" aria-label="Default select example" name="card_authenticator_name" id="card_authenticator_name">
+                                                                                                                                        <option selected disabled>Open this select menu</option>
+                                                                                                                                        <option value=""></option>
+
+                                                                                                                                    </select>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                            <div class="col-md-4">
+                                                                                                                                <div class="mb-3">
+                                                                                                                                    <label class="form-label w-100">
+                                                                                                                                        Authenticator Cert. No.
+                                                                                                                                    </label>
+                                                                                                                                    <input
+                                                                                                                                        type="text"
+                                                                                                                                        class="form-control"
+                                                                                                                                        placeholder=""
+                                                                                                                                        name="card_authenticator_cert_no"
+                                                                                                                                        id="card_authenticator_cert_no"
+                                                                                                                                        :value="entry.card_authenticator_name"
+                                                                                                                                    />
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="col-md-2">
+                                                                                                                <div class="mb-3">
+                                                                                                                    <label class="form-label w-100">
+                                                                                                                        Estimated Value
+                                                                                                                        <span class="error">*</span>
+                                                                                                                    </label>
+                                                                                                                    <input
+                                                                                                                        type="text"
+                                                                                                                        class="form-control"
+                                                                                                                        placeholder=""
+                                                                                                                        id="card_estimated_value"
+                                                                                                                        name="card_estimated_value"
+                                                                                                                        :value="entry.card_estimated_value"
+                                                                                                                    />
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                                    <!--item type auto authentication-->
+                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Auto Authentication'">
+                                                                                                    <div class="card shipping_address_card">
+                                                                                                    <div class="card-body">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-1">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100">
+                                                                                                                    Qty
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="text"
+                                                                                                                    class="form-control"
+                                                                                                                    placeholder=""
+                                                                                                                    value="1"
+                                                                                                                    readonly
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="col-md-9">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-md-12">
+                                                                                                                    <div class="mb-3">
+                                                                                                                        <label class="form-label w-100">
+                                                                                                                            Description #1   (Year,Manufacturer,Set,Other)
+                                                                                                                            <span class="error">*</span>
+                                                                                                                        </label>
+                                                                                                                        <input
+                                                                                                                            type="text"
+                                                                                                                            class="form-control"
+                                                                                                                            placeholder=""
+                                                                                                                            name="auto_authentication_description_one"
+                                                                                                                            id="auto_authentication_description_one"
+                                                                                                                            :value="entry.auto_authentication_description_one"
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="col-md-12">
+                                                                                                                    <div class="mb-3">
+                                                                                                                        <label class="form-label w-100">
+                                                                                                                            Description #2
+                                                                                                                        </label>
+                                                                                                                        <input
+                                                                                                                            type="text"
+                                                                                                                            class="form-control"
+                                                                                                                            placeholder=""
+                                                                                                                            name="auto_authentication_description_two"
+                                                                                                                            id="auto_authentication_description_two"
+                                                                                                                            :value="entry.auto_authentication_description_two"
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="col-md-12">
+                                                                                                                    <div class="mb-3">
+                                                                                                                        <label class="form-label w-100">
+                                                                                                                            Description #3
+                                                                                                                        </label>
+                                                                                                                        <input
+                                                                                                                            type="text"
+                                                                                                                            class="form-control"
+                                                                                                                            placeholder=""
+                                                                                                                            name="auto_authentication_description_three"
+                                                                                                                            id="auto_authentication_description_three"
+                                                                                                                            :value="entry.auto_authentication_description_three"
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="col-md-6">
+                                                                                                                    <div class="mb-3">
+                                                                                                                        <label class="form-label w-100">
+                                                                                                                            Serial Number   (Only if printed directly on item)
+                                                                                                                        </label>
+                                                                                                                        <input
+                                                                                                                            type="text"
+                                                                                                                            class="form-control"
+                                                                                                                            placeholder=""
+                                                                                                                            name="auto_authentication_serial_number"
+                                                                                                                            id="auto_authentication_serial_number"
+                                                                                                                            :value="entry.auto_authentication_serial_number"
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="col-md-12">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-md-4">
+                                                                                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
+                                                                                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                                                                                                    Autographed
+                                                                                                                                </label>
+                                                                                                                                <input
+                                                                                                                                    type="checkbox"
+                                                                                                                                    class="form-check"
+                                                                                                                                    placeholder=""
+                                                                                                                                    name="auto_authentication_autographed"
+                                                                                                                                    id="auto_authentication_autographed"
+                                                                                                                                    :value="entry.auto_authentication_autographed"
+                                                                                                                                />
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        <div class="col-md-4">
+                                                                                                                            <div class="mb-3">
+                                                                                                                                <label class="form-label w-100 text-capitalize">
+                                                                                                                                    Authenticator Name
+                                                                                                                                </label>
+                                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example" name="auto_authentication_authenticator_name" id="auto_authentication_authenticator_name">
+                                                                                                                                    <option selected disabled>Open this select menu</option>
+                                                                                                                                    <option value=""></option>
+                                                                                                                                </select>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        <div class="col-md-4">
+                                                                                                                            <div class="mb-3">
+                                                                                                                                <label class="form-label w-100">
+                                                                                                                                    Authenticator Cert. No.
+                                                                                                                                </label>
+                                                                                                                                <input
+                                                                                                                                    type="number"
+                                                                                                                                    class="form-control"
+                                                                                                                                    placeholder=""
+                                                                                                                                    name="auto_authentication_authenticator_cert_no"
+                                                                                                                                    id="auto_authentication_authenticator_cert_no"
+                                                                                                                                    :value="entry.auto_authentication_authenticator_cert_no"
+                                                                                                                                />
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="col-md-2">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100">
+                                                                                                                    Estimated Value
+                                                                                                                    <span class="error">*</span>
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="number"
+                                                                                                                    class="form-control"
+                                                                                                                    placeholder=""
+                                                                                                                    name="auto_authentication_estimated_value"
+                                                                                                                    id="auto_authentication_estimated_value"
+                                                                                                                    :value="entry.auto_authentication_estimated_value"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
 
 
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                    </div>
 
-<!--                        &lt;!&ndash;item type crossover&ndash;&gt;-->
-<!--                        <div class="col-md-12" v-if="showItemTypeCrossoverBox">-->
-<!--                            <div class="card shipping_address_card">-->
-<!--                                <div class="card-body">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-1">-->
-<!--                                            <div class="mb-3">-->
-<!--                                                <label class="form-label w-100">-->
-<!--                                                    Qty-->
-<!--                                                </label>-->
-<!--                                                <input-->
-<!--                                                    type="text"-->
-<!--                                                    class="form-control"-->
-<!--                                                    placeholder=""-->
-<!--                                                    v-model.trim="form_data.item_qty"-->
-<!--                                                    readonly-->
-<!--                                                />-->
-<!--&lt;!&ndash;                                                <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    contact name is required&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                                                                <!--item type combined service-->
+                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Combined Service'">
+                                                                                    <div class="card shipping_address_card">
+                                                                                        <div class="card-body">
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-1">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100">
+                                                                                                            Qty
+                                                                                                        </label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-control"
+                                                                                                            placeholder=""
+                                                                                                            value="1"
+                                                                                                            readonly
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                </div>
 
-<!--                                        <div class="col-md-9">-->
-<!--                                            <div class="row">-->
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #1   (Year,Manufacturer,Set,Other)-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.crossover_description_one.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.crossover_description_one.required.$invalid && show_error_sixteen">-->
-<!--                                                            Description one is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
+                                                                                                <div class="col-md-9">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-12">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100">
+                                                                                                                    Description #1   (Year,Manufacturer,Set,Other)
+                                                                                                                    <span class="error">*</span>
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="text"
+                                                                                                                    class="form-control"
+                                                                                                                    placeholder=""
+                                                                                                                    name="combined_service_description_one"
+                                                                                                                    id="combined_service_description_one"
+                                                                                                                    :value="entry.combined_service_description_one"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
 
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #2-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.crossover_description_two.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.crossover_description_two.required.$invalid && show_error_sixteen">-->
-<!--                                                            Description two is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
+                                                                                                        <div class="col-md-12">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100">
+                                                                                                                    Description #2
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="text"
+                                                                                                                    class="form-control"
+                                                                                                                    placeholder=""
+                                                                                                                    name="combined_service_description_two"
+                                                                                                                    id="combined_service_description_two"
+                                                                                                                    :value="entry.combined_service_description_two"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
 
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Description #3-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.crossover_description_three.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.crossover_description_three.required.$invalid && show_error_sixteen">-->
-<!--                                                            Description three is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
+                                                                                                        <div class="col-md-12">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100">
+                                                                                                                    Description #3
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="text"
+                                                                                                                    class="form-control"
+                                                                                                                    placeholder=""
+                                                                                                                    name="combined_service_description_three"
+                                                                                                                    id="combined_service_description_three"
+                                                                                                                    :value="entry.combined_service_description_three"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
 
-<!--                                                <div class="col-md-6">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Serial Number   (Only if printed directly on item)-->
-<!--&lt;!&ndash;                                                            <span class="error">*</span>&ndash;&gt;-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="form_data.crossover_serial_number"-->
-<!--                                                        />-->
-<!--                                                        &lt;!&ndash;                                                        <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;                                                            contact name is required&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;                                                        </div>&ndash;&gt;-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100">
+                                                                                                                    Serial Number   (Only if printed directly on item)
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="text"
+                                                                                                                    class="form-control"
+                                                                                                                    placeholder=""
+                                                                                                                    name="combined_service_serial_number"
+                                                                                                                    id="combined_service_serial_number"
+                                                                                                                    :value="entry.combined_service_serial_number"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
 
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="row">-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">-->
-<!--                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">-->
-<!--                                                                    Autographed-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="checkbox"-->
-<!--                                                                    class="form-check"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="form_data.crossover_autographed"-->
-<!--                                                                />-->
-<!--                                                                &lt;!&ndash;                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                                Same as Billing is required&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100 text-capitalize">-->
-<!--                                                                    Authenticator Name-->
-<!--                                                                    <span class="error" v-if="form_data.crossover_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <select class="form-select mb-text-only" aria-label="Default select example"-->
-<!--                                                                        v-model.trim="v$.form_data.crossover_authenticator_name.$model"-->
-<!--                                                                >-->
-<!--                                                                    <option selected disabled>Open this select menu</option>-->
-<!--                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>-->
-<!--                                                                </select>-->
-<!--                                                                &lt;!&ndash;                                                            <Select2 v-model="form_data.authenticator_name_two" :options="authenticators" />&ndash;&gt;-->
-<!--                                                                <div class="error" v-if="v$.form_data.crossover_authenticator_name.required.$invalid && show_error_sixteen">-->
-<!--                                                                    Authenticator Name is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                        <div class="col-md-4">-->
-<!--                                                            <div class="mb-3">-->
-<!--                                                                <label class="form-label w-100">-->
-<!--                                                                    Authenticator Cert. No.-->
-<!--                                                                    <span class="error" v-if="form_data.crossover_autographed">*</span>-->
-<!--                                                                </label>-->
-<!--                                                                <input-->
-<!--                                                                    type="text"-->
-<!--                                                                    class="form-control"-->
-<!--                                                                    placeholder=""-->
-<!--                                                                    v-model.trim="v$.form_data.crossover_authenticator_cert_no.$model"-->
-<!--                                                                />-->
-<!--                                                                <div class="error" v-if="v$.form_data.crossover_authenticator_cert_no.required.$invalid && show_error_sixteen">-->
-<!--                                                                    Authenticator cert. no. is required-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                                                                                        <div class="col-md-12">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
+                                                                                                                        <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                                                                                            Autographed
+                                                                                                                        </label>
+                                                                                                                        <input
+                                                                                                                            type="checkbox"
+                                                                                                                            class="form-check"
+                                                                                                                            placeholder=""
+                                                                                                                            name="combined_service_autographed"
+                                                                                                                            id="combined_service_autographed"
+                                                                                                                            :value="entry.combined_service_autographed"
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="mb-3">
+                                                                                                                        <label class="form-label w-100 text-capitalize">
+                                                                                                                            Authenticator Name
+                                                                                                                        </label>
+                                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example" name="combined_service_authenticator_name" id="combined_service_authenticator_name">
+                                                                                                                            <option selected disabled>Open this select menu</option>
+                                                                                                                            <option value=""></option>
+                                                                                                                        </select>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="mb-3">
+                                                                                                                        <label class="form-label w-100">
+                                                                                                                            Authenticator Cert. No.
+                                                                                                                        </label>
+                                                                                                                        <input
+                                                                                                                            type="text"
+                                                                                                                            class="form-control"
+                                                                                                                            placeholder=""
+                                                                                                                            name="combined_service_authenticator_cert_no"
+                                                                                                                            id="combined_service_authenticator_cert_no"
+                                                                                                                            :value="entry.combined_service_authenticator_cert_no"
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
 
-<!--                                        <div class="col-md-2">-->
-<!--                                            <div class="row">-->
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100">-->
-<!--                                                            Estimated Value-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <input-->
-<!--                                                            type="text"-->
-<!--                                                            class="form-control"-->
-<!--                                                            placeholder=""-->
-<!--                                                            v-model.trim="v$.form_data.crossover_estimated_value.$model"-->
-<!--                                                        />-->
-<!--                                                        <div class="error" v-if="v$.form_data.crossover_estimated_value.required.$invalid && show_error_sixteen">-->
-<!--                                                            Estimated value is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="col-md-12">-->
-<!--                                                    <div class="mb-3">-->
-<!--                                                        <label class="form-label w-100 text-capitalize">-->
-<!--                                                            Minimum Grade-->
-<!--                                                            <span class="error">*</span>-->
-<!--                                                        </label>-->
-<!--                                                        <select class="form-select mb-text-only" aria-label="Default select example"-->
-<!--                                                                v-model.trim="v$.form_data.crossover_minimum_grade.$model"-->
-<!--                                                        >-->
-<!--                                                            <option selected disabled>Open this select menu</option>-->
-<!--                                                            <option v-for="(grade,index) in minimumGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>-->
-<!--                                                        </select>-->
-<!--                                                        &lt;!&ndash;                                                    <Select2 v-model="form_data.minimum_grade" :options="minimumGrades" />&ndash;&gt;-->
-<!--                                                        <div class="error" v-if="v$.form_data.crossover_minimum_grade.required.$invalid && show_error_sixteen">-->
-<!--                                                            Minimum grade is required-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </tab-content>-->
+                                                                                                <div class="col-md-2">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100">
+                                                                                                            Estimated Value
+                                                                                                            <span class="error">*</span>
+                                                                                                        </label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-control"
+                                                                                                            placeholder=""
+                                                                                                            name="combined_service_estimated_value"
+                                                                                                            id="combined_service_estimated_value"
+                                                                                                            :value="entry.combined_service_estimated_value"
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                                <!--item type reholder-->
+                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Reholder'">
+                                                                                <div class="card shipping_address_card">
+                                                                                    <div class="card-body">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-1">
+                                                                                                <div class="mb-3">
+                                                                                                    <label class="form-label w-100">
+                                                                                                        Qty
+                                                                                                    </label>
+                                                                                                    <input
+                                                                                                        type="text"
+                                                                                                        class="form-control"
+                                                                                                        placeholder=""
+                                                                                                        readonly
+                                                                                                        value="1"
+                                                                                                    />
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="col-md-9">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-md-12">
+                                                                                                        <div class="mb-3">
+                                                                                                            <label class="form-label w-100">
+                                                                                                                Certification Number
+                                                                                                                <span class="error">*</span>
+                                                                                                            </label>
+                                                                                                            <input
+                                                                                                                type="text"
+                                                                                                                class="form-control"
+                                                                                                                placeholder=""
+                                                                                                                name="reholder_certification_number"
+                                                                                                                id="reholder_certification_number"
+                                                                                                                :value="entry.reholder_certification_number"
+                                                                                                            />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="col-md-2">
+                                                                                                <div class="mb-3">
+                                                                                                    <label class="form-label w-100">
+                                                                                                        Estimated Value
+                                                                                                        <span class="error">*</span>
+                                                                                                    </label>
+                                                                                                    <input
+                                                                                                        type="text"
+                                                                                                        class="form-control"
+                                                                                                        placeholder=""
+                                                                                                        name="reholder_estimated_value"
+                                                                                                        id="reholder_estimated_value"
+                                                                                                        :value="entry.reholder_estimated_value"
+                                                                                                    />
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                                                <!--item type crossover-->
+                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Crossover'">
+                                                                            <div class="card shipping_address_card">
+                                                                                <div class="card-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-1">
+                                                                                            <div class="mb-3">
+                                                                                                <label class="form-label w-100">
+                                                                                                    Qty
+                                                                                                </label>
+                                                                                                <input
+                                                                                                    type="text"
+                                                                                                    class="form-control"
+                                                                                                    placeholder=""
+                                                                                                    readonly
+                                                                                                />
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-9">
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100">
+                                                                                                            Description #1   (Year,Manufacturer,Set,Other)
+                                                                                                            <span class="error">*</span>
+                                                                                                        </label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-control"
+                                                                                                            placeholder=""
+                                                                                                            name="crossover_description_one"
+                                                                                                            id="crossover_description_one"
+                                                                                                            :value="entry.crossover_description_one"
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100">
+                                                                                                            Description #2
+                                                                                                        </label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-control"
+                                                                                                            placeholder=""
+                                                                                                            name="crossover_description_two"
+                                                                                                            id="crossover_description_two"
+                                                                                                            :value="entry.crossover_description_two"
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100">
+                                                                                                            Description #3
+                                                                                                        </label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-control"
+                                                                                                            placeholder=""
+                                                                                                            name="crossover_description_three"
+                                                                                                            id="crossover_description_three"
+                                                                                                            :value="entry.crossover_description_three"
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100">
+                                                                                                            Serial Number   (Only if printed directly on item)
+                                                                                                        </label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-control"
+                                                                                                            placeholder=""
+                                                                                                            name="crossover_serial_number"
+                                                                                                            id="crossover_serial_number"
+                                                                                                            :value="entry.crossover_serial_number"
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-4">
+                                                                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
+                                                                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                                                                                    Autographed
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="checkbox"
+                                                                                                                    class="form-check"
+                                                                                                                    placeholder=""
+                                                                                                                    name="crossover_autographed"
+                                                                                                                    id="crossover_autographed"
+                                                                                                                    :value="entry.crossover_autographed"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-4">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100 text-capitalize">
+                                                                                                                    Authenticator Name
+                                                                                                                </label>
+                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_authenticator_name"id="crossover_authenticator_name">
+                                                                                                                    <option selected disabled>Open this select menu</option>
+                                                                                                                    <option value=""></option>
+                                                                                                                </select>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-4">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label class="form-label w-100">
+                                                                                                                    Authenticator Cert. No.
+                                                                                                                </label>
+                                                                                                                <input
+                                                                                                                    type="text"
+                                                                                                                    class="form-control"
+                                                                                                                    placeholder=""
+                                                                                                                    name="crossover_authenticator_cert_no"
+                                                                                                                    id="crossover_authenticator_cert_no"
+                                                                                                                    :value="entry.crossover_authenticator_cert_no"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-2">
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100">
+                                                                                                            Estimated Value
+                                                                                                            <span class="error">*</span>
+                                                                                                        </label>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            class="form-control"
+                                                                                                            placeholder=""
+                                                                                                            name="crossover_estimated_value"
+                                                                                                            id="crossover_estimated_value"
+                                                                                                            :value="entry.crossover_estimated_value"
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label class="form-label w-100 text-capitalize">
+                                                                                                            Minimum Grade
+                                                                                                            <span class="error">*</span>
+                                                                                                        </label>
+                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_minimum_grade" id="crossover_minimum_grade">
+                                                                                                            <option v-for="(grade,index) in minimumGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <input type="number" hidden="" class="form-control" name="item_id" value="" style="width: 33%;margin: 0 auto;">
+                                                                <div class="w-100 d-flex justify-content-end">
+                                                                    <button type="button" id="edit_item_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
+                                                                    <button type="button" id="cancel_btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                                                            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab-content>
             </form-wizard>
         </form>
     </div>
@@ -1792,7 +1758,7 @@ import {required, email, requiredIf, numeric} from '@vuelidate/validators'
 
 export default {
     name: "EditEntry",
-    props: ["customers","promos","parties","authenticators","item"],
+    props: ["customers","promos","parties","authenticators","item","entries"],
     components: {
         VuePhoneNumberInput,
     },
@@ -3329,6 +3295,51 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+
+table {
+    width: 100%;
+
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+}
+
+/* To display the block as level element */
+table tbody,
+table thead {
+    display: block;
+}
+
+thead{
+    background: cornflowerblue;
+    color:white;
+}
+thead tr th {
+    height: 40px;
+}
+
+table tbody {
+
+    /* Set the height of table body */
+    height: 300px;
+
+    /* Set vertical scroll */
+    overflow-y: auto;
+
+    /* Hide the horizontal scroll */
+    overflow-x: hidden;
+}
+
+
+
+tbody td,
+thead th {
+    width: 240px;
+}
+
+td {
+    text-align: center;
 }
 
 </style>

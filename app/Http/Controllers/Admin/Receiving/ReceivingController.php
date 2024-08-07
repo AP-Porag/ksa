@@ -5,19 +5,26 @@ namespace App\Http\Controllers\Admin\Receiving;
 use App\DataTables\ReceivingDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Authenticator;
+use App\Models\Customer;
 use App\Models\Entry;
+use App\Models\EntryItems;
+use App\Models\Product;
+use App\Models\Promo;
 use App\Models\Receivig;
 use App\Models\ReceivingItem;
+use App\Models\ThirdParty;
 use App\Services\ReceivingService;
 use Illuminate\Http\Request;
+use App\Services\EntryService;
 
 class ReceivingController extends Controller
 {
     protected $receivingService;
 
-    public function __construct(ReceivingService $receivingService)
+    public function __construct(ReceivingService $receivingService,EntryService $entryService)
     {
         $this->receivingService = $receivingService;
+        $this->entryService = $entryService;
     }
 
     public function index(ReceivingDataTable $dataTable)
@@ -144,25 +151,113 @@ class ReceivingController extends Controller
         }
         return back();
     }
-//
-//    public function edit($id)
-//    {
-//        set_page_meta('Edit Entry');
-//        try {
-//            $entry = $this->entryService->get($id);
-//            $products = Product::orderBy('id','ASC')->get();
-//            $allCustomers = Customer::orderBy('id','DESC')->select('id','name')->get();
-//            $allPromos = Promo::orderBy('id','DESC')->select('id','name')->get();
-//            $allThirdParties = ThirdParty::orderBy('id','DESC')->select('id','name')->get();
-//            $allAuthenticators = Authenticator::orderBy('id','DESC')->select('id','name')->get();
-//
-////        return $allThirdParties;
-//            return view('admin.entry.edit',compact('products','allCustomers','allPromos','allThirdParties','allAuthenticators','entry'));
-//        } catch (\Exception $e) {
-//            log_error($e);
-//        }
-//        return back();
-//    }
+
+    public function edit($id)
+    {
+        set_page_meta('Order Receiving');
+        try {
+            $entry = $this->entryService->get($id);
+            $products = Product::orderBy('id','ASC')->get();
+            $allCustomers = Customer::orderBy('id','DESC')->select('id','name')->get();
+            $allPromos = Promo::orderBy('id','DESC')->select('id','name')->get();
+            $allThirdParties = ThirdParty::orderBy('id','DESC')->select('id','name')->get();
+            $allAuthenticators = Authenticator::orderBy('id','DESC')->select('id','name')->get();
+            $entryItems = EntryItems::where('entry_id',$id)->orderBy('created_at', 'desc')->get();
+            $allGrades=[
+                [
+                    'id'=>1,
+                    'name'=>'0'
+                ],
+
+                [
+                    'id'=>2,
+                    'name'=>'1'
+                ],
+                [
+                    'id'=>3,
+                    'name'=>'1.5'
+                ],
+                [
+                    'id'=>4,
+                    'name'=>'2'
+                ],
+                [
+                    'id'=>5,
+                    'name'=>'2.5'
+                ],
+                [
+                    'id'=>6,
+                    'name'=>'3'
+                ],
+                [
+                    'id'=>7,
+                    'name'=>'3.5'
+                ],
+                [
+                    'id'=>8,
+                    'name'=>'4'
+                ],
+                [
+                    'id'=>9,
+                    'name'=>'4.5'
+                ],
+                [
+                    'id'=>10,
+                    'name'=>'5'
+                ],
+                [
+                    'id'=>11,
+                    'name'=>'5.5'
+                ],
+                [
+                    'id'=>12,
+                    'name'=>'6'
+                ],
+                [
+                    'id'=>13,
+                    'name'=>'6.5'
+                ],
+                [
+                    'id'=>14,
+                    'name'=>'7'
+                ],
+                [
+                    'id'=>15,
+                    'name'=>'7.5'
+                ],
+                [
+                    'id'=>16,
+                    'name'=>'8'
+                ],
+                [
+                    'id'=>17,
+                    'name'=>'8.5'
+                ],
+                [
+                    'id'=>18,
+                    'name'=>'9'
+                ],
+                [
+                    'id'=>19,
+                    'name'=>'9.5'
+                ],
+                [
+                    'id'=>20,
+                    'name'=>'10'
+                ],
+                [
+                    'id'=>21,
+                    'name'=>'10 (p)'
+                ],
+            ];
+
+//        return $allThirdParties;
+            return view('admin.receiving.create',compact('products','allCustomers','allPromos','allThirdParties','allAuthenticators','entry','entryItems','allGrades'));
+        } catch (\Exception $e) {
+            log_error($e);
+        }
+        return back();
+    }
 //
 //    public function update(Request $request, $id)
 //    {
