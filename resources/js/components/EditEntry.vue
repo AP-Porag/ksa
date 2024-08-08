@@ -999,7 +999,7 @@
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="" style="margin-right: 15px;">
-                                                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
+                                                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
                                                                         Confirm Receiving
                                                                     </button>
                                                                     <div class="modal fade" :id="`staticBackdropEdit-${entry.entryItemId}`" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
