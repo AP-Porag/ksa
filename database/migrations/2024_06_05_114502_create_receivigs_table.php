@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id');
             $table->foreignId('entry_id')->nullable();
-            $table->string('item_qty')->nullable();
+//            $table->string('item_qty')->nullable();
             $table->timestamps();
         });
     }

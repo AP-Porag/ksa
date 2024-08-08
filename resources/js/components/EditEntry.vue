@@ -1,9 +1,10 @@
 <template>
     <div class="">
-        <form>
             <!--            :title="`Create Third party with ${step_count} steps`"-->
             <!--        :subtitle="form_wizard_subtitle"-->
             <!--        @on-change="handleTabChange"-->
+
+
             <form-wizard
                 @on-complete="submit"
                 color="#3476ae"
@@ -20,7 +21,7 @@
                     <div class="wizard-footer-right">
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
-                        <wizard-button v-else @click.native="submit" class="wizard-footer-right" :style="props.fillButtonStyle">Save</wizard-button>
+<!--                        <wizard-button v-else @click.native="submit" class="wizard-footer-right" :style="props.fillButtonStyle">Save</wizard-button>-->
                     </div>
                 </template>
                 <tab-content
@@ -944,7 +945,7 @@
                                                     <tbody>
 
 
-                                                    <tr v-for="(entry,index) in entries" :key="entry.id">
+                                                    <tr v-for="(entry,index) in form_data.entries" :key="entry.entryItemId">
                                                         <td class="text-capitalize">{{entry.itemType}}</td>
                                                         <td>{{entry.itemType == 'Crossover' ? entry.crossover_item_type: 'N/A'}}</td>
 
@@ -998,10 +999,10 @@
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="" style="margin-right: 15px;">
-                                                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit-1">
+                                                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
                                                                         Confirm Receiving
                                                                     </button>
-                                                                    <div class="modal fade" id="staticBackdropEdit-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+                                                                    <div class="modal fade" :id="`staticBackdropEdit-${entry.entryItemId}`" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
                                                                         <div class="modal-dialog modal-lg">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
@@ -1047,7 +1048,7 @@
                                                                                                                                 placeholder=""
                                                                                                                                 name="card_description_one"
                                                                                                                                 id="card_description_one"
-                                                                                                                                :value="entry.card_description_one"
+                                                                                                                                v-model.trim="entry.card_description_one"
                                                                                                                             />
                                                                                                                         </div>
                                                                                                                     </div>
@@ -1063,7 +1064,7 @@
                                                                                                                                 placeholder=""
                                                                                                                                 name="card_description_two"
                                                                                                                                 id="card_description_two"
-                                                                                                                                :value="entry.card_description_two"
+                                                                                                                                v-model.trim="entry.card_description_two"
                                                                                                                             />
                                                                                                                         </div>
                                                                                                                     </div>
@@ -1079,7 +1080,7 @@
                                                                                                                                 placeholder=""
                                                                                                                                 name="card_description_three"
                                                                                                                                 id="card_description_three"
-                                                                                                                                :value="entry.card_description_three"
+                                                                                                                                v-model.trim="entry.card_description_three"
                                                                                                                             />
                                                                                                                         </div>
                                                                                                                     </div>
@@ -1095,7 +1096,7 @@
                                                                                                                                 placeholder=""
                                                                                                                                 name="card_serial_number"
                                                                                                                                 id="card_serial_number"
-                                                                                                                                :value="entry.card_serial_number"
+                                                                                                                                v-model.trim="entry.card_serial_number"
                                                                                                                             />
                                                                                                                         </div>
                                                                                                                     </div>
@@ -1113,7 +1114,7 @@
                                                                                                                                         placeholder=""
                                                                                                                                         name="card_autographed"
                                                                                                                                         id="card_autographed"
-                                                                                                                                        :value="entry.card_autographed"
+                                                                                                                                        v-model.trim="entry.card_autographed"
                                                                                                                                     />
                                                                                                                                 </div>
                                                                                                                             </div>
@@ -1122,10 +1123,10 @@
                                                                                                                                     <label class="form-label w-100 text-capitalize">
                                                                                                                                         Authenticator Name
                                                                                                                                     </label>
-                                                                                                                                    <select class="form-select mb-text-only" aria-label="Default select example" name="card_authenticator_name" id="card_authenticator_name">
-                                                                                                                                        <option selected disabled>Open this select menu</option>
-                                                                                                                                        <option value=""></option>
-
+                                                                                                                                    <select class="form-select mb-text-only" aria-label="Default select example"
+                                                                                                                                            v-model.trim="entry.card_authenticator_name"
+                                                                                                                                    >
+                                                                                                                                        <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
                                                                                                                                     </select>
                                                                                                                                 </div>
                                                                                                                             </div>
@@ -1140,7 +1141,7 @@
                                                                                                                                         placeholder=""
                                                                                                                                         name="card_authenticator_cert_no"
                                                                                                                                         id="card_authenticator_cert_no"
-                                                                                                                                        :value="entry.card_authenticator_name"
+                                                                                                                                        v-model.trim="entry.card_authenticator_cert_no"
                                                                                                                                     />
                                                                                                                                 </div>
                                                                                                                             </div>
@@ -1161,7 +1162,7 @@
                                                                                                                         placeholder=""
                                                                                                                         id="card_estimated_value"
                                                                                                                         name="card_estimated_value"
-                                                                                                                        :value="entry.card_estimated_value"
+                                                                                                                        :v-model.trim="entry.card_estimated_value"
                                                                                                                     />
                                                                                                                 </div>
                                                                                                             </div>
@@ -1203,7 +1204,7 @@
                                                                                                                             placeholder=""
                                                                                                                             name="auto_authentication_description_one"
                                                                                                                             id="auto_authentication_description_one"
-                                                                                                                            :value="entry.auto_authentication_description_one"
+                                                                                                                            v-model.trim="entry.auto_authentication_description_one"
                                                                                                                         />
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1219,7 +1220,7 @@
                                                                                                                             placeholder=""
                                                                                                                             name="auto_authentication_description_two"
                                                                                                                             id="auto_authentication_description_two"
-                                                                                                                            :value="entry.auto_authentication_description_two"
+                                                                                                                            v-model.trim="entry.auto_authentication_description_two"
                                                                                                                         />
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1235,7 +1236,7 @@
                                                                                                                             placeholder=""
                                                                                                                             name="auto_authentication_description_three"
                                                                                                                             id="auto_authentication_description_three"
-                                                                                                                            :value="entry.auto_authentication_description_three"
+                                                                                                                            v-model.trim="entry.auto_authentication_description_three"
                                                                                                                         />
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1251,7 +1252,7 @@
                                                                                                                             placeholder=""
                                                                                                                             name="auto_authentication_serial_number"
                                                                                                                             id="auto_authentication_serial_number"
-                                                                                                                            :value="entry.auto_authentication_serial_number"
+                                                                                                                            v-model.trim="entry.auto_authentication_serial_number"
                                                                                                                         />
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1269,7 +1270,7 @@
                                                                                                                                     placeholder=""
                                                                                                                                     name="auto_authentication_autographed"
                                                                                                                                     id="auto_authentication_autographed"
-                                                                                                                                    :value="entry.auto_authentication_autographed"
+                                                                                                                                    v-model.trim="entry.auto_authentication_autographed"
                                                                                                                                 />
                                                                                                                             </div>
                                                                                                                         </div>
@@ -1278,9 +1279,10 @@
                                                                                                                                 <label class="form-label w-100 text-capitalize">
                                                                                                                                     Authenticator Name
                                                                                                                                 </label>
-                                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example" name="auto_authentication_authenticator_name" id="auto_authentication_authenticator_name">
-                                                                                                                                    <option selected disabled>Open this select menu</option>
-                                                                                                                                    <option value=""></option>
+                                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example"
+                                                                                                                                        v-model.trim="entry.auto_authentication_authenticator_name"
+                                                                                                                                >
+                                                                                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
                                                                                                                                 </select>
                                                                                                                             </div>
                                                                                                                         </div>
@@ -1295,7 +1297,7 @@
                                                                                                                                     placeholder=""
                                                                                                                                     name="auto_authentication_authenticator_cert_no"
                                                                                                                                     id="auto_authentication_authenticator_cert_no"
-                                                                                                                                    :value="entry.auto_authentication_authenticator_cert_no"
+                                                                                                                                    v-model.trim="entry.auto_authentication_authenticator_cert_no"
                                                                                                                                 />
                                                                                                                             </div>
                                                                                                                         </div>
@@ -1316,7 +1318,7 @@
                                                                                                                     placeholder=""
                                                                                                                     name="auto_authentication_estimated_value"
                                                                                                                     id="auto_authentication_estimated_value"
-                                                                                                                    :value="entry.auto_authentication_estimated_value"
+                                                                                                                    v-model.trim="entry.auto_authentication_estimated_value"
                                                                                                                 />
                                                                                                             </div>
                                                                                                         </div>
@@ -1361,7 +1363,7 @@
                                                                                                                     placeholder=""
                                                                                                                     name="combined_service_description_one"
                                                                                                                     id="combined_service_description_one"
-                                                                                                                    :value="entry.combined_service_description_one"
+                                                                                                                    v-model.trim="entry.combined_service_description_one"
                                                                                                                 />
                                                                                                             </div>
                                                                                                         </div>
@@ -1377,7 +1379,7 @@
                                                                                                                     placeholder=""
                                                                                                                     name="combined_service_description_two"
                                                                                                                     id="combined_service_description_two"
-                                                                                                                    :value="entry.combined_service_description_two"
+                                                                                                                    v-model.trim="entry.combined_service_description_two"
                                                                                                                 />
                                                                                                             </div>
                                                                                                         </div>
@@ -1393,7 +1395,7 @@
                                                                                                                     placeholder=""
                                                                                                                     name="combined_service_description_three"
                                                                                                                     id="combined_service_description_three"
-                                                                                                                    :value="entry.combined_service_description_three"
+                                                                                                                    v-model.trim="entry.combined_service_description_three"
                                                                                                                 />
                                                                                                             </div>
                                                                                                         </div>
@@ -1409,7 +1411,7 @@
                                                                                                                     placeholder=""
                                                                                                                     name="combined_service_serial_number"
                                                                                                                     id="combined_service_serial_number"
-                                                                                                                    :value="entry.combined_service_serial_number"
+                                                                                                                    v-model.trim="entry.combined_service_serial_number"
                                                                                                                 />
                                                                                                             </div>
                                                                                                         </div>
@@ -1427,7 +1429,7 @@
                                                                                                                             placeholder=""
                                                                                                                             name="combined_service_autographed"
                                                                                                                             id="combined_service_autographed"
-                                                                                                                            :value="entry.combined_service_autographed"
+                                                                                                                            v-model.trim="entry.combined_service_autographed"
                                                                                                                         />
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1436,9 +1438,10 @@
                                                                                                                         <label class="form-label w-100 text-capitalize">
                                                                                                                             Authenticator Name
                                                                                                                         </label>
-                                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example" name="combined_service_authenticator_name" id="combined_service_authenticator_name">
-                                                                                                                            <option selected disabled>Open this select menu</option>
-                                                                                                                            <option value=""></option>
+                                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example"
+                                                                                                                                v-model.trim="entry.combined_service_authenticator_name"
+                                                                                                                        >
+                                                                                                                            <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1453,7 +1456,7 @@
                                                                                                                             placeholder=""
                                                                                                                             name="combined_service_authenticator_cert_no"
                                                                                                                             id="combined_service_authenticator_cert_no"
-                                                                                                                            :value="entry.combined_service_authenticator_cert_no"
+                                                                                                                            v-model.trim="entry.combined_service_authenticator_cert_no"
                                                                                                                         />
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1474,7 +1477,7 @@
                                                                                                             placeholder=""
                                                                                                             name="combined_service_estimated_value"
                                                                                                             id="combined_service_estimated_value"
-                                                                                                            :value="entry.combined_service_estimated_value"
+                                                                                                            v-model.trim="entry.combined_service_estimated_value"
                                                                                                         />
                                                                                                     </div>
                                                                                                 </div>
@@ -1518,7 +1521,7 @@
                                                                                                                 placeholder=""
                                                                                                                 name="reholder_certification_number"
                                                                                                                 id="reholder_certification_number"
-                                                                                                                :value="entry.reholder_certification_number"
+                                                                                                                v-model.trim="entry.reholder_certification_number"
                                                                                                             />
                                                                                                         </div>
                                                                                                     </div>
@@ -1537,7 +1540,7 @@
                                                                                                         placeholder=""
                                                                                                         name="reholder_estimated_value"
                                                                                                         id="reholder_estimated_value"
-                                                                                                        :value="entry.reholder_estimated_value"
+                                                                                                        v-model.trim="entry.reholder_estimated_value"
                                                                                                     />
                                                                                                 </div>
                                                                                             </div>
@@ -1561,6 +1564,7 @@
                                                                                                     type="text"
                                                                                                     class="form-control"
                                                                                                     placeholder=""
+                                                                                                    value="1"
                                                                                                     readonly
                                                                                                 />
                                                                                             </div>
@@ -1580,7 +1584,7 @@
                                                                                                             placeholder=""
                                                                                                             name="crossover_description_one"
                                                                                                             id="crossover_description_one"
-                                                                                                            :value="entry.crossover_description_one"
+                                                                                                            v-model.trim="entry.crossover_description_one"
                                                                                                         />
                                                                                                     </div>
                                                                                                 </div>
@@ -1596,7 +1600,7 @@
                                                                                                             placeholder=""
                                                                                                             name="crossover_description_two"
                                                                                                             id="crossover_description_two"
-                                                                                                            :value="entry.crossover_description_two"
+                                                                                                            v-model.trim="entry.crossover_description_two"
                                                                                                         />
                                                                                                     </div>
                                                                                                 </div>
@@ -1612,7 +1616,7 @@
                                                                                                             placeholder=""
                                                                                                             name="crossover_description_three"
                                                                                                             id="crossover_description_three"
-                                                                                                            :value="entry.crossover_description_three"
+                                                                                                            v-model.trim="entry.crossover_description_three"
                                                                                                         />
                                                                                                     </div>
                                                                                                 </div>
@@ -1628,7 +1632,7 @@
                                                                                                             placeholder=""
                                                                                                             name="crossover_serial_number"
                                                                                                             id="crossover_serial_number"
-                                                                                                            :value="entry.crossover_serial_number"
+                                                                                                            v-model.trim="entry.crossover_serial_number"
                                                                                                         />
                                                                                                     </div>
                                                                                                 </div>
@@ -1646,7 +1650,7 @@
                                                                                                                     placeholder=""
                                                                                                                     name="crossover_autographed"
                                                                                                                     id="crossover_autographed"
-                                                                                                                    :value="entry.crossover_autographed"
+                                                                                                                    v-model.trim="entry.crossover_autographed"
                                                                                                                 />
                                                                                                             </div>
                                                                                                         </div>
@@ -1655,9 +1659,10 @@
                                                                                                                 <label class="form-label w-100 text-capitalize">
                                                                                                                     Authenticator Name
                                                                                                                 </label>
-                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_authenticator_name"id="crossover_authenticator_name">
-                                                                                                                    <option selected disabled>Open this select menu</option>
-                                                                                                                    <option value=""></option>
+                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example"
+                                                                                                                        v-model.trim="entry.crossover_authenticator_name"
+                                                                                                                >
+                                                                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
                                                                                                                 </select>
                                                                                                             </div>
                                                                                                         </div>
@@ -1672,7 +1677,7 @@
                                                                                                                     placeholder=""
                                                                                                                     name="crossover_authenticator_cert_no"
                                                                                                                     id="crossover_authenticator_cert_no"
-                                                                                                                    :value="entry.crossover_authenticator_cert_no"
+                                                                                                                    v-model.trim="entry.crossover_authenticator_cert_no"
                                                                                                                 />
                                                                                                             </div>
                                                                                                         </div>
@@ -1695,7 +1700,7 @@
                                                                                                             placeholder=""
                                                                                                             name="crossover_estimated_value"
                                                                                                             id="crossover_estimated_value"
-                                                                                                            :value="entry.crossover_estimated_value"
+                                                                                                            v-model.trim="entry.crossover_estimated_value"
                                                                                                         />
                                                                                                     </div>
                                                                                                 </div>
@@ -1705,7 +1710,9 @@
                                                                                                             Minimum Grade
                                                                                                             <span class="error">*</span>
                                                                                                         </label>
-                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_minimum_grade" id="crossover_minimum_grade">
+                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_minimum_grade" id="crossover_minimum_grade"
+                                                                                                                v-model.trim="entry.crossover_minimum_grade"
+                                                                                                        >
                                                                                                             <option v-for="(grade,index) in minimumGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
                                                                                                         </select>
                                                                                                     </div>
@@ -1717,9 +1724,9 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input type="number" hidden="" class="form-control" name="item_id" value="" style="width: 33%;margin: 0 auto;">
+<!--                                                                    <input type="number" hidden="" class="form-control" name="item_id" value="" style="width: 33%;margin: 0 auto;">-->
                                                                 <div class="w-100 d-flex justify-content-end">
-                                                                    <button type="button" id="edit_item_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
+                                                                    <button @click="submit" type="button" id="edit_item_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
                                                                     <button type="button" id="cancel_btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                                 </div>
                                                                                             </div>
@@ -1745,7 +1752,6 @@
                     </div>
                 </tab-content>
             </form-wizard>
-        </form>
     </div>
 </template>
 
@@ -2095,50 +2101,6 @@ export default {
                 }
             ],
             isAllSelected: false,
-            // customers: [
-            //     {
-            //         "id":1,
-            //         "name":"Customer 1"
-            //     },
-            //     {
-            //         "id":2,
-            //         "name":"Customer 2"
-            //     },
-            //     {
-            //         "id":3,
-            //         "name":"Customer 3"
-            //     },
-            //     {
-            //         "id":4,
-            //         "name":"Customer 4"
-            //     },
-            //     {
-            //         "id":5,
-            //         "name":"Customer 5"
-            //     },
-            // ],
-            // promoCodes: [
-            //     {
-            //         'id':1,
-            //         'name':'promo - 1',
-            //     },
-            //     {
-            //         'id':2,
-            //         'name':'promo - 2',
-            //     },
-            //     {
-            //         'id':3,
-            //         'name':'promo - 3',
-            //     },
-            //     {
-            //         'id':4,
-            //         'name':'promo - 1',
-            //     },
-            //     {
-            //         'id':5,
-            //         'name':'promo - 1',
-            //     },
-            // ],
             shippingMethods: [
                 {
                     'id':1,
@@ -2199,24 +2161,6 @@ export default {
                     'name':'iCert Booth',
                 },
             ],
-            // thirdParties: [
-            //     {
-            //         'id':1,
-            //         'name':'Third party - 1',
-            //     },
-            //     {
-            //         'id':2,
-            //         'name':'Third party - 2',
-            //     },
-            //     {
-            //         'id':3,
-            //         'name':'Third party - 3',
-            //     },
-            //     {
-            //         'id':4,
-            //         'name':'Third party - 4',
-            //     },
-            // ],
             gradingLocations: [
                 {
                     'id':1,
@@ -2278,28 +2222,6 @@ export default {
                     'name':'Card'
                 }
             ],
-            // authenticators:[
-            //     {
-            //         'id':1,
-            //         'name':'Auth 1'
-            //     },
-            //     {
-            //         'id':2,
-            //         'name':'Auth 2'
-            //     },
-            //     {
-            //         'id':3,
-            //         'name':'Auth 3'
-            //     },
-            //     {
-            //         'id':4,
-            //         'name':'Auth 4'
-            //     },
-            //     {
-            //         'id':5,
-            //         'name':'Auth 5'
-            //     },
-            // ],
             minimumGrades:[
                 {
                     'id':1,
@@ -2429,56 +2351,58 @@ export default {
                 third_party_drop_center:'',
                 use_customer_account:'',
                 customer_account_number:'',
-                crossover_item_type:'',
                 authenticator_name:'',
                 authenticator_name_two:'',
                 authenticator_name_three:'',
                 authenticator_name_four:'',
-                crossover_minimum_grade:'',
+                entries:[],
 
-                //item type card
-                card_description_one:'',
-                card_description_two:'',
-                card_description_three:'',
-                card_serial_number:'',
-                card_autographed:'',
-                card_authenticator_name:'',
-                card_authenticator_cert_no:'',
-                card_estimated_value:'',
 
-                //item type auto authentication
-                auto_authentication_description_one:'',
-                auto_authentication_description_two:'',
-                auto_authentication_description_three:'',
-                auto_authentication_serial_number:'',
-                auto_authentication_autographed:'',
-                auto_authentication_authenticator_name:'',
-                auto_authentication_authenticator_cert_no:'',
-                auto_authentication_estimated_value:'',
-
-                //item type combined service
-                combined_service_description_one:'',
-                combined_service_description_two:'',
-                combined_service_description_three:'',
-                combined_service_serial_number:'',
-                combined_service_autographed:'',
-                combined_service_authenticator_name:'',
-                combined_service_authenticator_cert_no:'',
-                combined_service_estimated_value:'',
-
-                //item type combined service
-                reholder_certification_number:'',
-                reholder_estimated_value:'',
-
-                //item type crossover
-                crossover_description_one:'',
-                crossover_description_two:'',
-                crossover_description_three:'',
-                crossover_serial_number:'',
-                crossover_autographed:'',
-                crossover_authenticator_name:'',
-                crossover_authenticator_cert_no:'',
-                crossover_estimated_value:'',
+                // //item type card
+                // card_description_one:'',
+                // card_description_two:'',
+                // card_description_three:'',
+                // card_serial_number:'',
+                // card_autographed:'',
+                // card_authenticator_name:'',
+                // card_authenticator_cert_no:'',
+                // card_estimated_value:'',
+                //
+                // //item type auto authentication
+                // auto_authentication_description_one:'',
+                // auto_authentication_description_two:'',
+                // auto_authentication_description_three:'',
+                // auto_authentication_serial_number:'',
+                // auto_authentication_autographed:'',
+                // auto_authentication_authenticator_name:'',
+                // auto_authentication_authenticator_cert_no:'',
+                // auto_authentication_estimated_value:'',
+                //
+                // //item type combined service
+                // combined_service_description_one:'',
+                // combined_service_description_two:'',
+                // combined_service_description_three:'',
+                // combined_service_serial_number:'',
+                // combined_service_autographed:'',
+                // combined_service_authenticator_name:'',
+                // combined_service_authenticator_cert_no:'',
+                // combined_service_estimated_value:'',
+                //
+                // //item type combined service
+                // reholder_certification_number:'',
+                // reholder_estimated_value:'',
+                //
+                // //item type crossover
+                // crossover_description_one:'',
+                // crossover_description_two:'',
+                // crossover_description_three:'',
+                // crossover_serial_number:'',
+                // crossover_autographed:'',
+                // crossover_authenticator_name:'',
+                // crossover_authenticator_cert_no:'',
+                // crossover_estimated_value:'',
+                // crossover_minimum_grade:'',
+                // crossover_item_type:'',
             },
 
         }
@@ -2531,56 +2455,114 @@ export default {
             self.form_data.third_party_drop_center= self.item.third_party_drop_center,
             self.form_data.use_customer_account= self.item.use_customer_account,
             self.form_data.customer_account_number= self.item.customer_account_number,
-            self.form_data.crossover_item_type= self.item.crossover_item_type,
-            self.form_data.authenticator_name= self.item.authenticator_name,
-            self.form_data.authenticator_name_two= self.item.authenticator_name_two,
-            self.form_data.authenticator_name_three= self.item.authenticator_name_three,
-            self.form_data.authenticator_name_four= self.item.authenticator_name_four,
-            self.form_data.crossover_minimum_grade= self.item.crossover_minimum_grade,
+            // self.form_data.crossover_item_type= self.item.crossover_item_type,
+            // self.form_data.authenticator_name= self.item.authenticator_name,
+            // self.form_data.authenticator_name_two= self.item.authenticator_name_two,
+            // self.form_data.authenticator_name_three= self.item.authenticator_name_three,
+            // self.form_data.authenticator_name_four= self.item.authenticator_name_four,
+            // self.form_data.crossover_minimum_grade= self.item.crossover_minimum_grade,
 
-            //item type card
-            self.form_data.card_description_one= self.item.card_description_one,
-            self.form_data.card_description_two= self.item.card_description_two,
-            self.form_data.card_description_three= self.item.card_description_three,
-            self.form_data.card_serial_number= self.item.card_serial_number,
-            self.form_data.card_autographed= self.item.card_autographed,
-            self.form_data.card_authenticator_name= self.item.card_authenticator_name,
-            self.form_data.card_authenticator_cert_no= self.item.card_authenticator_cert_no,
-            self.form_data.card_estimated_value= self.item.card_estimated_value,
 
-            //item type auto authentication
-            self.form_data.auto_authentication_description_one= self.item.auto_authentication_description_one,
-            self.form_data.auto_authentication_description_two= self.item.auto_authentication_description_two,
-            self.form_data.auto_authentication_description_three= self.item.auto_authentication_description_three,
-            self.form_data.auto_authentication_serial_number= self.item.auto_authentication_serial_number,
-            self.form_data.auto_authentication_autographed= self.item.auto_authentication_autographed,
-            self.form_data.auto_authentication_authenticator_name= self.item.auto_authentication_authenticator_name,
-            self.form_data.auto_authentication_authenticator_cert_no= self.item.auto_authentication_authenticator_cert_no,
-            self.form_data.auto_authentication_estimated_value= self.item.auto_authentication_estimated_value,
+            self.entries.map(function(entry) {
 
-            //item type combined service
-            self.form_data.combined_service_description_one= self.item.combined_service_description_one,
-            self.form_data.combined_service_description_two= self.item.combined_service_description_two,
-            self.form_data.combined_service_description_three= self.item.combined_service_description_three,
-            self.form_data.combined_service_serial_number= self.item.combined_service_serial_number,
-            self.form_data.combined_service_autographed= self.item.combined_service_autographed,
-            self.form_data.combined_service_authenticator_name= self.item.combined_service_authenticator_name,
-            self.form_data.combined_service_authenticator_cert_no= self.item.combined_service_authenticator_cert_no,
-            self.form_data.combined_service_estimated_value= self.item.combined_service_estimated_value,
+                let en = {
+                    entryItemId : entry.id,
+                    entryID : entry.entry_id,
+                    itemType : entry.itemType,
+                    //item type card
+                    card_description_one: entry.card_description_one,
+                    card_description_two : entry.card_description_two,
+                    card_description_three : entry.card_description_three,
+                    card_serial_number : entry.card_serial_number,
+                    card_autographed : entry.card_autographed,
+                    card_authenticator_name : entry.card_authenticator_name,
+                    card_authenticator_cert_no : entry.card_authenticator_cert_no,
+                    card_estimated_value : entry.card_estimated_value,
 
-            //item type combined service
-            self.form_data.reholder_certification_number= self.item.reholder_certification_number,
-            self.form_data.reholder_estimated_value= self.item.reholder_estimated_value,
+                    //item type auto authentication
+                    auto_authentication_description_one : entry.auto_authentication_description_one,
+                    auto_authentication_description_two : entry.auto_authentication_description_two,
+                    auto_authentication_description_three : entry.auto_authentication_description_three,
+                    auto_authentication_serial_number : entry.auto_authentication_serial_number,
+                    auto_authentication_autographed : entry.auto_authentication_autographed,
+                    auto_authentication_authenticator_name : entry.auto_authentication_authenticator_name,
+                    auto_authentication_authenticator_cert_no : entry.auto_authentication_authenticator_cert_no,
+                    auto_authentication_estimated_value : entry.auto_authentication_estimated_value,
 
-            //item type crossover
-            self.form_data.crossover_description_one= self.item.crossover_description_one,
-            self.form_data.crossover_description_two= self.item.crossover_description_two,
-            self.form_data.crossover_description_three= self.item.crossover_description_three,
-            self.form_data.crossover_serial_number= self.item.crossover_serial_number,
-            self.form_data.crossover_autographed= self.item.crossover_autographed,
-            self.form_data.crossover_authenticator_name= self.item.crossover_authenticator_name,
-            self.form_data.crossover_authenticator_cert_no= self.item.crossover_authenticator_cert_no;
-            self.form_data.crossover_estimated_value= self.item.crossover_estimated_value;
+                    //item type combined service
+                    combined_service_description_one : entry.combined_service_description_one,
+                    combined_service_description_two : entry.combined_service_description_two,
+                    combined_service_description_three : entry.combined_service_description_three,
+                    combined_service_serial_number : entry.combined_service_serial_number,
+                    combined_service_autographed : entry.combined_service_autographed,
+                    combined_service_authenticator_name : entry.combined_service_authenticator_name,
+                    combined_service_authenticator_cert_no : entry.combined_service_authenticator_cert_no,
+                    combined_service_estimated_value : entry.combined_service_estimated_value,
+
+                    //item type combined service
+                    reholder_certification_number : entry.reholder_certification_number,
+                    reholder_estimated_value : entry.reholder_estimated_value,
+
+                    //item type crossover
+                    crossover_description_one : entry.crossover_description_one,
+                    crossover_description_two : entry.crossover_description_two,
+                    crossover_description_three : entry.crossover_description_three,
+                    crossover_serial_number : entry.crossover_serial_number,
+                    crossover_autographed : entry.crossover_autographed,
+                    crossover_authenticator_name : entry.crossover_authenticator_name,
+                    crossover_authenticator_cert_no : entry.crossover_authenticator_cert_no,
+                    crossover_estimated_value : entry.crossover_estimated_value,
+                    crossover_minimum_grade : entry.crossover_minimum_grade,
+                    crossover_item_type : entry.crossover_item_type,
+                }
+                self.form_data.entries.push(en)
+                console.log(self.form_data.entries)
+            });
+
+
+        //item type card
+        // self.form_data.card_description_one= self.item.card_description_one,
+        //     self.form_data.card_description_two= self.item.card_description_two,
+        //     self.form_data.card_description_three= self.item.card_description_three,
+        //     self.form_data.card_serial_number= self.item.card_serial_number,
+        //     self.form_data.card_autographed= self.item.card_autographed,
+        //     self.form_data.card_authenticator_name= self.item.card_authenticator_name,
+        //     self.form_data.card_authenticator_cert_no= self.item.card_authenticator_cert_no,
+        //     self.form_data.card_estimated_value= self.item.card_estimated_value,
+        //
+        //     //item type auto authentication
+        //     self.form_data.auto_authentication_description_one= self.item.auto_authentication_description_one,
+        //     self.form_data.auto_authentication_description_two= self.item.auto_authentication_description_two,
+        //     self.form_data.auto_authentication_description_three= self.item.auto_authentication_description_three,
+        //     self.form_data.auto_authentication_serial_number= self.item.auto_authentication_serial_number,
+        //     self.form_data.auto_authentication_autographed= self.item.auto_authentication_autographed,
+        //     self.form_data.auto_authentication_authenticator_name= self.item.auto_authentication_authenticator_name,
+        //     self.form_data.auto_authentication_authenticator_cert_no= self.item.auto_authentication_authenticator_cert_no,
+        //     self.form_data.auto_authentication_estimated_value= self.item.auto_authentication_estimated_value,
+        //
+        //     //item type combined service
+        //     self.form_data.combined_service_description_one= self.item.combined_service_description_one,
+        //     self.form_data.combined_service_description_two= self.item.combined_service_description_two,
+        //     self.form_data.combined_service_description_three= self.item.combined_service_description_three,
+        //     self.form_data.combined_service_serial_number= self.item.combined_service_serial_number,
+        //     self.form_data.combined_service_autographed= self.item.combined_service_autographed,
+        //     self.form_data.combined_service_authenticator_name= self.item.combined_service_authenticator_name,
+        //     self.form_data.combined_service_authenticator_cert_no= self.item.combined_service_authenticator_cert_no,
+        //     self.form_data.combined_service_estimated_value= self.item.combined_service_estimated_value,
+        //
+        //     //item type combined service
+        //     self.form_data.reholder_certification_number= self.item.reholder_certification_number,
+        //     self.form_data.reholder_estimated_value= self.item.reholder_estimated_value,
+        //
+        //     //item type crossover
+        //     self.form_data.crossover_description_one= self.item.crossover_description_one,
+        //     self.form_data.crossover_description_two= self.item.crossover_description_two,
+        //     self.form_data.crossover_description_three= self.item.crossover_description_three,
+        //     self.form_data.crossover_serial_number= self.item.crossover_serial_number,
+        //     self.form_data.crossover_autographed= self.item.crossover_autographed,
+        //     self.form_data.crossover_authenticator_name= self.item.crossover_authenticator_name,
+        //     self.form_data.crossover_authenticator_cert_no= self.item.crossover_authenticator_cert_no;
+        // self.form_data.crossover_estimated_value= self.item.crossover_estimated_value;
 
             if (self.form_data.shipping_method == "Pickup"){
                 self.showPickupLocationBox=true;
@@ -2599,57 +2581,82 @@ export default {
     },
     methods:{
         async submit(){
-            if (this.checkSixthStep()){
-                Swal.fire({
-                    // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
-                    title: `Do you want to update this order: <br> ${this.form_data.name}`,
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: "Yes",
-                    denyButtonText: `No`,
-                    icon: "question",
-                }).then((result) => {
-                    console.log(result)
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        // Swal.fire("Saved!", "", "success");
-                        // window.location.href = `/admin/entries/10`;
-                        // Submit form
 
-                        axios
-                            .put(`/admin/entries/${this.item.id}`, this.form_data)
-                            .then(function (response) {
-                                console.log(response)
-                                Swal.fire("Update!", "", "success").then((result)=>{
-                                    if (result.isConfirmed){
-                                        if (response.status == 200){
-                                            window.location.href = `/admin/entries/${response.data.id}`;
-                                        }
-                                    }
-                                });
+            axios
+                .put(`/admin/receiving/${this.item.id}`, this.form_data)
+                .then(function (response) {
+                    console.log(response)
+                    Swal.fire("Received!", "", "success").then((result)=>{
+                        if (result.isConfirmed){
+                            if (response.status == 200){
+                                // window.location.href = `/admin/entries/${response.data.id}`;
+                                window.location.href = `/admin/receiving`;
+                            }
+                        }
+                    });
 
-                                // window.location.reload()
-                                // window.location.href = "/admin/thirds";
-                            })
-                            .catch(function (err) {
-                                try {
-                                    self.showValidationError(err);
-                                } catch (e) {
-                                    self.showSomethingWrong();
-                                }
-                            });
-                        // Swal.fire("Saved!", "", "success");
-                    }else if (result.isDismissed){
-                        window.location.href = "/admin/entries";
-                    }else if (result.isDenied) {
-                        console.log(result.isDenied)
-                        // Swal.fire("Changes are not saved", "", "info");
+                    // window.location.reload()
+                    // window.location.href = "/admin/thirds";
+                })
+                .catch(function (err) {
+                    try {
+                        self.showValidationError(err);
+                    } catch (e) {
+                        self.showSomethingWrong();
                     }
                 });
 
-            }else {
-                return;
-            }
+            // if (this.checkSixthStep()){
+            //     Swal.fire({
+            //         // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
+            //         title: `Do you want to update this order: <br> ${this.form_data.name}`,
+            //         showDenyButton: true,
+            //         showCancelButton: true,
+            //         confirmButtonText: "Yes",
+            //         denyButtonText: `No`,
+            //         icon: "question",
+            //     }).then((result) => {
+            //         console.log(result)
+            //         /* Read more about isConfirmed, isDenied below */
+            //         if (result.isConfirmed) {
+            //             // Swal.fire("Saved!", "", "success");
+            //             // window.location.href = `/admin/entries/10`;
+            //             // Submit form
+            //
+            //             axios
+            //                 .put(`/admin/entries/${this.item.id}`, this.form_data)
+            //                 .then(function (response) {
+            //                     console.log(response)
+            //                     Swal.fire("Update!", "", "success").then((result)=>{
+            //                         if (result.isConfirmed){
+            //                             if (response.status == 200){
+            //                                 window.location.href = `/admin/entries/${response.data.id}`;
+            //                             }
+            //                         }
+            //                     });
+            //
+            //                     // window.location.reload()
+            //                     // window.location.href = "/admin/thirds";
+            //                 })
+            //                 .catch(function (err) {
+            //                     try {
+            //                         self.showValidationError(err);
+            //                     } catch (e) {
+            //                         self.showSomethingWrong();
+            //                     }
+            //                 });
+            //             // Swal.fire("Saved!", "", "success");
+            //         }else if (result.isDismissed){
+            //             window.location.href = "/admin/entries";
+            //         }else if (result.isDenied) {
+            //             console.log(result.isDenied)
+            //             // Swal.fire("Changes are not saved", "", "info");
+            //         }
+            //     });
+            //
+            // }else {
+            //     return;
+            // }
         },
         async checkFirstStep(){
             this.v$.$touch()
@@ -2873,7 +2880,7 @@ export default {
             }
         },
         cancel(){
-            window.location.assign("/admin/entries");
+            window.location.assign("/admin/receiving");
         },
         selectAllCats () {
             if (this.isAllSelected) {
@@ -3281,6 +3288,7 @@ export default {
     }
 
 }
+
 </script>
 
 <style scoped>
