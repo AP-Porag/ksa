@@ -21,7 +21,7 @@
                     <div class="wizard-footer-right">
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
-<!--                        <wizard-button v-else @click.native="submit" class="wizard-footer-right" :style="props.fillButtonStyle">Save</wizard-button>-->
+                        <wizard-button v-else @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to received</wizard-button>
                     </div>
                 </template>
                 <tab-content
@@ -999,8 +999,11 @@
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="" style="margin-right: 15px;">
-                                                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
+                                                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`" v-if="entry.status === 'not received'">
                                                                         Confirm Receiving
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-sm btn-success" disabled v-else>
+                                                                        Already Received
                                                                     </button>
                                                                     <div class="modal fade" :id="`staticBackdropEdit-${entry.entryItemId}`" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
                                                                         <div class="modal-dialog modal-lg">
@@ -1726,7 +1729,7 @@
                                                                     </div>
 <!--                                                                    <input type="number" hidden="" class="form-control" name="item_id" value="" style="width: 33%;margin: 0 auto;">-->
                                                                 <div class="w-100 d-flex justify-content-end">
-                                                                    <button @click="submit" type="button" id="edit_item_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
+                                                                    <button @click="submit(index)" type="button" id="edit_item_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
                                                                     <button type="button" id="cancel_btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                                 </div>
                                                                                             </div>
@@ -2469,6 +2472,7 @@ export default {
                     entryItemId : entry.id,
                     entryID : entry.entry_id,
                     itemType : entry.itemType,
+                    status : entry.status,
                     //item type card
                     card_description_one: entry.card_description_one,
                     card_description_two : entry.card_description_two,
@@ -2580,8 +2584,15 @@ export default {
             }
     },
     methods:{
-        async submit(){
+        async submit(ind){
+            // console.log(ind)
 
+            for (let i = this.form_data.entries.length - 1; i >= 0; i--) {
+                if (i !== ind) {
+                    this.form_data.entries.splice(i, 1);
+                }
+            }
+            console.log(this.form_data)
             axios
                 .put(`/admin/receiving/${this.item.id}`, this.form_data)
                 .then(function (response) {
@@ -2657,6 +2668,59 @@ export default {
             // }else {
             //     return;
             // }
+        },
+        async received(id){
+            if (this.checkSixthStep()){
+                Swal.fire({
+                    // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
+                    title: `Do you want to update this order to received: <br> ${this.form_data.name}`,
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    denyButtonText: `No`,
+                    icon: "question",
+                }).then((result) => {
+                    console.log(result)
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        // Swal.fire("Saved!", "", "success");
+                        // window.location.href = `/admin/entries/10`;
+                        // Submit form
+
+                        axios
+                            .get(`/admin/receiving/entry/received/${id}`)
+                            .then(function (response) {
+                                console.log(response)
+                                Swal.fire("Update!", "", "success").then((result)=>{
+                                    if (result.isConfirmed){
+                                        if (response.status == 200){
+                                            window.location.href = `/admin/receiving`;
+                                        }
+                                    }
+                                });
+
+                                // window.location.reload()
+                                // window.location.href = "/admin/thirds";
+                            })
+                            .catch(function (err) {
+                                try {
+                                    self.showValidationError(err);
+                                } catch (e) {
+                                    self.showSomethingWrong();
+                                }
+                            });
+                        // Swal.fire("Saved!", "", "success");
+                    }else if (result.isDismissed){
+                        window.location.href = "/admin/receiving";
+                    }else if (result.isDenied) {
+                        console.log(result.isDenied)
+                        // Swal.fire("Changes are not saved", "", "info");
+                    }
+                });
+
+            }else {
+                return;
+            }
         },
         async checkFirstStep(){
             this.v$.$touch()

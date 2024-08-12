@@ -1,5 +1,6 @@
 <?php
 
+use App\Utils\GlobalConstant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -48,6 +49,7 @@ return new class extends Migration
             $table->string('third_party_drop_center')->nullable();
             $table->string('use_customer_account')->nullable();
             $table->string('customer_account_number')->nullable();
+            $table->string('status')->default(GlobalConstant::STATUS_NOT_RECEIVED);
             $table->timestamps();
         });
     }

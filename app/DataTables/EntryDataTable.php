@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Entry;
+use App\Utils\GlobalConstant;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -48,9 +49,9 @@ class EntryDataTable extends DataTable
                 return $item->customer->contact_name;
             })
             ->editColumn('id', function ($item) {
-                $receivingCOunt = $item->receivings->count();
+//                $receivingCOunt = $item->receivings->count();
 
-                if($receivingCOunt > 0){
+                if($item->status == GlobalConstant::STATUS_RECEIVED){
                     $status = 'Order Received';
                 }else{
                     $status = 'Not Yet Received';

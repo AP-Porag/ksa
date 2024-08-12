@@ -60,6 +60,7 @@ return new class extends Migration
             $table->string('crossover_estimated_value')->nullable();
 		    $table->string('crossover_item_type')->nullable();
 		    $table->string('crossover_minimum_grade')->nullable();
+            $table->string('status')->default(\App\Utils\GlobalConstant::STATUS_NOT_RECEIVED);
             $table->string('pieces')->nullable();
             $table->timestamps();
         });

@@ -14,6 +14,7 @@ use App\Models\Receivig;
 use App\Models\ReceivingItem;
 use App\Models\ThirdParty;
 use App\Services\ReceivingService;
+use App\Utils\GlobalConstant;
 use Illuminate\Http\Request;
 use App\Services\EntryService;
 
@@ -37,8 +38,12 @@ class ReceivingController extends Controller
     {
         $entrySKU = $request->id;
         $order = Entry::where('entrySKU','=',$entrySKU)->with('customer')->first();
+
+//        $totalItemCount = EntryItems::where('entry_id',$order->id)->count();
+//        $itemReceivedCount = EntryItems::where('entry_id',$order->id)->where('status','=',GlobalConstant::STATUS_RECEIVED)->count();
+
         if ($order){
-            if ($order->receivings->count() > 0){
+            if ($order->status == GlobalConstant::STATUS_RECEIVED){
                 return response()->json(['status'=>202,'message' => 'Already Received', 'data' => []]);
             }else{
                 return response()->json(['status'=>200,'message' => 'Successfully feched', 'data' => $order]);
@@ -361,6 +366,7 @@ class ReceivingController extends Controller
                     $item->crossover_estimated_value = $entry['crossover_estimated_value'];
                     $item->crossover_item_type = $entry['crossover_item_type'];
                     $item->crossover_minimum_grade = $entry['crossover_minimum_grade'];
+                    $item->status = GlobalConstant::STATUS_RECEIVED;
                     $item->pieces = 0;
                     $item->save();
                 }
@@ -478,13 +484,17 @@ class ReceivingController extends Controller
 //        return $items;
         return view('admin.receiving.show',compact('items','entry','authenticators','grades'));
     }
-//
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
+
+    public function updateEntryToReceived($id)
+    {
+
+        $entry = Entry::find($id);
+        $entry->status = GlobalConstant::STATUS_RECEIVED;
+        $entry->save();
+
+        $data = ['status'=>200,'message'=>'Successfully update','data'=>$id];
+        return response()->json($data);
+    }
     public function destroy($id)
     {
         try {

@@ -101,6 +101,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::post('/receiving/edit/new/item',[ReceivingController::class,'newItemEdit'] )->name('receiving.edit.new.item');
     Route::post('/receiving/add-additional/pieces',[ReceivingController::class,'addAdditionalPieces'] )->name('receiving.addAdditional.pieces');
     Route::post('/receiving/entry/item/destroy',[ReceivingController::class,'itemDestroy'] )->name('receiving.entry.item.destroy');
+    Route::get('/receiving/entry/received/{id}',[ReceivingController::class,'updateEntryToReceived'] )->name('receiving.updateEntryToReceived');
 
     //customers
     Route::resource('customers', CustomerController::class);
