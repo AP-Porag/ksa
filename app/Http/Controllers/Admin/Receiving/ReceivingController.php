@@ -505,33 +505,15 @@ class ReceivingController extends Controller
             return back();
         }
     }
-//
-//    public function findIfExists(Request $request)
-//    {
-////        dd($request->all());
-//
-//        $thirdParty = ThirdParty::where('name',$request->name)->with('products')->first();
-//
-//        if ($thirdParty != null){
-//            $data = ['status'=>200,'message'=>'Already Exist','data'=>$thirdParty];
-//            return response()->json($data);
-//        }else{
-//            $data = ['status'=>300,'message'=>'Not Exist','data'=>$thirdParty];
-//            return response()->json($data);
-//        }
-//    }
-//
-//    public function getCustomerInfo($id)
-//    {
-//        $customer = Customer::find($id);
-//        $data = [
-//            'status'=>200,
-//            'message'=>'Successfully fetched',
-//            'data'=>$customer
-//        ];
-//        return response()->json($data);
-//    }
-//
+
+    public function getEntryItemsInReceiving($id)
+    {
+        $entryItems = EntryItems::where('entry_id',$id)->orderBy('created_at', 'desc')->get();
+
+        $response = ['status'=>200,'message'=>'Success','data'=>$entryItems];
+
+        return response()->json($response);
+    }
     public function addAdditionalPieces(Request $request)
     {
         $id = $request->item_id;

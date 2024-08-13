@@ -12,6 +12,7 @@
                 subtitle=""
                 next-button-text="Continue"
                 finish-button-text="Save"
+                :start-index="startIndex"
             >
 
                 <template v-slot:footer="props">
@@ -1774,6 +1775,7 @@ export default {
     setup: () => ({ v$: useVuelidate() }),
     data(){
         return{
+            startIndex:0,
             show_error_one: false,
             show_error_two: false,
             show_error_three: false,
@@ -2520,7 +2522,6 @@ export default {
                     crossover_item_type : entry.crossover_item_type,
                 }
                 self.form_data.entries.push(en)
-                console.log(self.form_data.entries)
             });
 
 
@@ -2586,6 +2587,7 @@ export default {
     methods:{
         async submit(ind){
             // console.log(ind)
+            let self = this;
 
             for (let i = this.form_data.entries.length - 1; i >= 0; i--) {
                 if (i !== ind) {
@@ -2601,7 +2603,9 @@ export default {
                         if (result.isConfirmed){
                             if (response.status == 200){
                                 // window.location.href = `/admin/entries/${response.data.id}`;
-                                window.location.href = `/admin/receiving`;
+                                // window.location.href = `/admin/receiving/${this.item.id}/edit`;
+                                // window.location.reload();
+                                self.getEntryItemsList(self.item.id);
                             }
                         }
                     });
@@ -2694,7 +2698,7 @@ export default {
                                 Swal.fire("Update!", "", "success").then((result)=>{
                                     if (result.isConfirmed){
                                         if (response.status == 200){
-                                            window.location.href = `/admin/receiving`;
+                                            window.location.href = `/admin/entries`;
                                         }
                                     }
                                 });
@@ -2971,7 +2975,6 @@ export default {
             this.form_data.name = this.form_data.customer.name
             this.form_data.customerId = this.form_data.customer.id
 
-            console.log(this.form_data.customerId)
             await axios
                 .get(`/admin/entries/get-customer/info/${self.form_data.customerId}`)
                 .then(function (res) {
@@ -3107,6 +3110,86 @@ export default {
         dummyStep(){
             return true;
         },
+
+        async getEntryItemsList(id){
+
+            let self = this;
+            await axios
+                .get(`/admin/receiving/entry/rec-list/${id}`)
+                .then(function (res) {
+                    // console.log(res.data.data)
+                    self.form_data.entries = []
+                    res.data.data.map(function(entry) {
+
+                        let en = {
+                            entryItemId : entry.id,
+                            entryID : entry.entry_id,
+                            itemType : entry.itemType,
+                            status : entry.status,
+                            //item type card
+                            card_description_one: entry.card_description_one,
+                            card_description_two : entry.card_description_two,
+                            card_description_three : entry.card_description_three,
+                            card_serial_number : entry.card_serial_number,
+                            card_autographed : entry.card_autographed,
+                            card_authenticator_name : entry.card_authenticator_name,
+                            card_authenticator_cert_no : entry.card_authenticator_cert_no,
+                            card_estimated_value : entry.card_estimated_value,
+
+                            //item type auto authentication
+                            auto_authentication_description_one : entry.auto_authentication_description_one,
+                            auto_authentication_description_two : entry.auto_authentication_description_two,
+                            auto_authentication_description_three : entry.auto_authentication_description_three,
+                            auto_authentication_serial_number : entry.auto_authentication_serial_number,
+                            auto_authentication_autographed : entry.auto_authentication_autographed,
+                            auto_authentication_authenticator_name : entry.auto_authentication_authenticator_name,
+                            auto_authentication_authenticator_cert_no : entry.auto_authentication_authenticator_cert_no,
+                            auto_authentication_estimated_value : entry.auto_authentication_estimated_value,
+
+                            //item type combined service
+                            combined_service_description_one : entry.combined_service_description_one,
+                            combined_service_description_two : entry.combined_service_description_two,
+                            combined_service_description_three : entry.combined_service_description_three,
+                            combined_service_serial_number : entry.combined_service_serial_number,
+                            combined_service_autographed : entry.combined_service_autographed,
+                            combined_service_authenticator_name : entry.combined_service_authenticator_name,
+                            combined_service_authenticator_cert_no : entry.combined_service_authenticator_cert_no,
+                            combined_service_estimated_value : entry.combined_service_estimated_value,
+
+                            //item type combined service
+                            reholder_certification_number : entry.reholder_certification_number,
+                            reholder_estimated_value : entry.reholder_estimated_value,
+
+                            //item type crossover
+                            crossover_description_one : entry.crossover_description_one,
+                            crossover_description_two : entry.crossover_description_two,
+                            crossover_description_three : entry.crossover_description_three,
+                            crossover_serial_number : entry.crossover_serial_number,
+                            crossover_autographed : entry.crossover_autographed,
+                            crossover_authenticator_name : entry.crossover_authenticator_name,
+                            crossover_authenticator_cert_no : entry.crossover_authenticator_cert_no,
+                            crossover_estimated_value : entry.crossover_estimated_value,
+                            crossover_minimum_grade : entry.crossover_minimum_grade,
+                            crossover_item_type : entry.crossover_item_type,
+                        }
+                        self.form_data.entries.push(en)
+
+                    });
+                    console.log(self.form_data.entries)
+                    self.startIndex = 6;
+
+                    document.documentElement.querySelector("#cancel_btn").click();
+
+                })
+                .catch(function (err) {
+                    try {
+                        self.showValidationError(err);
+                    } catch (e) {
+                        self.showSomethingWrong();
+                    }
+                });
+
+        }
     },
 
     validations: {
