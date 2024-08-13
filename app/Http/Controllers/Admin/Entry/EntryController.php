@@ -519,13 +519,13 @@ class EntryController extends Controller
             $madedSKU = $splitedLastSKUId[1].$splitedLastSKUId[2];
 //            return $madedSKU;
             $settingPlusOne = $madedSKU+1;
-            $newSKUId = 'IC'.date('y').$settingPlusOne;
+            $newSKUId = 'KSA'.date('y').$settingPlusOne;
 //            return $newSKUId;
         }else{
 //            $setting = config('settings.admin_order_sku');
             $setting = 20000;
             $settingPlusOne = $setting+1;
-            $newSKUId = 'IC'.date('y').$settingPlusOne;
+            $newSKUId = 'KSA'.date('y').$settingPlusOne;
         }
 
         return $newSKUId;
