@@ -49,12 +49,15 @@ class EntryDataTable extends DataTable
                 return $item->customer->contact_name;
             })
             ->editColumn('id', function ($item) {
-//                $receivingCOunt = $item->receivings->count();
 
                 if($item->status == GlobalConstant::STATUS_RECEIVED){
                     $status = 'Order Received';
-                }else{
+                }
+                if($item->status == GlobalConstant::STATUS_NOT_RECEIVED){
                     $status = 'Not Yet Received';
+                }
+                if($item->status == GlobalConstant::STATUS_RECEIVING_IN_PROGRESS){
+                    $status = 'Receiving in Progress';
                 }
 
                 return $status;

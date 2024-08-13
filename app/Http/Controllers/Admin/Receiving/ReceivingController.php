@@ -304,6 +304,7 @@ class ReceivingController extends Controller
                 'third_party_drop_center'=>$request->third_party_drop_center,
                 'use_customer_account'=>$request->use_customer_account,
                 'customer_account_number'=>$request->customer_account_number,
+                'status'=>GlobalConstant::STATUS_RECEIVING_IN_PROGRESS,
             ];
 
             $en = $this->entryService->storeOrUpdate($data, $id);
