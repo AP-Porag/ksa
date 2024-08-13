@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 'status'            => GlobalConstant::STATUS_ACTIVE,
                 'remember_token'    => Str::random(60),
                 'phone'             => '012345678910',
-                'date_of_hire'     => '2000-10-21',
+                'date_of_hire'     => '2000-10-22',
             ],
         ];
 
