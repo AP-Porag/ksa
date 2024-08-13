@@ -168,7 +168,7 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="mb-3 col-md-12">
-                                        <label class="form-label">User ID <span class="error">*</span></label>
+                                        <label class="form-label">User ID</label>
                                         <input type="text" name="userId" class="form-control" required=""
                                                value="{{$user->userId,  old('userId') }}">
                                         @error('userId')
@@ -270,6 +270,23 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row" style="position: absolute;bottom: 0;">
+                                    <div class="col-md-12">
+                                        @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_ICERT || auth()->user()->user_type == \App\Models\User::USER_TYPE_KSA)
+                                            <div class="mb-3 col-md-12">
+                                                <label class="form-label mb-2 w-100">
+                                                    @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_ICERT)
+                                                        <span>iCert</span>
+                                                    @endif
+                                                    @if(auth()->user()->user_type == \App\Models\User::USER_TYPE_KSA)
+                                                        <span>KSA</span>
+                                                    @endif
+                                                    Product orders only </label>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -296,13 +313,13 @@
                                                                 {{-- {{ $user->getRoleNames()->contains($role->name) ? 'checked': '' }}--}}
                                                                 {{ $user->hasPermissionTo($role->name) ? 'checked': '' }}
                                                                 value="{{ $role->name }}" {{ old('role')==$role->id ? 'selected' : '' }}
-                                                                                                                    />
-                                                                                                                    {{$role->name}}
-                                                                                                                </label>
+                                                            />
+                                                            {{$role->name}}
+                                                        </label>
 
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    @endforeach
+                                                    </div>
+                                                </div>
+                                            @endforeach
 
                                                                                                     @error('role')
                                                                                                     <p class="error">{{ $message }}</p>

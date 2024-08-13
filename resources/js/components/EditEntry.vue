@@ -999,7 +999,7 @@
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="" style="margin-right: 15px;">
-                                                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`" v-if="entry.status === 'not received'">
+                                                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`" v-if="entry.status === 'not-received'">
                                                                         Confirm Receiving
                                                                     </button>
                                                                     <button type="button" class="btn btn-sm btn-success" disabled v-else>
@@ -1165,7 +1165,7 @@
                                                                                                                         placeholder=""
                                                                                                                         id="card_estimated_value"
                                                                                                                         name="card_estimated_value"
-                                                                                                                        :v-model.trim="entry.card_estimated_value"
+                                                                                                                        v-model.trim="entry.card_estimated_value"
                                                                                                                     />
                                                                                                                 </div>
                                                                                                             </div>

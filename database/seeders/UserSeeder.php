@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             [
                 'first_name'        => 'KSA',
                 'last_name'         => 'Last',
-                'username'         => 'KSAlast',
+                'username'         => 'icertlast',
                 'email'             => 'ksa@app.com',
                 'email_verified_at' => now(),
                 'password'          => Hash::make("12345678"),   // 12345678
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 'status'            => GlobalConstant::STATUS_ACTIVE,
                 'remember_token'    => Str::random(60),
                 'phone'             => '012345678910',
-                'date_of_hire'     => '2000-10-22',
+                'date_of_hire'     => '2000-10-21',
             ],
         ];
 

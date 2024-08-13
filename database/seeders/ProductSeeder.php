@@ -10,19 +10,57 @@ class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * , , combined service
      */
     public function run(): void
     {
         $products = [
             [
-                'name'        => 'Card',
+                'name'        => 'Check',
             ],
             [
-                'name'        => 'Autograph Only',
+                'name'        => 'Display Box',
             ],
             [
-                'name'        => 'Combined Service',
+                'name'        => 'First Day Cover',
+            ],
+            [
+                'name'        => 'Food',
+            ],
+            [
+                'name'        => 'Index Card',
+            ],
+            [
+                'name'        => 'Pack',
+            ],
+            [
+                'name'        => 'Pass',
+            ],
+            [
+                'name'        => 'Photo',
+            ],
+            [
+                'name'        => 'Postcard',
+            ],
+            [
+                'name'        => 'Rack Pack',
+            ],
+            [
+                'name'        => 'Set',
+            ],
+            [
+                'name'        => 'Ticket',
+            ],
+            [
+                'name'        => 'Wax Box',
+            ],
+            [
+                'name'        => 'Wrapper',
+            ],
+            [
+                'name'        => 'Reholder',
+            ],
+            [
+                'name'        => 'Crossover',
             ],
         ];
 
