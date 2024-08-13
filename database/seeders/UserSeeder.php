@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             [
                 'first_name'        => 'KSA',
                 'last_name'         => 'Last',
-                'username'         => 'icertlast',
+                'username'         => 'ksaLast',
                 'email'             => 'ksa@app.com',
                 'email_verified_at' => now(),
                 'password'          => Hash::make("12345678"),   // 12345678
