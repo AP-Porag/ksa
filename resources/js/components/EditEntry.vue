@@ -339,19 +339,19 @@
                                                 <div class="mb-3">
                                                     <label class="form-label w-100 text-capitalize">
                                                         Telephone#
-                                                        <span class="error">*</span>
+<!--                                                        <span class="error">*</span>-->
                                                     </label>
                                                     <VuePhoneNumberInput
                                                         id="phoneNumber1"
                                                         class="mb-text-only"
-                                                        v-model.trim="v$.form_data.billing_phone.$model"
+                                                        v-model.trim="form_data.billing_phone"
                                                         default-country-code="CA"
                                                         :only-countries="countries_phone"
                                                         style="background-color: #e8f0fe !important;"
                                                     />
-                                                    <div class="error" v-if="v$.form_data.billing_phone.required.$invalid && show_error_three">
-                                                        Phone is required
-                                                    </div>
+<!--                                                    <div class="error" v-if="v$.form_data.billing_phone.required.$invalid && show_error_three">-->
+<!--                                                        Phone is required-->
+<!--                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -598,18 +598,18 @@
                                                 <div class="mb-3">
                                                     <label class="form-label w-100 text-capitalize">
                                                         Telephone#
-                                                        <span class="error">*</span>
+<!--                                                        <span class="error">*</span>-->
                                                     </label>
                                                     <VuePhoneNumberInput
                                                         id="phoneNumber1"
                                                         class="mb-text-only"
-                                                        v-model.trim="v$.form_data.shipping_phone.$model"
+                                                        v-model.trim="form_data.shipping_phone"
                                                         default-country-code="CA"
                                                         :only-countries="countries_phone"
                                                     />
-                                                    <div class="error" v-if="v$.form_data.shipping_phone.required.$invalid && show_error_four">
-                                                        Phone is required
-                                                    </div>
+<!--                                                    <div class="error" v-if="v$.form_data.shipping_phone.required.$invalid && show_error_four">-->
+<!--                                                        Phone is required-->
+<!--                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -1000,12 +1000,19 @@
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="" style="margin-right: 15px;">
-                                                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`" v-if="entry.status === 'not-received'">
-                                                                        Confirm Receiving
-                                                                    </button>
-                                                                    <button type="button" class="btn btn-sm btn-success" disabled v-else>
-                                                                        Already Received
-                                                                    </button>
+                                                                    <div class="" v-if="entry.status === 'not-received'">
+                                                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
+                                                                            Confirm Receiving
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-sm btn-danger" style="padding-left: 21px;padding-right: 21px;margin-top: 10px;" @click="removeItem(entry.entryItemId)">
+                                                                            Remove Item
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="" v-else>
+                                                                        <button type="button" class="btn btn-sm btn-success" disabled style="padding-left: 10px;padding-right: 10px;">
+                                                                            Already Received
+                                                                        </button>
+                                                                    </div>
                                                                     <div class="modal fade" :id="`staticBackdropEdit-${entry.entryItemId}`" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
                                                                         <div class="modal-dialog modal-lg">
                                                                             <div class="modal-content">
@@ -2594,11 +2601,9 @@ export default {
                     this.form_data.entries.splice(i, 1);
                 }
             }
-            console.log(this.form_data)
             axios
                 .put(`/admin/receiving/${this.item.id}`, this.form_data)
                 .then(function (response) {
-                    console.log(response)
                     Swal.fire("Received!", "", "success").then((result)=>{
                         if (result.isConfirmed){
                             if (response.status == 200){
@@ -2684,7 +2689,6 @@ export default {
                     denyButtonText: `No`,
                     icon: "question",
                 }).then((result) => {
-                    console.log(result)
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         // Swal.fire("Saved!", "", "success");
@@ -2694,7 +2698,6 @@ export default {
                         axios
                             .get(`/admin/receiving/entry/received/${id}`)
                             .then(function (response) {
-                                console.log(response)
                                 Swal.fire("Update!", "", "success").then((result)=>{
                                     if (result.isConfirmed){
                                         if (response.status == 200){
@@ -2753,8 +2756,8 @@ export default {
                 this.v$.form_data.billing_country.$invalid ||
                 this.v$.form_data.billing_province.$invalid ||
                 this.v$.form_data.billing_city.$invalid ||
-                this.v$.form_data.billing_postal.$invalid ||
-                this.v$.form_data.billing_phone.$invalid
+                this.v$.form_data.billing_postal.$invalid
+                // this.v$.form_data.billing_phone.$invalid
             ) {
                 this.show_error_three = true;
                 return false;
@@ -2769,8 +2772,8 @@ export default {
                 this.v$.form_data.shipping_country.$invalid ||
                 this.v$.form_data.shipping_province.$invalid ||
                 this.v$.form_data.shipping_city.$invalid ||
-                this.v$.form_data.shipping_postal.$invalid ||
-                this.v$.form_data.shipping_phone.$invalid
+                this.v$.form_data.shipping_postal.$invalid
+                // this.v$.form_data.shipping_phone.$invalid
             ) {
                 this.show_error_four = true;
                 return false;
@@ -2922,9 +2925,6 @@ export default {
             }
         },
         handleTabChange(prevIndex, nextIndex){
-            console.log('tab change called')
-            console.log(prevIndex)
-            console.log(nextIndex)
             let focusField = this.$refs.name;
             focusField.focus();
             switch (nextIndex) {
@@ -3189,6 +3189,52 @@ export default {
                     }
                 });
 
+        },
+
+        async removeItem(id){
+
+            let self = this;
+            if (id){
+                Swal.fire({
+                    // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
+                    title: `Are you sure?<br><span style="font-size: 18px;">You won\'t be able to revert this!</span>`,
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, remove it!",
+                    denyButtonText: `No`,
+                    icon: "warning",
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    let data = {id:id}
+                    if (result.isConfirmed) {
+                        axios
+                            .post(`/admin/receiving/entry/item/destroy`,data)
+                            .then(function (response) {
+                                if (response.status == 200){
+                                    self.getEntryItemsList(self.item.id);
+                                }
+
+                            })
+                            .catch(function (err) {
+                                try {
+                                    self.showValidationError(err);
+                                } catch (e) {
+                                    self.showSomethingWrong();
+                                }
+                            });
+                    }else if (result.isDismissed){
+                        console.log(result.isDismissed)
+                        // window.location.href = "/admin/entries";
+                    }
+                    // else if (result.isDenied) {
+                    //     console.log(result.isDenied)
+                    //     // Swal.fire("Changes are not saved", "", "info");
+                    // }
+                });
+
+            }else {
+                return;
+            }
         }
     },
 
@@ -3223,9 +3269,9 @@ export default {
             billing_postal:{
                 required,
             },
-            billing_phone:{
-                required,
-            },
+            // billing_phone:{
+            //     required,
+            // },
             // same_as_billing:{},
             // shipping_name:{},
             shipping_company_name:{
@@ -3247,9 +3293,9 @@ export default {
             shipping_postal:{
                 required,
             },
-            shipping_phone:{
-                required,
-            },
+            // shipping_phone:{
+            //     required,
+            // },
             status:{
                 required,
             },

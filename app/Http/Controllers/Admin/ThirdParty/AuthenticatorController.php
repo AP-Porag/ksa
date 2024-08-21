@@ -31,8 +31,6 @@ class AuthenticatorController extends Controller
         set_page_meta('Create Third Party Authenticators');
 
         $products = Product::orderBy('id','ASC')
-            ->where('name','!=','Rack Pack')
-            ->where('name','!=','Set')
             ->where('name','!=','Reholder')
             ->where('name','!=','Crossover')
             ->get();

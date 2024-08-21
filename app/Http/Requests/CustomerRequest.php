@@ -42,7 +42,7 @@ class CustomerRequest extends FormRequest
                 'shipping_province'=>'required',
                 'shipping_city'=>'required',
                 'shipping_postal'=>'required',
-                'shipping_phone'=>'required',
+                'shipping_phone'=>'nullable',
         ];
     }
 }

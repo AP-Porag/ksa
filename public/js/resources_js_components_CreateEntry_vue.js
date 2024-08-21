@@ -717,7 +717,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     checkThirdStep: function checkThirdStep() {
       this.v$.$touch();
-      if (this.v$.form_data.billing_address_line_one.$invalid || this.v$.form_data.billing_country.$invalid || this.v$.form_data.billing_province.$invalid || this.v$.form_data.billing_city.$invalid || this.v$.form_data.billing_postal.$invalid || this.v$.form_data.billing_phone.$invalid) {
+      if (this.v$.form_data.billing_address_line_one.$invalid || this.v$.form_data.billing_country.$invalid || this.v$.form_data.billing_province.$invalid || this.v$.form_data.billing_city.$invalid || this.v$.form_data.billing_postal.$invalid
+      // this.v$.form_data.billing_phone.$invalid
+      ) {
         this.show_error_three = true;
         return false;
       }
@@ -727,7 +729,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     checkFourthStep: function checkFourthStep() {
       this.v$.$touch();
-      if (this.v$.form_data.shipping_address_line_one.$invalid || this.v$.form_data.shipping_country.$invalid || this.v$.form_data.shipping_province.$invalid || this.v$.form_data.shipping_city.$invalid || this.v$.form_data.shipping_postal.$invalid || this.v$.form_data.shipping_phone.$invalid) {
+      if (this.v$.form_data.shipping_address_line_one.$invalid || this.v$.form_data.shipping_country.$invalid || this.v$.form_data.shipping_province.$invalid || this.v$.form_data.shipping_city.$invalid || this.v$.form_data.shipping_postal.$invalid
+      // this.v$.form_data.shipping_phone.$invalid
+      ) {
         this.show_error_four = true;
         return false;
       }
@@ -1088,9 +1092,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       billing_postal: {
         required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
       },
-      billing_phone: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
+      // billing_phone:{
+      //     required,
+      // },
       // same_as_billing:{},
       // shipping_name:{},
       shipping_company_name: {
@@ -1112,9 +1116,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       shipping_postal: {
         required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
       },
-      shipping_phone: {
-        required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
-      },
+      // shipping_phone:{
+      //     required,
+      // },
       status: {
         required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
       },
@@ -1795,9 +1799,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                                        Telephone#\n                                                        "), _c("span", {
-    staticClass: "error"
-  }, [_vm._v("*")])]), _vm._v(" "), _c("VuePhoneNumberInput", {
+  }, [_vm._v("\n                                                        Telephone#\n")]), _vm._v(" "), _c("VuePhoneNumberInput", {
     staticClass: "mb-text-only",
     staticStyle: {
       "background-color": "#e8f0fe !important"
@@ -1808,15 +1810,13 @@ var render = function render() {
       "only-countries": _vm.countries_phone
     },
     model: {
-      value: _vm.v$.form_data.billing_phone.$model,
+      value: _vm.form_data.billing_phone,
       callback: function callback($$v) {
-        _vm.$set(_vm.v$.form_data.billing_phone, "$model", typeof $$v === "string" ? $$v.trim() : $$v);
+        _vm.$set(_vm.form_data, "billing_phone", typeof $$v === "string" ? $$v.trim() : $$v);
       },
-      expression: "v$.form_data.billing_phone.$model"
+      expression: "form_data.billing_phone"
     }
-  }), _vm._v(" "), _vm.v$.form_data.billing_phone.required.$invalid && _vm.show_error_three ? _c("div", {
-    staticClass: "error"
-  }, [_vm._v("\n                                                        Phone is required\n                                                    ")]) : _vm._e()], 1)])])])])])])])]), _vm._v(" "), _c("tab-content", {
+  })], 1)])])])])])])])]), _vm._v(" "), _c("tab-content", {
     attrs: {
       title: "Shipping Address",
       icon: "ti-infinite",
@@ -2200,9 +2200,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                                        Telephone#\n                                                        "), _c("span", {
-    staticClass: "error"
-  }, [_vm._v("*")])]), _vm._v(" "), _c("VuePhoneNumberInput", {
+  }, [_vm._v("\n                                                        Telephone#\n")]), _vm._v(" "), _c("VuePhoneNumberInput", {
     staticClass: "mb-text-only",
     attrs: {
       id: "phoneNumber1",
@@ -2210,15 +2208,13 @@ var render = function render() {
       "only-countries": _vm.countries_phone
     },
     model: {
-      value: _vm.v$.form_data.shipping_phone.$model,
+      value: _vm.form_data.shipping_phone,
       callback: function callback($$v) {
-        _vm.$set(_vm.v$.form_data.shipping_phone, "$model", typeof $$v === "string" ? $$v.trim() : $$v);
+        _vm.$set(_vm.form_data, "shipping_phone", typeof $$v === "string" ? $$v.trim() : $$v);
       },
-      expression: "v$.form_data.shipping_phone.$model"
+      expression: "form_data.shipping_phone"
     }
-  }), _vm._v(" "), _vm.v$.form_data.shipping_phone.required.$invalid && _vm.show_error_four ? _c("div", {
-    staticClass: "error"
-  }, [_vm._v("\n                                                        Phone is required\n                                                    ")]) : _vm._e()], 1)])])])])])])])]), _vm._v(" "), _c("tab-content", {
+  })], 1)])])])])])])])]), _vm._v(" "), _c("tab-content", {
     attrs: {
       title: "Extra Fields",
       icon: "ti-server",

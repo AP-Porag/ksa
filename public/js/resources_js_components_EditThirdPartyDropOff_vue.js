@@ -1618,7 +1618,7 @@ var render = function render() {
   }, [_vm._v("Select All")])])]), _vm._v(" "), _vm._l(_vm.products, function (product, index) {
     return _c("div", {
       key: product.id,
-      staticClass: "col-md-3"
+      staticClass: "col-md-4"
     }, [_c("div", {
       staticClass: "mb-3 d-flex justify-content-start w-100"
     }, [_c("label", {

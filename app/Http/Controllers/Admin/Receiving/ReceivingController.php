@@ -633,33 +633,13 @@ class ReceivingController extends Controller
     }
     public function itemDestroy(Request $request)
     {
-        $request->all();
-        $item = ReceivingItem::find($request->item_id)->delete();
-//        $item = ReceivingItem::find($request->item_id);
+        $item = EntryItems::find($request->id)->delete();
 
-        return redirect()->back();
+        $response = ['status'=>200,'message'=>'Success','data'=>[]];
+
+        return response()->json($response);
     }
-//
-//    public function getSKUNumber()
-//    {
-//        $entries = Entry::all();
-//        if ($entries->count() > 0){
-//
-//            $lastSKUId = Entry::orderBy('id', 'DESC')->first()->entrySKU;
-////            return $lastSKUId;
-//            $splitedLastSKUId = str_split($lastSKUId,4);
-//            $madedSKU = $splitedLastSKUId[1].$splitedLastSKUId[2];
-////            return $madedSKU;
-//            $settingPlusOne = $madedSKU+1;
-//            $newSKUId = 'IC'.date('y').$settingPlusOne;
-////            return $newSKUId;
-//        }else{
-////            $setting = config('settings.admin_order_sku');
-//            $setting = 20000;
-//            $settingPlusOne = $setting+1;
-//            $newSKUId = 'IC'.date('y').$settingPlusOne;
-//        }
-//
-//        return $newSKUId;
-//    }
+
+
+
 }

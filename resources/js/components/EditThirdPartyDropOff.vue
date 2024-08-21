@@ -687,7 +687,7 @@
                                     <div class="col-md-12" style="">
                                         <label style="margin-top: 6px;margin-bottom: 15px; text-decoration: underline;" class="font_big_text"><input type="checkbox" :checked="isAllSelected" @click="selectAllCats" style="margin-left: 15px; margin-right: 5px;"><span style="margin-bottom: 10px;">Select All</span></label>
                                     </div>
-                                    <div class="col-md-3" v-for="(product,index) in products" :key="product.id">
+                                    <div class="col-md-4" v-for="(product,index) in products" :key="product.id">
                                         <div class="mb-3 d-flex justify-content-start w-100">
                                             <label class="form-label text-capitalize font_big_text" style="margin-top: 6px;margin-left: 15px; display: flex;">
                                             <input

@@ -164,26 +164,26 @@
                                 </div>
                             </div>
                         </div>
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="mb-3">-->
-<!--                                <label class="form-label w-100 text-capitalize">-->
-<!--                                    Telephone#-->
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label w-100 text-capitalize">
+                                    Telephone#
 <!--                                    <span class="error">*</span>-->
-<!--                                </label>-->
-<!--                                <VuePhoneNumberInput-->
-<!--                                    id="phoneNumber1"-->
-<!--                                    class="mb-text-only"-->
-<!--                                    v-model.trim="v$.form_data.billing_phone.$model"-->
-<!--                                    :readonly="isReadonly"-->
-<!--                                    default-country-code="CA"-->
-<!--                                    :only-countries="only_phone"-->
-<!--                                    style="background-color: #e8f0fe !important;"-->
-<!--                                />-->
+                                </label>
+                                <VuePhoneNumberInput
+                                    id="phoneNumber1"
+                                    class="mb-text-only"
+                                    v-model.trim="form_data.billing_phone"
+                                    :readonly="isReadonly"
+                                    default-country-code="CA"
+                                    :only-countries="only_phone"
+                                    style="background-color: #e8f0fe !important;"
+                                />
 <!--                                <div class="error" v-if="v$.form_data.billing_phone.required.$invalid && show_error_two">-->
 <!--                                    Phone is required-->
 <!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -368,19 +368,19 @@
                             <div class="mb-3">
                                 <label class="form-label w-100 text-capitalize">
                                     Telephone#
-                                    <span class="error">*</span>
+<!--                                    <span class="error">*</span>-->
                                 </label>
                                 <VuePhoneNumberInput
                                     id="phoneNumber1"
                                     class="mb-text-only"
-                                    v-model.trim="v$.form_data.shipping_phone.$model"
+                                    v-model.trim="form_data.shipping_phone"
                                     :readonly="isReadonly"
                                     default-country-code="CA"
                                     :only-countries="only_phone"
                                 />
-                                <div class="error" v-if="v$.form_data.shipping_phone.required.$invalid && show_error_three">
-                                    Phone is required
-                                </div>
+<!--                                <div class="error" v-if="v$.form_data.shipping_phone.required.$invalid && show_error_three">-->
+<!--                                    Phone is required-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -879,9 +879,9 @@ export default {
             shipping_postal:{
                 required,
             },
-            shipping_phone:{
-                required,
-            },
+            // shipping_phone:{
+            //     required,
+            // },
         }
     }
 }

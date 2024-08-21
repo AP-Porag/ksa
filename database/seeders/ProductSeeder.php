@@ -15,47 +15,15 @@ class ProductSeeder extends Seeder
     {
         $products = [
             [
-                'name'        => 'Check',
+                'name'        => 'Card',
             ],
             [
-                'name'        => 'Display Box',
+                'name'        => 'Autograph Authentication',
             ],
             [
-                'name'        => 'First Day Cover',
+                'name'        => 'Combined Service',
             ],
-            [
-                'name'        => 'Food',
-            ],
-            [
-                'name'        => 'Index Card',
-            ],
-            [
-                'name'        => 'Pack',
-            ],
-            [
-                'name'        => 'Pass',
-            ],
-            [
-                'name'        => 'Photo',
-            ],
-            [
-                'name'        => 'Postcard',
-            ],
-            [
-                'name'        => 'Rack Pack',
-            ],
-            [
-                'name'        => 'Set',
-            ],
-            [
-                'name'        => 'Ticket',
-            ],
-            [
-                'name'        => 'Wax Box',
-            ],
-            [
-                'name'        => 'Wrapper',
-            ],
+            //authentication
             [
                 'name'        => 'Reholder',
             ],

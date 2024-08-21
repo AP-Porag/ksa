@@ -103,7 +103,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::post('/receiving/entry/item/destroy',[ReceivingController::class,'itemDestroy'] )->name('receiving.entry.item.destroy');
     Route::get('/receiving/entry/received/{id}',[ReceivingController::class,'updateEntryToReceived'] )->name('receiving.updateEntryToReceived');
     Route::get('/receiving/entry/rec-list/{id}',[ReceivingController::class,'getEntryItemsInReceiving'] )->name('receiving.getEntryItemsInReceiving');
-
+    Route::post('/receiving/entry/item/destroy',[ReceivingController::class,'itemDestroy'] )->name('receiving.entry.item.destroy');
     //customers
     Route::resource('customers', CustomerController::class);
 
