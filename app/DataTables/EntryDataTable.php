@@ -27,6 +27,7 @@ class EntryDataTable extends DataTable
                 $buttons = '';
 //                $buttons .= '<a class="dropdown-item" href="' . route('admin.entries.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Continue Order </a>';
                 $buttons .= '<a class="dropdown-item" href="' . route('admin.entries.show', $item->id) . '" title="View"><i class="mdi mdi-eye-circle"></i> Continue Order </a>';
+                $buttons .= '<a class="dropdown-item" href="' . route('admin.entries.print.order', $item->id) . '" title="View"><i class="mdi mdi-printer"></i> Print Order </a>';
 
                 // TO-DO: need to chnage the super admin ID to 1, while Super admin ID will 1
                 $buttons .= '<form action="' . route('admin.entries.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
@@ -58,6 +59,12 @@ class EntryDataTable extends DataTable
                 }
                 if($item->status == GlobalConstant::STATUS_RECEIVING_IN_PROGRESS){
                     $status = 'Receiving in Progress';
+                }
+                if($item->status == GlobalConstant::STATUS_GRADING_IN_PROGRESS){
+                    $status = 'Order Grading in progress';
+                }
+                if($item->status == GlobalConstant::STATUS_GRADED){
+                    $status = 'Order Graded';
                 }
 
                 return $status;

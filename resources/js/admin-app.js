@@ -49,6 +49,9 @@ Vue.component("create-entry", () =>
 Vue.component("edit-entry", () =>
     import("./components/EditEntry.vue")
 );
+Vue.component("create-grading", () =>
+    import("./components/CreateGrading.vue")
+);
 
 Vue.component("create-receiving", () =>
     import("./components/CreateReceiving.vue")

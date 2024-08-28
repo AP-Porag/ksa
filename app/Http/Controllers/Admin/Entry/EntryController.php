@@ -56,6 +56,7 @@ class EntryController extends Controller
     public function store(Request $request)
     {
 
+//        dd($request->all());
         try {
 
             $entryData = $request->all();
@@ -85,9 +86,7 @@ class EntryController extends Controller
                 'submission_date'=>$entryData['submission_date'],
                 'grading_location'=>$entryData['grading_location'],
                 'promo_code'=>$entryData['promo_code'],
-                'payment_made'=>$entryData['payment_made'],
-                'pay_on_pickup'=>$entryData['pay_on_pickup'],
-                'cod'=>$entryData['cod'],
+                'payment_method'=>$entryData['payment_method'],
                 'shopify_order_number'=>$entryData['shopify_order_number'],
                 'shipping_method'=>$entryData['shipping_method'],
                 'pickup_location'=>$entryData['pickup_location'],
@@ -210,9 +209,7 @@ class EntryController extends Controller
                 'submission_date'=>$entryData['submission_date'],
                 'grading_location'=>$entryData['grading_location'],
                 'promo_code'=>$entryData['promo_code'],
-                'payment_made'=>$entryData['payment_made'],
-                'pay_on_pickup'=>$entryData['pay_on_pickup'],
-                'cod'=>$entryData['cod'],
+                'payment_method'=>$entryData['payment_method'],
                 'shopify_order_number'=>$entryData['shopify_order_number'],
                 'shipping_method'=>$entryData['shipping_method'],
                 'pickup_location'=>$entryData['pickup_location'],
@@ -529,5 +526,10 @@ class EntryController extends Controller
         }
 
         return $newSKUId;
+    }
+
+    public function printOrder($id)
+    {
+        return view('admin.entry.print');
     }
 }

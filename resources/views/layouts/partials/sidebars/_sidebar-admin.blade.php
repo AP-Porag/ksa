@@ -164,10 +164,41 @@
 {{--                @endcan--}}
 
                 @can('Grading')
-                    <li class="{{ request()->is('admin/roles*') ? 'mm-active' : '' }}">
-                        <a href="#" class="waves-effect">
+{{--                    <li class="{{ request()->is('admin/roles*') ? 'mm-active' : '' }}">--}}
+{{--                        <a href="#" class="waves-effect">--}}
+{{--                            <img class="custom_menu_icon" src="{{asset('storage/settings/menu_icons/grading.png')}}" alt=""><span> Grading </span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+                    <li
+                        class="{{ request()->is('admin/grading*') ? 'mm-active' : '' }}">
+                        <a href="javascript: void(0);"
+                           class="has-arrow waves-effect {{ request()->is('admin/users*') ? 'mm-active' : '' }}">
                             <img class="custom_menu_icon" src="{{asset('storage/settings/menu_icons/grading.png')}}" alt=""><span> Grading </span>
                         </a>
+                        <ul class="sub-menu" aria-expanded="true">
+
+                            <li class="{{ request()->is('admin/grading.index') ? 'mm-active' : '' }}">
+                                <a href="{{ route('admin.grading.index') }}"
+                                   class="{{ request()->routeIs('admin.grading.index') ? 'active' : '' }}">
+                                    Grade new order
+                                </a>
+                            </li>
+
+                            <li class="{{ request()->is('admin/authenticators*') ? 'mm-active' : '' }}">
+                                <a href="{{ route('admin.authenticators.index') }}"
+                                   class="{{ request()->routeIs('admin.authenticators.index') ? 'active' : '' }}">
+                                    Continue existing order
+                                </a>
+                            </li>
+
+                            <li class="{{ request()->is('admin/promos*') || request()->is('admin/slpromos*') ? 'mm-active' : '' }}">
+                                <a href="{{ route('admin.promos.index') }}"
+                                   class="{{ request()->routeIs('admin.promos.index') ? 'active' : '' }}">
+                                    Review a certification
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 @endcan
 

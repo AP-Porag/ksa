@@ -8,8 +8,10 @@ class GlobalConstant
     public const STATUS_ACTIVE    = 'active';
     public const STATUS_INACTIVE  = 'inactive';
     public const STATUS_RECEIVED   = 'received';
-    public const STATUS_RECEIVING_IN_PROGRESS   = 'Receiving in Progress';
+    public const STATUS_RECEIVING_IN_PROGRESS   = 'Receiving-in-Progress';
     public const STATUS_NOT_RECEIVED     = 'not-received';
+    public const STATUS_GRADED     = 'graded';
+    public const STATUS_GRADING_IN_PROGRESS   = 'Grading-in-Progress';
 
     // Default
     public const DEFAULT_PER_PAGE     = 12;

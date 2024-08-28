@@ -21,6 +21,7 @@ use App\Services\EntryService;
 class ReceivingController extends Controller
 {
     protected $receivingService;
+    protected $entryService;
 
     public function __construct(ReceivingService $receivingService,EntryService $entryService)
     {
@@ -294,9 +295,7 @@ class ReceivingController extends Controller
                 'submission_date'=>$request->submission_date,
                 'grading_location'=>$request->grading_location,
                 'promo_code'=>$request->promo_code,
-                'payment_made'=>$request->payment_made,
-                'pay_on_pickup'=>$request->pay_on_pickup,
-                'cod'=>$request->cod,
+                'payment_method'=>$request->payment_method,
                 'shopify_order_number'=>$request->shopify_order_number,
                 'shipping_method'=>$request->shipping_method,
                 'pickup_location'=>$request->pickup_location,

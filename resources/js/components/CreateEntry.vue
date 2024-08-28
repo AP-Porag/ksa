@@ -734,7 +734,8 @@
                                                     class="form-check"
                                                     name="payment_method"
                                                     placeholder=""
-                                                    v-model.trim="form_data.payment_made"
+                                                    value="pym"
+                                                    v-model.trim="form_data.payment_method"
                                                 />
                                                 <!--                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">-->
                                                 <!--                                                Same as Billing is required-->
@@ -752,7 +753,8 @@
                                                     class="form-check"
                                                     name="payment_method"
                                                     placeholder=""
-                                                    v-model.trim="form_data.pay_on_pickup"
+                                                    value="pop"
+                                                    v-model.trim="form_data.payment_method"
                                                 />
                                             </div>
                                         </div>
@@ -767,7 +769,8 @@
                                                     class="form-check"
                                                     name="payment_method"
                                                     placeholder=""
-                                                    v-model.trim="form_data.cod"
+                                                    value="cod"
+                                                    v-model.trim="form_data.payment_method"
                                                 />
                                             </div>
                                         </div>
@@ -2456,9 +2459,10 @@ export default {
                 //next
                 grading_location:'',
                 promo_code:'',
-                payment_made:'',
-                pay_on_pickup:'',
-                cod:'',
+                // payment_made:'',
+                // pay_on_pickup:'',
+                // cod:'',
+                payment_method:'',
                 shopify_order_number:'',
                 shipping_method:'',
                 pickup_location:'',

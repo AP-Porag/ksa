@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\About\AboutController;
 use App\Http\Controllers\Admin\Customer\CustomerController;
 use App\Http\Controllers\Admin\Entry\EntryController;
+use App\Http\Controllers\Admin\Grading\GradingController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Profile\UserProfileController;
 use App\Http\Controllers\Admin\Promo\PromoController;
@@ -88,6 +89,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
     //entries
     Route::resource('entries', EntryController::class);
     Route::get('/entries/get-customer/info/{id}',[EntryController::class,'getCustomerInfo'] )->name('entries.getCustomerInfo');
+    Route::get('/entries/print/order/{id}',[EntryController::class,'printOrder'] )->name('entries.print.order');
     Route::post('/entries/add-additional/pieces',[EntryController::class,'addAdditionalPieces'] )->name('entries.addAdditional.pieces');
     Route::post('/entries/entry/item/destroy',[EntryController::class,'itemDestroy'] )->name('entries.entry.item.destroy');
     Route::post('/entries/add/new/item',[EntryController::class,'newItemAdd'] )->name('entries.add.new.item');
@@ -104,6 +106,13 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('/receiving/entry/received/{id}',[ReceivingController::class,'updateEntryToReceived'] )->name('receiving.updateEntryToReceived');
     Route::get('/receiving/entry/rec-list/{id}',[ReceivingController::class,'getEntryItemsInReceiving'] )->name('receiving.getEntryItemsInReceiving');
     Route::post('/receiving/entry/item/destroy',[ReceivingController::class,'itemDestroy'] )->name('receiving.entry.item.destroy');
+
+    //receiving
+    Route::resource('grading', GradingController::class);
+    Route::post('/grading/get-order/info/byId',[GradingController::class,'getOrderInfo'] )->name('grading.getOrderInfo');
+    Route::get('/grading/get-order/info/{id}',[GradingController::class,'getOrderInfoByID'] )->name('grading.getOrderInfoByID');
+    Route::get('/grading/entry/graded/{id}',[GradingController::class,'updateEntryToGraded'] )->name('receiving.updateEntryToGraded');
+
     //customers
     Route::resource('customers', CustomerController::class);
 

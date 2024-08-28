@@ -1,0 +1,121 @@
+body{
+    margin-top:20px;
+    background: #ececec;
+}
+.bg_for_page{
+    background: #fff;
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style: none;
+    text-decoration: none;
+}
+.parent_row{
+    margin-bottom: 100px;
+}
+.logo_image{
+    width: 190px;
+    height: 140px;
+    padding-left: 0;
+}
+.information{
+    border: rgba(128, 128, 128, 0.4) 4px solid;
+    padding: 30px 0;
+}
+.main_div{
+    padding-bottom: 100px;
+}
+.header h1{
+    padding-right: 50px;
+    font-size: 40px;
+    font-weight: 500;
+}
+.bill_ul_child_1 , .ship_ul_child_1{
+    font-weight: 500;
+    font-size: 16px;
+    color: #808080;
+}
+.bill_ul_child_2 , .ship_ul_child_2{
+    font-weight: 600;
+    font-size: 16px;
+}
+.some_num{
+    padding-top: 20px;
+}
+.ship_to {
+    font-weight: 500;
+}
+.bill_to {
+    font-weight: 500;
+    padding-left: 50px;
+}
+.order{
+    padding-top: 30px;
+}
+.number{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: end;
+}.input_num{
+     margin-left: -15px;
+     text-align: start;
+ }
+.order_date{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: end;
+} .input_date{
+      margin-left: -15px;
+      text-align: start;
+  }
+.shipping{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: end;
+} .input_shipping{
+      margin-left: -15px;
+      text-align: start;
+  }
+.chile_2nd{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.table_row{
+    font-size: 14px;
+    font-weight: 500;
+}
+.first_table_row{
+    background: #4C93FC;
+    color: #fff;
+    font-weight: 600;
+}
+.footer{
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+.footer h1{
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 80px;
+    padding-top: 10px;
+    color: #808080;
+}
+.certification{
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+}
+.footer p{
+    font-size: 16px;
+    font-weight: 400;
+    padding-right: 60px;
+    padding-top: 50px;
+}

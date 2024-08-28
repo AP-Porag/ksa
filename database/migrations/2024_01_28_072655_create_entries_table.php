@@ -39,9 +39,7 @@ return new class extends Migration
             $table->string('submission_date')->nullable();
             $table->string('grading_location')->nullable();
             $table->string('promo_code')->nullable();
-            $table->string('payment_made')->nullable();
-            $table->string('pay_on_pickup')->nullable();
-            $table->string('cod')->nullable();
+            $table->string('payment_method')->nullable();
             $table->string('shopify_order_number')->nullable();
             $table->string('shipping_method')->nullable();
             $table->string('pickup_location')->nullable();
