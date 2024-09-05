@@ -25,7 +25,7 @@ class GradingController extends Controller
         $this->receivingService = $receivingService;
         $this->entryService = $entryService;
     }
-    /**
+    /*
      * Display a listing of the resource.
      */
     public function index()
