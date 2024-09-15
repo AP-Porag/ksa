@@ -43,6 +43,9 @@ class GradingController extends Controller
             if ($order->status == GlobalConstant::STATUS_RECEIVED){
                 return response()->json(['status'=>200,'message' => 'Ready for grading', 'data' => $order]);
             }else{
+                if($order->status == GlobalConstant::STATUS_GRADING_IN_PROGRESS){
+                    return response()->json(['status'=>200,'message' => 'Ready for grading', 'data' => $order]);
+                }
                 if ($order->status == GlobalConstant::STATUS_GRADED){
                     return response()->json(['status'=>201,'message' => 'Grading completed', 'data' => []]);
                 }
