@@ -21,8 +21,9 @@
                     </div>
                     <div class="wizard-footer-right">
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
+                        <wizard-button @click.native="cancel" class="wizard-footer-right" style="margin-left: 15px;" :style="props.fillButtonStyle">Continue Later</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
-                        <wizard-button v-else @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to graded</wizard-button>
+                        <wizard-button v-else @click.native="received(item.id)" :disabled="isDisabled" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to graded</wizard-button>
                     </div>
                 </template>
 <!--                <tab-content-->
@@ -1936,6 +1937,7 @@
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import { useVuelidate } from '@vuelidate/core'
 import {required, email, requiredIf, numeric} from '@vuelidate/validators'
+import {isDisabled} from "bootstrap/js/src/util";
 // import {isReadonly} from "vue";
 
 
@@ -1948,6 +1950,7 @@ export default {
     setup: () => ({ v$: useVuelidate() }),
     data(){
         return{
+            isDisabled: true,
             startIndex:0,
             show_error_one: false,
             show_error_two: false,
@@ -3483,7 +3486,14 @@ export default {
                         self.form_data.entries.push(en)
 
                     });
-                    console.log(self.form_data.entries)
+
+                    const allGraded = res.data.data.every(entry => entry.status === 'graded');
+
+                    // Update isDisabled based on the result
+                    self.isDisabled = !allGraded;
+
+                    console.log("isDisabled: " +self.isDisabled)
+
                     self.startIndex = 6;
 
                     document.documentElement.querySelector("#cancel_btn").click();

@@ -186,14 +186,14 @@
                             </li>
 
                             <li class="{{ request()->is('admin/authenticators*') ? 'mm-active' : '' }}">
-                                <a href="{{ route('admin.authenticators.index') }}"
+                                <a href="#"
                                    class="{{ request()->routeIs('admin.authenticators.index') ? 'active' : '' }}">
                                     Continue existing order
                                 </a>
                             </li>
 
                             <li class="{{ request()->is('admin/promos*') || request()->is('admin/slpromos*') ? 'mm-active' : '' }}">
-                                <a href="{{ route('admin.promos.index') }}"
+                                <a href="#"
                                    class="{{ request()->routeIs('admin.promos.index') ? 'active' : '' }}">
                                     Review a certification
                                 </a>
