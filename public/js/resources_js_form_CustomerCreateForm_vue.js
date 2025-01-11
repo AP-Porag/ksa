@@ -814,31 +814,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(country.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.billing_country.required.$invalid && _vm.show_error_two ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                    Country is required\n                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-4"
-  }, [_c("div", {
-    staticClass: "mb-3"
-  }, [_c("label", {
-    staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                    Telephone#\n")]), _vm._v(" "), _c("VuePhoneNumberInput", {
-    staticClass: "mb-text-only",
-    staticStyle: {
-      "background-color": "#e8f0fe !important"
-    },
-    attrs: {
-      id: "phoneNumber1",
-      readonly: _vm.isReadonly,
-      "default-country-code": "CA",
-      "only-countries": _vm.only_phone
-    },
-    model: {
-      value: _vm.form_data.billing_phone,
-      callback: function callback($$v) {
-        _vm.$set(_vm.form_data, "billing_phone", typeof $$v === "string" ? $$v.trim() : $$v);
-      },
-      expression: "form_data.billing_phone"
-    }
-  })], 1)])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                    Country is required\n                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "card-body"

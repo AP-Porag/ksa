@@ -74,7 +74,7 @@ class ThirdPartyDropOffDataTable extends DataTable
      */
     public function query(ThirdParty $model): QueryBuilder
     {
-        return $model->newQuery()->orderBy('id', 'DESC')->select('third_parties.*');
+        return $model->newQuery()->orderBy('name', 'ASC')->select('third_parties.*');
 
     }
 

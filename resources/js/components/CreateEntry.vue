@@ -52,6 +52,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6 bg-black">
+                                            <a href="/admin/customers/create" class="btn btn-light bg-white" style="margin-top: 28px; float: right;">Add New Customer</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -699,6 +702,7 @@
                                                     type="date"
                                                     class="form-control mb-text-only"
                                                     placeholder=""
+                                                    :max="maxDate"
                                                     v-model.trim="v$.form_data.submission_date.$model"
                                                     ref="billing_address_line_one"
                                                 />
@@ -1805,6 +1809,7 @@ export default {
     setup: () => ({ v$: useVuelidate() }),
     data(){
         return{
+            maxDate: "",
             show_error_one: false,
             show_error_two: false,
             show_error_three: false,
@@ -2297,7 +2302,7 @@ export default {
                 },
                 {
                     'id':2,
-                    'name':'Auto Authentication',
+                    'name':'Autograph Authentication',
                 },
                 {
                     'id':3,
@@ -2485,7 +2490,7 @@ export default {
                 card_autographed:'',
                 card_authenticator_name:'',
                 card_authenticator_cert_no:'',
-                card_estimated_value:'',
+                card_estimated_value:'0',
 
                 //item type auto authentication
                 auto_authentication_description_one:'',
@@ -2495,7 +2500,7 @@ export default {
                 auto_authentication_autographed:'',
                 auto_authentication_authenticator_name:'',
                 auto_authentication_authenticator_cert_no:'',
-                auto_authentication_estimated_value:'',
+                auto_authentication_estimated_value:'0',
 
                 //item type combined service
                 combined_service_description_one:'',
@@ -2505,11 +2510,11 @@ export default {
                 combined_service_autographed:'',
                 combined_service_authenticator_name:'',
                 combined_service_authenticator_cert_no:'',
-                combined_service_estimated_value:'',
+                combined_service_estimated_value:'0',
 
                 //item type combined service
                 reholder_certification_number:'',
-                reholder_estimated_value:'',
+                reholder_estimated_value:'0',
 
                 //item type crossover
                 crossover_description_one:'',
@@ -2519,7 +2524,7 @@ export default {
                 crossover_autographed:'',
                 crossover_authenticator_name:'',
                 crossover_authenticator_cert_no:'',
-                crossover_estimated_value:'',
+                crossover_estimated_value:'0',
             },
 
         }
@@ -2939,6 +2944,10 @@ export default {
         dummyStep(){
             return true;
         },
+    },
+    mounted() {
+        // Set maxDate to today's date when the component is mounted
+        this.maxDate = new Date().toISOString().split("T")[0];
     },
 
     validations: {

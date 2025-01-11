@@ -202,7 +202,7 @@
                     </li>
                 @endcan
 
-                @can('Labels')
+                @can('Label')
                 <li>
                     <a href="#" class="waves-effect">
                         <img class="custom_menu_icon" src="{{asset('storage/settings/menu_icons/labels.png')}}" alt=""><span> Labels </span>

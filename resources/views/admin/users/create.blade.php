@@ -13,16 +13,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label">User ID
+{{--                                    <div class="mb-3 col-md-12">--}}
+{{--                                        <label class="form-label">User ID--}}
 {{--                                            <span class="error">*</span>--}}
-                                        </label>
-                                        <input type="text" name="userId" class="form-control"
-                                               value="{{ old('userId') }}">
-                                        @error('userId')
-                                        <p class="error">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+{{--                                        </label>--}}
+{{--                                        <input type="text" name="userId" class="form-control"--}}
+{{--                                               value="{{ old('userId') }}">--}}
+{{--                                        @error('userId')--}}
+{{--                                        <p class="error">{{ $message }}</p>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
 
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">Name (First and last name)<span class="error">*</span></label>

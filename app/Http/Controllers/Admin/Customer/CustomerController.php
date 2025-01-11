@@ -21,6 +21,8 @@ class CustomerController extends Controller
 
     public function index(CustomerDataTable $dataTable)
     {
+//        $customer = Customer::withCount('entry')->get();
+//        return $customer;
         set_page_meta('Customers');
         return $dataTable->render('admin.customers.index');
     }

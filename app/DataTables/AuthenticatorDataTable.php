@@ -69,7 +69,7 @@ class AuthenticatorDataTable extends DataTable
      */
     public function query(Authenticator $model): QueryBuilder
     {
-        return $model->newQuery()->orderBy('id', 'DESC')->select('authenticators.*');
+        return $model->newQuery()->orderBy('name', 'ASC')->select('authenticators.*');
 
     }
 

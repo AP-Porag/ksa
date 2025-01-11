@@ -37,6 +37,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      maxDate: "",
       show_error_one: false,
       show_error_two: false,
       show_error_three: false,
@@ -425,7 +426,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'name': 'Card'
       }, {
         'id': 2,
-        'name': 'Auto Authentication'
+        'name': 'Autograph Authentication'
       }, {
         'id': 3,
         'name': 'Combined Service'
@@ -583,7 +584,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         card_autographed: '',
         card_authenticator_name: '',
         card_authenticator_cert_no: '',
-        card_estimated_value: '',
+        card_estimated_value: '0',
         //item type auto authentication
         auto_authentication_description_one: '',
         auto_authentication_description_two: '',
@@ -592,7 +593,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         auto_authentication_autographed: '',
         auto_authentication_authenticator_name: '',
         auto_authentication_authenticator_cert_no: '',
-        auto_authentication_estimated_value: '',
+        auto_authentication_estimated_value: '0',
         //item type combined service
         combined_service_description_one: '',
         combined_service_description_two: '',
@@ -601,10 +602,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         combined_service_autographed: '',
         combined_service_authenticator_name: '',
         combined_service_authenticator_cert_no: '',
-        combined_service_estimated_value: '',
+        combined_service_estimated_value: '0',
         //item type combined service
         reholder_certification_number: '',
-        reholder_estimated_value: '',
+        reholder_estimated_value: '0',
         //item type crossover
         crossover_description_one: '',
         crossover_description_two: '',
@@ -613,7 +614,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         crossover_autographed: '',
         crossover_authenticator_name: '',
         crossover_authenticator_cert_no: '',
-        crossover_estimated_value: ''
+        crossover_estimated_value: '0'
       }
     };
   },
@@ -1062,6 +1063,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return true;
     }
   },
+  mounted: function mounted() {
+    // Set maxDate to today's date when the component is mounted
+    this.maxDate = new Date().toISOString().split("T")[0];
+  },
   validations: {
     form_data: {
       name: {
@@ -1463,7 +1468,18 @@ var render = function render() {
     }, [_vm._v(_vm._s(customer.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.name.required.$invalid && _vm.show_error_one ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                                    Customer name is required\n                                                ")]) : _vm._e()])])])])])])])]), _vm._v(" "), _c("tab-content", {
+  }, [_vm._v("\n                                                    Customer name is required\n                                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6 bg-black"
+  }, [_c("a", {
+    staticClass: "btn btn-light bg-white",
+    staticStyle: {
+      "margin-top": "28px",
+      "float": "right"
+    },
+    attrs: {
+      href: "/admin/customers/create"
+    }
+  }, [_vm._v("Add New Customer")])])])])])])])]), _vm._v(" "), _c("tab-content", {
     attrs: {
       title: "Grading Location",
       icon: "ti-map-alt",
@@ -2258,7 +2274,8 @@ var render = function render() {
     attrs: {
       autofocus: "",
       type: "date",
-      placeholder: ""
+      placeholder: "",
+      max: _vm.maxDate
     },
     domProps: {
       value: _vm.v$.form_data.submission_date.$model

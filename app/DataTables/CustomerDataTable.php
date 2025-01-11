@@ -29,12 +29,13 @@ class CustomerDataTable extends DataTable
                 $buttons .= '<a class="dropdown-item" href="' . route('admin.customers.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Edit </a>';
 
                 // TO-DO: need to chnage the super admin ID to 1, while Super admin ID will 1
-                $buttons .= '<form action="' . route('admin.customers.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
+                if ($item->entry->count() == 0) {
+                    $buttons .= '<form action="' . route('admin.customers.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Delete</button></form>
                         ';
-
+                }
                 return '<div class="btn-group dropleft">
                 <a href="#" onclick="return false;" class="btn btn-sm btn-dark text-white dropdown-toggle dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu">
@@ -55,11 +56,11 @@ class CustomerDataTable extends DataTable
     public function query(Customer $model): QueryBuilder
     {
         if (Auth::user()->user_type == User::USER_TYPE_ICERT){
-            return $model->newQuery()->where('customer_for',Customer::CUSTOMER_FOR_ICERT)->orderBy('id', 'DESC')->select('customers.*');
+            return $model->newQuery()->where('customer_for',Customer::CUSTOMER_FOR_ICERT)->orderBy('name', 'ASC')->select('customers.*');
         }elseif (Auth::user()->user_type == User::USER_TYPE_KSA){
-            return $model->newQuery()->where('customer_for',Customer::CUSTOMER_FOR_KSA)->orderBy('id', 'DESC')->select('customers.*');
+            return $model->newQuery()->where('customer_for',Customer::CUSTOMER_FOR_KSA)->orderBy('name', 'ASC')->select('customers.*');
         }else{
-            return $model->newQuery()->orderBy('id', 'DESC')->select('customers.*');
+            return $model->newQuery()->orderBy('name', 'ASC')->select('customers.*');
         }
 
     }

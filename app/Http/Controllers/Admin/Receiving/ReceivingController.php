@@ -168,7 +168,7 @@ class ReceivingController extends Controller
             $allPromos = Promo::orderBy('id','DESC')->select('id','name')->get();
             $allThirdParties = ThirdParty::orderBy('id','DESC')->select('id','name')->get();
             $allAuthenticators = Authenticator::orderBy('id','DESC')->select('id','name')->get();
-            $entryItems = EntryItems::where('entry_id',$id)->orderBy('created_at', 'desc')->get();
+            $entryItems = EntryItems::where('entry_id',$id)->orderBy('created_at', 'ASC')->get();
             $allGrades=[
                 [
                     'id'=>1,

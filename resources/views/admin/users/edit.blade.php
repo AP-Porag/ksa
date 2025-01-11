@@ -167,14 +167,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="mb-3 col-md-12">
-                                        <label class="form-label">User ID</label>
-                                        <input type="text" name="userId" class="form-control" required=""
-                                               value="{{$user->userId,  old('userId') }}">
-                                        @error('userId')
-                                        <p class="error">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+{{--                                    <div class="mb-3 col-md-12">--}}
+{{--                                        <label class="form-label">User ID</label>--}}
+{{--                                        <input type="text" name="userId" class="form-control" required=""--}}
+{{--                                               value="{{$user->userId,  old('userId') }}">--}}
+{{--                                        @error('userId')--}}
+{{--                                        <p class="error">{{ $message }}</p>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
 
                                     <div class="mb-3 col-md-12">
                                         <label class="form-label">Name (First and last name)<span class="error">*</span></label>
