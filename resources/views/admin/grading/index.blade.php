@@ -5,6 +5,9 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="d-flex justify-content-between" style="padding-right: 30px;">
+                        <h4 class="card-title mb-3">{{get_page_meta('title', true)}}</h4>
+                    </div>
                     <div class="row show" id="box-for-search">
                         <div class="col-md-12">
                             <div class="d-flex justify-content-between">

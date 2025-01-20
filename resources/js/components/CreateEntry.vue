@@ -763,7 +763,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-1">
                                             <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                     COD
@@ -774,6 +774,22 @@
                                                     name="payment_method"
                                                     placeholder=""
                                                     value="cod"
+                                                    v-model.trim="form_data.payment_method"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
+                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                    N/A
+                                                </label>
+                                                <input
+                                                    type="radio"
+                                                    class="form-check"
+                                                    name="payment_method"
+                                                    placeholder=""
+                                                    value="n/a"
                                                     v-model.trim="form_data.payment_method"
                                                 />
                                             </div>
@@ -2851,7 +2867,7 @@ export default {
                 this.showItemTypeReholderBox=false;
                 this.showItemTypeCrossoverBox=false;
             }
-            if (this.form_data.itemType == 'Auto Authentication'){
+            if (this.form_data.itemType == 'Autograph Authentication'){
                 this.showItemTypeCardBox=false;
                 this.showItemTypeAutoAthenticationBox=true;
                 this.showItemTypeCombinedServiceBox=false;

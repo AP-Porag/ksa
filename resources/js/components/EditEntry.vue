@@ -966,14 +966,14 @@
                                                         <td class="text-center" v-if="entry.itemType == 'Card'">{{entry.card_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
-                                                        <td v-if="entry.itemType == 'Auto Authentication'">
+                                                        <td v-if="entry.itemType == 'Autograph Authentication'">
                                                             <span>{{entry.auto_authentication_description_one}}</span>
                                                             <br>
                                                             <span>{{entry.auto_authentication_description_two}}</span>
                                                             <br>
                                                             <span>{{entry.auto_authentication_description_three}}</span>
                                                         </td>
-                                                        <td class="text-center" v-if="entry.itemType == 'Auto Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
+                                                        <td class="text-center" v-if="entry.itemType == 'Autograph Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
                                                         <td v-if="entry.itemType == 'Combined Service'">
@@ -1188,7 +1188,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                                     <!--item type auto authentication-->
-                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Auto Authentication'">
+                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Autograph Authentication'">
                                                                                                     <div class="card shipping_address_card">
                                                                                                     <div class="card-body">
                                                                                                     <div class="row">
@@ -2219,7 +2219,7 @@ export default {
                 },
                 {
                     'id':2,
-                    'name':'Auto Authentication',
+                    'name':'Autograph Authentication',
                 },
                 {
                     'id':3,
@@ -3021,7 +3021,7 @@ export default {
                 this.showItemTypeReholderBox=false;
                 this.showItemTypeCrossoverBox=false;
             }
-            if (this.form_data.itemType == 'Auto Authentication'){
+            if (this.form_data.itemType == 'Autograph Authentication'){
                 this.showItemTypeCardBox=false;
                 this.showItemTypeAutoAthenticationBox=true;
                 this.showItemTypeCombinedServiceBox=false;

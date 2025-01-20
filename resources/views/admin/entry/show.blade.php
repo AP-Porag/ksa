@@ -39,7 +39,7 @@
                                                                                 <select class="form-select mb-text-only" id="itemSelect" aria-label="Default select example" name="itemType">
                                                                                     <option selected disabled>Open this select menu</option>
                                                                                     <option value="Card">Card</option>
-                                                                                    <option value="Auto Authentication">Auto Authentication</option>
+                                                                                    <option value="Autograph Authentication">Autograph Authentication</option>
                                                                                     <option value="Combined Service">Combined Service</option>
                                                                                     <option value="Reholder">Reholder</option>
                                                                                     <option value="Crossover">Crossover</option>
@@ -1030,7 +1030,7 @@
                                                             @endif
 
 
-                                                            @if($item->itemType == 'Auto Authentication')
+                                                            @if($item->itemType == 'Autograph Authentication')
                                                                 <td>
                                                                     <span>{{$item->auto_authentication_description_one}}</span>
                                                                     <br>
@@ -1356,7 +1356,7 @@
                                                                                                             </div>
 
                                                                                                             <!--item type auto authentication-->
-                                                                                                            <div class="col-md-12 {{$item->itemType == "Auto Authentication" ? 'show-box' : 'hidden-box'}}" id="showEditItemTypeAutoAthenticationBox">
+                                                                                                            <div class="col-md-12 {{$item->itemType == "Autograph Authentication" ? 'show-box' : 'hidden-box'}}" id="showEditItemTypeAutoAthenticationBox">
                                                                                                                 <div class="card shipping_address_card">
                                                                                                                     <div class="card-body">
                                                                                                                         <div class="row">
@@ -2267,7 +2267,7 @@
                 showItemTypeCrossoverBoxOne= false;
             }
 
-            if(value == 'Auto Authentication'){
+            if(value == 'Autograph Authentication'){
                 $('#showItemTypeCardBox').hide();
                 $('#showItemTypeAutoAthenticationBox').show();
                 showItemTypeAutoAthenticationBox = true;
@@ -2424,7 +2424,7 @@
                 showItemTypeCrossoverBoxOne= false;
             }
 
-            if(value == 'Auto Authentication'){
+            if(value == 'Autograph Authentication'){
                 $('#showItemTypeCardBox').hide();
                 $('#showItemTypeAutoAthenticationBox').show();
                 showItemTypeAutoAthenticationBox = true;

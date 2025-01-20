@@ -969,7 +969,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.showItemTypeReholderBox = false;
         this.showItemTypeCrossoverBox = false;
       }
-      if (this.form_data.itemType == 'Auto Authentication') {
+      if (this.form_data.itemType == 'Autograph Authentication') {
         this.showItemTypeCardBox = false;
         this.showItemTypeAutoAthenticationBox = true;
         this.showItemTypeCombinedServiceBox = false;
@@ -2416,7 +2416,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-1"
   }, [_c("div", {
     staticClass: "mb-3 d-flex justify-content-end",
     staticStyle: {
@@ -2451,6 +2451,44 @@ var render = function render() {
     on: {
       change: function change($event) {
         return _vm.$set(_vm.form_data, "payment_method", "cod");
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-1"
+  }, [_c("div", {
+    staticClass: "mb-3 d-flex justify-content-end",
+    staticStyle: {
+      "margin-top": "25px"
+    }
+  }, [_c("label", {
+    staticClass: "form-label text-capitalize",
+    staticStyle: {
+      "margin-top": "6px",
+      "margin-right": "15px"
+    }
+  }, [_vm._v("\n                                                    N/A\n                                                ")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.form_data.payment_method,
+      expression: "form_data.payment_method",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-check",
+    attrs: {
+      type: "radio",
+      name: "payment_method",
+      placeholder: "",
+      value: "n/a"
+    },
+    domProps: {
+      checked: _vm._q(_vm.form_data.payment_method, "n/a")
+    },
+    on: {
+      change: function change($event) {
+        return _vm.$set(_vm.form_data, "payment_method", "n/a");
       }
     }
   })])]), _vm._v(" "), _c("div", {
