@@ -218,6 +218,7 @@
                                                                                     type="text"
                                                                                     class="form-control"
                                                                                     placeholder=""
+                                                                                    value="0"
                                                                                     id="card_estimated_value"
                                                                                     name="card_estimated_value"
                                                                                 />
@@ -375,6 +376,7 @@
                                                                                     type="number"
                                                                                     class="form-control"
                                                                                     placeholder=""
+                                                                                    value="0"
                                                                                     name="auto_authentication_estimated_value"
                                                                                     id="auto_authentication_estimated_value"
                                                                                 />
@@ -530,6 +532,7 @@
                                                                                     type="text"
                                                                                     class="form-control"
                                                                                     placeholder=""
+                                                                                    value="0"
                                                                                     name="combined_service_estimated_value"
                                                                                     id="combined_service_estimated_value"
                                                                                 />
@@ -592,6 +595,7 @@
                                                                                     type="text"
                                                                                     class="form-control"
                                                                                     placeholder=""
+                                                                                    value="0"
                                                                                     name="reholder_estimated_value"
                                                                                     id="reholder_estimated_value"
                                                                                 />
@@ -750,6 +754,7 @@
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             placeholder=""
+                                                                                            value="0"
                                                                                             name="crossover_estimated_value"
                                                                                             id="crossover_estimated_value"
                                                                                         />
@@ -1732,6 +1737,7 @@
                                                                                                                                         type="text"
                                                                                                                                         class="form-control"
                                                                                                                                         placeholder=""
+                                                                                                                                        value="0"
                                                                                                                                         name="reholder_estimated_value"
                                                                                                                                         id="reholder_estimated_value"
                                                                                                                                     />

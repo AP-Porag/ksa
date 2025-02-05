@@ -22,7 +22,10 @@
                     <div class="wizard-footer-right">
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
-                        <wizard-button v-else @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to received</wizard-button>
+                        <span class="" v-else>
+                            <wizard-button @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to received</wizard-button>
+                            <wizard-button @click.native="submitMultiEntryID" class="wizard-footer-right" style="margin-right: 15px; background-color: #1f91f3; color: white;">Set these item to received</wizard-button>
+                        </span>
                     </div>
                 </template>
                 <tab-content
@@ -942,6 +945,12 @@
 
                                                     <thead class="text-center">
                                                     <tr>
+                                                        <th>
+                                                            <!-- Select All Checkbox -->
+                                                            <label>
+                                                                <input type="checkbox" v-model="selectAll" @change="toggleSelectAll"> Select All
+                                                            </label>
+                                                        </th>
                                                         <th>Item Type</th>
                                                         <th>Sub Type</th>
                                                         <th>Description</th>
@@ -953,6 +962,9 @@
 
 
                                                     <tr v-for="(entry,index) in form_data.entries" :key="entry.entryItemId">
+                                                        <td>
+                                                            <input type="checkbox" :value="entry.entryItemId" v-model="form_data.selectedEntries">
+                                                        </td>
                                                         <td class="text-capitalize">{{entry.itemType}}</td>
                                                         <td>{{entry.itemType == 'Crossover' ? entry.crossover_item_type: 'N/A'}}</td>
 
@@ -1005,13 +1017,13 @@
 
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
-                                                                <div class="" style="margin-right: 15px;">
-                                                                    <div class="" v-if="entry.status === 'not-received'">
-                                                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
-                                                                            Confirm Receiving
+                                                                <div class="" style="margin-left: 19px;">
+                                                                    <div class="text-center" v-if="entry.status === 'not-received'">
+                                                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
+                                                                            <i class="fa fa-edit"> Edit</i>
                                                                         </button>
-                                                                        <button type="button" class="btn btn-sm btn-danger" style="padding-left: 21px;padding-right: 21px;margin-top: 10px;" @click="removeItem(entry.entryItemId)">
-                                                                            Remove Item
+                                                                        <button type="button" class="btn btn-sm btn-danger" @click="removeItem(entry.entryItemId)">
+                                                                            <i class="fa fa-trash"> Delete</i>
                                                                         </button>
                                                                     </div>
                                                                     <div class="" v-else>
@@ -1788,6 +1800,7 @@ export default {
     setup: () => ({ v$: useVuelidate() }),
     data(){
         return{
+            selectAll: false,
             startIndex:0,
             show_error_one: false,
             show_error_two: false,
@@ -2372,6 +2385,7 @@ export default {
                 authenticator_name_three:'',
                 authenticator_name_four:'',
                 entries:[],
+                selectedEntries: [], // To hold selected IDs
 
 
                 // //item type card
@@ -2608,7 +2622,7 @@ export default {
             axios
                 .put(`/admin/receiving/${this.item.id}`, this.form_data)
                 .then(function (response) {
-                    Swal.fire("Received!", "", "success").then((result)=>{
+                    Swal.fire("Successfully Updated!", "", "success").then((result)=>{
                         if (result.isConfirmed){
                             if (response.status == 200){
                                 // window.location.href = `/admin/entries/${response.data.id}`;
@@ -3239,6 +3253,56 @@ export default {
             }else {
                 return;
             }
+        },
+
+        toggleSelectAll() {
+            if (this.selectAll) {
+                // Select all items
+                this.form_data.selectedEntries = this.form_data.entries.map(entry => entry.entryItemId);
+            } else {
+                // Deselect all items
+                this.form_data.selectedEntries = [];
+            }
+        },
+        async submitMultiEntryID(){
+            // console.log(ind)
+            let self = this;
+
+
+            this.form_data.entries = this.form_data.entries.filter(entry =>
+                this.form_data.selectedEntries.includes(entry.entryItemId)
+            );
+            axios
+                .post(`/admin/receiving/submit-entry/multiID/${this.item.id}`, this.form_data)
+                .then(function (response) {
+                    Swal.fire("Received!", "", "success").then((result)=>{
+                        if (result.isConfirmed){
+                            if (response.status == 200){
+                                // window.location.href = `/admin/entries/${response.data.id}`;
+                                // window.location.href = `/admin/receiving/${this.item.id}/edit`;
+                                // window.location.reload();
+                                self.form_data.selectedEntries = [];
+                                self.getEntryItemsList(self.item.id);
+                            }
+                        }
+                    });
+
+                    // window.location.reload()
+                    // window.location.href = "/admin/thirds";
+                })
+                .catch(function (err) {
+                    try {
+                        self.showValidationError(err);
+                    } catch (e) {
+                        self.showSomethingWrong();
+                    }
+                });
+        },
+
+    },
+    watch: {
+        'form_data.selectedEntries'(newVal) {
+            this.selectAll = newVal.length === this.form_data.entries.length;
         }
     },
 
