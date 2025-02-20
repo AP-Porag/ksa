@@ -20,5 +20,8 @@ class GlobalConstant
     public const DEFAULT_THUMB_HEIGHT = 170;
     public const DEFAULT_QR_CODE_SIZE = 300;
 
+    public const STATUS_NOT_PRINTED  = 'not-printed';
+    public const STATUS_PRINTED   = 'printed';
+
 }
 

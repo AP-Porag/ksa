@@ -370,6 +370,7 @@ class GradingController extends Controller
     public function OrderUpdateToGradedByID(Request $request, $id)
     {
 
+        dd($request->entries);
         try {
             $entries = $request->entries;
             $data = [

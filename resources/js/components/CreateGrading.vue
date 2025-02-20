@@ -23,7 +23,7 @@
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
                         <wizard-button @click.native="cancel" class="wizard-footer-right" style="margin-left: 15px;" :style="props.fillButtonStyle">Continue Later</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
-                        <wizard-button v-else @click.native="received(item.id)" :disabled="isDisabled" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to graded</wizard-button>
+                        <wizard-button v-else @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to graded</wizard-button>
                     </div>
                 </template>
 <!--                <tab-content-->
@@ -947,7 +947,8 @@
                                                         <th>Sub Type</th>
                                                         <th>Description</th>
                                                         <th>Autographed</th>
-                                                        <th>Actions</th>
+                                                        <th>Confirm</th>
+                                                        <th>Remove</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -967,14 +968,14 @@
                                                         <td class="text-center" v-if="entry.itemType == 'Card'">{{entry.card_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
-                                                        <td v-if="entry.itemType == 'Auto Authentication'">
+                                                        <td v-if="entry.itemType == 'Autograph Authentication'">
                                                             <span>{{entry.auto_authentication_description_one}}</span>
                                                             <br>
                                                             <span>{{entry.auto_authentication_description_two}}</span>
                                                             <br>
                                                             <span>{{entry.auto_authentication_description_three}}</span>
                                                         </td>
-                                                        <td class="text-center" v-if="entry.itemType == 'Auto Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
+                                                        <td class="text-center" v-if="entry.itemType == 'Autograph Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
                                                         <td v-if="entry.itemType == 'Combined Service'">
@@ -1012,8 +1013,8 @@
                                                                             Already Graded
                                                                         </button>
                                                                     </div>
-                                                                    <div class="" v-else>
-                                                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
+                                                                    <div class="d-flex" v-else>
+                                                                        <button type="button" class="btn btn-sm btn-success" style="padding-left: 21px;padding-right: 21px;margin-top: 10px;margin-right: 10px;" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
                                                                             Confirm Grading
                                                                         </button>
                                                                         <button type="button" class="btn btn-sm btn-danger" style="padding-left: 21px;padding-right: 21px;margin-top: 10px;" @click="removeItem(entry.entryItemId)">
@@ -2964,8 +2965,9 @@ export default {
                     this.form_data.entries.splice(i, 1);
                 }
             }
+
             axios
-                .put(`/admin/grading/${this.item.id}`, this.form_data)
+                .post(`/admin/grading/upgrade/to/grade/${this.item.id}`, this.form_data)
                 .then(function (response) {
                     Swal.fire("Graded!", "", "success").then((result)=>{
                         if (result.isConfirmed){
@@ -3426,7 +3428,7 @@ export default {
 
             let self = this;
             await axios
-                .get(`/admin/receiving/entry/rec-list/${id}`)
+                .get(`/admin/grading/entry/grade-list/${id}`)
                 .then(function (res) {
                     // console.log(res.data.data)
                     self.form_data.entries = []
@@ -3487,12 +3489,12 @@ export default {
 
                     });
 
-                    const allGraded = res.data.data.every(entry => entry.status === 'graded');
+                    // const allGraded = res.data.data.every(entry => entry.status === 'graded');
 
                     // Update isDisabled based on the result
-                    self.isDisabled = !allGraded;
+                    // self.isDisabled = !allGraded;
 
-                    console.log("isDisabled: " +self.isDisabled)
+                    // console.log("isDisabled: " +self.isDisabled)
 
                     self.startIndex = 6;
 

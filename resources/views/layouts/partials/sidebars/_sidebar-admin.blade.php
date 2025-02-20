@@ -181,16 +181,16 @@
                             <li class="{{ request()->is('admin/grading.index') ? 'mm-active' : '' }}">
                                 <a href="{{ route('admin.grading.index') }}"
                                    class="{{ request()->routeIs('admin.grading.index') ? 'active' : '' }}">
-                                    Grade new order
+                                    Grade order
                                 </a>
                             </li>
 
-                            <li class="{{ request()->is('admin/authenticators*') ? 'mm-active' : '' }}">
-                                <a href="#"
-                                   class="{{ request()->routeIs('admin.authenticators.index') ? 'active' : '' }}">
-                                    Continue existing order
-                                </a>
-                            </li>
+{{--                            <li class="{{ request()->is('admin/authenticators*') ? 'mm-active' : '' }}">--}}
+{{--                                <a href="#"--}}
+{{--                                   class="{{ request()->routeIs('admin.authenticators.index') ? 'active' : '' }}">--}}
+{{--                                    Continue existing order--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
 
                             <li class="{{ request()->is('admin/promos*') || request()->is('admin/slpromos*') ? 'mm-active' : '' }}">
                                 <a href="#"
@@ -203,8 +203,8 @@
                 @endcan
 
                 @can('Labels')
-                <li>
-                    <a href="#" class="waves-effect">
+                <li class="{{ request()->is('admin/label*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('admin.label.index') }}" class="waves-effect {{ request()->is('admin/label*') ? 'active' : '' }}">
                         <img class="custom_menu_icon" src="{{asset('storage/settings/menu_icons/labels.png')}}" alt=""><span> Labels </span>
                     </a>
                 </li>

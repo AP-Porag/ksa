@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\About\AboutController;
 use App\Http\Controllers\Admin\Customer\CustomerController;
 use App\Http\Controllers\Admin\Entry\EntryController;
 use App\Http\Controllers\Admin\Grading\GradingController;
+use App\Http\Controllers\Admin\Label\LabelController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Profile\UserProfileController;
 use App\Http\Controllers\Admin\Promo\PromoController;
@@ -111,7 +112,14 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::resource('grading', GradingController::class);
     Route::post('/grading/get-order/info/byId',[GradingController::class,'getOrderInfo'] )->name('grading.getOrderInfo');
     Route::get('/grading/get-order/info/{id}',[GradingController::class,'getOrderInfoByID'] )->name('grading.getOrderInfoByID');
+    Route::post('/grading/upgrade/to/grade/{id}',[GradingController::class,'OrderUpdateToGradedByID'] )->name('grading.OrderUpdateToGradedByID');
+    Route::get('/grading/entry/grade-list/{id}',[GradingController::class,'getEntryItemsInGrading'] )->name('grading.getEntryItemsInGrading');
     Route::get('/grading/entry/graded/{id}',[GradingController::class,'updateEntryToGraded'] )->name('receiving.updateEntryToGraded');
+
+
+    //label
+    Route::resource('label', LabelController::class);
+    Route::get('/label/print/view',[LabelController::class,'printLabels'] )->name('label.print.view');
 
     //customers
     Route::resource('customers', CustomerController::class);

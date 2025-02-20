@@ -176,7 +176,7 @@
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <div class="mb-3">
-                                                                                                <label class="form-label w-100 text-capitalize">
+                                                                                                <label class="form-label w-100 text-capitalize" for="card_authenticator_name">
                                                                                                     Authenticator Name
 {{--                                                                                                    <span class="error">*</span>--}}
                                                                                                 </label>
@@ -190,7 +190,7 @@
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <div class="mb-3">
-                                                                                                <label class="form-label w-100">
+                                                                                                <label class="form-label w-100" for="card_authenticator_cert_no">
                                                                                                     Authenticator Cert. No.
 {{--                                                                                                    <span class="error">*</span>--}}
                                                                                                 </label>
@@ -327,6 +327,7 @@
                                                                                                     type="checkbox"
                                                                                                     class="form-check"
                                                                                                     placeholder=""
+                                                                                                    checked
                                                                                                     name="auto_authentication_autographed"
                                                                                                     id="auto_authentication_autographed"
                                                                                                 />
@@ -490,7 +491,7 @@
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <div class="mb-3">
-                                                                                                <label class="form-label w-100 text-capitalize">
+                                                                                                <label class="form-label w-100 text-capitalize" for="combined_service_authenticator_name">
                                                                                                     Authenticator Name
 {{--                                                                                                    <span class="error">*</span>--}}
                                                                                                 </label>
@@ -504,7 +505,7 @@
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <div class="mb-3">
-                                                                                                <label class="form-label w-100">
+                                                                                                <label class="form-label w-100" for="combined_service_authenticator_cert_no">
                                                                                                     Authenticator Cert. No.
 {{--                                                                                                    <span class="error">*</span>--}}
                                                                                                 </label>
@@ -710,11 +711,11 @@
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <div class="mb-3">
-                                                                                                <label class="form-label w-100 text-capitalize">
+                                                                                                <label class="form-label w-100 text-capitalize" for="crossover_authenticator_name">
                                                                                                     Authenticator Name
 {{--                                                                                                    <span class="error">*</span>--}}
                                                                                                 </label>
-                                                                                                <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_authenticator_name"id="crossover_authenticator_name">
+                                                                                                <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_authenticator_name" id="crossover_authenticator_name">
                                                                                                     <option selected disabled>Open this select menu</option>
                                                                                                     @foreach($authenticators as $authenticator)
                                                                                                         <option value="{{$authenticator->id}}" >{{$authenticator->name}}</option>
@@ -724,7 +725,7 @@
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <div class="mb-3">
-                                                                                                <label class="form-label w-100">
+                                                                                                <label class="form-label w-100" for="crossover_authenticator_cert_no">
                                                                                                     Authenticator Cert. No.
 {{--                                                                                                    <span class="error">*</span>--}}
                                                                                                 </label>
@@ -2274,6 +2275,7 @@
             }
 
             if(value == 'Autograph Authentication'){
+                console.log('selected')
                 $('#showItemTypeCardBox').hide();
                 $('#showItemTypeAutoAthenticationBox').show();
                 showItemTypeAutoAthenticationBox = true;
@@ -2487,6 +2489,40 @@
                 showItemTypeAutoAthenticationBox= false;
                 showItemTypeCombinedServiceBox= false;
                 showItemTypeReholderBox= false;
+            }
+        });
+
+
+        //check card autographed is checked or not
+        $('#card_autographed').change(function () {
+            if ($(this).is(':checked')) {
+                $('#card_authenticator_name, #card_authenticator_cert_no').prop('required', true);
+                $('label[for="card_authenticator_name"], label[for="card_authenticator_cert_no"]').append('<span class="required-asterisk text-danger"> *</span>');
+            } else {
+                $('#card_authenticator_name, #card_authenticator_cert_no').prop('required', false);
+                $('.required-asterisk').remove();
+            }
+        });
+
+        //check combined service autographed is checked or not
+        $('#combined_service_autographed').change(function () {
+            if ($(this).is(':checked')) {
+                $('#combined_service_authenticator_name, #combined_service_authenticator_cert_no').prop('required', true);
+                $('label[for="combined_service_authenticator_name"], label[for="combined_service_authenticator_cert_no"]').append('<span class="required-asterisk text-danger"> *</span>');
+            } else {
+                $('#combined_service_authenticator_name, #combined_service_authenticator_cert_no').prop('required', false);
+                $('.required-asterisk').remove();
+            }
+        });
+
+        //check crossover autographed is checked or not
+        $('#crossover_autographed').change(function () {
+            if ($(this).is(':checked')) {
+                $('#crossover_authenticator_name, #crossover_authenticator_cert_no').prop('required', true);
+                $('label[for="crossover_authenticator_name"], label[for="crossover_authenticator_cert_no"]').append('<span class="required-asterisk text-danger"> *</span>');
+            } else {
+                $('#crossover_authenticator_name, #crossover_authenticator_cert_no').prop('required', false);
+                $('.required-asterisk').remove();
             }
         });
     </script>
