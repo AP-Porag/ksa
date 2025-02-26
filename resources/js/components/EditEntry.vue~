@@ -1038,7 +1038,7 @@
                                                         </td>
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
-                                                                <div class="" style="margin-left: 10px;">
+                                                                <div class="" style="margin-left: 13px;">
                                                                     <div class="text-center" v-if="entry.status === 'not-received'">
                                                                         <button type="button" class="btn btn-sm btn-danger" @click="removeItem(entry.entryItemId)">
                                                                             <i class="fa fa-trash"> Delete</i>
