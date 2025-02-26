@@ -951,11 +951,16 @@
                                                                 <input type="checkbox" v-model="selectAll" @change="toggleSelectAll"> Select All
                                                             </label>
                                                         </th>
+                                                        <th>No.</th>
                                                         <th>Item Type</th>
                                                         <th>Sub Type</th>
                                                         <th>Description</th>
+                                                        <th>Serial Number</th>
                                                         <th>Autographed</th>
-                                                        <th>Actions</th>
+                                                        <th>Authenticator</th>
+                                                        <th>Certificate No.</th>
+                                                        <th>Edit</th>
+                                                        <th>Remove</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -965,6 +970,7 @@
                                                         <td>
                                                             <input type="checkbox" :value="entry.entryItemId" v-model="form_data.selectedEntries">
                                                         </td>
+                                                        <td class="text-capitalize">{{index+1}}</td>
                                                         <td class="text-capitalize">{{entry.itemType}}</td>
                                                         <td>{{entry.itemType == 'Crossover' ? entry.crossover_item_type: 'N/A'}}</td>
 
@@ -975,8 +981,8 @@
                                                             <br>
                                                             <span>{{entry.card_description_three}}</span>
                                                         </td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Card'">Serial No.</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Card'">{{entry.card_autographed == 1 ? 'Yes' : 'No'}}</td>
-
 
                                                         <td v-if="entry.itemType == 'Autograph Authentication'">
                                                             <span>{{entry.auto_authentication_description_one}}</span>
@@ -985,6 +991,7 @@
                                                             <br>
                                                             <span>{{entry.auto_authentication_description_three}}</span>
                                                         </td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Autograph Authentication'">Serial No.</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Autograph Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
@@ -995,6 +1002,7 @@
                                                             <br>
                                                             <span>{{entry.combined_service_description_three}}</span>
                                                         </td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Combined Service'">Serial No.</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Combined Service'">{{entry.combined_service_autographed == 1 ? 'Yes' : 'No'}}</td>
 
                                                         <td v-if="entry.itemType == 'Reholder'">
@@ -1004,6 +1012,7 @@
                                                             <br>
                                                             <span>N/A</span>
                                                         </td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Reholder'">Serial No.</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Reholder'">N/A</td>
 
                                                         <td v-if="entry.itemType == 'Crossover'">
@@ -1013,15 +1022,24 @@
                                                             <br>
                                                             <span>{{entry.crossover_description_three}}</span>
                                                         </td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Crossover'">Serial No.</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Crossover'">{{entry.crossover_autographed == 1 ? 'Yes' : 'No'}}</td>
 
+                                                        <td class="text-capitalize">Authenticator</td>
+                                                        <td class="text-capitalize">Certificate No.</td>
+                                                        <td class="text-capitalize">
+                                                            <div class="text-center">
+                                                                <div class="" style="margin-left: 17px;">
+                                                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
+                                                                        <i class="fa fa-edit"> Edit</i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="" style="margin-left: 19px;">
                                                                     <div class="text-center" v-if="entry.status === 'not-received'">
-                                                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
-                                                                            <i class="fa fa-edit"> Edit</i>
-                                                                        </button>
                                                                         <button type="button" class="btn btn-sm btn-danger" @click="removeItem(entry.entryItemId)">
                                                                             <i class="fa fa-trash"> Delete</i>
                                                                         </button>
@@ -3604,7 +3622,7 @@ table tbody {
 
 tbody td,
 thead th {
-    width: 240px;
+    width: 102px;
 }
 
 td {

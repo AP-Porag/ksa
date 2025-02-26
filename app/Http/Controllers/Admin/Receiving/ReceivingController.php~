@@ -627,7 +627,7 @@ class ReceivingController extends Controller
 
     public function getEntryItemsInReceiving($id)
     {
-        $entryItems = EntryItems::where('entry_id',$id)->where('status','=',GlobalConstant::STATUS_NOT_RECEIVED)->orderBy('created_at', 'DESC')->get();
+        $entryItems = EntryItems::where('entry_id',$id)->where('status','=',GlobalConstant::STATUS_RECEIVED)->orderBy('created_at', 'DESC')->get();
 
         $response = ['status'=>200,'message'=>'Success','data'=>$entryItems];
 
