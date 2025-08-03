@@ -1296,6 +1296,7 @@
                                                                                                                                                         name="card_autographed"
                                                                                                                                                         id="card_autographed"
                                                                                                                                                         value="{{$item->card_autographed}}"
+                                                                                                                                                        {{ $item->card_autographed == 1 ? 'checked' : '' }}
                                                                                                                                                     />
                                                                                                                                                     <!--                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">-->
                                                                                                                                                     <!--                                                Same as Billing is required-->
@@ -1464,6 +1465,7 @@
                                                                                                                                                         name="auto_authentication_autographed"
                                                                                                                                                         id="auto_authentication_autographed"
                                                                                                                                                         value="{{$item->auto_authentication_autographed}}"
+                                                                                                                                                        {{ $item->auto_authentication_autographed == 1 ? 'checked' : '' }}
                                                                                                                                                     />
                                                                                                                                                 </div>
                                                                                                                                             </div>
@@ -1628,6 +1630,7 @@
                                                                                                                                                         name="combined_service_autographed"
                                                                                                                                                         id="combined_service_autographed"
                                                                                                                                                         value="{{$item->combined_service_autographed}}"
+                                                                                                                                                        {{ $item->combined_service_autographed == 1 ? 'checked' : '' }}
                                                                                                                                                     />
                                                                                                                                                 </div>
                                                                                                                                             </div>
@@ -1852,6 +1855,7 @@
                                                                                                                                                         name="crossover_autographed"
                                                                                                                                                         id="crossover_autographed"
                                                                                                                                                         value="{{$item->crossover_autographed}}"
+                                                                                                                                                        {{ $item->crossover_autographed == 1 ? 'checked' : '' }}
                                                                                                                                                     />
                                                                                                                                                 </div>
                                                                                                                                             </div>
@@ -2045,52 +2049,44 @@
     }
 
 
-
-     table {
-         width: 100%;
-
-         /* border-collapse: collapse; */
-         border-spacing: 0;
-         border: 2px solid black;
-     }
-
-    /* To display the block as level element */
-    table tbody,
-    table thead {
-        display: block;
+    /*responsive table css start*/
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 1rem;
+        border-radius: 4px;
     }
 
-    thead{
+    table.table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 900px; /* Adjust based on content */
+    }
+
+    thead {
         background: cornflowerblue;
-        color:white;
-    }
-    thead tr th {
-        height: 40px;
+        color: white;
     }
 
-    table tbody {
-
-        /* Set the height of table body */
-        height: 300px;
-
-        /* Set vertical scroll */
-        overflow-y: auto;
-
-        /* Hide the horizontal scroll */
-        overflow-x: hidden;
-    }
-
-
-
-    tbody td,
-    thead th {
-        width: 240px;
-        border-right: 2px solid black;
-    }
-
-    td {
+    thead th,
+    tbody td {
+        padding: 8px 12px;
         text-align: center;
+        white-space: nowrap; /* Prevent wrapping */
     }
+
+    thead th {
+        height: 40px;
+        font-weight: bold;
+    }
+
+    /* Optional: Zebra striping */
+    tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    /*responsive table css end*/
 </style>
 @endpush
 

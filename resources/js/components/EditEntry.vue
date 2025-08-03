@@ -931,6 +931,34 @@
                     </div>
                 </tab-content>
                 <tab-content
+                    title="Quantity"
+                    icon="ti-package"
+                >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card shipping_address_card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label text-capitalize">
+                                                    Number of items in this order
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    class="form-control"
+                                                    placeholder="Number of items (Number only)"
+                                                    v-model.trim="form_data.item_qty"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab-content>
+                <tab-content
                     title="Item Type"
                     icon="ti-gift"
                 >
@@ -981,7 +1009,7 @@
                                                             <br>
                                                             <span>{{entry.card_description_three}}</span>
                                                         </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Card'"></td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Card'">{{entry.card_serial_number}}</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Card'">{{entry.card_autographed == 1 ? 'Yes' : 'No'}}</td>
 
                                                         <td v-if="entry.itemType == 'Autograph Authentication'">
@@ -991,7 +1019,7 @@
                                                             <br>
                                                             <span>{{entry.auto_authentication_description_three}}</span>
                                                         </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Autograph Authentication'"></td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Autograph Authentication'">{{entry.auto_authentication_serial_number}}</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Autograph Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
 
 
@@ -1002,7 +1030,7 @@
                                                             <br>
                                                             <span>{{entry.combined_service_description_three}}</span>
                                                         </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Combined Service'"></td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Combined Service'">{{entry.combined_service_serial_number}}</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Combined Service'">{{entry.combined_service_autographed == 1 ? 'Yes' : 'No'}}</td>
 
                                                         <td v-if="entry.itemType == 'Reholder'">
@@ -1022,14 +1050,31 @@
                                                             <br>
                                                             <span>{{entry.crossover_description_three}}</span>
                                                         </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Crossover'"></td>
+                                                        <td class="text-capitalize" v-if="entry.itemType == 'Crossover'">{{entry.crossover_serial_number}}</td>
                                                         <td class="text-center" v-if="entry.itemType == 'Crossover'">{{entry.crossover_autographed == 1 ? 'Yes' : 'No'}}</td>
 
-                                                        <td class="text-capitalize"></td>
-                                                        <td class="text-capitalize"></td>
+<!--                                                        <td class="text-capitalize">-->
+<!--                                                            {{-->
+<!--                                                                entry.itemType == 'Card' ? entry.card_authenticator_name :-->
+<!--                                                                    (entry.itemType == 'Autograph Authentication' ? entry.auto_authentication_authenticator_name :-->
+<!--                                                                        (entry.itemType == 'Combined Service' ? entry.combined_service_authenticator_name :-->
+<!--                                                                            (entry.itemType == 'Crossover' ? entry.crossover_authenticator_name : 'N/A')))-->
+<!--                                                            }}-->
+<!--                                                        </td>-->
+                                                        <td class="text-capitalize">
+                                                            {{ entry.authenticator_display_name }}
+                                                        </td>
+                                                        <td class="text-capitalize">
+                                                            {{
+                                                                entry.itemType == 'Card' ? entry.card_authenticator_cert_no :
+                                                                    (entry.itemType == 'Autograph Authentication' ? entry.auto_authentication_authenticator_cert_no :
+                                                                        (entry.itemType == 'Combined Service' ? entry.combined_service_authenticator_cert_no :
+                                                                            (entry.itemType == 'Crossover' ? entry.crossover_authenticator_cert_no : 'N/A')))
+                                                            }}
+                                                        </td>
                                                         <td class="text-capitalize">
                                                             <div class="text-center">
-                                                                <div class="" style="margin-left: 17px;">
+                                                                <div class="">
                                                                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
                                                                         <i class="fa fa-edit"> Edit</i>
                                                                     </button>
@@ -1038,7 +1083,7 @@
                                                         </td>
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
-                                                                <div class="" style="margin-left: 10px;">
+                                                                <div class="">
                                                                     <div class="text-center" v-if="entry.status === 'not-received'">
                                                                         <button type="button" class="btn btn-sm btn-danger" @click="removeItem(entry.entryItemId)">
                                                                             <i class="fa fa-trash"> Delete</i>
@@ -2626,6 +2671,25 @@ export default {
             } else {
                 self.showUPSBox=true;
             }
+
+        self.form_data.entries = self.form_data.entries.map(entry => {
+            let authId = null;
+
+            if (entry.itemType === 'Card') {
+                authId = entry.card_authenticator_name;
+            } else if (entry.itemType === 'Autograph Authentication') {
+                authId = entry.auto_authentication_authenticator_name;
+            } else if (entry.itemType === 'Combined Service') {
+                authId = entry.combined_service_authenticator_name;
+            } else if (entry.itemType === 'Crossover') {
+                authId = entry.crossover_authenticator_name;
+            }
+
+            const auth = self.authenticators.find(a => a.id == authId);
+            entry.authenticator_display_name = auth ? auth.name : 'N/A';
+
+            return entry;
+        });
     },
     methods:{
         async submit(ind){
@@ -3584,49 +3648,44 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-
-table {
+/*responsive table css start*/
+.table-responsive {
     width: 100%;
-
-    /* border-collapse: collapse; */
-    border-spacing: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 2px solid black;
+    margin-bottom: 1rem;
+    border-radius: 4px;
 }
 
-/* To display the block as level element */
-table tbody,
-table thead {
-    display: block;
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px; /* Adjust based on content */
 }
 
-thead{
+thead {
     background: cornflowerblue;
-    color:white;
-}
-thead tr th {
-    height: 40px;
+    color: white;
 }
 
-table tbody {
-
-    /* Set the height of table body */
-    height: 300px;
-
-    /* Set vertical scroll */
-    overflow-y: auto;
-
-    /* Hide the horizontal scroll */
-    overflow-x: hidden;
-}
-
-
-
-tbody td,
-thead th {
-    width: 102px;
-}
-
-td {
+thead th,
+tbody td {
+    padding: 8px 12px;
     text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
 }
+
+thead th {
+    height: 40px;
+    font-weight: bold;
+}
+
+/* Optional: Zebra striping */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/*responsive table css end*/
 
 </style>

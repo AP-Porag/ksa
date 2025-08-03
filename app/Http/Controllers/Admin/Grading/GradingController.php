@@ -419,10 +419,16 @@ class GradingController extends Controller
 //                    'item_qty'=>1,
                 ];
 
+                $startingNumber = 1000000000;
+
+                $lastNumber = EntryItems::max('grading_cert_number');
+                $nextNumber = $lastNumber ? $lastNumber + 1 : $startingNumber;
+
                 $receiving = $this->receivingService->storeOrUpdate($receivingData, null);
                 foreach ($entries as $entry){
                     $item = EntryItems::find($entry['entryItemId']);
                     $item->entry_id = $entry['entryID'];
+                    $item->grading_cert_number = $nextNumber;
                     $item->itemType = $entry['itemType'];
                     //item type card
                     $item->card_description_one = $entry['card_description_one'];

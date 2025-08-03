@@ -947,8 +947,7 @@
                                                         <th>Sub Type</th>
                                                         <th>Description</th>
                                                         <th>Autographed</th>
-                                                        <th>Confirm</th>
-                                                        <th>Remove</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -1200,7 +1199,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="card_item_grade" id="card_item_grade"
                                                                                                                                 v-model.trim="entry.card_item_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in cardItemGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in cardItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1213,7 +1212,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="card_auto_grade" id="card_auto_grade"
                                                                                                                                 v-model.trim="entry.card_auto_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in cardAutoGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in cardAutoGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -2973,9 +2972,9 @@ export default {
                         if (result.isConfirmed){
                             if (response.status == 200){
                                 // window.location.href = `/admin/entries/${response.data.id}`;
-                                // window.location.href = `/admin/receiving/${this.item.id}/edit`;
+                                window.location.href = `/admin/grading/${self.item.id}/edit`;
                                 // window.location.reload();
-                                self.getEntryItemsList(self.item.id);
+                                // self.getEntryItemsList(self.item.id);
                             }
                         }
                     });
@@ -3819,48 +3818,43 @@ input[type=number] {
 }
 
 
-table {
+/*responsive table css start*/
+.table-responsive {
     width: 100%;
-
-    /* border-collapse: collapse; */
-    border-spacing: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+    border-radius: 4px;
 }
 
-/* To display the block as level element */
-table tbody,
-table thead {
-    display: block;
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px; /* Adjust based on content */
 }
 
-thead{
+thead {
     background: cornflowerblue;
-    color:white;
-}
-thead tr th {
-    height: 40px;
+    color: white;
 }
 
-table tbody {
-
-    /* Set the height of table body */
-    height: 300px;
-
-    /* Set vertical scroll */
-    overflow-y: auto;
-
-    /* Hide the horizontal scroll */
-    overflow-x: hidden;
-}
-
-
-
-tbody td,
-thead th {
-    width: 240px;
-}
-
-td {
+thead th,
+tbody td {
+    padding: 8px 12px;
     text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
 }
+
+thead th {
+    height: 40px;
+    font-weight: bold;
+}
+
+/* Optional: Zebra striping */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/*responsive table css end*/
 
 </style>

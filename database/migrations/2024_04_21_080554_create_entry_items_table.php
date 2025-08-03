@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('entry_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('entry_id');
+            $table->string('grading_cert_number')->nullable();
             $table->string('itemType')->nullable();
             //item type card
             $table->string('card_description_one')->nullable();

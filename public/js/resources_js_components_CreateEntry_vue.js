@@ -590,7 +590,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         auto_authentication_description_two: '',
         auto_authentication_description_three: '',
         auto_authentication_serial_number: '',
-        auto_authentication_autographed: '',
+        auto_authentication_autographed: true,
         auto_authentication_authenticator_name: '',
         auto_authentication_authenticator_cert_no: '',
         auto_authentication_estimated_value: '0',
@@ -2825,6 +2825,54 @@ var render = function render() {
     staticClass: "error"
   }, [_vm._v("\n                                                            Customer account number is required\n                                                        ")]) : _vm._e()])])])]) : _vm._e()])])])])])]), _vm._v(" "), _c("tab-content", {
     attrs: {
+      title: "Quantity",
+      icon: "ti-package"
+    }
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "card shipping_address_card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label text-capitalize"
+  }, [_vm._v("\n                                                    Number of items in this order\n                                                ")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.form_data.item_qty,
+      expression: "form_data.item_qty",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "number",
+      placeholder: "Number of items (Number only)"
+    },
+    domProps: {
+      value: _vm.form_data.item_qty
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form_data, "item_qty", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })])])])])])])])]), _vm._v(" "), _c("tab-content", {
+    attrs: {
       title: "Item Type",
       icon: "ti-gift"
     }
@@ -3529,7 +3577,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                                                    Authenticator Name\n                                                                    "), _vm.form_data.auto_authentication_autographed ? _c("span", {
+  }, [_vm._v("\n                                                                    Authenticator Name\n                                                                    "), _vm.form_data.auto_authentication_authenticator_name ? _c("span", {
     staticClass: "error"
   }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("select", {
     directives: [{
@@ -3576,7 +3624,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100"
-  }, [_vm._v("\n                                                                    Authenticator Cert. No.\n                                                                    "), _vm.form_data.auto_authentication_autographed ? _c("span", {
+  }, [_vm._v("\n                                                                    Authenticator Cert. No.\n                                                                    "), _vm.form_data.auto_authentication_authenticator_cert_no ? _c("span", {
     staticClass: "error"
   }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
     directives: [{

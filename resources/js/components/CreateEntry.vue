@@ -946,6 +946,34 @@
                     </div>
                 </tab-content>
                 <tab-content
+                    title="Quantity"
+                    icon="ti-package"
+                >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card shipping_address_card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label text-capitalize">
+                                                    Number of items in this order
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    class="form-control"
+                                                    placeholder="Number of items (Number only)"
+                                                    v-model.trim="form_data.item_qty"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab-content>
+                <tab-content
                     title="Item Type"
                     icon="ti-gift"
                 >
@@ -1296,7 +1324,7 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label w-100 text-capitalize">
                                                                     Authenticator Name
-                                                                    <span class="error" v-if="form_data.auto_authentication_autographed">*</span>
+                                                                    <span class="error" v-if="form_data.auto_authentication_authenticator_name">*</span>
                                                                 </label>
                                                                 <select class="form-select mb-text-only" aria-label="Default select example"
                                                                         v-model.trim="v$.form_data.auto_authentication_authenticator_name.$model"
@@ -1314,7 +1342,7 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label w-100">
                                                                     Authenticator Cert. No.
-                                                                    <span class="error" v-if="form_data.auto_authentication_autographed">*</span>
+                                                                    <span class="error" v-if="form_data.auto_authentication_authenticator_cert_no">*</span>
                                                                 </label>
                                                                 <input
                                                                     type="text"
@@ -2513,7 +2541,7 @@ export default {
                 auto_authentication_description_two:'',
                 auto_authentication_description_three:'',
                 auto_authentication_serial_number:'',
-                auto_authentication_autographed:'',
+                auto_authentication_autographed:true,
                 auto_authentication_authenticator_name:'',
                 auto_authentication_authenticator_cert_no:'',
                 auto_authentication_estimated_value:'0',
