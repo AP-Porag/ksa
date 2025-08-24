@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Label;
+use App\Models\Entry;
 use App\Utils\GlobalConstant;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -26,15 +26,15 @@ class LabelDataTable extends DataTable
             ->addColumn('action', function ($item) {
                 $buttons = '';
 //                $buttons .= '<a class="dropdown-item" href="' . route('admin.entries.edit', $item->id) . '" title="Edit"><i class="mdi mdi-square-edit-outline"></i> Continue Order </a>';
-//                $buttons .= '<a class="dropdown-item" href="' . route('admin.label.show', $item->id) . '" title="View"><i class="mdi mdi-eye-circle"></i> Continue Order </a>';
-//                $buttons .= '<a class="dropdown-item" href="' . route('admin.label.print.order', $item->id) . '" title="View"><i class="mdi mdi-printer"></i> Print Order </a>';
+//                $buttons .= '<a class="dropdown-item" href="' . route('admin.entries.show', $item->id) . '" title="View"><i class="mdi mdi-eye-circle"></i> Continue Order </a>';
+                $buttons .= '<a class="dropdown-item" href="' . route('admin.label.print.view', $item->id) . '" title="View"><i class="mdi mdi-printer"></i> Print Label </a>';
 
                 // TO-DO: need to chnage the super admin ID to 1, while Super admin ID will 1
-                $buttons .= '<form action="' . route('admin.label.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
-                        <input type="hidden" name="_token" value="' . csrf_token() . '">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Delete</button></form>
-                        ';
+//                $buttons .= '<form action="' . route('admin.entries.destroy', $item->id) . '"  id="delete-form-' . $item->id . '" method="post" style="">
+//                        <input type="hidden" name="_token" value="' . csrf_token() . '">
+//                        <input type="hidden" name="_method" value="DELETE">
+//                        <button class="dropdown-item text-danger" onclick="return makeDeleteRequest(event, ' . $item->id . ')"  type="submit" title="Delete"><i class="mdi mdi-trash-can-outline"></i> Delete</button></form>
+//                        ';
 
                 return '<div class="btn-group dropleft">
                 <a href="#" onclick="return false;" class="btn btn-sm btn-dark text-white dropdown-toggle dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
@@ -43,8 +43,34 @@ class LabelDataTable extends DataTable
                 </div>
                 </div>';
             })
+            ->editColumn('email', function ($item) {
+                return $item->customer->email;
+            })
+            ->editColumn('contact_name', function ($item) {
+                return $item->customer->contact_name;
+            })
+            ->editColumn('id', function ($item) {
+
+                if($item->status == GlobalConstant::STATUS_RECEIVED){
+                    $status = 'Order Received';
+                }
+                if($item->status == GlobalConstant::STATUS_NOT_RECEIVED){
+                    $status = 'Not Yet Received';
+                }
+                if($item->status == GlobalConstant::STATUS_RECEIVING_IN_PROGRESS){
+                    $status = 'Receiving in Progress';
+                }
+                if($item->status == GlobalConstant::STATUS_GRADING_IN_PROGRESS){
+                    $status = 'Order Grading in progress';
+                }
+                if($item->status == GlobalConstant::STATUS_GRADED){
+                    $status = 'Order Graded';
+                }
+
+                return $status;
+            })
             ->rawColumns([
-                'action'
+                'action','email','contact_name','status'
             ])
             ->setRowId('id');
 
@@ -53,9 +79,9 @@ class LabelDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(Label $model): QueryBuilder
+    public function query(Entry $model): QueryBuilder
     {
-        return $model->newQuery()->where('status','!=',GlobalConstant::STATUS_PRINTED)->orderBy('id', 'DESC')->select('labels.*');
+        return $model->newQuery()->where('status','=',GlobalConstant::STATUS_GRADED)->orderBy('id', 'DESC')->select('entries.*');
 
     }
 
@@ -90,14 +116,12 @@ class LabelDataTable extends DataTable
     {
 
         return [
-            Column::make('description_one', 'description_one')->title('Description One')->searchable(false),
-            Column::make('description_two', 'description_two')->title('Description Two')->searchable(false),
-            Column::make('description_three', 'description_three')->title('Description Three')->searchable(false),
-            Column::make('description_four', 'description_four')->title('Description Four')->searchable(false),
-            Column::make('certification', 'certification')->title('Certification')->searchable(true),
-            Column::make('grade', 'grade')->title('Grade')->searchable(false),
-            Column::make('exp', 'exp')->title('Exp.')->searchable(false),
-            Column::make('auto_grade', 'auto_grade')->title('Auto Grade')->searchable(false),
+            Column::make('entrySKU', 'entrySKU')->title('Order ID')->searchable(true),
+            Column::make('customer_name', 'customer_name')->title('Name')->searchable(false),
+//            Column::make('qty', 'qty')->title('Order Quantity'),
+            Column::make('email', 'email')->title('Email')->searchable(false),
+            Column::make('contact_name', 'contact_name')->title('Contact Name')->searchable(false),
+            Column::make('id', 'id')->title('Receiving Status')->searchable(false),
         ];
     }
 
@@ -106,6 +130,6 @@ class LabelDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Label_' . date('YmdHis');
+        return 'Entry_' . date('YmdHis');
     }
 }

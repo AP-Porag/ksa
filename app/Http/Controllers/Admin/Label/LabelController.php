@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Label;
 use App\DataTables\LabelDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LabelRequest;
+use App\Models\Entry;
+use App\Models\EntryItems;
 use App\Models\Label;
 use App\Services\LabelService;
 use App\Utils\GlobalConstant;
@@ -95,9 +97,15 @@ class LabelController extends Controller
         }
     }
 
-    public function printLabels(){
-        set_page_meta('Edit Label');
-        $labels = Label::where('status','!=',GlobalConstant::STATUS_PRINTED)->get();
-        return view('admin.label.print', compact('labels'));
+//    public function printLabels(){
+//        set_page_meta('Edit Label');
+//        $labels = Label::where('status','!=',GlobalConstant::STATUS_PRINTED)->get();
+//        return view('admin.label.print', compact('labels'));
+//    }
+    public function printLabels($id)
+    {
+        $order = Entry::find($id);
+        $items = EntryItems::where('entry_id', $id)->orderBy('created_at', 'desc')->get();
+        return view('admin.label.print', compact('order', 'items'));
     }
 }

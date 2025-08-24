@@ -119,7 +119,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
     //label
     Route::resource('label', LabelController::class);
-    Route::get('/label/print/view',[LabelController::class,'printLabels'] )->name('label.print.view');
+//    Route::get('/label/print/view',[LabelController::class,'printLabels'] )->name('label.print.view');
+    Route::get('/label/print/view/{id}',[LabelController::class,'printLabels'] )->name('label.print.view');
 
     //customers
     Route::resource('customers', CustomerController::class);

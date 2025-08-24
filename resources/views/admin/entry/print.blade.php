@@ -126,7 +126,7 @@
                                                     {{ $item->card_autographed == 1 ? 'Yes' : 'No' }}</div>
                                             @endif
 
-                                            @if ($item->itemType == 'Auto Authentication')
+                                            @if ($item->itemType == 'Autograph Authentication')
                                                 <div class="col-sm-3 border-right py-2 px-0">
                                                     <span>{{ $item->auto_authentication_description_one }}</span>
                                                     <br>
@@ -189,7 +189,7 @@
                                                 </div>
                                             @endif
 
-                                            @if ($item->itemType == 'Auto Authentication')
+                                            @if ($item->itemType == 'Autograph Authentication')
                                                 <div class="col-sm-2 py-2 px-0">
                                                     {{ $item->auto_authentication_estimated_value }}
                                                 </div>
