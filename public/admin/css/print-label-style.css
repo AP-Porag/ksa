@@ -112,12 +112,12 @@ ul li {
 .table_row {
     font-size: 14px;
     font-weight: 500;
-    
+
 }
 .first_table_row {
     color: #000;
     font-weight: 700;
-    border-bottom: #000 1.5px solid;
+    border-bottom: #000 3px solid;
     border-left: #d4d4d4 .5px solid;
     border-right: #d4d4d4 .5px solid;
     border-top: #d4d4d4 .5px solid;

@@ -1210,14 +1210,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       card_certified_on_card: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
           // if type is card, at least one of the two fields must be filled
-          return this.showItemTypeCardBox && !this.card_authenticator_cert_no // only require this if the other is empty
+          return this.showItemTypeCardBox && !this.form_data.card_authenticator_cert_no // only require this if the other is empty
           ;
         })
       },
 
       card_authenticator_cert_no: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCardBox && !this.card_certified_on_card // only require this if the other is empty
+          return this.showItemTypeCardBox && !this.form_data.card_certified_on_card // only require this if the other is empty
           ;
         })
       },

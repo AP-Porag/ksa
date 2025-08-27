@@ -1389,7 +1389,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="auto_authentication_grade" id="auto_authentication_grade"
                                                                                                                                 v-model.trim="entry.auto_authentication_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in autoAuthenticationItemGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in autoAuthenticationItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1402,7 +1402,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="auto_authentication_auto_grade" id="auto_authentication_auto_grade"
                                                                                                                                 v-model.trim="entry.auto_authentication_auto_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in autoAuthenticationAutoGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in autoAuthenticationAutoGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1580,7 +1580,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="combined_service_item_grade" id="combined_service_item_grade"
                                                                                                                                 v-model.trim="entry.combined_service_item_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in combinedServiceItemGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in combinedServiceItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1593,7 +1593,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="combined_service_auto_grade" id="combined_service_auto_grade"
                                                                                                                                 v-model.trim="entry.combined_service_auto_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in combinedServiceAutoGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in combinedServiceAutoGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1675,7 +1675,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="reholder_item_grade" id="reholder_item_grade"
                                                                                                                                 v-model.trim="entry.reholder_item_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in reholderItemGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in reholderItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1688,7 +1688,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="reholder_auto_grade" id="reholder_auto_grade"
                                                                                                                                 v-model.trim="entry.reholder_auto_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in reholderAutoGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in reholderAutoGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1859,7 +1859,7 @@
                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_minimum_grade" id="crossover_minimum_grade"
                                                                                                                 v-model.trim="entry.crossover_minimum_grade"
                                                                                                         >
-                                                                                                            <option v-for="(grade,index) in minimumGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                            <option v-for="(grade,index) in minimumGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                         </select>
                                                                                                     </div>
                                                                                                 </div>
@@ -1880,7 +1880,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_item_grade" id="crossover_item_grade"
                                                                                                                                 v-model.trim="entry.crossover_item_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in crossoverItemGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in crossoverItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1893,7 +1893,7 @@
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_auto_grade" id="crossover_auto_grade"
                                                                                                                                 v-model.trim="entry.crossover_auto_grade"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in crossoverAutoGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in crossoverAutoGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -2774,53 +2774,6 @@ export default {
                 authenticator_name_three:'',
                 authenticator_name_four:'',
                 entries:[],
-
-
-                // //item type card
-                // card_description_one:'',
-                // card_description_two:'',
-                // card_description_three:'',
-                // card_serial_number:'',
-                // card_autographed:'',
-                // card_authenticator_name:'',
-                // card_authenticator_cert_no:'',
-                // card_estimated_value:'',
-                //
-                // //item type auto authentication
-                // auto_authentication_description_one:'',
-                // auto_authentication_description_two:'',
-                // auto_authentication_description_three:'',
-                // auto_authentication_serial_number:'',
-                // auto_authentication_autographed:'',
-                // auto_authentication_authenticator_name:'',
-                // auto_authentication_authenticator_cert_no:'',
-                // auto_authentication_estimated_value:'',
-                //
-                // //item type combined service
-                // combined_service_description_one:'',
-                // combined_service_description_two:'',
-                // combined_service_description_three:'',
-                // combined_service_serial_number:'',
-                // combined_service_autographed:'',
-                // combined_service_authenticator_name:'',
-                // combined_service_authenticator_cert_no:'',
-                // combined_service_estimated_value:'',
-                //
-                // //item type combined service
-                // reholder_certification_number:'',
-                // reholder_estimated_value:'',
-                //
-                // //item type crossover
-                // crossover_description_one:'',
-                // crossover_description_two:'',
-                // crossover_description_three:'',
-                // crossover_serial_number:'',
-                // crossover_autographed:'',
-                // crossover_authenticator_name:'',
-                // crossover_authenticator_cert_no:'',
-                // crossover_estimated_value:'',
-                // crossover_minimum_grade:'',
-                // crossover_item_type:'',
             },
 
         }

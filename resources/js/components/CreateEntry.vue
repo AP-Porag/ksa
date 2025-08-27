@@ -628,63 +628,6 @@
                 >
                     <div class="row">
                         <div class="col-md-12">
-                            <!--                        <div class="card shipping_address_card">-->
-                            <!--                            <div class="card-body">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Drop Off Center-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
-                            <!--                                                Name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100">-->
-                            <!--                                                Contact Name-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
-                            <!--                                                contact name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Email Address-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="email"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.email.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
-                            <!--                                                email is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                        </div>-->
                             <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>
                         </div>
                         <div class="col-md-12">
@@ -3150,7 +3093,7 @@ export default {
                     // if type is card, at least one of the two fields must be filled
                     return (
                         this.showItemTypeCardBox &&
-                        !this.card_authenticator_cert_no // only require this if the other is empty
+                        !this.form_data.card_authenticator_cert_no // only require this if the other is empty
                     )
                 }),
             },
@@ -3158,7 +3101,7 @@ export default {
                 required: requiredIf(function () {
                     return (
                         this.showItemTypeCardBox &&
-                        !this.card_certified_on_card // only require this if the other is empty
+                        !this.form_data.card_certified_on_card // only require this if the other is empty
                     )
                 }),
             },

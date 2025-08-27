@@ -390,6 +390,7 @@ class ReceivingController extends Controller
     {
 
         try {
+
             $entries = $request->entries;
             $data = [
                 "customer_id"=>$request->customerId,
@@ -429,7 +430,6 @@ class ReceivingController extends Controller
 
             $en = $this->entryService->storeOrUpdate($data, $id);
 
-
             if ($en){
 
                 $receivingData = [
@@ -439,6 +439,7 @@ class ReceivingController extends Controller
                 ];
 
                 $receiving = $this->receivingService->storeOrUpdate($receivingData, null);
+
                 foreach ($entries as $entry){
                     $item = EntryItems::find($entry['entryItemId']);
                     $item->entry_id = $entry['entryID'];
@@ -497,10 +498,7 @@ class ReceivingController extends Controller
             $response = ['status'=>200,'message'=>'Success','id'=>$id];
 
             return response()->json($response);
-//            $entryData = $request->all();
 
-
-//            record_updated_flash();
         } catch (\Exception $e) {
             return back();
         }

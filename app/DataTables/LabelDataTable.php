@@ -121,7 +121,7 @@ class LabelDataTable extends DataTable
 //            Column::make('qty', 'qty')->title('Order Quantity'),
             Column::make('email', 'email')->title('Email')->searchable(false),
             Column::make('contact_name', 'contact_name')->title('Contact Name')->searchable(false),
-            Column::make('id', 'id')->title('Receiving Status')->searchable(false),
+            Column::make('id', 'id')->title('Status')->searchable(false),
         ];
     }
 

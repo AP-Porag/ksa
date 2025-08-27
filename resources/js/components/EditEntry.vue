@@ -23,8 +23,8 @@
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
                         <span class="" v-else>
-                            <wizard-button @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to received</wizard-button>
-                            <wizard-button @click.native="submitMultiEntryID" class="wizard-footer-right" style="margin-right: 15px; background-color: #1f91f3; color: white;">Set these item to received</wizard-button>
+                            <wizard-button @click.native="received(item.id)" :disabled="form_data.entries.length > 0" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to received</wizard-button>
+                            <wizard-button @click.native="submitMultiEntryID" :disabled="form_data.selectedEntries.length === 0" class="wizard-footer-right" style="margin-right: 15px; background-color: #1f91f3; color: white;">Set these item to received</wizard-button>
                         </span>
                     </div>
                 </template>
@@ -630,66 +630,6 @@
                 >
                     <div class="row">
                         <div class="col-md-12">
-                            <!--                        <div class="card shipping_address_card">-->
-                            <!--                            <div class="card-body">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Drop Off Center-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
-                            <!--                                                Name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100">-->
-                            <!--                                                Contact Name-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
-                            <!--                                                contact name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Email Address-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="email"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.email.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
-                            <!--                                                email is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                        </div>-->
-<!--                            <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>-->
-                        </div>
-                        <div class="col-md-12">
                             <div class="card shipping_address_card">
                                 <div class="card-body">
                                     <div class="row">
@@ -747,7 +687,6 @@
                                                 <!--                                            </div>-->
                                             </div>
                                         </div>
-
                                         <div class="col-md-2">
                                             <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
@@ -763,8 +702,7 @@
                                                 />
                                             </div>
                                         </div>
-
-                                        <div class="col-md-2">
+                                        <div class="col-md-1">
                                             <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                     COD
@@ -775,6 +713,21 @@
                                                     name="payment_method"
                                                     placeholder=""
                                                     value="cod"
+                                                    v-model.trim="form_data.payment_method"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
+                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                    N/A
+                                                </label>
+                                                <input
+                                                    type="radio"
+                                                    class="form-check"
+                                                    name="payment_method"
+                                                    placeholder=""
+                                                    value="n/a"
                                                     v-model.trim="form_data.payment_method"
                                                 />
                                             </div>
@@ -802,7 +755,6 @@
                         </div>
                     </div>
                 </tab-content>
-<!--                :before-change="checkSixthStep"-->
                 <tab-content
                     title="Shipping Method"
                     icon="ti-credit-card"
@@ -1195,7 +1147,7 @@
 
                                                                                                                     <div class="col-md-12">
                                                                                                                         <div class="row">
-                                                                                                                            <div class="col-md-4">
+                                                                                                                            <div class="col-md-3">
                                                                                                                                 <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
                                                                                                                                     <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                                                                                                         Autographed
@@ -1210,7 +1162,7 @@
                                                                                                                                     />
                                                                                                                                 </div>
                                                                                                                             </div>
-                                                                                                                            <div class="col-md-4">
+                                                                                                                            <div class="col-md-3">
                                                                                                                                 <div class="mb-3">
                                                                                                                                     <label class="form-label w-100 text-capitalize">
                                                                                                                                         Authenticator Name
@@ -1222,7 +1174,20 @@
                                                                                                                                     </select>
                                                                                                                                 </div>
                                                                                                                             </div>
-                                                                                                                            <div class="col-md-4">
+                                                                                                                            <div class="col-md-3">
+                                                                                                                                <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
+                                                                                                                                    <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                                                                                                        Certified on card
+                                                                                                                                    </label>
+                                                                                                                                    <input
+                                                                                                                                        type="checkbox"
+                                                                                                                                        class="form-check"
+                                                                                                                                        placeholder=""
+                                                                                                                                        v-model.trim="entry.card_certified_on_card"
+                                                                                                                                    />
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                            <div class="col-md-3">
                                                                                                                                 <div class="mb-3">
                                                                                                                                     <label class="form-label w-100">
                                                                                                                                         Authenticator Cert. No.
@@ -2449,53 +2414,6 @@ export default {
                 authenticator_name_four:'',
                 entries:[],
                 selectedEntries: [], // To hold selected IDs
-
-
-                // //item type card
-                // card_description_one:'',
-                // card_description_two:'',
-                // card_description_three:'',
-                // card_serial_number:'',
-                // card_autographed:'',
-                // card_authenticator_name:'',
-                // card_authenticator_cert_no:'',
-                // card_estimated_value:'',
-                //
-                // //item type auto authentication
-                // auto_authentication_description_one:'',
-                // auto_authentication_description_two:'',
-                // auto_authentication_description_three:'',
-                // auto_authentication_serial_number:'',
-                // auto_authentication_autographed:'',
-                // auto_authentication_authenticator_name:'',
-                // auto_authentication_authenticator_cert_no:'',
-                // auto_authentication_estimated_value:'',
-                //
-                // //item type combined service
-                // combined_service_description_one:'',
-                // combined_service_description_two:'',
-                // combined_service_description_three:'',
-                // combined_service_serial_number:'',
-                // combined_service_autographed:'',
-                // combined_service_authenticator_name:'',
-                // combined_service_authenticator_cert_no:'',
-                // combined_service_estimated_value:'',
-                //
-                // //item type combined service
-                // reholder_certification_number:'',
-                // reholder_estimated_value:'',
-                //
-                // //item type crossover
-                // crossover_description_one:'',
-                // crossover_description_two:'',
-                // crossover_description_three:'',
-                // crossover_serial_number:'',
-                // crossover_autographed:'',
-                // crossover_authenticator_name:'',
-                // crossover_authenticator_cert_no:'',
-                // crossover_estimated_value:'',
-                // crossover_minimum_grade:'',
-                // crossover_item_type:'',
             },
 
         }
@@ -2569,6 +2487,7 @@ export default {
                     card_description_three : entry.card_description_three,
                     card_serial_number : entry.card_serial_number,
                     card_autographed : entry.card_autographed,
+                    card_certified_on_card : entry.card_certified_on_card,
                     card_authenticator_name : entry.card_authenticator_name,
                     card_authenticator_cert_no : entry.card_authenticator_cert_no,
                     card_estimated_value : entry.card_estimated_value,
@@ -2611,51 +2530,6 @@ export default {
                 }
                 self.form_data.entries.push(en)
             });
-
-
-        //item type card
-        // self.form_data.card_description_one= self.item.card_description_one,
-        //     self.form_data.card_description_two= self.item.card_description_two,
-        //     self.form_data.card_description_three= self.item.card_description_three,
-        //     self.form_data.card_serial_number= self.item.card_serial_number,
-        //     self.form_data.card_autographed= self.item.card_autographed,
-        //     self.form_data.card_authenticator_name= self.item.card_authenticator_name,
-        //     self.form_data.card_authenticator_cert_no= self.item.card_authenticator_cert_no,
-        //     self.form_data.card_estimated_value= self.item.card_estimated_value,
-        //
-        //     //item type auto authentication
-        //     self.form_data.auto_authentication_description_one= self.item.auto_authentication_description_one,
-        //     self.form_data.auto_authentication_description_two= self.item.auto_authentication_description_two,
-        //     self.form_data.auto_authentication_description_three= self.item.auto_authentication_description_three,
-        //     self.form_data.auto_authentication_serial_number= self.item.auto_authentication_serial_number,
-        //     self.form_data.auto_authentication_autographed= self.item.auto_authentication_autographed,
-        //     self.form_data.auto_authentication_authenticator_name= self.item.auto_authentication_authenticator_name,
-        //     self.form_data.auto_authentication_authenticator_cert_no= self.item.auto_authentication_authenticator_cert_no,
-        //     self.form_data.auto_authentication_estimated_value= self.item.auto_authentication_estimated_value,
-        //
-        //     //item type combined service
-        //     self.form_data.combined_service_description_one= self.item.combined_service_description_one,
-        //     self.form_data.combined_service_description_two= self.item.combined_service_description_two,
-        //     self.form_data.combined_service_description_three= self.item.combined_service_description_three,
-        //     self.form_data.combined_service_serial_number= self.item.combined_service_serial_number,
-        //     self.form_data.combined_service_autographed= self.item.combined_service_autographed,
-        //     self.form_data.combined_service_authenticator_name= self.item.combined_service_authenticator_name,
-        //     self.form_data.combined_service_authenticator_cert_no= self.item.combined_service_authenticator_cert_no,
-        //     self.form_data.combined_service_estimated_value= self.item.combined_service_estimated_value,
-        //
-        //     //item type combined service
-        //     self.form_data.reholder_certification_number= self.item.reholder_certification_number,
-        //     self.form_data.reholder_estimated_value= self.item.reholder_estimated_value,
-        //
-        //     //item type crossover
-        //     self.form_data.crossover_description_one= self.item.crossover_description_one,
-        //     self.form_data.crossover_description_two= self.item.crossover_description_two,
-        //     self.form_data.crossover_description_three= self.item.crossover_description_three,
-        //     self.form_data.crossover_serial_number= self.item.crossover_serial_number,
-        //     self.form_data.crossover_autographed= self.item.crossover_autographed,
-        //     self.form_data.crossover_authenticator_name= self.item.crossover_authenticator_name,
-        //     self.form_data.crossover_authenticator_cert_no= self.item.crossover_authenticator_cert_no;
-        // self.form_data.crossover_estimated_value= self.item.crossover_estimated_value;
 
             if (self.form_data.shipping_method == "Pickup"){
                 self.showPickupLocationBox=true;
@@ -2725,58 +2599,6 @@ export default {
                         self.showSomethingWrong();
                     }
                 });
-
-            // if (this.checkSixthStep()){
-            //     Swal.fire({
-            //         // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
-            //         title: `Do you want to update this order: <br> ${this.form_data.name}`,
-            //         showDenyButton: true,
-            //         showCancelButton: true,
-            //         confirmButtonText: "Yes",
-            //         denyButtonText: `No`,
-            //         icon: "question",
-            //     }).then((result) => {
-            //         console.log(result)
-            //         /* Read more about isConfirmed, isDenied below */
-            //         if (result.isConfirmed) {
-            //             // Swal.fire("Saved!", "", "success");
-            //             // window.location.href = `/admin/entries/10`;
-            //             // Submit form
-            //
-            //             axios
-            //                 .put(`/admin/entries/${this.item.id}`, this.form_data)
-            //                 .then(function (response) {
-            //                     console.log(response)
-            //                     Swal.fire("Update!", "", "success").then((result)=>{
-            //                         if (result.isConfirmed){
-            //                             if (response.status == 200){
-            //                                 window.location.href = `/admin/entries/${response.data.id}`;
-            //                             }
-            //                         }
-            //                     });
-            //
-            //                     // window.location.reload()
-            //                     // window.location.href = "/admin/thirds";
-            //                 })
-            //                 .catch(function (err) {
-            //                     try {
-            //                         self.showValidationError(err);
-            //                     } catch (e) {
-            //                         self.showSomethingWrong();
-            //                     }
-            //                 });
-            //             // Swal.fire("Saved!", "", "success");
-            //         }else if (result.isDismissed){
-            //             window.location.href = "/admin/entries";
-            //         }else if (result.isDenied) {
-            //             console.log(result.isDenied)
-            //             // Swal.fire("Changes are not saved", "", "info");
-            //         }
-            //     });
-            //
-            // }else {
-            //     return;
-            // }
         },
         async received(id){
             if (this.checkSixthStep()){
@@ -3220,7 +3042,6 @@ export default {
                     // console.log(res.data.data)
                     self.form_data.entries = []
                     res.data.data.map(function(entry) {
-
                         let en = {
                             entryItemId : entry.id,
                             entryID : entry.entry_id,
@@ -3232,6 +3053,7 @@ export default {
                             card_description_three : entry.card_description_three,
                             card_serial_number : entry.card_serial_number,
                             card_autographed : entry.card_autographed,
+                            card_certified_on_card : entry.card_certified_on_card,
                             card_authenticator_name : entry.card_authenticator_name,
                             card_authenticator_cert_no : entry.card_authenticator_cert_no,
                             card_estimated_value : entry.card_estimated_value,
@@ -3385,7 +3207,7 @@ export default {
     watch: {
         'form_data.selectedEntries'(newVal) {
             this.selectAll = newVal.length === this.form_data.entries.length;
-        }
+        },
     },
 
     validations: {
