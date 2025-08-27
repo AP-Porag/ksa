@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('admin/css/print-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/print-label-style.css') }}">
     <link rel="stylesheet" href="print.css">
     <title>KSA</title>
 </head>
@@ -29,17 +29,27 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="bg_for_page">
-                                <div class="header d-flex justify-content-between align-items-center">
-                                    <div><img class="logo_image" src="{{ asset('storage/settings/logo-sm.png') }}"
-                                            alt=""></div>
-                                    <div>
-                                        <h1>ORDER</h1>
+                                <div class="header row">
+
+                                    <div class="col-6 col-md-5 ksa_certification">
+                                        <h2> KSA Certification</h2>
                                     </div>
+
+                                    <div class="col-6 col-md-7 summary_report">
+                                        <h4>Order Summary Report</h4>
+                                    </div>
+
                                 </div>
+
+
+
                                 <div class="information">
-                                    <div class="row">
+                                    <div class="row information_row">
                                         <div class="bill_to col-4">
-                                            <ul>
+
+                                            <p> Customer Name: John Doe</p>
+
+                                           <!-- <ul>
                                                 <li class="bill_ul_child_1">BILL TO</li>
                                                 <li class="bill_ul_child_2">
                                                     {{ $order->customer_name }}
@@ -54,10 +64,16 @@
                                                 <li>{{ $order->billing_country }}</li>
                                                 <li class="some_num">{{ $order->billing_phone }}</li>
                                                 <li>{{ $order->customer->email }}</li>
-                                            </ul>
+                                            </ul>-->
                                         </div>
+
+
+
                                         <div class="ship_to col-3">
-                                            <ul>
+
+                                        <p> Online Order #1234 </p>
+
+                                      <!--    <ul>
                                                 <li class="ship_ul_child_1"> SHIP TO </li>
                                                 <li class="ship_ul_child_2">
                                                     {{ $order->shipping_company_name ? $order->shipping_company_name : $order->customer_name }}
@@ -71,10 +87,16 @@
                                                 </li>
                                                 <li>{{ $order->shipping_country }}</li>
                                                 <li class="some_num">{{ $order->shipping_phone }}</li>
-                                            </ul>
+                                            </ul>   -->
                                         </div>
-                                        <div class="order col-5">
-                                            <div class="row">
+
+
+
+                                        <div class="order col-2">
+
+                                        <p> Total Items: 12</p>
+
+                                <!--        <div class="row">
                                                 <div class="col-6 number">Order Number :</div>
                                                 <div class="col-6 input_num">{{ $order->entrySKU }}</div>
                                             </div>
@@ -86,14 +108,136 @@
                                             <div class="row">
                                                 <div class="col-6 shipping">Shipping Method :</div>
                                                 <div class="col-6 input_shipping">{{ $order->shipping_method }}</div>
-                                            </div>
+                                            </div>  -->
                                         </div>
+
+                                        <div class="order_2nd col-3">
+                                           <p>Order #KSA12234</p>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-md-12">
-                            <div class="mt-5" style="margin-right: 15px;margin-left: 15px;">
+
+
+                          <div class="mt-5" style="margin-right: 15px;margin-left: 15px;">
+
+                                <div class="row text-center table_row first_table_row">
+                                    <div class="col-sm-1 border-right py-2 px-0">No. </div>
+                                    <div class="col-sm-1 border-right py-2 px-0">Cert.#</div>
+                                    <div class="col-sm-2 border-right py-2 px-0">Item Type</div>
+                                    <div class="col-sm-3 border-right py-2 px-0">Description</div>
+                                    <div class="col-sm-1 border-right py-2 px-0">Auto Certifier</div>
+                                    <div class="col-sm-1 border-right py-2 px-0 ">Cert.# / On Card</div>
+                                    <div class="col-sm-1 border-right py-2 px-0">Grade</div>
+                                    <div class="col-sm-2 py-2 px-0">Auto Grade</div>
+                                </div>
+
+
+                                @if ($items->count() > 0)
+                                    @foreach ($items as $item)
+                                        <div class="row border border-top-0 table_row text-center">
+                                            <div class="col-sm-1 border-right py-2 px-0">{{ $loop->index + 1 }}</div>
+                                            <div class="col-sm-1 border-right py-2 px-0">1</div>
+                                            <div class="col-sm-2 border-right py-2 px-0">{{ $item->itemType }}</div>
+                                           
+                                           
+
+                                            @if ($item->itemType == 'Card')
+                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                    <span>{{ $item->card_description_one }}</span>
+                                                    <br>
+                                                    <span>{{ $item->card_description_two }}</span>
+                                                    <br>
+                                                    <span>{{ $item->card_description_three }}</span>
+                                                </div>
+                                                <div class=" col-sm-1 border-right">JSA</div>
+                                                <div class="col-sm-1 border-right py-2 px-0">
+                                                    {{ $item->card_autographed == 1 ? 'Yes' : 'No' }}</div>
+                                                    <div class="col-sm-1 border-right">10</div>
+                                                    <div class="col-sm-2 border-right">10</div>
+                                            @endif
+
+                                            @if ($item->itemType == 'Autograph Authentication')
+                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                    <span>{{ $item->auto_authentication_description_one }}</span>
+                                                    <br>
+                                                    <span>{{ $item->auto_authentication_description_two }}</span>
+                                                    <br>
+                                                    <span>{{ $item->auto_authentication_description_three }}</span>
+                                                </div>
+                                                <div class=" col-sm-1 border-right">hello</div>
+                                                <div class="col-sm-1 border-right py-2 px-0">
+                                                    {{ $item->auto_authentication_autographed == 1 ? 'Yes' : 'No' }}
+                                                </div>
+                                                <div class="col-sm-1 border-right">10</div>
+                                                    <div class="col-sm-2 border-right">10</div>
+                                            @endif
+
+
+                                            @if ($item->itemType == 'Combined Service')
+                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                    <span>{{ $item->combined_service_description_one }}</span>
+                                                    <br>
+                                                    <span>{{ $item->combined_service_description_two }}</span>
+                                                    <br>
+                                                    <span>{{ $item->combined_service_description_three }}</span>
+                                                </div>
+                                                <div class=" col-sm-1 border-right">hello</div>
+                                                <div class="col-sm-2 border-right py-2 px-0">
+                                                    {{ $item->combined_service_autographed == 1 ? 'Yes' : 'No' }}
+                                                </div>
+                                                <div class="col-sm-1 border-right">10</div>
+                                                    <div class="col-sm-2 border-right">10</div>
+                                            @endif
+
+                                            @if ($item->itemType == 'Reholder')
+                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                    <span>N/A</span>
+                                                    <br>
+                                                    <span>N/A</span>
+                                                    <br>
+                                                    <span>N/A</span>
+                                                </div>
+                                                <div class=" col-sm-1 border-right">hello</div>
+                                                <div class="col-sm-2 border-right py-2 px-0">N/A</div>
+                                                <div class="col-sm-1 border-right">10</div>
+                                                    <div class="col-sm-2 border-right">10</div>
+                                            @endif
+
+                                            @if ($item->itemType == 'Crossover')
+                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                    <span>{{ $item->crossover_description_one }}</span>
+                                                    <br>
+                                                    <span>{{ $item->crossover_description_two }}</span>
+                                                    <br>
+                                                    <span>{{ $item->crossover_description_three }}</span>
+                                                </div>
+                                                <div class=" col-sm-1 border-right">hello</div>
+                                                <div class="col-sm-2 border-right py-2 px-0">
+                                                    {{ $item->crossover_autographed == 1 ? 'Yes' : 'No' }}
+                                                </div>
+                                                <div class="col-sm-1 border-right">10</div>
+                                                    <div class="col-sm-2 border-right">10</div>
+                                            @endif
+
+
+
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+
+
+
+
+
+
+                      <!--  <div class="mt-5" style="margin-right: 15px;margin-left: 15px;">
 
                                 <div class="row border text-center table_row first_table_row">
                                     <div class="col-sm-1 border-right py-2 px-0">No. </div>
@@ -218,7 +362,14 @@
                                         </div>
                                     @endforeach
                                 @endif
-                            </div>
+                            </div> -->
+
+
+
+
+
+                            
+
                         </div>
                     </div>
                 </div>

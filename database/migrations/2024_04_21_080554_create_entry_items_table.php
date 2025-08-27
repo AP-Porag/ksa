@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('card_description_three')->nullable();
             $table->string('card_serial_number')->nullable();
             $table->string('card_autographed')->nullable();
+            $table->string('card_certified_on_card')->nullable();
             $table->string('card_authenticator_name')->nullable();
             $table->string('card_authenticator_cert_no')->nullable();
             $table->string('card_estimated_value')->nullable();

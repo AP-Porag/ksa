@@ -104,6 +104,7 @@ class ReceivingController extends Controller
                         'card_description_three'=>$item['card_description_three'],
                         'card_serial_number'=>$item['card_serial_number'],
                         'card_autographed'=>$item['card_autographed'],
+                        'card_certified_on_card'=>$item['card_certified_on_card'],
                         'card_authenticator_name'=>$item['card_authenticator_name'],
                         'card_authenticator_cert_no'=>$item['card_authenticator_cert_no'],
                         'card_estimated_value'=>$item['card_estimated_value'],
@@ -328,6 +329,7 @@ class ReceivingController extends Controller
                     $item->card_description_three = $entry['card_description_three'];
                     $item->card_serial_number = $entry['card_serial_number'];
                     $item->card_autographed = $entry['card_autographed'];
+                    $item->card_certified_on_card = $entry['card_certified_on_card'];
                     $item->card_authenticator_name = $entry['card_authenticator_name'];
                     $item->card_authenticator_cert_no = $entry['card_authenticator_cert_no'];
                     $item->card_estimated_value = $entry['card_estimated_value'];
@@ -447,6 +449,7 @@ class ReceivingController extends Controller
                     $item->card_description_three = $entry['card_description_three'];
                     $item->card_serial_number = $entry['card_serial_number'];
                     $item->card_autographed = $entry['card_autographed'];
+                    $item->card_certified_on_card = $entry['card_certified_on_card'];
                     $item->card_authenticator_name = $entry['card_authenticator_name'];
                     $item->card_authenticator_cert_no = $entry['card_authenticator_cert_no'];
                     $item->card_estimated_value = $entry['card_estimated_value'];
@@ -648,6 +651,7 @@ class ReceivingController extends Controller
             "card_description_three"=> $item->card_description_three,
             "card_serial_number"=> $item->card_serial_number,
             "card_autographed"=> $item->card_autographed,
+            "card_certified_on_card"=> $item->card_certified_on_card,
             "card_authenticator_name"=> $item->card_authenticator_name,
             "card_authenticator_cert_no"=> $item->card_authenticator_cert_no,
             "card_estimated_value"=> $item->card_estimated_value,
@@ -701,6 +705,7 @@ class ReceivingController extends Controller
         $item->card_description_three = $request->card_description_three;
         $item->card_serial_number = $request->card_serial_number;
         $item->card_autographed = $request->card_autographed;
+        $item->card_certified_on_card = $request->card_certified_on_card;
         $item->card_authenticator_name = $request->card_authenticator_name;
         $item->card_authenticator_cert_no = $request->card_authenticator_cert_no;
         $item->card_estimated_value = $request->card_estimated_value;

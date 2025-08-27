@@ -54,6 +54,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       show_error_fourteen: false,
       show_error_fifteen: false,
       show_error_sixteen: false,
+      show_error_seventeen: false,
       isReadonly: false,
       step_count: 4,
       completed_step_count: '',
@@ -582,6 +583,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         card_description_three: '',
         card_serial_number: '',
         card_autographed: '',
+        card_certified_on_card: '',
         card_authenticator_name: '',
         card_authenticator_cert_no: '',
         card_estimated_value: '0',
@@ -599,7 +601,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         combined_service_description_two: '',
         combined_service_description_three: '',
         combined_service_serial_number: '',
-        combined_service_autographed: '',
+        combined_service_autographed: true,
         combined_service_authenticator_name: '',
         combined_service_authenticator_cert_no: '',
         combined_service_estimated_value: '0',
@@ -626,9 +628,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) switch (_context.prev = _context.next) {
             case 0:
               if (!_this.checkSeventhStep()) {
-                _context.next = 4;
+                _context.next = 5;
                 break;
               }
+              console.log('submitted working');
               Swal.fire({
                 // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
                 title: "Do you want to save this order: <br> ".concat(_this.form_data.name),
@@ -672,11 +675,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // Swal.fire("Changes are not saved", "", "info");
                 }
               });
-              _context.next = 5;
+              _context.next = 6;
               break;
-            case 4:
-              return _context.abrupt("return");
             case 5:
+              return _context.abrupt("return");
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -779,13 +782,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else if (this.v$.form_data.card_description_one.$invalid) {
         this.show_error_twelve = true;
         return false;
-      } else if (this.v$.form_data.card_authenticator_name.$invalid) {
-        this.show_error_twelve = true;
-        return false;
-      } else if (this.v$.form_data.card_authenticator_cert_no.$invalid) {
-        this.show_error_twelve = true;
-        return false;
-      } else if (this.v$.form_data.card_estimated_value.$invalid) {
+      }
+      // else if (this.v$.form_data.card_authenticator_name.$invalid) {
+      //     this.show_error_twelve = true;
+      //     return false;
+      // }
+      // else if (this.v$.form_data.card_authenticator_cert_no.$invalid) {
+      //     this.show_error_twelve = true;
+      //     return false;
+      // }
+      else if (this.v$.form_data.card_estimated_value.$invalid) {
         this.show_error_twelve = true;
         return false;
       } else if (this.v$.form_data.auto_authentication_description_one.$invalid) {
@@ -835,6 +841,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return false;
       } else if (this.v$.form_data.crossover_item_type.$invalid) {
         this.show_error_sixteen = true;
+        return false;
+      } else if (this.v$.form_data.card_certified_on_card.$invalid || this.v$.form_data.card_authenticator_cert_no.$invalid) {
+        this.show_error_seventeen = true;
         return false;
       } else {
         return true;
@@ -1187,15 +1196,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         })
       },
 
-      card_authenticator_cert_no: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.card_autographed; // return true if this field is required
-        })
-      },
-
+      // card_authenticator_cert_no:{
+      //     required: requiredIf(function () {
+      //         return this.form_data.card_autographed; // return true if this field is required
+      //     }),
+      // },
       card_estimated_value: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
           return this.showItemTypeCardBox; // return true if this field is required
+        })
+      },
+
+      card_certified_on_card: {
+        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
+          // if type is card, at least one of the two fields must be filled
+          return this.showItemTypeCardBox && !this.card_authenticator_cert_no // only require this if the other is empty
+          ;
+        })
+      },
+
+      card_authenticator_cert_no: {
+        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
+          return this.showItemTypeCardBox && !this.card_certified_on_card // only require this if the other is empty
+          ;
         })
       },
 
@@ -1218,13 +1241,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // },
       auto_authentication_authenticator_name: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.auto_authentication_autographed; // return true if this field is required
+          return this.showItemTypeAutoAthenticationBox && this.form_data.auto_authentication_autographed; // return true if this field is required
         })
       },
 
       auto_authentication_authenticator_cert_no: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.auto_authentication_autographed; // return true if this field is required
+          return this.showItemTypeAutoAthenticationBox && this.form_data.auto_authentication_autographed; // return true if this field is required
         })
       },
 
@@ -1253,13 +1276,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // },
       combined_service_authenticator_name: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.combined_service_autographed; // return true if this field is required
+          return this.showItemTypeCombinedServiceBox && this.form_data.combined_service_autographed; // return true if this field is required
         })
       },
 
       combined_service_authenticator_cert_no: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.combined_service_autographed; // return true if this field is required
+          return this.showItemTypeCombinedServiceBox && this.form_data.combined_service_autographed; // return true if this field is required
         })
       },
 
@@ -1349,7 +1372,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {}, [_c("form", [_c("form-wizard", {
+  return _c("div", {}, [_c("form-wizard", {
     attrs: {
       color: "#3476ae",
       title: "",
@@ -3167,7 +3190,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-4"
+    staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3 d-flex justify-content-start",
     staticStyle: {
@@ -3216,7 +3239,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-4"
+    staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -3263,14 +3286,63 @@ var render = function render() {
   })], 2), _vm._v(" "), _vm.v$.form_data.card_authenticator_name.required.$invalid && _vm.show_error_twelve ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                                    Authenticator name is required\n                                                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-4"
+    staticClass: "col-md-3"
+  }, [_c("div", {
+    staticClass: "mb-3 d-flex justify-content-start",
+    staticStyle: {
+      "margin-top": "25px"
+    }
+  }, [_c("label", {
+    staticClass: "form-label text-capitalize",
+    staticStyle: {
+      "margin-top": "6px",
+      "margin-right": "15px"
+    }
+  }, [_vm._v("\n                                                                    Certified on card\n                                                                ")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.form_data.card_certified_on_card,
+      expression: "form_data.card_certified_on_card",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-check",
+    attrs: {
+      type: "checkbox",
+      placeholder: ""
+    },
+    domProps: {
+      checked: Array.isArray(_vm.form_data.card_certified_on_card) ? _vm._i(_vm.form_data.card_certified_on_card, null) > -1 : _vm.form_data.card_certified_on_card
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.form_data.card_certified_on_card,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.form_data, "card_certified_on_card", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.form_data, "card_certified_on_card", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.form_data, "card_certified_on_card", $$c);
+        }
+      }
+    }
+  }), _vm._v(" "), _vm.v$.form_data.card_certified_on_card.required.$invalid && _vm.show_error_seventeen ? _c("div", {
+    staticClass: "error"
+  }, [_vm._v("\n                                                                    Certified on card OR Authenticator cert no. is required\n                                                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100"
-  }, [_vm._v("\n                                                                    Authenticator Cert. No.\n                                                                    "), _vm.form_data.card_autographed ? _c("span", {
-    staticClass: "error"
-  }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                                                    Authenticator Cert. No.\n")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -3297,9 +3369,9 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  }), _vm._v(" "), _vm.v$.form_data.card_authenticator_cert_no.required.$invalid && _vm.show_error_twelve ? _c("div", {
+  }), _vm._v(" "), _vm.v$.form_data.card_authenticator_cert_no.required.$invalid && _vm.show_error_seventeen ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                                                    Authenticator cert no. is required\n                                                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                                                    Certified on card OR Authenticator cert no. is required\n                                                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-2"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -3577,7 +3649,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                                                    Authenticator Name\n                                                                    "), _vm.form_data.auto_authentication_authenticator_name ? _c("span", {
+  }, [_vm._v("\n                                                                    Authenticator Name\n                                                                    "), _vm.form_data.auto_authentication_autographed ? _c("span", {
     staticClass: "error"
   }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("select", {
     directives: [{
@@ -4575,7 +4647,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(grade.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.crossover_minimum_grade.required.$invalid && _vm.show_error_sixteen ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                                            Minimum grade is required\n                                                        ")]) : _vm._e()])])])])])])])]) : _vm._e()])])], 1)], 1)]);
+  }, [_vm._v("\n                                                            Minimum grade is required\n                                                        ")]) : _vm._e()])])])])])])])]) : _vm._e()])])], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

@@ -107,6 +107,7 @@ class EntryController extends Controller
                 'card_description_three' => $entryData['card_description_three'],
                 'card_serial_number' => $entryData['card_serial_number'],
                 'card_autographed' => $entryData['card_autographed'],
+                'card_certified_on_card' => $entryData['card_certified_on_card'],
                 'card_authenticator_name' => $entryData['card_authenticator_name'],
                 'card_authenticator_cert_no' => $entryData['card_authenticator_cert_no'],
                 'card_estimated_value' => $entryData['card_estimated_value'],
@@ -397,6 +398,7 @@ class EntryController extends Controller
             "card_description_three" => $item->card_description_three,
             "card_serial_number" => $item->card_serial_number,
             "card_autographed" => $item->card_autographed,
+            "card_certified_on_card" => $item->card_certified_on_card,
             "card_authenticator_name" => $item->card_authenticator_name,
             "card_authenticator_cert_no" => $item->card_authenticator_cert_no,
             "card_estimated_value" => $item->card_estimated_value,
@@ -450,6 +452,7 @@ class EntryController extends Controller
         $item->card_description_three = $request->card_description_three;
         $item->card_serial_number = $request->card_serial_number;
         $item->card_autographed = $request->card_autographed;
+        $item->card_certified_on_card = $request->card_certified_on_card;
         $item->card_authenticator_name = $request->card_authenticator_name;
         $item->card_authenticator_cert_no = $request->card_authenticator_cert_no;
         $item->card_estimated_value = $request->card_estimated_value;
