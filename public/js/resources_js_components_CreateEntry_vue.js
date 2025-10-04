@@ -1488,7 +1488,7 @@ var render = function render() {
       domProps: {
         value: customer
       }
-    }, [_vm._v(_vm._s(customer.name))]);
+    }, [_c("span", [_vm._v(_vm._s(customer.name))]), _vm._v(" "), _c("span", [_vm._v("📞" + _vm._s(customer.phone))])]);
   })], 2), _vm._v(" "), _vm.v$.form_data.name.required.$invalid && _vm.show_error_one ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                    Customer name is required\n                                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {

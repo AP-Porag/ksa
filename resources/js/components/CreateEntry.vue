@@ -44,7 +44,7 @@
                                                         @change="customerNameChangeEvent"
                                                 >
                                                     <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(customer,index) in customers" :value="customer" :key="customer.id">{{customer.name}}</option>
+                                                    <option v-for="(customer,index) in customers" :value="customer" :key="customer.id"><span>{{customer.name}}</span>  <span>📞{{customer.phone}}</span></option>
                                                 </select>
                                                 <!--                                            <Select2 v-model="form_data.name" :options="customers" placeholder="Select customer..." @change="customerNameChangeEvent($event)" />-->
                                                 <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">

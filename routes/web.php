@@ -46,11 +46,11 @@ Route::get('/execute-command', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 
 //all routes for admin
-Route::prefix('admin')->as('admin.')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     // USER
     Route::resource('users', UsersController::class);
 
@@ -126,21 +126,6 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
     //products
     Route::resource('products', ProductController::class);
-
-});
-
-//all routes for manager
-Route::prefix('manager')->as('manager.')->group(function () {
-
-});
-
-//all routes for HR
-Route::prefix('hr')->as('hr.')->group(function () {
-
-});
-
-//all routes for Employee
-Route::prefix('employee')->as('employee.')->group(function () {
 
 });
 

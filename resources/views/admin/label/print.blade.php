@@ -105,7 +105,7 @@
                                                     <br>
                                                     <span>{{ $item->card_description_three }}</span>
                                                 </div>
-                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->cardAuthenticator->name}}</div>
+                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->cardAuthenticator?->name ?? 'N/A'}}</div>
                                                 <div class="col-sm-1 border-right py-2 px-0 text-left pl-2">
                                                     {{ $item->card_authenticator_cert_no ? $item->card_authenticator_cert_no: '' }}
                                                 </div>
@@ -121,7 +121,7 @@
                                                     <br>
                                                     <span>{{ $item->auto_authentication_description_three }}</span>
                                                 </div>
-                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->autoAuthenticator->name}}</div>
+                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->autoAuthenticator?->name ?? 'N/A'}}</div>
                                                 <div class="col-sm-1 border-right py-2 px-0 text-left pl-2">
                                                     {{ $item->auto_authentication_authenticator_cert_no ? $item->auto_authentication_authenticator_cert_no: '' }}
                                                 </div>
@@ -138,7 +138,7 @@
                                                     <br>
                                                     <span>{{ $item->combined_service_description_three }}</span>
                                                 </div>
-                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->combinedServiceAuthenticator->name}}</div>
+                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->combinedServiceAuthenticator?->name ?? 'N/A'}}</div>
                                                 <div class="col-sm-1 border-right py-2 px-0 text-left pl-2">
                                                     {{ $item->combined_service_authenticator_cert_no ? $item->combined_service_authenticator_cert_no: '' }}
                                                 </div>
@@ -170,7 +170,7 @@
                                                     <br>
                                                     <span>{{ $item->crossover_description_three }}</span>
                                                 </div>
-                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->crossoverAuthenticator->name}}</div>
+                                                <div class=" col-sm-2 border-right text-left pl-2">{{$item->crossoverAuthenticator?->name ?? 'N/A'}}</div>
                                                 <div class="col-sm-1 border-right py-2 px-0 text-left pl-2">
                                                     {{ $item->crossover_authenticator_cert_no ? $item->crossover_authenticator_cert_no: '' }}
                                                 </div>

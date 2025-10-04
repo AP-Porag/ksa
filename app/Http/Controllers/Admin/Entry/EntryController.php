@@ -44,7 +44,7 @@ class EntryController extends Controller
     {
         set_page_meta('Create Entry');
         $products = Product::orderBy('id', 'ASC')->get();
-        $allCustomers = Customer::orderBy('id', 'DESC')->select('id', 'name')->get();
+        $allCustomers = Customer::orderBy('id', 'DESC')->select('id', 'name','phone')->get();
         $allPromos = Promo::orderBy('id', 'DESC')->select('id', 'name')->get();
         $allThirdParties = ThirdParty::orderBy('id', 'DESC')->select('id', 'name')->get();
         $allAuthenticators = Authenticator::orderBy('id', 'DESC')->select('id', 'name')->get();

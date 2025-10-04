@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CustomerRequest extends FormRequest
 {
@@ -21,8 +22,10 @@ class CustomerRequest extends FormRequest
      */
     public function rules(): array
     {
+        // Get the current customer ID if it exists (for update)
+        $customerId = $this->route('customer');
         return [
-            'name'=>'required',
+            'name'=>['required',Rule::unique('customers', 'name')->ignore($customerId),],
             'email'=>['required','email'],
             'contact_name'=>'nullable',
             'phone'=>'required',

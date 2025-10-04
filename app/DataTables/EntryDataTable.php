@@ -81,7 +81,7 @@ class EntryDataTable extends DataTable
      */
     public function query(Entry $model): QueryBuilder
     {
-        return $model->newQuery()->where('status','!=',GlobalConstant::STATUS_RECEIVED)->orderBy('id', 'DESC')->select('entries.*');
+        return $model->newQuery()->where('status','!=',GlobalConstant::STATUS_RECEIVED)->orderBy('id', 'ASC')->select('entries.*');
 
     }
 
