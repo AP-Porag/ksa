@@ -81,7 +81,7 @@ class LabelDataTable extends DataTable
      */
     public function query(Entry $model): QueryBuilder
     {
-        return $model->newQuery()->where('status','=',GlobalConstant::STATUS_GRADED)->orderBy('id', 'DESC')->select('entries.*');
+        return $model->newQuery()->where('status','=',GlobalConstant::STATUS_GRADED)->orderBy('id', 'ASC')->select('entries.*');
 
     }
 
@@ -130,6 +130,6 @@ class LabelDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Entry_' . date('YmdHis');
+        return 'Label_' . date('YmdHis');
     }
 }

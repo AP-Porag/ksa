@@ -1196,32 +1196,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         })
       },
 
-      // card_authenticator_cert_no:{
-      //     required: requiredIf(function () {
-      //         return this.form_data.card_autographed; // return true if this field is required
-      //     }),
-      // },
+      card_authenticator_cert_no: {
+        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
+          return this.form_data.card_autographed; // return true if this field is required
+        })
+      },
+
       card_estimated_value: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
           return this.showItemTypeCardBox; // return true if this field is required
         })
       },
 
+      // card_certified_on_card: {
+      //     required: requiredIf(function () {
+      //         // if type is card, at least one of the two fields must be filled
+      //         return (
+      //             this.showItemTypeCardBox &&
+      //             !this.form_data.card_authenticator_cert_no // only require this if the other is empty
+      //         )
+      //     }),
+      // },
       card_certified_on_card: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          // if type is card, at least one of the two fields must be filled
-          return this.showItemTypeCardBox && !this.form_data.card_authenticator_cert_no // only require this if the other is empty
-          ;
+          return this.form_data.card_autographed; // return true if this field is required
         })
       },
 
-      card_authenticator_cert_no: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showItemTypeCardBox && !this.form_data.card_certified_on_card // only require this if the other is empty
-          ;
-        })
-      },
-
+      // card_authenticator_cert_no: {
+      //     required: requiredIf(function () {
+      //         return (
+      //             this.showItemTypeCardBox &&
+      //             !this.form_data.card_certified_on_card // only require this if the other is empty
+      //         )
+      //     }),
+      // },
       //item type auto athentication
       auto_authentication_description_one: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
@@ -3298,7 +3307,9 @@ var render = function render() {
       "margin-top": "6px",
       "margin-right": "15px"
     }
-  }, [_vm._v("\n                                                                    Certified on card\n                                                                ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                                                    Certified on card\n                                                                    "), _vm.form_data.card_autographed ? _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -3336,13 +3347,15 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.card_certified_on_card.required.$invalid && _vm.show_error_seventeen ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                                                    Certified on card OR Authenticator cert no. is required\n                                                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                                                    Certified on card is required\n                                                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100"
-  }, [_vm._v("\n                                                                    Authenticator Cert. No.\n")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                                                    Authenticator Cert. No.\n                                                                    "), _vm.form_data.card_autographed ? _c("span", {
+    staticClass: "error"
+  }, [_vm._v("*")]) : _vm._e()]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -3371,7 +3384,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.card_authenticator_cert_no.required.$invalid && _vm.show_error_seventeen ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                                                    Certified on card OR Authenticator cert no. is required\n                                                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                                                    Authenticator cert no. is required\n                                                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-2"
   }, [_c("div", {
     staticClass: "mb-3"

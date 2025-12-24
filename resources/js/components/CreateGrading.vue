@@ -947,6 +947,7 @@
                                                         <th>Sub Type</th>
                                                         <th>Description</th>
                                                         <th>Autographed</th>
+                                                        <th>Serial Number</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
@@ -987,11 +988,12 @@
                                                         <td class="text-center" v-if="entry.itemType == 'Combined Service'">{{entry.combined_service_autographed == 1 ? 'Yes' : 'No'}}</td>
 
                                                         <td v-if="entry.itemType == 'Reholder'">
-                                                            <span>N/A</span>
-                                                            <br>
-                                                            <span>N/A</span>
-                                                            <br>
-                                                            <span>N/A</span>
+                                                            <span>{{entry.reholder_certification_number}}</span>
+<!--                                                            <span>N/A</span>-->
+<!--                                                            <br>-->
+<!--                                                            <span>N/A</span>-->
+<!--                                                            <br>-->
+<!--                                                            <span>N/A</span>-->
                                                         </td>
                                                         <td class="text-center" v-if="entry.itemType == 'Reholder'">N/A</td>
 
@@ -1003,6 +1005,8 @@
                                                             <span>{{entry.crossover_description_three}}</span>
                                                         </td>
                                                         <td class="text-center" v-if="entry.itemType == 'Crossover'">{{entry.crossover_autographed == 1 ? 'Yes' : 'No'}}</td>
+<!--                                                        <td class="text-center" v-if="entry.itemType == 'Reholder'">{{entry.reholder_certification_number}}</td>-->
+                                                        <td class="text-center" v-else>{{entry.itemType =='Card' ? entry.card_serial_number : entry.itemType =='Autograph Authentication' ? entry.auto_authentication_serial_number : entry.itemType =='Combined Service' ? entry.combined_service_serial_number : entry.itemType =='Crossover' ? entry.crossover_serial_number : entry.itemType =='Reholder' ? 'N/A' : ''}}</td>
 
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
@@ -1221,7 +1225,8 @@
                                                                                                     </div>
                                                                                             </div>
                                                                                                     <!--item type auto authentication-->
-                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Auto Authentication'">
+                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Autograph Authentication'">
+                                                                                                    hello
                                                                                                     <div class="card shipping_address_card">
                                                                                                     <div class="card-body">
                                                                                                     <div class="row">
@@ -2648,146 +2653,39 @@ export default {
             autoAuthenticationItemGrades:[
                 {
                     'id':1,
-                    'name':'A'
+                    'name':'Authentic'
                 },
                 {
                     'id':2,
-                    'name':'N1'
-                },
-                {
-                    'id':3,
-                    'name':'N2'
-                },
+                    'name':'Rejected'
+                }
             ],
             autoAuthenticationAutoGrades:[
                 {
                 "id": 1,
-                "name": "10 (P)"
+                "name": "5"
             },
                 {
                     "id": 2,
-                    "name": "10"
-                },
-                {
-                    "id": 3,
-                    "name": "9.5",
-                },
-                {
-                    "id" :4,
-                    "name": "9",
-                },
-                {
-                    "id": 5,
-                    "name": "8.5"
-                },
-                {
-                    "id": 6,
-                    "name": "8"
-                },
-                {
-                    "id": 7,
-                    "name": "7.5"
-                },
-                {
-                    "id": 8,
-                    "name": "7"
-                },
-                {
-                    "id": 9,
-                    "name": "6.5"
-                },
-                {
-                    "id": 10,
                     "name": "6"
                 },
                 {
-                    "id": 11,
-                    "name": "5.5"
+                    "id": 3,
+                    "name": "7",
                 },
                 {
-                    "id": 12,
-                    "name": "5"
+                    "id" :4,
+                    "name": "8",
                 },
                 {
-                    "id": 13,
-                    "name": "4.5"
+                    "id": 5,
+                    "name": "9"
                 },
                 {
-                    "id": 14,
-                    "name": "4"
+                    "id": 6,
+                    "name": "10"
                 },
-                {
-                    "id": 15,
-                    "name": "3.5"
-                },
-                {
-                    "id": 16,
-                    "name": "3"
-                },
-                {
-                    "id": 17,
-                    "name": "2.5"
-                },
-                {
-                    "id": 18,
-                    "name": "2"
-                },
-                {
-                    "id": 19,
-                    "name": "1.5"
-                },
-                {
-                    "id": 20,
-                    "name": "1"
-                },
-                {
-                    "id": 21,
-                    "name": "A"
-                },
-                {
-                    "id": 22,
-                    "name": "AA"
-                },
-                {
-                    "id": 23,
-                    "name": "AC"
-                },
-                {
-                    "id": 24,
-                    "name": "AT"
-                },
-                {
-                    "id": 25,
-                    "name": "N1"
-                },
-                {
-                    "id": 26,
-                    "name": "N2"
-                },
-                {
-                    "id": 27,
-                    "name": "N3"
-                },
-                {
-                    "id": 28,
-                    "name": "N4"
-                },
-                {
-                    "id": 29,
-                    "name": "N5"
-                },
-                {
-                    "id": 30,
-                    "name": "N6"
-                },
-                {
-                    "id": 31,
-                    "name": "N7"
-                },
-                {
-                    "id": 32,
-                    "name": "N8"
-                },],
+                ],
             combinedServiceItemGrades:[
                 {
                     "id": 1,

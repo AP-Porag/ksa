@@ -1106,6 +1106,7 @@
                                                             <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
                                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                                     Certified on card
+                                                                    <span class="error" v-if="form_data.card_autographed">*</span>
                                                                 </label>
                                                                 <input
                                                                     type="checkbox"
@@ -1114,7 +1115,7 @@
                                                                     v-model.trim="form_data.card_certified_on_card"
                                                                 />
                                                                 <div class="error" v-if="v$.form_data.card_certified_on_card.required.$invalid && show_error_seventeen">
-                                                                    Certified on card OR Authenticator cert no. is required
+                                                                    Certified on card is required
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1122,7 +1123,7 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label w-100">
                                                                     Authenticator Cert. No.
-<!--                                                                    <span class="error" v-if="form_data.card_autographed">*</span>-->
+                                                                    <span class="error" v-if="form_data.card_autographed">*</span>
                                                                 </label>
                                                                 <input
                                                                     type="text"
@@ -1131,7 +1132,7 @@
                                                                     v-model.trim="v$.form_data.card_authenticator_cert_no.$model"
                                                                 />
                                                                 <div class="error" v-if="v$.form_data.card_authenticator_cert_no.required.$invalid && show_error_seventeen">
-                                                                    Certified on card OR Authenticator cert no. is required
+                                                                    Authenticator cert no. is required
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -3078,33 +3079,38 @@ export default {
                     return this.form_data.card_autographed;// return true if this field is required
                 }),
             },
-            // card_authenticator_cert_no:{
-            //     required: requiredIf(function () {
-            //         return this.form_data.card_autographed; // return true if this field is required
-            //     }),
-            // },
+            card_authenticator_cert_no:{
+                required: requiredIf(function () {
+                    return this.form_data.card_autographed; // return true if this field is required
+                }),
+            },
             card_estimated_value:{
                 required: requiredIf(function () {
                     return this.showItemTypeCardBox // return true if this field is required
                 }),
             },
-            card_certified_on_card: {
+            // card_certified_on_card: {
+            //     required: requiredIf(function () {
+            //         // if type is card, at least one of the two fields must be filled
+            //         return (
+            //             this.showItemTypeCardBox &&
+            //             !this.form_data.card_authenticator_cert_no // only require this if the other is empty
+            //         )
+            //     }),
+            // },
+            card_certified_on_card:{
                 required: requiredIf(function () {
-                    // if type is card, at least one of the two fields must be filled
-                    return (
-                        this.showItemTypeCardBox &&
-                        !this.form_data.card_authenticator_cert_no // only require this if the other is empty
-                    )
+                    return this.form_data.card_autographed; // return true if this field is required
                 }),
             },
-            card_authenticator_cert_no: {
-                required: requiredIf(function () {
-                    return (
-                        this.showItemTypeCardBox &&
-                        !this.form_data.card_certified_on_card // only require this if the other is empty
-                    )
-                }),
-            },
+            // card_authenticator_cert_no: {
+            //     required: requiredIf(function () {
+            //         return (
+            //             this.showItemTypeCardBox &&
+            //             !this.form_data.card_certified_on_card // only require this if the other is empty
+            //         )
+            //     }),
+            // },
             //item type auto athentication
             auto_authentication_description_one:{
                 required: requiredIf(function () {
