@@ -1493,6 +1493,10 @@ var render = function render() {
   }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.customers, function (customer, index) {
     return _c("option", {
       key: customer.id,
+      staticStyle: {
+        display: "flex",
+        "justify-content": "space-between"
+      },
       domProps: {
         value: customer
       }

@@ -25,7 +25,8 @@ class CustomerRequest extends FormRequest
         // Get the current customer ID if it exists (for update)
         $customerId = $this->route('customer');
         return [
-            'name'=>['required',Rule::unique('customers', 'name')->ignore($customerId),],
+//            'name'=>['required',Rule::unique('customers', 'name')->ignore($customerId),],
+            'name'=>['required'],
             'email'=>[
                 'required',
                 'email',
