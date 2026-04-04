@@ -74,11 +74,11 @@
                         <div class="col-md-12">
 
 
-                          <div class="mt-5" style="margin-right: 15px;margin-left: 15px;">
+                          <div class="mt-5" style="margin-right: 10px;margin-left: 10px;">
 
                                 <div class="row text-center table_row first_table_row">
-                                    <div class="col-sm-1 border-right py-2 px-0">No. </div>
-                                    <div class="col-sm-1 border-right py-2 px-0">Cert.#</div>
+                                    <div class="col-sm-1 border-right py-2 px-0" style="flex: 0 0 7.33%; max-width: 7.33%;">No. </div>
+                                    <div class="col-sm-1 border-right py-2 px-0" style="flex: 0 0 9.33%; max-width: 9.33%;">Cert.#</div>
                                     <div class="col-sm-2 border-right py-2 px-0">Item Type</div>
                                     <div class="col-sm-3 border-right py-2 px-0">Description</div>
                                     <div class="col-sm-2 border-right py-2 px-0">Auto Certifier</div>
@@ -91,8 +91,8 @@
                                 @if ($items->count() > 0)
                                     @foreach ($items as $item)
                                         <div class="row border border-top-0 table_row text-center">
-                                            <div class="col-sm-1 border-right py-2 px-0 text-left pl-2">{{ $loop->index + 1 }}</div>
-                                            <div class="col-sm-1 border-right py-2 px-0 text-left pl-2">{{$item->grading_cert_number}}</div>
+                                            <div class="col-sm-1 border-right py-2 px-0 text-left pl-2" style="flex: 0 0 7.33%; max-width: 7.33%;">{{ $loop->index + 1 }}</div>
+                                            <div class="col-sm-1 border-right py-2 px-0 text-left pl-2" style="flex: 0 0 9.33%; max-width: 9.33%;">{{$item->grading_cert_number}}</div>
                                             <div class="col-sm-2 border-right py-2 px-0 text-left pl-2">{{ $item->itemType }}</div>
 
 

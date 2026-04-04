@@ -44,7 +44,7 @@
                                                         @change="customerNameChangeEvent"
                                                 >
                                                     <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(customer,index) in customers" :value="customer" :key="customer.id"><span>{{customer.name}}</span>  <span>📞{{customer.phone}}</span></option>
+                                                    <option v-for="(customer,index) in customers" :value="customer" :key="customer.id"><span>{{customer.name}}</span>  <span>📩{{customer.email}}</span></option>
                                                 </select>
                                                 <!--                                            <Select2 v-model="form_data.name" :options="customers" placeholder="Select customer..." @change="customerNameChangeEvent($event)" />-->
                                                 <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">
@@ -3079,11 +3079,11 @@ export default {
                     return this.form_data.card_autographed;// return true if this field is required
                 }),
             },
-            card_authenticator_cert_no:{
-                required: requiredIf(function () {
-                    return this.form_data.card_autographed; // return true if this field is required
-                }),
-            },
+            // card_authenticator_cert_no:{
+            //     required: requiredIf(function () {
+            //         return this.form_data.card_autographed; // return true if this field is required
+            //     }),
+            // },
             card_estimated_value:{
                 required: requiredIf(function () {
                     return this.showItemTypeCardBox // return true if this field is required

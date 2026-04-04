@@ -1196,12 +1196,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         })
       },
 
-      card_authenticator_cert_no: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.form_data.card_autographed; // return true if this field is required
-        })
-      },
-
+      // card_authenticator_cert_no:{
+      //     required: requiredIf(function () {
+      //         return this.form_data.card_autographed; // return true if this field is required
+      //     }),
+      // },
       card_estimated_value: {
         required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
           return this.showItemTypeCardBox; // return true if this field is required
@@ -1497,7 +1496,7 @@ var render = function render() {
       domProps: {
         value: customer
       }
-    }, [_c("span", [_vm._v(_vm._s(customer.name))]), _vm._v(" "), _c("span", [_vm._v("📞" + _vm._s(customer.phone))])]);
+    }, [_c("span", [_vm._v(_vm._s(customer.name))]), _vm._v(" "), _c("span", [_vm._v("📩" + _vm._s(customer.email))])]);
   })], 2), _vm._v(" "), _vm.v$.form_data.name.required.$invalid && _vm.show_error_one ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                    Customer name is required\n                                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {

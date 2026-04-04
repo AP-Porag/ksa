@@ -106,72 +106,72 @@
                                 </div>
                                 @if ($items->count() > 0)
                                     @foreach ($items as $item)
-                                        <div class="row border border-top-0 table_row text-center">
-                                            <div class="col-sm-1 border-right py-2 px-0">{{ $loop->index + 1 }}</div>
-                                            <div class="col-sm-1 border-right py-2 px-0">1</div>
-                                            <div class="col-sm-2 border-right py-2 px-0">{{ $item->itemType }}</div>
-                                            <div class="col-sm-1 border-right py-2 px-0">
+                                        <div class="row border border-top-0 table_row text-left">
+                                            <div class="col-sm-1 border-right py-2 px-1">{{ $loop->index + 1 }}</div>
+                                            <div class="col-sm-1 border-right py-2 px-1">1</div>
+                                            <div class="col-sm-2 border-right py-2 px-1">{{ $item->itemType }}</div>
+                                            <div class="col-sm-1 border-right py-2 px-1">
                                                 {{ $item->itemType == 'Crossover' ? $item->crossover_item_type : 'N/A' }}
                                             </div>
 
                                             @if ($item->itemType == 'Card')
-                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                <div class="col-sm-3 border-right py-2 px-1">
                                                     <span>{{ $item->card_description_one }}</span>
                                                     <br>
                                                     <span>{{ $item->card_description_two }}</span>
                                                     <br>
                                                     <span>{{ $item->card_description_three }}</span>
                                                 </div>
-                                                <div class="col-sm-2 border-right py-2 px-0">
+                                                <div class="col-sm-2 border-right py-2 px-1">
                                                     {{ $item->card_autographed == 1 ? 'Yes' : 'No' }}</div>
                                             @endif
 
                                             @if ($item->itemType == 'Autograph Authentication')
-                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                <div class="col-sm-3 border-right py-2 px-1">
                                                     <span>{{ $item->auto_authentication_description_one }}</span>
                                                     <br>
                                                     <span>{{ $item->auto_authentication_description_two }}</span>
                                                     <br>
                                                     <span>{{ $item->auto_authentication_description_three }}</span>
                                                 </div>
-                                                <div class="col-sm-2 border-right py-2 px-0">
+                                                <div class="col-sm-2 border-right py-2 px-1">
                                                     {{ $item->auto_authentication_autographed == 1 ? 'Yes' : 'No' }}
                                                 </div>
                                             @endif
 
 
                                             @if ($item->itemType == 'Combined Service')
-                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                <div class="col-sm-3 border-right py-2 px-1">
                                                     <span>{{ $item->combined_service_description_one }}</span>
                                                     <br>
                                                     <span>{{ $item->combined_service_description_two }}</span>
                                                     <br>
                                                     <span>{{ $item->combined_service_description_three }}</span>
                                                 </div>
-                                                <div class="col-sm-2 border-right py-2 px-0">
+                                                <div class="col-sm-2 border-right py-2 px-1">
                                                     {{ $item->combined_service_autographed == 1 ? 'Yes' : 'No' }}</div>
                                             @endif
 
                                             @if ($item->itemType == 'Reholder')
-                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                <div class="col-sm-3 border-right py-2 px-1">
                                                     <span>N/A</span>
                                                     <br>
                                                     <span>N/A</span>
                                                     <br>
                                                     <span>N/A</span>
                                                 </div>
-                                                <div class="col-sm-2 border-right py-2 px-0">N/A</div>
+                                                <div class="col-sm-2 border-right py-2 px-1">N/A</div>
                                             @endif
 
                                             @if ($item->itemType == 'Crossover')
-                                                <div class="col-sm-3 border-right py-2 px-0">
+                                                <div class="col-sm-3 border-right py-2 px-1">
                                                     <span>{{ $item->crossover_description_one }}</span>
                                                     <br>
                                                     <span>{{ $item->crossover_description_two }}</span>
                                                     <br>
                                                     <span>{{ $item->crossover_description_three }}</span>
                                                 </div>
-                                                <div class="col-sm-2 border-right py-2 px-0">
+                                                <div class="col-sm-2 border-right py-2 px-1">
                                                     {{ $item->crossover_autographed == 1 ? 'Yes' : 'No' }}</div>
                                             @endif
 
@@ -185,30 +185,30 @@
 
 
                                             @if ($item->itemType == 'Card')
-                                                <div class="col-sm-2 py-2 px-0">{{ $item->card_estimated_value }}
+                                                <div class="col-sm-2 py-2 px-1">{{ $item->card_estimated_value }}
                                                 </div>
                                             @endif
 
                                             @if ($item->itemType == 'Autograph Authentication')
-                                                <div class="col-sm-2 py-2 px-0">
+                                                <div class="col-sm-2 py-2 px-1">
                                                     {{ $item->auto_authentication_estimated_value }}
                                                 </div>
                                             @endif
 
 
                                             @if ($item->itemType == 'Combined Service')
-                                                <div class="col-sm-2 py-2 px-0">
+                                                <div class="col-sm-2 py-2 px-1">
                                                     {{ $item->combined_service_estimated_value }}
                                                 </div>
                                             @endif
 
                                             @if ($item->itemType == 'Reholder')
-                                                <div class="col-sm-2 py-2 px-0">{{ $item->reholder_estimated_value }}
+                                                <div class="col-sm-2 py-2 px-1">{{ $item->reholder_estimated_value }}
                                                 </div>
                                             @endif
 
                                             @if ($item->itemType == 'Crossover')
-                                                <div class="col-sm-2 py-2 px-0">{{ $item->crossover_estimated_value }}
+                                                <div class="col-sm-2 py-2 px-1">{{ $item->crossover_estimated_value }}
                                                 </div>
                                             @endif
 

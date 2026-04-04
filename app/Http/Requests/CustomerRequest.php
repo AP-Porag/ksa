@@ -26,7 +26,14 @@ class CustomerRequest extends FormRequest
         $customerId = $this->route('customer');
         return [
             'name'=>['required',Rule::unique('customers', 'name')->ignore($customerId),],
-            'email'=>['required','email'],
+            'email'=>[
+                'required',
+                'email',
+                // Only fail if BOTH name and email match an existing record (excluding current ID)
+                Rule::unique('customers', 'email')->where(function ($query) {
+                    return $query->where('name', $this->name);
+                })->ignore($customerId),
+                ],
             'contact_name'=>'nullable',
             'phone'=>'required',
             'billing_address_line_one'=>'required',
