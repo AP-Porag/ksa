@@ -1106,7 +1106,7 @@
                                                             <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
                                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                                     Certified on card
-                                                                    <span class="error" v-if="form_data.card_autographed">*</span>
+<!--                                                                    <span class="error" v-if="form_data.card_autographed">*</span>-->
                                                                 </label>
                                                                 <input
                                                                     type="checkbox"
@@ -1114,26 +1114,26 @@
                                                                     placeholder=""
                                                                     v-model.trim="form_data.card_certified_on_card"
                                                                 />
-                                                                <div class="error" v-if="v$.form_data.card_certified_on_card.required.$invalid && show_error_seventeen">
-                                                                    Certified on card is required
-                                                                </div>
+<!--                                                                <div class="error" v-if="v$.form_data.card_certified_on_card.required.$invalid && show_error_seventeen">-->
+<!--                                                                    Certified on card is required-->
+<!--                                                                </div>-->
                                                             </div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <div class="mb-3">
                                                                 <label class="form-label w-100">
                                                                     Authenticator Cert. No.
-                                                                    <span class="error" v-if="form_data.card_autographed">*</span>
+<!--                                                                    <span class="error" v-if="form_data.card_autographed">*</span>-->
                                                                 </label>
                                                                 <input
                                                                     type="text"
                                                                     class="form-control"
                                                                     placeholder=""
-                                                                    v-model.trim="v$.form_data.card_authenticator_cert_no.$model"
+                                                                    v-model.trim="form_data.card_authenticator_cert_no"
                                                                 />
-                                                                <div class="error" v-if="v$.form_data.card_authenticator_cert_no.required.$invalid && show_error_seventeen">
-                                                                    Authenticator cert no. is required
-                                                                </div>
+<!--                                                                <div class="error" v-if="v$.form_data.card_authenticator_cert_no.required.$invalid && show_error_seventeen">-->
+<!--                                                                    Authenticator cert no. is required-->
+<!--                                                                </div>-->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -2742,10 +2742,10 @@ export default {
                 this.show_error_sixteen = true;
                 return false;
             }
-            else if (this.v$.form_data.card_certified_on_card.$invalid || this.v$.form_data.card_authenticator_cert_no.$invalid) {
-                this.show_error_seventeen = true;
-                return false;
-            }
+            // else if (this.v$.form_data.card_certified_on_card.$invalid || this.v$.form_data.card_authenticator_cert_no.$invalid) {
+            //     this.show_error_seventeen = true;
+            //     return false;
+            // }
             else {
                 return true;
             }
@@ -3098,11 +3098,11 @@ export default {
             //         )
             //     }),
             // },
-            card_certified_on_card:{
-                required: requiredIf(function () {
-                    return this.form_data.card_autographed; // return true if this field is required
-                }),
-            },
+            // card_certified_on_card:{
+            //     required: requiredIf(function () {
+            //         return this.form_data.card_autographed; // return true if this field is required
+            //     }),
+            // },
             // card_authenticator_cert_no: {
             //     required: requiredIf(function () {
             //         return (
