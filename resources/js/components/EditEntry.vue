@@ -867,11 +867,11 @@
                                                             type="number"
                                                             class="form-control mb-text-only"
                                                             placeholder=""
-                                                            v-model.trim="v$.form_data.customer_account_number.$model"
+                                                            v-model.trim="form_data.customer_account_number"
                                                         />
-                                                        <div class="error" v-if="v$.form_data.customer_account_number.required.$invalid && show_error_ten">
-                                                            Customer account number is required
-                                                        </div>
+<!--                                                        <div class="error" v-if="v$.form_data.customer_account_number.required.$invalid && show_error_ten">-->
+<!--                                                            Customer account number is required-->
+<!--                                                        </div>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -2601,6 +2601,7 @@ export default {
                 });
         },
         async received(id){
+            // console.log('hello')
             if (this.checkSixthStep()){
                 Swal.fire({
                     // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
@@ -2727,10 +2728,12 @@ export default {
             }else if (this.v$.form_data.third_party_drop_center.$invalid) {
                 this.show_error_nine = true;
                 return false;
-            }else if (this.v$.form_data.customer_account_number.$invalid) {
-                this.show_error_ten = true;
-                return false;
-            }else {
+            }
+            // else if (this.v$.form_data.customer_account_number.$invalid) {
+            //     this.show_error_ten = true;
+            //     return false;
+            // }
+            else {
                 return true;
             }
         },
@@ -3295,11 +3298,11 @@ export default {
                     return this.showThirdPartyBox // return true if this field is required
                 })
             },
-            customer_account_number:{
-                required: requiredIf(function () {
-                    return this.showUPSBox // return true if this field is required
-                }),
-            },
+            // customer_account_number:{
+            //     required: requiredIf(function () {
+            //         return this.showUPSBox // return true if this field is required
+            //     }),
+            // },
             itemType:{
                 required,
             },

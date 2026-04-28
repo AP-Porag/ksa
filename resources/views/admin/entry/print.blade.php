@@ -33,7 +33,7 @@
                                     <div><img class="logo_image" src="{{ asset('storage/settings/logo-sm.png') }}"
                                             alt=""></div>
                                     <div>
-                                        <h1>ORDER</h1>
+                                        <h1 class="text-uppercase">Order Entry Report</h1>
                                     </div>
                                 </div>
                                 <div class="information">
@@ -83,9 +83,17 @@
                                                 <div class="col-6 input_date">{{ $order->created_at->format('m-d-Y') }}
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <div class="row my-3">
                                                 <div class="col-6 shipping">Shipping Method :</div>
                                                 <div class="col-6 input_shipping">{{ $order->shipping_method }}</div>
+                                            </div>
+                                            <div class="row my-3">
+                                                <div class="col-6 shipping">Total Items :</div>
+                                                <div class="col-6 input_shipping">{{ $order->item_qty }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 shipping">Total Items Entered :</div>
+                                                <div class="col-6 input_shipping">{{ $items->count() }}</div>
                                             </div>
                                         </div>
                                     </div>

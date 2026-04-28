@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('card_estimated_value')->nullable();
 
             $table->string('card_item_grade')->nullable();
+            $table->string('card_item_grade_mean')->nullable();
             $table->string('card_auto_grade')->nullable();
 
                 //item type auto authentication
@@ -54,6 +55,7 @@ return new class extends Migration
             $table->string('combined_service_estimated_value')->nullable();
 
             $table->string('combined_service_item_grade')->nullable();
+            $table->string('combined_service_item_grade_mean')->nullable();
             $table->string('combined_service_auto_grade')->nullable();
 
                 //item type combined service
@@ -61,6 +63,7 @@ return new class extends Migration
             $table->string('reholder_estimated_value')->nullable();
 
             $table->string('reholder_item_grade')->nullable();
+            $table->string('reholder_item_grade_mean')->nullable();
             $table->string('reholder_auto_grade')->nullable();
 
                 //item type crossover
@@ -76,6 +79,7 @@ return new class extends Migration
 		    $table->string('crossover_minimum_grade')->nullable();
 
 		    $table->string('crossover_item_grade')->nullable();
+		    $table->string('crossover_item_grade_mean')->nullable();
 		    $table->string('crossover_auto_grade')->nullable();
 
             $table->string('status')->default(\App\Utils\GlobalConstant::STATUS_NOT_RECEIVED);

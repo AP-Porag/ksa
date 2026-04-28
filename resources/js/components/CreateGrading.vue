@@ -23,7 +23,7 @@
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
                         <wizard-button @click.native="cancel" class="wizard-footer-right" style="margin-left: 15px;" :style="props.fillButtonStyle">Continue Later</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
-                        <wizard-button v-else @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to graded</wizard-button>
+                        <wizard-button v-else @click.native="received(item.id)" class="wizard-footer-right" :style="props.fillButtonStyle">Grading Complete</wizard-button>
                     </div>
                 </template>
 <!--                <tab-content-->
@@ -1006,7 +1006,8 @@
                                                         </td>
                                                         <td class="text-center" v-if="entry.itemType == 'Crossover'">{{entry.crossover_autographed == 1 ? 'Yes' : 'No'}}</td>
 <!--                                                        <td class="text-center" v-if="entry.itemType == 'Reholder'">{{entry.reholder_certification_number}}</td>-->
-                                                        <td class="text-center" v-else>{{entry.itemType =='Card' ? entry.card_serial_number : entry.itemType =='Autograph Authentication' ? entry.auto_authentication_serial_number : entry.itemType =='Combined Service' ? entry.combined_service_serial_number : entry.itemType =='Crossover' ? entry.crossover_serial_number : entry.itemType =='Reholder' ? 'N/A' : ''}}</td>
+<!--                                                        <td class="text-center">{{entry.itemType =='Card' ? entry.card_serial_number : entry.itemType =='Autograph Authentication' ? entry.auto_authentication_serial_number : entry.itemType =='Combined Service' ? entry.combined_service_serial_number : entry.itemType =='Crossover' ? entry.crossover_serial_number : entry.itemType =='Reholder' ? 'N/A' : ''}}</td>-->
+                                                        <td class="text-center">{{entry.grading_cert_number }}</td>
 
                                                         <td class="">
                                                             <div class="d-flex justify-content-center">
@@ -1202,8 +1203,14 @@
                                                                                                                         </label>
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="card_item_grade" id="card_item_grade"
                                                                                                                                 v-model.trim="entry.card_item_grade"
+                                                                                                                                @change="entry.card_item_grade_mean = cardItemGrades.find(g => g.name === entry.card_item_grade)?.mean"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in cardItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in cardItemGrades" :value="grade.name" :key="grade.id">
+                                                                                                                                <div class="d-flex justify-content-between">
+                                                                                                                                    <span>{{grade.name}} - </span>
+                                                                                                                                    <span>({{grade.mean}})</span>
+                                                                                                                                </div>
+                                                                                                                            </option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1584,8 +1591,14 @@
                                                                                                                         </label>
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="combined_service_item_grade" id="combined_service_item_grade"
                                                                                                                                 v-model.trim="entry.combined_service_item_grade"
+                                                                                                                                @change="entry.combined_service_item_grade_mean = combinedServiceItemGrades.find(g => g.name === entry.combined_service_item_grade)?.mean"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in combinedServiceItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in combinedServiceItemGrades" :value="grade.name" :key="grade.id">
+                                                                                                                                <div class="d-flex justify-content-between">
+                                                                                                                                    <span>{{grade.name}} - </span>
+                                                                                                                                    <span>({{grade.mean}})</span>
+                                                                                                                                </div>
+                                                                                                                            </option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1692,8 +1705,14 @@
                                                                                                                         </label>
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="reholder_auto_grade" id="reholder_auto_grade"
                                                                                                                                 v-model.trim="entry.reholder_auto_grade"
+                                                                                                                                @change="entry.reholder_auto_grade_mean = reholderAutoGrades.find(g => g.name === entry.reholder_auto_grade)?.mean"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in reholderAutoGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in reholderAutoGrades" :value="grade.name" :key="grade.id">
+                                                                                                                                <div class="d-flex justify-content-between">
+                                                                                                                                    <span>{{grade.name}} - </span>
+                                                                                                                                    <span>({{grade.mean}})</span>
+                                                                                                                                </div>
+                                                                                                                            </option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1884,8 +1903,14 @@
                                                                                                                         </label>
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_item_grade" id="crossover_item_grade"
                                                                                                                                 v-model.trim="entry.crossover_item_grade"
+                                                                                                                                @change="entry.crossover_item_grade_mean = crossoverItemGrades.find(g => g.name === entry.crossover_item_grade)?.mean"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in crossoverItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in crossoverItemGrades" :value="grade.name" :key="grade.id">
+                                                                                                                                <div class="d-flex justify-content-between">
+                                                                                                                                    <span>{{grade.name}} - </span>
+                                                                                                                                    <span>({{grade.mean}})</span>
+                                                                                                                                </div>
+                                                                                                                            </option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -2497,131 +2522,163 @@ export default {
             cardItemGrades:[
                 {
                     "id": 1,
-                    "name": "10 (P)"
+                    "name": "10 (P)",
+                    "mean": "GEM"
                 },
                 {
                     "id": 2,
-                    "name": "10"
+                    "name": "10",
+                    "mean": "MINT"
                 },
                 {
                     "id": 3,
                     "name": "9.5",
+                    "mean": "NGM"
                 },
                 {
                     "id" :4,
                     "name": "9",
+                    "mean": "MINT"
                 },
                 {
                     "id": 5,
-                    "name": "8.5"
+                    "name": "8.5",
+                    "mean": "NMM+"
                 },
                 {
                     "id": 6,
-                    "name": "8"
+                    "name": "8",
+                    "mean": "NMM"
                 },
                 {
                     "id": 7,
-                    "name": "7.5"
+                    "name": "7.5",
+                    "mean": "NM+"
                 },
                 {
                     "id": 8,
-                    "name": "7"
+                    "name": "7",
+                    "mean": "NM"
                 },
                 {
                     "id": 9,
-                    "name": "6.5"
+                    "name": "6.5",
+                    "mean": "ENM+"
                 },
                 {
                     "id": 10,
-                    "name": "6"
+                    "name": "6",
+                    "mean": "ENM"
                 },
                 {
                     "id": 11,
-                    "name": "5.5"
+                    "name": "5.5",
+                    "mean": "EX+"
                 },
                 {
                     "id": 12,
-                    "name": "5"
+                    "name": "5",
+                    "mean": "EX"
                 },
                 {
                     "id": 13,
-                    "name": "4.5"
+                    "name": "4.5",
+                    "mean": "VGE+"
                 },
                 {
                     "id": 14,
-                    "name": "4"
+                    "name": "4",
+                    "mean": "VGE"
                 },
                 {
                     "id": 15,
-                    "name": "3.5"
+                    "name": "3.5",
+                    "mean": "VG+"
                 },
                 {
                     "id": 16,
-                    "name": "3"
+                    "name": "3",
+                    "mean": "VG"
                 },
                 {
                     "id": 17,
-                    "name": "2.5"
+                    "name": "2.5",
+                    "mean": "GD+"
                 },
                 {
                     "id": 18,
-                    "name": "2"
+                    "name": "2",
+                    "mean": "GD"
                 },
                 {
                     "id": 19,
-                    "name": "1.5"
+                    "name": "1.5",
+                    "mean": "FR"
                 },
                 {
                     "id": 20,
-                    "name": "1"
+                    "name": "1",
+                    "mean": "PR"
                 },
                 {
                     "id": 21,
-                    "name": "A"
+                    "name": "A",
+                    "mean": "AUTH"
                 },
                 {
                     "id": 22,
-                    "name": "AA"
+                    "name": "AA",
+                    "mean": "ALTERED"
                 },
                 {
                     "id": 23,
-                    "name": "AC"
+                    "name": "AC",
+                    "mean": "COL"
                 },
                 {
                     "id": 24,
-                    "name": "AT"
+                    "name": "AT",
+                    "mean": "TRIM"
                 },
                 {
                     "id": 25,
-                    "name": "N1"
+                    "name": "N1",
+                    "mean": ""
                 },
                 {
                     "id": 26,
-                    "name": "N2"
+                    "name": "N2",
+                    "mean": ""
                 },
                 {
                     "id": 27,
-                    "name": "N3"
+                    "name": "N3",
+                    "mean": ""
                 },
                 {
                     "id": 28,
-                    "name": "N4"
+                    "name": "N4",
+                    "mean": ""
                 },
                 {
                     "id": 29,
-                    "name": "N5"
+                    "name": "N5",
+                    "mean": ""
                 },
                 {
                     "id": 30,
-                    "name": "N6"
+                    "name": "N6",
+                    "mean": ""
                 },
                 {
                     "id": 31,
-                    "name": "N7"
+                    "name": "N7",
+                    "mean": ""
                 },
                 {
                     "id": 32,
-                    "name": "N8"
+                    "name": "N8",
+                    "mean": ""
                 },
             ],
             cardAutoGrades:[
@@ -2689,131 +2746,163 @@ export default {
             combinedServiceItemGrades:[
                 {
                     "id": 1,
-                    "name": "10 (P)"
+                    "name": "10 (P)",
+                    "mean": "GEM"
                 },
                 {
                     "id": 2,
-                    "name": "10"
+                    "name": "10",
+                    "mean": "MINT"
                 },
                 {
                     "id": 3,
                     "name": "9.5",
+                    "mean": "NGM"
                 },
                 {
                     "id" :4,
                     "name": "9",
+                    "mean": "MINT"
                 },
                 {
                     "id": 5,
-                    "name": "8.5"
+                    "name": "8.5",
+                    "mean": "NMM+"
                 },
                 {
                     "id": 6,
-                    "name": "8"
+                    "name": "8",
+                    "mean": "NMM"
                 },
                 {
                     "id": 7,
-                    "name": "7.5"
+                    "name": "7.5",
+                    "mean": "NM+"
                 },
                 {
                     "id": 8,
-                    "name": "7"
+                    "name": "7",
+                    "mean": "NM"
                 },
                 {
                     "id": 9,
-                    "name": "6.5"
+                    "name": "6.5",
+                    "mean": "ENM+"
                 },
                 {
                     "id": 10,
-                    "name": "6"
+                    "name": "6",
+                    "mean": "ENM"
                 },
                 {
                     "id": 11,
-                    "name": "5.5"
+                    "name": "5.5",
+                    "mean": "EX+"
                 },
                 {
                     "id": 12,
-                    "name": "5"
+                    "name": "5",
+                    "mean": "EX"
                 },
                 {
                     "id": 13,
-                    "name": "4.5"
+                    "name": "4.5",
+                    "mean": "VGE+"
                 },
                 {
                     "id": 14,
-                    "name": "4"
+                    "name": "4",
+                    "mean": "VGE"
                 },
                 {
                     "id": 15,
-                    "name": "3.5"
+                    "name": "3.5",
+                    "mean": "VG+"
                 },
                 {
                     "id": 16,
-                    "name": "3"
+                    "name": "3",
+                    "mean": "VG"
                 },
                 {
                     "id": 17,
-                    "name": "2.5"
+                    "name": "2.5",
+                    "mean": "GD+"
                 },
                 {
                     "id": 18,
-                    "name": "2"
+                    "name": "2",
+                    "mean": "GD"
                 },
                 {
                     "id": 19,
-                    "name": "1.5"
+                    "name": "1.5",
+                    "mean": "FR"
                 },
                 {
                     "id": 20,
-                    "name": "1"
+                    "name": "1",
+                    "mean": "PR"
                 },
                 {
                     "id": 21,
-                    "name": "A"
+                    "name": "A",
+                    "mean": "AUTH"
                 },
                 {
                     "id": 22,
-                    "name": "AA"
+                    "name": "AA",
+                    "mean": "ALTERED"
                 },
                 {
                     "id": 23,
-                    "name": "AC"
+                    "name": "AC",
+                    "mean": "COL"
                 },
                 {
                     "id": 24,
-                    "name": "AT"
+                    "name": "AT",
+                    "mean": "TRIM"
                 },
                 {
                     "id": 25,
-                    "name": "N1"
+                    "name": "N1",
+                    "mean": ""
                 },
                 {
                     "id": 26,
-                    "name": "N2"
+                    "name": "N2",
+                    "mean": ""
                 },
                 {
                     "id": 27,
-                    "name": "N3"
+                    "name": "N3",
+                    "mean": ""
                 },
                 {
                     "id": 28,
-                    "name": "N4"
+                    "name": "N4",
+                    "mean": ""
                 },
                 {
                     "id": 29,
-                    "name": "N5"
+                    "name": "N5",
+                    "mean": ""
                 },
                 {
                     "id": 30,
-                    "name": "N6"
+                    "name": "N6",
+                    "mean": ""
                 },
                 {
                     "id": 31,
-                    "name": "N7"
+                    "name": "N7",
+                    "mean": ""
                 },
                 {
                     "id": 32,
-                    "name": "N8"
+                    "name": "N8",
+                    "mean": ""
                 },
             ],
             combinedServiceAutoGrades:[
@@ -2863,391 +2952,487 @@ export default {
             reholderAutoGrades:[
                 {
                     "id": 1,
-                    "name": "10 (P)"
+                    "name": "10 (P)",
+                    "mean": "GEM"
                 },
                 {
                     "id": 2,
-                    "name": "10"
+                    "name": "10",
+                    "mean": "MINT"
                 },
                 {
                     "id": 3,
                     "name": "9.5",
+                    "mean": "NGM"
                 },
                 {
                     "id" :4,
                     "name": "9",
+                    "mean": "MINT"
                 },
                 {
                     "id": 5,
-                    "name": "8.5"
+                    "name": "8.5",
+                    "mean": "NMM+"
                 },
                 {
                     "id": 6,
-                    "name": "8"
+                    "name": "8",
+                    "mean": "NMM"
                 },
                 {
                     "id": 7,
-                    "name": "7.5"
+                    "name": "7.5",
+                    "mean": "NM+"
                 },
                 {
                     "id": 8,
-                    "name": "7"
+                    "name": "7",
+                    "mean": "NM"
                 },
                 {
                     "id": 9,
-                    "name": "6.5"
+                    "name": "6.5",
+                    "mean": "ENM+"
                 },
                 {
                     "id": 10,
-                    "name": "6"
+                    "name": "6",
+                    "mean": "ENM"
                 },
                 {
                     "id": 11,
-                    "name": "5.5"
+                    "name": "5.5",
+                    "mean": "EX+"
                 },
                 {
                     "id": 12,
-                    "name": "5"
+                    "name": "5",
+                    "mean": "EX"
                 },
                 {
                     "id": 13,
-                    "name": "4.5"
+                    "name": "4.5",
+                    "mean": "VGE+"
                 },
                 {
                     "id": 14,
-                    "name": "4"
+                    "name": "4",
+                    "mean": "VGE"
                 },
                 {
                     "id": 15,
-                    "name": "3.5"
+                    "name": "3.5",
+                    "mean": "VG+"
                 },
                 {
                     "id": 16,
-                    "name": "3"
+                    "name": "3",
+                    "mean": "VG"
                 },
                 {
                     "id": 17,
-                    "name": "2.5"
+                    "name": "2.5",
+                    "mean": "GD+"
                 },
                 {
                     "id": 18,
-                    "name": "2"
+                    "name": "2",
+                    "mean": "GD"
                 },
                 {
                     "id": 19,
-                    "name": "1.5"
+                    "name": "1.5",
+                    "mean": "FR"
                 },
                 {
                     "id": 20,
-                    "name": "1"
+                    "name": "1",
+                    "mean": "PR"
                 },
                 {
                     "id": 21,
-                    "name": "A"
+                    "name": "A",
+                    "mean": "AUTH"
                 },
                 {
                     "id": 22,
-                    "name": "AA"
+                    "name": "AA",
+                    "mean": "ALTERED"
                 },
                 {
                     "id": 23,
-                    "name": "AC"
+                    "name": "AC",
+                    "mean": "COL"
                 },
                 {
                     "id": 24,
-                    "name": "AT"
+                    "name": "AT",
+                    "mean": "TRIM"
                 },
                 {
                     "id": 25,
-                    "name": "N1"
+                    "name": "N1",
+                    "mean": ""
                 },
                 {
                     "id": 26,
-                    "name": "N2"
+                    "name": "N2",
+                    "mean": ""
                 },
                 {
                     "id": 27,
-                    "name": "N3"
+                    "name": "N3",
+                    "mean": ""
                 },
                 {
                     "id": 28,
-                    "name": "N4"
+                    "name": "N4",
+                    "mean": ""
                 },
                 {
                     "id": 29,
-                    "name": "N5"
+                    "name": "N5",
+                    "mean": ""
                 },
                 {
                     "id": 30,
-                    "name": "N6"
+                    "name": "N6",
+                    "mean": ""
                 },
                 {
                     "id": 31,
-                    "name": "N7"
+                    "name": "N7",
+                    "mean": ""
                 },
                 {
                     "id": 32,
-                    "name": "N8"
+                    "name": "N8",
+                    "mean": ""
                 },
             ],
             crossoverItemGrades:[
                 {
                     "id": 1,
-                    "name": "10 (P)"
+                    "name": "10 (P)",
+                    "mean": "GEM"
                 },
                 {
                     "id": 2,
-                    "name": "10"
+                    "name": "10",
+                    "mean": "MINT"
                 },
                 {
                     "id": 3,
                     "name": "9.5",
+                    "mean": "NGM"
                 },
                 {
                     "id" :4,
                     "name": "9",
+                    "mean": "MINT"
                 },
                 {
                     "id": 5,
-                    "name": "8.5"
+                    "name": "8.5",
+                    "mean": "NMM+"
                 },
                 {
                     "id": 6,
-                    "name": "8"
+                    "name": "8",
+                    "mean": "NMM"
                 },
                 {
                     "id": 7,
-                    "name": "7.5"
+                    "name": "7.5",
+                    "mean": "NM+"
                 },
                 {
                     "id": 8,
-                    "name": "7"
+                    "name": "7",
+                    "mean": "NM"
                 },
                 {
                     "id": 9,
-                    "name": "6.5"
+                    "name": "6.5",
+                    "mean": "ENM+"
                 },
                 {
                     "id": 10,
-                    "name": "6"
+                    "name": "6",
+                    "mean": "ENM"
                 },
                 {
                     "id": 11,
-                    "name": "5.5"
+                    "name": "5.5",
+                    "mean": "EX+"
                 },
                 {
                     "id": 12,
-                    "name": "5"
+                    "name": "5",
+                    "mean": "EX"
                 },
                 {
                     "id": 13,
-                    "name": "4.5"
+                    "name": "4.5",
+                    "mean": "VGE+"
                 },
                 {
                     "id": 14,
-                    "name": "4"
+                    "name": "4",
+                    "mean": "VGE"
                 },
                 {
                     "id": 15,
-                    "name": "3.5"
+                    "name": "3.5",
+                    "mean": "VG+"
                 },
                 {
                     "id": 16,
-                    "name": "3"
+                    "name": "3",
+                    "mean": "VG"
                 },
                 {
                     "id": 17,
-                    "name": "2.5"
+                    "name": "2.5",
+                    "mean": "GD+"
                 },
                 {
                     "id": 18,
-                    "name": "2"
+                    "name": "2",
+                    "mean": "GD"
                 },
                 {
                     "id": 19,
-                    "name": "1.5"
+                    "name": "1.5",
+                    "mean": "FR"
                 },
                 {
                     "id": 20,
-                    "name": "1"
+                    "name": "1",
+                    "mean": "PR"
                 },
                 {
                     "id": 21,
-                    "name": "A"
+                    "name": "A",
+                    "mean": "AUTH"
                 },
                 {
                     "id": 22,
-                    "name": "AA"
+                    "name": "AA",
+                    "mean": "ALTERED"
                 },
                 {
                     "id": 23,
-                    "name": "AC"
+                    "name": "AC",
+                    "mean": "COL"
                 },
                 {
                     "id": 24,
-                    "name": "AT"
+                    "name": "AT",
+                    "mean": "TRIM"
                 },
                 {
                     "id": 25,
-                    "name": "N1"
+                    "name": "N1",
+                    "mean": ""
                 },
                 {
                     "id": 26,
-                    "name": "N2"
+                    "name": "N2",
+                    "mean": ""
                 },
                 {
                     "id": 27,
-                    "name": "N3"
+                    "name": "N3",
+                    "mean": ""
                 },
                 {
                     "id": 28,
-                    "name": "N4"
+                    "name": "N4",
+                    "mean": ""
                 },
                 {
                     "id": 29,
-                    "name": "N5"
+                    "name": "N5",
+                    "mean": ""
                 },
                 {
                     "id": 30,
-                    "name": "N6"
+                    "name": "N6",
+                    "mean": ""
                 },
                 {
                     "id": 31,
-                    "name": "N7"
+                    "name": "N7",
+                    "mean": ""
                 },
                 {
                     "id": 32,
-                    "name": "N8"
+                    "name": "N8",
+                    "mean": ""
                 },
             ],
             crossoverAutoGrades:[
                 {
                     "id": 1,
-                    "name": "10 (P)"
+                    "name": "10 (P)",
+                    "mean": "GEM"
                 },
                 {
                     "id": 2,
-                    "name": "10"
+                    "name": "10",
+                    "mean": "MINT"
                 },
                 {
                     "id": 3,
                     "name": "9.5",
+                    "mean": "NGM"
                 },
                 {
                     "id" :4,
                     "name": "9",
+                    "mean": "MINT"
                 },
                 {
                     "id": 5,
-                    "name": "8.5"
+                    "name": "8.5",
+                    "mean": "NMM+"
                 },
                 {
                     "id": 6,
-                    "name": "8"
+                    "name": "8",
+                    "mean": "NMM"
                 },
                 {
                     "id": 7,
-                    "name": "7.5"
+                    "name": "7.5",
+                    "mean": "NM+"
                 },
                 {
                     "id": 8,
-                    "name": "7"
+                    "name": "7",
+                    "mean": "NM"
                 },
                 {
                     "id": 9,
-                    "name": "6.5"
+                    "name": "6.5",
+                    "mean": "ENM+"
                 },
                 {
                     "id": 10,
-                    "name": "6"
+                    "name": "6",
+                    "mean": "ENM"
                 },
                 {
                     "id": 11,
-                    "name": "5.5"
+                    "name": "5.5",
+                    "mean": "EX+"
                 },
                 {
                     "id": 12,
-                    "name": "5"
+                    "name": "5",
+                    "mean": "EX"
                 },
                 {
                     "id": 13,
-                    "name": "4.5"
+                    "name": "4.5",
+                    "mean": "VGE+"
                 },
                 {
                     "id": 14,
-                    "name": "4"
+                    "name": "4",
+                    "mean": "VGE"
                 },
                 {
                     "id": 15,
-                    "name": "3.5"
+                    "name": "3.5",
+                    "mean": "VG+"
                 },
                 {
                     "id": 16,
-                    "name": "3"
+                    "name": "3",
+                    "mean": "VG"
                 },
                 {
                     "id": 17,
-                    "name": "2.5"
+                    "name": "2.5",
+                    "mean": "GD+"
                 },
                 {
                     "id": 18,
-                    "name": "2"
+                    "name": "2",
+                    "mean": "GD"
                 },
                 {
                     "id": 19,
-                    "name": "1.5"
+                    "name": "1.5",
+                    "mean": "FR"
                 },
                 {
                     "id": 20,
-                    "name": "1"
+                    "name": "1",
+                    "mean": "PR"
                 },
                 {
                     "id": 21,
-                    "name": "A"
+                    "name": "A",
+                    "mean": "AUTH"
                 },
                 {
                     "id": 22,
-                    "name": "AA"
+                    "name": "AA",
+                    "mean": "ALTERED"
                 },
                 {
                     "id": 23,
-                    "name": "AC"
+                    "name": "AC",
+                    "mean": "COL"
                 },
                 {
                     "id": 24,
-                    "name": "AT"
+                    "name": "AT",
+                    "mean": "TRIM"
                 },
                 {
                     "id": 25,
-                    "name": "N1"
+                    "name": "N1",
+                    "mean": ""
                 },
                 {
                     "id": 26,
-                    "name": "N2"
+                    "name": "N2",
+                    "mean": ""
                 },
                 {
                     "id": 27,
-                    "name": "N3"
+                    "name": "N3",
+                    "mean": ""
                 },
                 {
                     "id": 28,
-                    "name": "N4"
+                    "name": "N4",
+                    "mean": ""
                 },
                 {
                     "id": 29,
-                    "name": "N5"
+                    "name": "N5",
+                    "mean": ""
                 },
                 {
                     "id": 30,
-                    "name": "N6"
+                    "name": "N6",
+                    "mean": ""
                 },
                 {
                     "id": 31,
-                    "name": "N7"
+                    "name": "N7",
+                    "mean": ""
                 },
                 {
                     "id": 32,
-                    "name": "N8"
+                    "name": "N8",
+                    "mean": ""
                 },
             ],
 
@@ -3356,6 +3541,7 @@ export default {
                     entryID : entry.entry_id,
                     itemType : entry.itemType,
                     status : entry.status,
+                    grading_cert_number : entry.grading_cert_number,
                     //item type card
                     card_description_one: entry.card_description_one,
                     card_description_two : entry.card_description_two,
@@ -3402,14 +3588,18 @@ export default {
                     crossover_minimum_grade : entry.crossover_minimum_grade,
                     crossover_item_type : entry.crossover_item_type,
                     card_item_grade: entry.card_item_grade,
+                    card_item_grade_mean: entry.card_item_grade_mean,
                     card_auto_grade: entry.card_auto_grade,
                     auto_authentication_grade: entry.auto_authentication_grade,
                     auto_authentication_auto_grade: entry.auto_authentication_auto_grade,
                     combined_service_item_grade: entry.combined_service_item_grade,
+                    combined_service_item_grade_mean: entry.combined_service_item_grade_mean,
                     combined_service_auto_grade: entry.combined_service_auto_grade,
                     reholder_item_grade: entry.reholder_item_grade,
+                    reholder_item_grade_mean: entry.reholder_item_grade_mean,
                     reholder_auto_grade: entry.reholder_auto_grade,
                     crossover_item_grade: entry.crossover_item_grade,
+                    crossover_item_grade_mean: entry.crossover_item_grade_mean,
                     crossover_auto_grade: entry.crossover_auto_grade,
                 }
                 self.form_data.entries.push(en)
@@ -3593,10 +3783,12 @@ export default {
             }else if (this.v$.form_data.third_party_drop_center.$invalid) {
                 this.show_error_nine = true;
                 return false;
-            }else if (this.v$.form_data.customer_account_number.$invalid) {
-                this.show_error_ten = true;
-                return false;
-            }else {
+            }
+            // else if (this.v$.form_data.customer_account_number.$invalid) {
+            //     this.show_error_ten = true;
+            //     return false;
+            // }
+            else {
                 return true;
             }
         },
@@ -4118,11 +4310,11 @@ export default {
                     return this.showThirdPartyBox // return true if this field is required
                 })
             },
-            customer_account_number:{
-                required: requiredIf(function () {
-                    return this.showUPSBox // return true if this field is required
-                }),
-            },
+            // customer_account_number:{
+            //     required: requiredIf(function () {
+            //         return this.showUPSBox // return true if this field is required
+            //     }),
+            // },
             itemType:{
                 required,
             },

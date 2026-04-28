@@ -767,10 +767,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else if (this.v$.form_data.third_party_drop_center.$invalid) {
         this.show_error_nine = true;
         return false;
-      } else if (this.v$.form_data.customer_account_number.$invalid) {
-        this.show_error_ten = true;
-        return false;
-      } else {
+      }
+      // else if (this.v$.form_data.customer_account_number.$invalid) {
+      //     this.show_error_ten = true;
+      //     return false;
+      // }
+      else {
         return true;
       }
     },
@@ -1166,12 +1168,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         })
       },
 
-      customer_account_number: {
-        required: (0,_vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.requiredIf)(function () {
-          return this.showUPSBox; // return true if this field is required
-        })
-      },
-
+      // customer_account_number:{
+      //     required: requiredIf(function () {
+      //         return this.showUPSBox // return true if this field is required
+      //     }),
+      // },
       itemType: {
         required: _vuelidate_validators__WEBPACK_IMPORTED_MODULE_2__.required
       },
@@ -2824,14 +2825,12 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                                            Customer Account number\n                                                            "), _c("span", {
-    staticClass: "error"
-  }, [_vm._v("*")])]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                                            Customer Account number\n")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
-      value: _vm.v$.form_data.customer_account_number.$model,
-      expression: "v$.form_data.customer_account_number.$model",
+      value: _vm.form_data.customer_account_number,
+      expression: "form_data.customer_account_number",
       modifiers: {
         trim: true
       }
@@ -2842,20 +2841,18 @@ var render = function render() {
       placeholder: ""
     },
     domProps: {
-      value: _vm.v$.form_data.customer_account_number.$model
+      value: _vm.form_data.customer_account_number
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.v$.form_data.customer_account_number, "$model", $event.target.value.trim());
+        _vm.$set(_vm.form_data, "customer_account_number", $event.target.value.trim());
       },
       blur: function blur($event) {
         return _vm.$forceUpdate();
       }
     }
-  }), _vm._v(" "), _vm.v$.form_data.customer_account_number.required.$invalid && _vm.show_error_ten ? _c("div", {
-    staticClass: "error"
-  }, [_vm._v("\n                                                            Customer account number is required\n                                                        ")]) : _vm._e()])])])]) : _vm._e()])])])])])]), _vm._v(" "), _c("tab-content", {
+  })])])])]) : _vm._e()])])])])])]), _vm._v(" "), _c("tab-content", {
     attrs: {
       title: "Quantity",
       icon: "ti-package"
