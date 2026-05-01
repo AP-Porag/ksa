@@ -192,12 +192,12 @@
 {{--                                </a>--}}
 {{--                            </li>--}}
 
-                            <li class="{{ request()->is('admin/promos*') || request()->is('admin/slpromos*') ? 'mm-active' : '' }}">
-                                <a href="#"
-                                   class="{{ request()->routeIs('admin.promos.index') ? 'active' : '' }}">
-                                    Review a certification
-                                </a>
-                            </li>
+{{--                            <li class="{{ request()->is('admin/promos*') || request()->is('admin/slpromos*') ? 'mm-active' : '' }}">--}}
+{{--                                <a href="#"--}}
+{{--                                   class="{{ request()->routeIs('admin.promos.index') ? 'active' : '' }}">--}}
+{{--                                    Review a certification--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                         </ul>
                     </li>
                 @endcan
