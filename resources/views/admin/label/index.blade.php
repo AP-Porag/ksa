@@ -30,24 +30,6 @@
 @push('script')
     @include('includes.scripts.datatable')
 
-{{--    <script>--}}
-{{--        let selectedIds = [];--}}
-
-{{--        $(document).on('change', '.row-checkbox', function () {--}}
-{{--            const id = $(this).val();--}}
-
-{{--            if (this.checked) {--}}
-{{--                selectedIds.push(id);--}}
-{{--            } else {--}}
-{{--                selectedIds = selectedIds.filter(i => i !== id);--}}
-{{--            }--}}
-
-{{--            console.log(selectedIds)--}}
-
-{{--            window.selectedEntryIds = selectedIds; // 🔥 expose globally--}}
-{{--        });--}}
-{{--    </script>--}}
-
     <script>
         $(document).on('init.dt', function () {
             $('th:first').html(`
@@ -55,6 +37,7 @@
         <label style="margin-left:5px; cursor: pointer;">Select All</label>
     `).width('100px');
         });
+
         let selectedIds = [];
 
         // Select All toggle
