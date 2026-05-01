@@ -1692,8 +1692,14 @@
                                                                                                                         </label>
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="reholder_item_grade" id="reholder_item_grade"
                                                                                                                                 v-model.trim="entry.reholder_item_grade"
+                                                                                                                                @change="entry.reholder_item_grade_mean = reholderItemGrades.find(g => g.name === entry.reholder_item_grade)?.mean"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in reholderItemGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
+                                                                                                                            <option v-for="(grade,index) in reholderItemGrades" :value="grade.name" :key="grade.id">
+                                                                                                                                <div class="d-flex justify-content-between">
+                                                                                                                                    <span>{{grade.name}} - </span>
+                                                                                                                                    <span>({{grade.mean}})</span>
+                                                                                                                                </div>
+                                                                                                                            </option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -1705,14 +1711,8 @@
                                                                                                                         </label>
                                                                                                                         <select class="form-select mb-text-only" aria-label="Default select example" name="reholder_auto_grade" id="reholder_auto_grade"
                                                                                                                                 v-model.trim="entry.reholder_auto_grade"
-                                                                                                                                @change="entry.reholder_auto_grade_mean = reholderAutoGrades.find(g => g.name === entry.reholder_auto_grade)?.mean"
                                                                                                                         >
-                                                                                                                            <option v-for="(grade,index) in reholderAutoGrades" :value="grade.name" :key="grade.id">
-                                                                                                                                <div class="d-flex justify-content-between">
-                                                                                                                                    <span>{{grade.name}} - </span>
-                                                                                                                                    <span>({{grade.mean}})</span>
-                                                                                                                                </div>
-                                                                                                                            </option>
+                                                                                                                            <option v-for="(grade,index) in reholderAutoGrades" :value="grade.name" :key="grade.id">{{grade.name}}</option>
                                                                                                                         </select>
                                                                                                                     </div>
                                                                                                                 </div>
@@ -2920,36 +2920,7 @@ export default {
                 },
             ],
             reholderItemGrades:[
-                {
-                    "id": 1,
-                    "name": "A"
-                },
-                {
-                    "id": 2,
-                    "name": "N1"
-                },
-                {
-                    "id": 3,
-                    "name": "N2"
-                },
-                {
-                    "id": 4,
-                    "name": "N3"
-                },
-                {
-                    "id": 5,
-                    "name": "N4"
-                },
-                {
-                    "id": 6,
-                    "name": "N5"
-                },
-                {
-                    "id": 7,
-                    "name": "N6"
-                },
-            ],
-            reholderAutoGrades:[
+
                 {
                     "id": 1,
                     "name": "10 (P)",
@@ -3109,6 +3080,36 @@ export default {
                     "id": 32,
                     "name": "N8",
                     "mean": ""
+                },
+            ],
+            reholderAutoGrades:[
+                {
+                    "id": 1,
+                    "name": "A"
+                },
+                {
+                    "id": 2,
+                    "name": "N1"
+                },
+                {
+                    "id": 3,
+                    "name": "N2"
+                },
+                {
+                    "id": 4,
+                    "name": "N3"
+                },
+                {
+                    "id": 5,
+                    "name": "N4"
+                },
+                {
+                    "id": 6,
+                    "name": "N5"
+                },
+                {
+                    "id": 7,
+                    "name": "N6"
                 },
             ],
             crossoverItemGrades:[
@@ -4136,9 +4137,10 @@ export default {
                             combined_service_authenticator_cert_no : entry.combined_service_authenticator_cert_no,
                             combined_service_estimated_value : entry.combined_service_estimated_value,
 
-                            //item type combined service
+                            //item type reholder
                             reholder_certification_number : entry.reholder_certification_number,
                             reholder_estimated_value : entry.reholder_estimated_value,
+
 
                             //item type crossover
                             crossover_description_one : entry.crossover_description_one,

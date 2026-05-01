@@ -14,6 +14,7 @@ use App\Services\EntryService;
 use App\Services\ReceivingService;
 use App\Utils\GlobalConstant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class GradingController extends Controller
 {
@@ -371,140 +372,260 @@ class GradingController extends Controller
     public function OrderUpdateToGradedByID(Request $request, $id)
     {
         $entries = $request->entries;
-        $data = [
-            "customer_id"=>$request->customerId,
-            'customer_name'=>$request->name,
-            'item_qty'=>$request->item_qty,
-            'billing_address_line_one'=>$request->billing_address_line_one,
-            'billing_address_line_two'=>$request->billing_address_line_two,
-            'billing_country'=>$request->billing_country,
-            'billing_province'=>$request->billing_province,
-            'billing_city'=>$request->billing_city,
-            'billing_postal'=>$request->billing_postal,
-            'billing_phone'=>$request->billing_phone,
-            'same_as_billing'=>$request->same_as_billing,
-            'autographed'=>$request->autographed,
-            'shipping_name'=>$request->shipping_name,
-            'shipping_company_name'=>$request->shipping_company_name,
-            'shipping_address_line_one'=>$request->shipping_address_line_one,
-            'shipping_address_line_two'=>$request->shipping_address_line_two,
-            'shipping_country'=>$request->shipping_country,
-            'shipping_province'=>$request->shipping_province,
-            'shipping_city'=>$request->shipping_city,
-            'shipping_postal'=>$request->shipping_postal,
-            'shipping_phone'=>$request->shipping_postal,
-            'submission_date'=>$request->submission_date,
-            'grading_location'=>$request->grading_location,
-            'promo_code'=>$request->promo_code,
-            'payment_method'=>$request->payment_method,
-            'shopify_order_number'=>$request->shopify_order_number,
-            'shipping_method'=>$request->shipping_method,
-            'pickup_location'=>$request->pickup_location,
-            'show_pickup_location'=>$request->show_pickup_location,
-            'third_party_drop_center'=>$request->third_party_drop_center,
-            'use_customer_account'=>$request->use_customer_account,
-            'customer_account_number'=>$request->customer_account_number,
-            'status'=>GlobalConstant::STATUS_GRADING_IN_PROGRESS,
-        ];
 
-        $en = $this->entryService->storeOrUpdate($data, $id);
-
-
-        if ($en){
-
-            $receivingData = [
-                "customer_id"=>$request->customerId,
-                "entry_id"=>$id,
-//                    'item_qty'=>1,
-            ];
-
-            $startingNumber = 1000000000;
-
-            $lastNumber = EntryItems::max('grading_cert_number');
-            $nextNumber = $lastNumber ? $lastNumber + 1 : $startingNumber;
-
-            $receiving = $this->receivingService->storeOrUpdate($receivingData, null);
-            foreach ($entries as $entry){
-                $item = EntryItems::find($entry['entryItemId']);
-                $item->entry_id = $entry['entryID'];
-                $item->grading_cert_number = $nextNumber;
-                $item->itemType = $entry['itemType'];
-                //item type card
-                $item->card_description_one = $entry['card_description_one'];
-                $item->card_description_two = $entry['card_description_two'];
-                $item->card_description_three = $entry['card_description_three'];
-                $item->card_serial_number = $entry['card_serial_number'];
-                $item->card_autographed = $entry['card_autographed'];
-//                    $item->card_certified_on_card = $entry['card_certified_on_card'];
-                $item->card_authenticator_name = $entry['card_authenticator_name'];
-                $item->card_authenticator_cert_no = $entry['card_authenticator_cert_no'];
-                $item->card_estimated_value = $entry['card_estimated_value'];
-                $item->card_auto_grade = $entry['card_auto_grade'];
-                $item->card_item_grade = $entry['card_item_grade'];
-                $item->card_item_grade_mean = $entry['card_item_grade_mean'];
-
-                //item type auto authentication
-                $item->auto_authentication_description_one = $entry['auto_authentication_description_one'];
-                $item->auto_authentication_description_two = $entry['auto_authentication_description_two'];
-                $item->auto_authentication_description_three = $entry['auto_authentication_description_three'];
-                $item->auto_authentication_serial_number = $entry['auto_authentication_serial_number'];
-                $item->auto_authentication_autographed = $entry['auto_authentication_autographed'];
-                $item->auto_authentication_authenticator_name = $entry['auto_authentication_authenticator_name'];
-                $item->auto_authentication_authenticator_cert_no = $entry['auto_authentication_authenticator_cert_no'];
-                $item->auto_authentication_estimated_value = $entry['auto_authentication_estimated_value'];
-                $item->auto_authentication_grade = $entry['auto_authentication_grade'];
-                $item->auto_authentication_auto_grade = $entry['auto_authentication_auto_grade'];
-                //item type combined service
-                $item->combined_service_description_one = $entry['combined_service_description_one'];
-                $item->combined_service_description_two = $entry['combined_service_description_two'];
-                $item->combined_service_description_three = $entry['combined_service_description_three'];
-                $item->combined_service_serial_number = $entry['combined_service_serial_number'];
-                $item->combined_service_autographed = $entry['combined_service_autographed'];
-                $item->combined_service_authenticator_name = $entry['combined_service_authenticator_name'];
-                $item->combined_service_authenticator_cert_no = $entry['combined_service_authenticator_cert_no'];
-                $item->combined_service_estimated_value = $entry['combined_service_estimated_value'];
-                $item->combined_service_item_grade = $entry['combined_service_item_grade'];
-                $item->combined_service_item_grade_mean = $entry['combined_service_item_grade_mean'];
-                $item->combined_service_auto_grade = $entry['combined_service_auto_grade'];
-
-                //item type combined service
-                $item->reholder_certification_number = $entry['reholder_certification_number'];
-                $item->reholder_estimated_value = $entry['reholder_estimated_value'];
-                $item->reholder_item_grade = $entry['reholder_item_grade'];
-                $item->reholder_item_grade_mean = $entry['reholder_item_grade_mean'];
-                $item->reholder_auto_grade = $entry['reholder_auto_grade'];
-
-                //item type crossover
-                $item->crossover_description_one = $entry['crossover_description_one'];
-                $item->crossover_description_two = $entry['crossover_description_two'];
-                $item->crossover_description_three = $entry['crossover_description_three'];
-                $item->crossover_serial_number = $entry['crossover_serial_number'];
-                $item->crossover_autographed = $entry['crossover_autographed'];
-                $item->crossover_authenticator_name = $entry['crossover_authenticator_name'];
-                $item->crossover_authenticator_cert_no = $entry['crossover_authenticator_cert_no'];
-                $item->crossover_estimated_value = $entry['crossover_estimated_value'];
-                $item->crossover_item_type = $entry['crossover_item_type'];
-                $item->crossover_minimum_grade = $entry['crossover_minimum_grade'];
-                $item->crossover_item_grade = $entry['crossover_item_grade'];
-                $item->crossover_item_grade_mean = $entry['crossover_item_grade_mean'];
-                $item->crossover_auto_grade = $entry['crossover_auto_grade'];
-                $item->status = GlobalConstant::STATUS_GRADED;
-                $item->pieces = 0;
-                $item->save();
-            }
-        }
-
-        $response = ['status'=>200,'message'=>'Success','id'=>$id];
-
-        return response()->json($response);
         try {
 
 //            $entryData = $request->all();
+            $data = [
+                "customer_id"=>$request->customerId,
+                'customer_name'=>$request->name,
+                'item_qty'=>$request->item_qty,
+                'billing_address_line_one'=>$request->billing_address_line_one,
+                'billing_address_line_two'=>$request->billing_address_line_two,
+                'billing_country'=>$request->billing_country,
+                'billing_province'=>$request->billing_province,
+                'billing_city'=>$request->billing_city,
+                'billing_postal'=>$request->billing_postal,
+                'billing_phone'=>$request->billing_phone,
+                'same_as_billing'=>$request->same_as_billing,
+                'autographed'=>$request->autographed,
+                'shipping_name'=>$request->shipping_name,
+                'shipping_company_name'=>$request->shipping_company_name,
+                'shipping_address_line_one'=>$request->shipping_address_line_one,
+                'shipping_address_line_two'=>$request->shipping_address_line_two,
+                'shipping_country'=>$request->shipping_country,
+                'shipping_province'=>$request->shipping_province,
+                'shipping_city'=>$request->shipping_city,
+                'shipping_postal'=>$request->shipping_postal,
+                'shipping_phone'=>$request->shipping_postal,
+                'submission_date'=>$request->submission_date,
+                'grading_location'=>$request->grading_location,
+                'promo_code'=>$request->promo_code,
+                'payment_method'=>$request->payment_method,
+                'shopify_order_number'=>$request->shopify_order_number,
+                'shipping_method'=>$request->shipping_method,
+                'pickup_location'=>$request->pickup_location,
+                'show_pickup_location'=>$request->show_pickup_location,
+                'third_party_drop_center'=>$request->third_party_drop_center,
+                'use_customer_account'=>$request->use_customer_account,
+                'customer_account_number'=>$request->customer_account_number,
+                'status'=>GlobalConstant::STATUS_GRADING_IN_PROGRESS,
+            ];
 
+            $en = $this->entryService->storeOrUpdate($data, $id);
+
+
+            if ($en){
+
+                $receivingData = [
+                    "customer_id"=>$request->customerId,
+                    "entry_id"=>$id,
+//                    'item_qty'=>1,
+                ];
+
+                $startingNumber = 1000000000;
+
+                $lastNumber = EntryItems::max('grading_cert_number');
+                $nextNumber = $lastNumber ? $lastNumber + 1 : $startingNumber;
+
+                $receiving = $this->receivingService->storeOrUpdate($receivingData, null);
+                foreach ($entries as $entry){
+                    $item = EntryItems::find($entry['entryItemId']);
+                    $item->entry_id = $entry['entryID'];
+                    $item->grading_cert_number = $nextNumber;
+                    $item->itemType = $entry['itemType'];
+                    //item type card
+                    $item->card_description_one = $entry['card_description_one'];
+                    $item->card_description_two = $entry['card_description_two'];
+                    $item->card_description_three = $entry['card_description_three'];
+                    $item->card_serial_number = $entry['card_serial_number'];
+                    $item->card_autographed = $entry['card_autographed'];
+//                    $item->card_certified_on_card = $entry['card_certified_on_card'];
+                    $item->card_authenticator_name = $entry['card_authenticator_name'];
+                    $item->card_authenticator_cert_no = $entry['card_authenticator_cert_no'];
+                    $item->card_estimated_value = $entry['card_estimated_value'];
+                    $item->card_auto_grade = $entry['card_auto_grade'];
+                    $item->card_item_grade = $entry['card_item_grade'];
+                    $item->card_item_grade_mean = $entry['card_item_grade_mean'];
+
+                    //item type auto authentication
+                    $item->auto_authentication_description_one = $entry['auto_authentication_description_one'];
+                    $item->auto_authentication_description_two = $entry['auto_authentication_description_two'];
+                    $item->auto_authentication_description_three = $entry['auto_authentication_description_three'];
+                    $item->auto_authentication_serial_number = $entry['auto_authentication_serial_number'];
+                    $item->auto_authentication_autographed = $entry['auto_authentication_autographed'];
+                    $item->auto_authentication_authenticator_name = $entry['auto_authentication_authenticator_name'];
+                    $item->auto_authentication_authenticator_cert_no = $entry['auto_authentication_authenticator_cert_no'];
+                    $item->auto_authentication_estimated_value = $entry['auto_authentication_estimated_value'];
+                    $item->auto_authentication_grade = $entry['auto_authentication_grade'];
+                    $item->auto_authentication_auto_grade = $entry['auto_authentication_auto_grade'];
+                    //item type combined service
+                    $item->combined_service_description_one = $entry['combined_service_description_one'];
+                    $item->combined_service_description_two = $entry['combined_service_description_two'];
+                    $item->combined_service_description_three = $entry['combined_service_description_three'];
+                    $item->combined_service_serial_number = $entry['combined_service_serial_number'];
+                    $item->combined_service_autographed = $entry['combined_service_autographed'];
+                    $item->combined_service_authenticator_name = $entry['combined_service_authenticator_name'];
+                    $item->combined_service_authenticator_cert_no = $entry['combined_service_authenticator_cert_no'];
+                    $item->combined_service_estimated_value = $entry['combined_service_estimated_value'];
+                    $item->combined_service_item_grade = $entry['combined_service_item_grade'];
+                    $item->combined_service_item_grade_mean = $entry['combined_service_item_grade_mean'];
+                    $item->combined_service_auto_grade = $entry['combined_service_auto_grade'];
+
+                    //item type combined service
+                    $item->reholder_certification_number = $entry['reholder_certification_number'];
+                    $item->reholder_estimated_value = $entry['reholder_estimated_value'];
+                    $item->reholder_item_grade = $entry['reholder_item_grade'];
+                    $item->reholder_item_grade_mean = $entry['reholder_item_grade_mean'];
+                    $item->reholder_auto_grade = $entry['reholder_auto_grade'];
+
+                    //item type crossover
+                    $item->crossover_description_one = $entry['crossover_description_one'];
+                    $item->crossover_description_two = $entry['crossover_description_two'];
+                    $item->crossover_description_three = $entry['crossover_description_three'];
+                    $item->crossover_serial_number = $entry['crossover_serial_number'];
+                    $item->crossover_autographed = $entry['crossover_autographed'];
+                    $item->crossover_authenticator_name = $entry['crossover_authenticator_name'];
+                    $item->crossover_authenticator_cert_no = $entry['crossover_authenticator_cert_no'];
+                    $item->crossover_estimated_value = $entry['crossover_estimated_value'];
+                    $item->crossover_item_type = $entry['crossover_item_type'];
+                    $item->crossover_minimum_grade = $entry['crossover_minimum_grade'];
+                    $item->crossover_item_grade = $entry['crossover_item_grade'];
+                    $item->crossover_item_grade_mean = $entry['crossover_item_grade_mean'];
+                    $item->crossover_auto_grade = $entry['crossover_auto_grade'];
+                    $item->status = GlobalConstant::STATUS_GRADED;
+                    $item->pieces = 0;
+                    $item->save();
+
+                    $labelInfo = $this->getLabelInfo($item);
+
+                    $item->label_info = $labelInfo;
+                    $item->save();
+
+                    // Send to API
+//                    try {
+//                        $response = Http::timeout(15)
+//                            ->post('https://old-ksa.madbrain.dev/ksa-population-report/', $labelInfo);
+//
+//                        if (!$response->successful()) {
+//                            \Log::error('API Error: ' . $response->body());
+//                        }
+//
+//                    } catch (\Exception $e) {
+//                        \Log::error('API Exception: ' . $e->getMessage());
+//                    }
+                }
+            }
+
+            $response = ['status'=>200,'message'=>'Success','id'=>$id];
+
+            return response()->json($response);
 
 //            record_updated_flash();
         } catch (\Exception $e) {
             return back();
         }
+
+    }
+
+    private function getLabelInfo($item)
+    {
+        // Helper for safe split
+        $safeSplit = function ($text) {
+            $parts = array_map('trim', explode(',', $text ?? ''));
+            return [
+                $parts[0] ?? '',
+                $parts[1] ?? ''
+            ];
+        };
+
+        // Default values
+        $year = $manufacturer = $cardNumber = $nameOfCard = '';
+        $details = $serial = $grade = $gradeExp = $autoGrade = '';
+
+        switch ($item->itemType) {
+
+            case 'Card':
+                [$year, $manufacturer] = $safeSplit($item->card_description_one);
+                [$cardNumber, $nameOfCard] = $safeSplit($item->card_description_two);
+
+                $details = $item->card_description_three;
+                $serial = $item->grading_cert_number;
+                $grade = $item->card_item_grade;
+                $gradeExp = $item->card_item_grade_mean;
+                $autoGrade = $item->card_auto_grade;
+                break;
+
+            case 'Autograph Authentication':
+                [$year, $manufacturer] = $safeSplit($item->auto_authentication_description_one);
+                [$cardNumber, $nameOfCard] = $safeSplit($item->auto_authentication_description_two);
+
+                $details = $item->auto_authentication_description_three;
+                $serial = $item->grading_cert_number;
+                $grade = $item->auto_authentication_grade;
+                $gradeExp = ''; // no mean here
+                $autoGrade = $item->auto_authentication_auto_grade;
+                break;
+
+            case 'Combined Service':
+                [$year, $manufacturer] = $safeSplit($item->combined_service_description_one);
+                [$cardNumber, $nameOfCard] = $safeSplit($item->combined_service_description_two);
+
+                $details = $item->combined_service_description_three;
+                $serial = $item->grading_cert_number;
+                $grade = $item->combined_service_item_grade;
+                $gradeExp = $item->combined_service_item_grade_mean;
+                $autoGrade = $item->combined_service_auto_grade;
+                break;
+
+            case 'Crossover':
+                [$year, $manufacturer] = $safeSplit($item->crossover_description_one);
+                [$cardNumber, $nameOfCard] = $safeSplit($item->crossover_description_two);
+
+                $details = $item->crossover_description_three;
+                $serial = $item->grading_cert_number;
+                $grade = $item->crossover_item_grade;
+                $gradeExp = $item->crossover_item_grade_mean;
+                $autoGrade = $item->crossover_auto_grade;
+                break;
+
+            // TODO: reholder later
+            case 'Reholder':
+                [$year, $manufacturer] = $safeSplit('');
+                [$cardNumber, $nameOfCard] = $safeSplit('');
+
+                $details = null;
+                $serial = $item->grading_cert_number;
+                $grade = $item->reholder_item_grade;
+                $gradeExp = $item->reholder_item_grade_mean;
+                $autoGrade = $item->reholder_auto_grade;
+                break;
+        }
+
+        return [
+            'id' => $item->id,
+            'Year' => $year,
+            'Manufacturer' => $manufacturer,
+            'Card Number' => $cardNumber,
+            'Name of Card' => $nameOfCard,
+            'Details' => $details,
+            'Serial Number' => $serial,
+            'Grade' => $grade,
+            'Grade Exp' => $gradeExp,
+            'Auto Grade' => $autoGrade,
+        ];
     }
 }
+
+//{
+//    "id": 5,
+//    "Year": "1979-80",
+//    "Grade": null,
+//    "Details": "Rookie Card",
+//    "Grade Exp": null,
+//    "Auto Grade": null,
+//    "Card Number": "18",
+//    "Manufacturer": "O-Pee-Chee",
+//    "Name of Card": "Wayne Gretzky",
+//    "Serial Number": 1000000000
+//}

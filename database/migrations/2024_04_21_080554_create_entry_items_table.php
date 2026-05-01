@@ -1,5 +1,6 @@
 <?php
 
+use App\Utils\GlobalConstant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -82,8 +83,9 @@ return new class extends Migration
 		    $table->string('crossover_item_grade_mean')->nullable();
 		    $table->string('crossover_auto_grade')->nullable();
 
-            $table->string('status')->default(\App\Utils\GlobalConstant::STATUS_NOT_RECEIVED);
+            $table->string('status')->default(GlobalConstant::STATUS_NOT_RECEIVED);
             $table->string('pieces')->nullable();
+            $table->json('label_info')->nullable();
             $table->timestamps();
         });
     }

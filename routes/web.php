@@ -120,6 +120,7 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::resource('label', LabelController::class);
 //    Route::get('/label/print/view',[LabelController::class,'printLabels'] )->name('label.print.view');
     Route::get('/label/print/view/{id}',[LabelController::class,'printLabels'] )->name('label.print.view');
+    Route::post('/label/get/label-data', [LabelController::class, 'getLabelData'])->name('label.get.label-data');
 
     //customers
     Route::resource('customers', CustomerController::class);

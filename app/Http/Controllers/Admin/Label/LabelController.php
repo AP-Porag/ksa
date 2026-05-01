@@ -108,4 +108,16 @@ class LabelController extends Controller
         $items = EntryItems::where('entry_id', $id)->orderBy('created_at', 'desc')->get();
         return view('admin.label.print', compact('order', 'items'));
     }
+
+    public function getLabelData(Request $request)
+    {
+        $ids = $request->ids;
+        $items = EntryItems::whereIn('entry_id', $ids)->get();
+
+        $data = $items->map(function ($item) {
+            return $item->label_info;
+        });
+
+        return response()->json($data);
+    }
 }

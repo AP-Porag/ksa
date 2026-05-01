@@ -69,8 +69,11 @@ class LabelDataTable extends DataTable
 
                 return $status;
             })
+            ->editColumn('item_qty', function ($item) {
+                return '<input type="checkbox" class="row-checkbox" style="cursor: pointer; margin-left: 8px;" value="'.$item->id.'">';
+            })
             ->rawColumns([
-                'action','email','contact_name','status'
+                'item_qty','action','email','contact_name','status'
             ])
             ->setRowId('id');
 
@@ -116,6 +119,10 @@ class LabelDataTable extends DataTable
     {
 
         return [
+            Column::make('item_qty', 'item_qty')
+                ->title('')
+                ->searchable(false)
+                ->orderable(false),
             Column::make('entrySKU', 'entrySKU')->title('Order ID')->searchable(true),
             Column::make('customer_name', 'customer_name')->title('Name')->searchable(false),
 //            Column::make('qty', 'qty')->title('Order Quantity'),

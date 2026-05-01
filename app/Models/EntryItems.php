@@ -11,6 +11,10 @@ class EntryItems extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'label_info' => 'array',
+    ];
+
     public function entry()
     {
         return  $this->belongsTo(Entry::class,'entry_id');

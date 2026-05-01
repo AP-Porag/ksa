@@ -57,6 +57,10 @@ Vue.component("create-receiving", () =>
     import("./components/CreateReceiving.vue")
 );
 
+Vue.component("download-component", () =>
+    import("./components/DownloadComponent.vue")
+);
+
 // Global mixin
 Vue.mixin({
     methods: {
