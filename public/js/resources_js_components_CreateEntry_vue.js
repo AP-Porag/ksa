@@ -554,7 +554,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         shipping_postal: '',
         shipping_phone: '',
         status: 'active',
-        submission_date: '',
+        submission_date: this.getTodayDate(),
         products: [],
         itemType: '',
         //next
@@ -1074,6 +1074,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     dummyStep: function dummyStep() {
       return true;
+    },
+    getTodayDate: function getTodayDate() {
+      var today = new Date();
+      var year = today.getFullYear();
+      var month = String(today.getMonth() + 1).padStart(2, '0');
+      var day = String(today.getDate()).padStart(2, '0');
+      return "".concat(year, "-").concat(month, "-").concat(day);
     }
   },
   mounted: function mounted() {
@@ -3018,7 +3025,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-1"
+    staticClass: "col-md-2"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -3052,7 +3059,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-9"
+    staticClass: "col-md-10"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -3374,7 +3381,10 @@ var render = function render() {
       }
     }
   })])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-2",
+    staticStyle: {
+      visibility: "hidden"
+    }
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -3419,7 +3429,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-1"
+    staticClass: "col-md-2"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -3453,7 +3463,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-9"
+    staticClass: "col-md-10"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -3730,7 +3740,10 @@ var render = function render() {
   }), _vm._v(" "), _vm.v$.form_data.auto_authentication_authenticator_cert_no.required.$invalid && _vm.show_error_thirteen ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                                    Authenticator cert. no. is required\n                                                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-2",
+    staticStyle: {
+      visibility: "hidden"
+    }
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -3775,7 +3788,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-1"
+    staticClass: "col-md-2"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -3809,7 +3822,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-9"
+    staticClass: "col-md-10"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -4086,7 +4099,10 @@ var render = function render() {
   }), _vm._v(" "), _vm.v$.form_data.combined_service_authenticator_cert_no.required.$invalid && _vm.show_error_fourteen ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                                    Authenticator cert. no. is required\n                                                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-2",
+    staticStyle: {
+      visibility: "hidden"
+    }
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -4131,7 +4147,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-1"
+    staticClass: "col-md-2"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -4165,7 +4181,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-9"
+    staticClass: "col-md-10"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -4206,7 +4222,10 @@ var render = function render() {
   }), _vm._v(" "), _vm.v$.form_data.reholder_certification_number.required.$invalid && _vm.show_error_fifteen ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                            Certification number is required\n                                                        ")]) : _vm._e()])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-2",
+    staticStyle: {
+      visibility: "hidden"
+    }
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -4251,7 +4270,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-1"
+    staticClass: "col-md-2"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
@@ -4285,7 +4304,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-9"
+    staticClass: "col-md-10"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -4562,7 +4581,10 @@ var render = function render() {
   }), _vm._v(" "), _vm.v$.form_data.crossover_authenticator_cert_no.required.$invalid && _vm.show_error_sixteen ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                                    Authenticator cert. no. is required\n                                                                ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-2",
+    staticStyle: {
+      visibility: "hidden"
+    }
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {

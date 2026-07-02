@@ -446,11 +446,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'id': 21,
         'name': '10 (P)'
       }],
-      cardItemGrades: [{
-        "id": 1,
-        "name": "10 (P)",
-        "mean": "GEM"
-      }, {
+      cardItemGrades: [
+      // {
+      //     "id": 1,
+      //     "name": "10 (P)",
+      //     "mean": "GEM"
+      // },
+      {
         "id": 2,
         "name": "10",
         "mean": "MINT"
@@ -620,11 +622,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         "id": 6,
         "name": "10"
       }],
-      combinedServiceItemGrades: [{
-        "id": 1,
-        "name": "10 (P)",
-        "mean": "GEM"
-      }, {
+      combinedServiceItemGrades: [
+      // {
+      //     "id": 1,
+      //     "name": "10 (P)",
+      //     "mean": "GEM"
+      // },
+      {
         "id": 2,
         "name": "10",
         "mean": "MINT"
@@ -759,11 +763,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'id': 3,
         'name': 'N2'
       }],
-      reholderItemGrades: [{
-        "id": 1,
-        "name": "10 (P)",
-        "mean": "GEM"
-      }, {
+      reholderItemGrades: [
+      // {
+      //     "id": 1,
+      //     "name": "10 (P)",
+      //     "mean": "GEM"
+      // },
+      {
         "id": 2,
         "name": "10",
         "mean": "MINT"
@@ -910,11 +916,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         "id": 7,
         "name": "N6"
       }],
-      crossoverItemGrades: [{
-        "id": 1,
-        "name": "10 (P)",
-        "mean": "GEM"
-      }, {
+      crossoverItemGrades: [
+      // {
+      //     "id": 1,
+      //     "name": "10 (P)",
+      //     "mean": "GEM"
+      // },
+      {
         "id": 2,
         "name": "10",
         "mean": "MINT"
@@ -1039,11 +1047,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         "name": "N8",
         "mean": ""
       }],
-      crossoverAutoGrades: [{
-        "id": 1,
-        "name": "10 (P)",
-        "mean": "GEM"
-      }, {
+      crossoverAutoGrades: [
+      // {
+      //     "id": 1,
+      //     "name": "10 (P)",
+      //     "mean": "GEM"
+      // },
+      {
         "id": 2,
         "name": "10",
         "mean": "MINT"

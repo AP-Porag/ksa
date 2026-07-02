@@ -974,7 +974,7 @@
                             <div class="card shipping_address_card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-1">
+                                        <div class="col-md-2">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Qty
@@ -992,7 +992,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
@@ -1141,7 +1141,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="visibility: hidden;">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Estimated Value
@@ -1170,7 +1170,7 @@
                             <div class="card shipping_address_card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-1">
+                                        <div class="col-md-2">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Qty
@@ -1188,7 +1188,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
@@ -1320,7 +1320,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="visibility: hidden;">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Estimated Value
@@ -1349,7 +1349,7 @@
                             <div class="card shipping_address_card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-1">
+                                        <div class="col-md-2">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Qty
@@ -1367,7 +1367,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
@@ -1499,7 +1499,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="visibility: hidden;">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Estimated Value
@@ -1528,7 +1528,7 @@
                             <div class="card shipping_address_card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-1">
+                                        <div class="col-md-2">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Qty
@@ -1546,7 +1546,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
@@ -1568,7 +1568,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="visibility: hidden;">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Estimated Value
@@ -1597,7 +1597,7 @@
                             <div class="card shipping_address_card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-1">
+                                        <div class="col-md-2">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Qty
@@ -1615,7 +1615,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
@@ -1747,7 +1747,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2" style="visibility: hidden;">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
@@ -2462,7 +2462,7 @@ export default {
                 shipping_postal:'',
                 shipping_phone:'',
                 status:'active',
-                submission_date:'',
+                submission_date:this.getTodayDate(),
                 products:[],
                 itemType:'',
 
@@ -2961,6 +2961,13 @@ export default {
         dummyStep(){
             return true;
         },
+        getTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
     },
     mounted() {
         // Set maxDate to today's date when the component is mounted

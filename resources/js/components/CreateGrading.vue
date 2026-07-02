@@ -2520,11 +2520,11 @@ export default {
             ],
 
             cardItemGrades:[
-                {
-                    "id": 1,
-                    "name": "10 (P)",
-                    "mean": "GEM"
-                },
+                // {
+                //     "id": 1,
+                //     "name": "10 (P)",
+                //     "mean": "GEM"
+                // },
                 {
                     "id": 2,
                     "name": "10",
@@ -2744,11 +2744,11 @@ export default {
                 },
                 ],
             combinedServiceItemGrades:[
-                {
-                    "id": 1,
-                    "name": "10 (P)",
-                    "mean": "GEM"
-                },
+                // {
+                //     "id": 1,
+                //     "name": "10 (P)",
+                //     "mean": "GEM"
+                // },
                 {
                     "id": 2,
                     "name": "10",
@@ -2921,11 +2921,11 @@ export default {
             ],
             reholderItemGrades:[
 
-                {
-                    "id": 1,
-                    "name": "10 (P)",
-                    "mean": "GEM"
-                },
+                // {
+                //     "id": 1,
+                //     "name": "10 (P)",
+                //     "mean": "GEM"
+                // },
                 {
                     "id": 2,
                     "name": "10",
@@ -3113,11 +3113,11 @@ export default {
                 },
             ],
             crossoverItemGrades:[
-                {
-                    "id": 1,
-                    "name": "10 (P)",
-                    "mean": "GEM"
-                },
+                // {
+                //     "id": 1,
+                //     "name": "10 (P)",
+                //     "mean": "GEM"
+                // },
                 {
                     "id": 2,
                     "name": "10",
@@ -3275,11 +3275,11 @@ export default {
                 },
             ],
             crossoverAutoGrades:[
-                {
-                    "id": 1,
-                    "name": "10 (P)",
-                    "mean": "GEM"
-                },
+                // {
+                //     "id": 1,
+                //     "name": "10 (P)",
+                //     "mean": "GEM"
+                // },
                 {
                     "id": 2,
                     "name": "10",
