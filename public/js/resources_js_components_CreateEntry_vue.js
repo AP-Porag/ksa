@@ -422,22 +422,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       showItemTypeCombinedServiceBox: false,
       showItemTypeReholderBox: false,
       showItemTypeCrossoverBox: false,
+      showCardNew: false,
+      showCardNoNumber: false,
+      showCardAuto: false,
+      showCardAutoNoNumber: false,
+      showIndexCard: false,
+      showNewCombinedService: false,
+      showNewCombinedServiceNoNumber: false,
+      showNewReholder: false,
       itemTypes: [{
         'id': 1,
         'name': 'Card'
       }, {
         'id': 2,
-        'name': 'Autograph Authentication'
+        'name': 'Card (No number)'
       }, {
         'id': 3,
-        'name': 'Combined Service'
+        'name': 'Card Auto'
       }, {
         'id': 4,
-        'name': 'Reholder'
+        'name': 'Card Auto (No Number)'
       }, {
         'id': 5,
-        'name': 'Crossover'
-      }],
+        'name': 'Index Card'
+      },
+      // {
+      //     'id':6,
+      //     'name':'Autograph Authentication',
+      // },
+      {
+        'id': 7,
+        'name': 'Combined Service'
+      }, {
+        'id': 8,
+        'name': 'Combined Service (No Number)'
+      }, {
+        'id': 9,
+        'name': 'Reholder'
+      }
+      // {
+      //     'id':10,
+      //     'name':'Crossover',
+      // },
+      ],
+
       crossoverItemTypes: [{
         'id': 1,
         'name': 'Card'
@@ -558,7 +586,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         products: [],
         itemType: '',
         //next
-        grading_location: '',
+        grading_location: '1',
         promo_code: '',
         // payment_made:'',
         // pay_on_pickup:'',
@@ -976,43 +1004,157 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     itemTypeChangeEvent: function itemTypeChangeEvent() {
       if (this.form_data.itemType == 'Card') {
-        this.showItemTypeCardBox = true;
+        this.showItemTypeCardBox = false;
         this.showItemTypeAutoAthenticationBox = false;
         this.showItemTypeCombinedServiceBox = false;
         this.showItemTypeReholderBox = false;
         this.showItemTypeCrossoverBox = false;
+        this.showCardNew = true;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
       }
-      if (this.form_data.itemType == 'Autograph Authentication') {
+      if (this.form_data.itemType == 'Card (No number)') {
         this.showItemTypeCardBox = false;
-        this.showItemTypeAutoAthenticationBox = true;
+        this.showItemTypeAutoAthenticationBox = false;
         this.showItemTypeCombinedServiceBox = false;
         this.showItemTypeReholderBox = false;
         this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = true;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
+      }
+      if (this.form_data.itemType == 'Card Auto') {
+        this.showItemTypeCardBox = false;
+        this.showItemTypeAutoAthenticationBox = false;
+        this.showItemTypeCombinedServiceBox = false;
+        this.showItemTypeReholderBox = false;
+        this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = true;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
+      }
+      if (this.form_data.itemType == 'Card Auto (No Number)') {
+        this.showItemTypeCardBox = false;
+        this.showItemTypeAutoAthenticationBox = false;
+        this.showItemTypeCombinedServiceBox = false;
+        this.showItemTypeReholderBox = false;
+        this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = true;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
+      }
+      if (this.form_data.itemType == 'Index Card') {
+        this.showItemTypeCardBox = false;
+        this.showItemTypeAutoAthenticationBox = false;
+        this.showItemTypeCombinedServiceBox = false;
+        this.showItemTypeReholderBox = false;
+        this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = true;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
+      }
+      if (this.form_data.itemType == 'Autograph Authentication') {
+        this.showItemTypeCardBox = false;
+        this.showItemTypeAutoAthenticationBox = false;
+        this.showItemTypeCombinedServiceBox = false;
+        this.showItemTypeReholderBox = false;
+        this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
       }
       if (this.form_data.itemType == 'Combined Service') {
         this.showItemTypeCardBox = false;
         this.showItemTypeAutoAthenticationBox = false;
-        this.showItemTypeCombinedServiceBox = true;
+        this.showItemTypeCombinedServiceBox = false;
         this.showItemTypeReholderBox = false;
         this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = true;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
+      }
+      if (this.form_data.itemType == 'Combined Service (No Number)') {
+        this.showItemTypeCardBox = false;
+        this.showItemTypeAutoAthenticationBox = false;
+        this.showItemTypeCombinedServiceBox = false;
+        this.showItemTypeReholderBox = false;
+        this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = true;
+        this.showNewReholder = false;
       }
       if (this.form_data.itemType == 'Reholder') {
         this.showItemTypeCardBox = false;
         this.showItemTypeAutoAthenticationBox = false;
         this.showItemTypeCombinedServiceBox = false;
-        this.showItemTypeReholderBox = true;
+        this.showItemTypeReholderBox = false;
         this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = true;
       }
       if (this.form_data.itemType == 'Crossover') {
         this.showItemTypeCardBox = false;
         this.showItemTypeAutoAthenticationBox = false;
         this.showItemTypeCombinedServiceBox = false;
         this.showItemTypeReholderBox = false;
-        this.showItemTypeCrossoverBox = true;
+        this.showItemTypeCrossoverBox = false;
+        this.showCardNew = false;
+        this.showCardNoNumber = false;
+        this.showCardAuto = false;
+        this.showCardAutoNoNumber = false;
+        this.showIndexCard = false;
+        this.showNewCombinedService = false;
+        this.showNewCombinedServiceNoNumber = false;
+        this.showNewReholder = false;
       }
     },
     shippingMethodsChangeEvent: function shippingMethodsChangeEvent() {
-      console.log(this.form_data.shipping_method);
       if (this.form_data.shipping_method == 'Pickup') {
         this.showPickupLocationBox = true;
         this.showShowPickupLocationBox = false;
@@ -1086,6 +1228,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     // Set maxDate to today's date when the component is mounted
     this.maxDate = new Date().toISOString().split("T")[0];
+
+    //set default item type
+    this.form_data.itemType = 'Card';
+    if (this.form_data.itemType == 'Card') {
+      this.showItemTypeCardBox = false;
+      this.showItemTypeAutoAthenticationBox = false;
+      this.showItemTypeCombinedServiceBox = false;
+      this.showItemTypeReholderBox = false;
+      this.showItemTypeCrossoverBox = false;
+      this.showCardNew = true;
+    }
+
+    //set default shipping method
+    this.form_data.shipping_method = 'Pickup';
+    if (this.form_data.shipping_method == 'Pickup') {
+      this.showPickupLocationBox = true;
+      this.showShowPickupLocationBox = false;
+      this.showThirdPartyBox = false;
+      this.showUPSBox = false;
+    }
+    this.form_data.pickup_location = 'KSA';
   },
   validations: {
     form_data: {
@@ -2380,7 +2543,7 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(promo.name))]);
   })], 2)])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-2 text-left"
   }, [_c("div", {
     staticClass: "mb-3 d-flex justify-content-start",
     staticStyle: {
@@ -2418,7 +2581,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-2"
+    staticClass: "col-md-2 text-left"
   }, [_c("div", {
     staticClass: "mb-3 d-flex justify-content-end",
     staticStyle: {
@@ -2456,7 +2619,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-1"
+    staticClass: "col-md-1 text-left"
   }, [_c("div", {
     staticClass: "mb-3 d-flex justify-content-end",
     staticStyle: {
@@ -2494,7 +2657,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-1"
+    staticClass: "col-md-1 text-left"
   }, [_c("div", {
     staticClass: "mb-3 d-flex justify-content-end",
     staticStyle: {
@@ -2529,39 +2692,6 @@ var render = function render() {
     on: {
       change: function change($event) {
         return _vm.$set(_vm.form_data, "payment_method", "n/a");
-      }
-    }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-3"
-  }, [_c("div", {
-    staticClass: "mb-3"
-  }, [_c("label", {
-    staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                                    Shopify order number\n                                                ")]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model.trim",
-      value: _vm.form_data.shopify_order_number,
-      expression: "form_data.shopify_order_number",
-      modifiers: {
-        trim: true
-      }
-    }],
-    staticClass: "form-control mb-text-only",
-    attrs: {
-      type: "number",
-      placeholder: ""
-    },
-    domProps: {
-      value: _vm.form_data.shopify_order_number
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.form_data, "shopify_order_number", $event.target.value.trim());
-      },
-      blur: function blur($event) {
-        return _vm.$forceUpdate();
       }
     }
   })])])])])])])])]), _vm._v(" "), _c("tab-content", {
@@ -2955,19 +3085,14 @@ var render = function render() {
         _vm.$set(_vm.form_data, "itemType", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }, _vm.itemTypeChangeEvent]
     }
-  }, [_c("option", {
-    attrs: {
-      selected: "",
-      disabled: ""
-    }
-  }, [_vm._v("Open this select menu")]), _vm._v(" "), _vm._l(_vm.itemTypes, function (type, index) {
+  }, _vm._l(_vm.itemTypes, function (type, index) {
     return _c("option", {
       key: type.id,
       domProps: {
         value: type.name
       }
     }, [_vm._v(_vm._s(type.name))]);
-  })], 2), _vm._v(" "), _vm.v$.form_data.itemType.required.$invalid && _vm.show_error_eleven ? _c("div", {
+  }), 0), _vm._v(" "), _vm.v$.form_data.itemType.required.$invalid && _vm.show_error_eleven ? _c("div", {
     staticClass: "error"
   }, [_vm._v("\n                                                    Item type is required\n                                                ")]) : _vm._e()])]), _vm._v(" "), _vm.showItemTypeCrossoverBox ? _c("div", {
     staticClass: "col-md-6"
@@ -4671,7 +4796,878 @@ var render = function render() {
     }, [_vm._v(_vm._s(grade.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.crossover_minimum_grade.required.$invalid && _vm.show_error_sixteen ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                                            Minimum grade is required\n                                                        ")]) : _vm._e()])])])])])])])]) : _vm._e()])])], 1)], 1);
+  }, [_vm._v("\n                                                            Minimum grade is required\n                                                        ")]) : _vm._e()])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showCardNew ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #1\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Year\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Manufacturer\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #2\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Number\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #3\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Serial Number (Only if printed directly on item)\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    }
+  })])])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showCardNoNumber ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #1\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Year\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Manufacturer\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #2\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #3\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Serial Number (Only if printed directly on item)\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    }
+  })])])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showCardAuto ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #1\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Year\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Manufacturer\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #2\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #3\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Serial Number (Only if printed directly on item)\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row autograph-row"
+  }, [_c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "autographed-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Autographed\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Name\n                                                            ")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control"
+  }, _vm._l(_vm.authenticators, function (authenticator, index) {
+    return _c("option", {
+      key: authenticator.id,
+      domProps: {
+        value: authenticator.id
+      }
+    }, [_vm._v(_vm._s(authenticator.name))]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "certified-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Certified On Card\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Cert. No.\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showCardAutoNoNumber ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #1\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Year\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Manufacturer\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #2\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #3\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Serial Number (Only if printed directly on item)\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row autograph-row"
+  }, [_c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "autographed-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Autographed\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Name\n                                                            ")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control"
+  }, _vm._l(_vm.authenticators, function (authenticator, index) {
+    return _c("option", {
+      key: authenticator.id,
+      domProps: {
+        value: authenticator.id
+      }
+    }, [_vm._v(_vm._s(authenticator.name))]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "certified-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Certified On Card\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Cert. No.\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showIndexCard ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box index-card-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #1\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #2\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #3\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Serial Number (Only if printed directly on item)\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row autograph-row"
+  }, [_c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "autographed-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Autographed\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-4 col-md-4 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Name\n                                                            ")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control"
+  }, _vm._l(_vm.authenticators, function (authenticator, index) {
+    return _c("option", {
+      key: authenticator.id,
+      domProps: {
+        value: authenticator.id
+      }
+    }, [_vm._v(_vm._s(authenticator.name))]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-5 col-md-5 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Cert. No.\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showNewCombinedService ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box combined-service-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #1\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Year\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Manufacturer\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #2\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #3\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Serial Number (Only if printed directly on item)\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row autograph-row"
+  }, [_c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "autographed-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Autographed\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Name\n                                                            ")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control"
+  }, _vm._l(_vm.authenticators, function (authenticator, index) {
+    return _c("option", {
+      key: authenticator.id,
+      domProps: {
+        value: authenticator.id
+      }
+    }, [_vm._v(_vm._s(authenticator.name))]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "certified-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Certified On Card\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Cert. No.\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showNewCombinedServiceNoNumber ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box combined-service-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #1\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Year\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Manufacturer\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #2\n                                                            ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("\n                                                                Player Name\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Description #3\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Serial Number (Only if printed directly on item)\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row autograph-row"
+  }, [_c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "autographed-wrapper"
+  }, [_c("label", [_vm._v("\n                                                                    Autographed\n                                                                ")]), _vm._v(" "), _c("input", {
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-4 col-md-4 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Authenticator Name\n                                                            ")]), _vm._v(" "), _c("select", {
+    staticClass: "form-control"
+  }, _vm._l(_vm.authenticators, function (authenticator, index) {
+    return _c("option", {
+      key: authenticator.id,
+      domProps: {
+        value: authenticator.id
+      }
+    }, [_vm._v(_vm._s(authenticator.name))]);
+  }), 0)])])])])])])])])]) : _vm._e(), _vm._v(" "), _vm.showNewReholder ? _c("div", {
+    staticClass: "col-md-12"
+  }, [_c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "item-details-box reholder-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("\n                                                                    Quantity\n                                                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("\n                                                                    1\n                                                                ")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("\n                                                                Certification Number\n                                                            ")]), _vm._v(" "), _c("input", {
+    staticClass: "form-control reholder-cert-input",
+    attrs: {
+      type: "text"
+    }
+  })])])])])])])])])]) : _vm._e()])])], 1)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -4696,7 +5692,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-76b454bb]::-webkit-outer-spin-button,\ninput[data-v-76b454bb]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-76b454bb] {\n    -moz-appearance: textfield;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-76b454bb]::-webkit-outer-spin-button,\ninput[data-v-76b454bb]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-76b454bb] {\n    -moz-appearance: textfield;\n}\n\n\n/* ============================================================\n   KSA ENTRY / GRADING - CUSTOM CSS\n   Bootstrap 5\n   ============================================================ */\n.ksa-entry-ui[data-v-76b454bb] {\n    font-family: Arial, Helvetica, sans-serif;\n    color: #40536a;\n    background: #ffffff;\n}\n.ksa-entry-ui *[data-v-76b454bb],\n.ksa-entry-ui *[data-v-76b454bb]::before,\n.ksa-entry-ui *[data-v-76b454bb]::after {\n    box-sizing: border-box;\n}\n\n\n/* ============================================================\n   ITEM TYPE TOP BOX\n   ============================================================ */\n.ksa-entry-ui .item-type-box[data-v-76b454bb] {\n    background: #eeeeee;\n    border-radius: 3px;\n    padding: 20px 22px 28px;\n    margin-bottom: 24px;\n}\n.ksa-entry-ui .item-type-label[data-v-76b454bb] {\n    display: block;\n    font-size: 14px;\n    line-height: 1.2;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 9px;\n}\n.ksa-entry-ui .required[data-v-76b454bb] {\n    color: #e53935;\n}\n.ksa-entry-ui .item-type-select[data-v-76b454bb] {\n    width: 48%;\n    max-width: 590px;\n    height: 38px;\n\n    border: 1px solid #aeb7c3;\n    border-radius: 4px;\n\n    background-color: #ffffff;\n    color: #4b5563;\n\n    font-size: 15px;\n    font-weight: 600;\n\n    padding: 5px 14px;\n\n    box-shadow: 0 0 0 1px rgba(93, 105, 255, 0.05);\n}\n.ksa-entry-ui .item-type-select[data-v-76b454bb]:focus {\n    border-color: #8e9cff;\n    box-shadow: 0 0 0 2px rgba(93, 105, 255, 0.14);\n}\n\n\n/* ============================================================\n   ITEM DETAILS BOX\n   ============================================================ */\n.ksa-entry-ui .item-details-box[data-v-76b454bb] {\n    background: #eeeeee;\n    border-radius: 3px;\n    padding: 15px 12px 28px;\n    min-height: 560px;\n}\n.ksa-entry-ui .quantity-column[data-v-76b454bb] {\n    padding-left: 0;\n    padding-right: 10px;\n}\n.ksa-entry-ui .fields-column[data-v-76b454bb] {\n    padding-left: 10px;\n    padding-right: 0;\n}\n\n\n/* ============================================================\n   QUANTITY\n   ============================================================ */\n.ksa-entry-ui .quantity-box[data-v-76b454bb] {\n    background: #f8f8f8;\n    min-height: 89px;\n    text-align: center;\n    padding-top: 8px;\n}\n.ksa-entry-ui .quantity-title[data-v-76b454bb] {\n    font-size: 16px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 27px;\n}\n.ksa-entry-ui .quantity-number[data-v-76b454bb] {\n    font-size: 20px;\n    line-height: 1;\n    color: #40536a;\n}\n\n\n/* ============================================================\n   FORM FIELDS\n   ============================================================ */\n.ksa-entry-ui .field-label[data-v-76b454bb] {\n    display: block;\n    font-size: 14px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .field-label-sub[data-v-76b454bb] {\n    display: block;\n    font-size: 15px;\n    font-weight: 500;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .form-control[data-v-76b454bb] {\n    height: 36px;\n\n    border: 1px solid #d0d5db;\n    border-radius: 4px;\n\n    background: #ffffff;\n    color: #40536a;\n\n    font-size: 14px;\n\n    box-shadow: none;\n}\n.ksa-entry-ui .form-control[data-v-76b454bb]:focus {\n    border-color: #8d9cf7;\n    box-shadow: 0 0 0 1px rgba(91, 105, 255, 0.18);\n}\n.ksa-entry-ui .description-row[data-v-76b454bb] {\n    margin-bottom: 17px;\n}\n.ksa-entry-ui .serial-input[data-v-76b454bb] {\n    max-width: 480px;\n}\n\n\n/* ============================================================\n   AUTOGRAPH / AUTHENTICATOR\n   ============================================================ */\n.ksa-entry-ui .autograph-row[data-v-76b454bb] {\n    margin-top: 8px;\n    align-items: end;\n}\n.ksa-entry-ui .autographed-wrapper[data-v-76b454bb] {\n    display: flex;\n    align-items: center;\n    padding-top: 19px;\n    min-height: 55px;\n}\n.ksa-entry-ui .autographed-wrapper label[data-v-76b454bb] {\n    margin: 0 15px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n.ksa-entry-ui .custom-checkbox[data-v-76b454bb] {\n    width: 15px;\n    height: 15px;\n    margin: 0;\n}\n.ksa-entry-ui .certified-wrapper[data-v-76b454bb] {\n    display: flex;\n    align-items: center;\n    padding-top: 19px;\n    min-height: 55px;\n}\n.ksa-entry-ui .certified-wrapper label[data-v-76b454bb] {\n    margin: 0 12px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n\n\n/* ============================================================\n   REHOLDER\n   ============================================================ */\n.ksa-entry-ui .reholder-box[data-v-76b454bb] {\n    min-height: 530px;\n}\n.ksa-entry-ui .reholder-cert-input[data-v-76b454bb] {\n    max-width: 560px;\n}\n\n\n/* ============================================================\n   INDEX CARD\n   ============================================================ */\n.ksa-entry-ui .index-card-box[data-v-76b454bb] {\n    min-height: 545px;\n}\n\n\n/* ============================================================\n   COMBINED SERVICE\n   ============================================================ */\n.ksa-entry-ui .combined-service-box[data-v-76b454bb] {\n    min-height: 560px;\n}\n\n\n/* ============================================================\n   ORDER GRADING\n   ============================================================ */\n.ksa-grading-ui[data-v-76b454bb] {\n    font-family: Arial, Helvetica, sans-serif;\n    color: #40536a;\n    background: #ffffff;\n    padding: 8px 14px 25px;\n}\n.ksa-grading-ui .grading-title[data-v-76b454bb] {\n    font-size: 13px;\n    font-weight: 500;\n    margin: 0 0 30px 8px;\n    color: #40536a;\n}\n\n\n/* ============================================================\n   GRADING PROGRESS\n   ============================================================ */\n.ksa-grading-ui .grading-progress[data-v-76b454bb] {\n    position: relative;\n    height: 70px;\n    margin: 0 7px 4px;\n}\n.ksa-grading-ui .grading-progress-line[data-v-76b454bb] {\n    position: absolute;\n    left: 0;\n    right: 0;\n    top: 27px;\n    height: 3px;\n    background: #337ab7;\n}\n.ksa-grading-ui .grading-progress-step[data-v-76b454bb] {\n    position: absolute;\n    right: 63%;\n    top: 6px;\n\n    transform: translateX(50%);\n\n    text-align: center;\n    z-index: 2;\n}\n.ksa-grading-ui .grading-progress-circle[data-v-76b454bb] {\n    width: 42px;\n    height: 42px;\n\n    border-radius: 50%;\n    border: 3px solid #337ab7;\n\n    background: #337ab7;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    margin: 0 auto 4px;\n\n    color: #ffffff;\n    font-size: 16px;\n}\n.ksa-grading-ui .grading-progress-label[data-v-76b454bb] {\n    font-size: 13px;\n    color: #40536a;\n    white-space: nowrap;\n}\n\n\n/* ============================================================\n   GRADING TABLE\n   ============================================================ */\n.ksa-grading-ui .grading-table-container[data-v-76b454bb] {\n    background: #eeeeee;\n    padding: 14px 15px 17px;\n    border-radius: 2px;\n\n    overflow-x: auto;\n}\n.ksa-grading-ui .grading-table[data-v-76b454bb] {\n    width: 100%;\n    min-width: 1100px;\n\n    border-collapse: collapse;\n    table-layout: fixed;\n\n    margin: 0;\n    background: #ffffff;\n}\n.ksa-grading-ui .grading-table thead th[data-v-76b454bb] {\n    background: #5d8fe6;\n    color: #ffffff;\n\n    font-size: 12px;\n    font-weight: 600;\n\n    text-align: center;\n    vertical-align: middle;\n\n    height: 30px;\n\n    padding: 4px 5px;\n\n    border-right: 1px solid #ffffff;\n    border-bottom: 1px solid #ffffff;\n\n    white-space: nowrap;\n}\n.ksa-grading-ui .grading-table tbody td[data-v-76b454bb] {\n    background: #ffffff;\n    color: #40536a;\n\n    font-size: 12px;\n\n    text-align: center;\n    vertical-align: middle;\n\n    height: 34px;\n\n    padding: 3px 5px;\n\n    border-right: 1px solid #eeeeee;\n}\n\n\n/* Column widths */\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(1),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(1) {\n    width: 9%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(2),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(2) {\n    width: 8%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(3),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(3) {\n    width: 10%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(4),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(4) {\n    width: 10%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(5),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(5) {\n    width: 9%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(6),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(6) {\n    width: 10%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(7),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(7) {\n    width: 12%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(8),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(8) {\n    width: 8%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(9),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(9) {\n    width: 8%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(10),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(10) {\n    width: 6%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(11),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(11) {\n    width: 6%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(12),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(12) {\n    width: 8%;\n}\n.ksa-grading-ui .grading-table th[data-v-76b454bb]:nth-child(13),\n.ksa-grading-ui .grading-table td[data-v-76b454bb]:nth-child(13) {\n    width: 8%;\n}\n\n\n/* ============================================================\n   GRADING CONTROLS\n   ============================================================ */\n.ksa-grading-ui .grading-select[data-v-76b454bb] {\n    width: 58px;\n    height: 28px;\n\n    border: 1px solid #d5d9df;\n    border-radius: 2px;\n\n    background: #ffffff;\n\n    font-size: 12px;\n    color: #40536a;\n\n    padding: 2px;\n}\n.ksa-grading-ui .grading-checkbox[data-v-76b454bb] {\n    width: 13px;\n    height: 13px;\n    margin: 0;\n}\n.ksa-grading-ui .grading-edit-icon[data-v-76b454bb],\n.ksa-grading-ui .grading-remove-icon[data-v-76b454bb] {\n    font-size: 25px;\n    line-height: 1;\n    color: #333333;\n    font-weight: bold;\n}\n.ksa-grading-ui .grading-remove-icon[data-v-76b454bb] {\n    font-size: 27px;\n}\n\n\n/* ============================================================\n   CONFIRM ALL\n   IMPORTANT:\n   BUTTON IS ON RIGHT SIDE\n   ============================================================ */\n.ksa-grading-ui .confirm-all-row[data-v-76b454bb] {\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n\n    margin-top: 8px;\n}\n.ksa-grading-ui .confirm-all[data-v-76b454bb] {\n    background: #5b9bea;\n\n    border: 1px solid #4c8bd9;\n    border-radius: 2px;\n\n    color: #ffffff;\n\n    font-size: 13px;\n    font-weight: 600;\n\n    padding: 5px 10px;\n\n    box-shadow: 0 0 0 2px rgba(91, 155, 234, 0.15);\n}\n\n\n/* ============================================================\n   BOTTOM BUTTONS\n   IMPORTANT:\n   ALL BUTTONS ARE ON RIGHT SIDE\n   ============================================================ */\n.ksa-grading-ui .grading-bottom-row[data-v-76b454bb] {\n    display: flex;\n\n    justify-content: flex-end;\n    align-items: center;\n\n    gap: 14px;\n\n    margin-top: 5px;\n}\n.ksa-grading-ui .grading-btn[data-v-76b454bb] {\n    min-width: 130px;\n    height: 30px;\n\n    border: 0;\n    border-radius: 2px;\n\n    color: #ffffff;\n\n    font-size: 12px;\n    font-weight: 600;\n\n    padding: 4px 15px;\n}\n.ksa-grading-ui .btn-grading-complete[data-v-76b454bb],\n.ksa-grading-ui .btn-continue-later[data-v-76b454bb] {\n    background: #337ab7;\n}\n.ksa-grading-ui .btn-cancel[data-v-76b454bb] {\n    background: #ff9800;\n}\n\n\n/* ============================================================\n   RESPONSIVE\n   ============================================================ */\n@media (max-width: 991.98px) {\n.ksa-entry-ui .item-type-select[data-v-76b454bb] {\n        width: 65%;\n}\n.ksa-entry-ui .quantity-column[data-v-76b454bb] {\n        padding-right: 0;\n        margin-bottom: 15px;\n}\n.ksa-entry-ui .fields-column[data-v-76b454bb] {\n        padding-left: 0;\n}\n.ksa-entry-ui .item-details-box[data-v-76b454bb] {\n        min-height: auto;\n}\n}\n@media (max-width: 767.98px) {\n.ksa-entry-ui .item-type-box[data-v-76b454bb] {\n        padding: 16px;\n}\n.ksa-entry-ui .item-type-select[data-v-76b454bb] {\n        width: 100%;\n        max-width: none;\n}\n.ksa-entry-ui .item-details-box[data-v-76b454bb] {\n        padding: 15px;\n}\n.ksa-entry-ui .description-row > div[data-v-76b454bb] {\n        margin-bottom: 10px;\n}\n.ksa-entry-ui .serial-input[data-v-76b454bb],\n    .ksa-entry-ui .reholder-cert-input[data-v-76b454bb] {\n        max-width: none;\n        width: 100%;\n}\n.ksa-entry-ui .autographed-wrapper[data-v-76b454bb],\n    .ksa-entry-ui .certified-wrapper[data-v-76b454bb] {\n        padding-top: 0;\n}\n.ksa-grading-ui[data-v-76b454bb] {\n        padding-left: 5px;\n        padding-right: 5px;\n}\n.ksa-grading-ui .grading-bottom-row[data-v-76b454bb] {\n        justify-content: flex-end;\n        flex-wrap: wrap;\n}\n.ksa-grading-ui .confirm-all-row[data-v-76b454bb] {\n        justify-content: flex-end;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

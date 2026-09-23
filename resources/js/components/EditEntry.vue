@@ -23,7 +23,7 @@
                         <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
                         <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
                         <span class="" v-else>
-                            <wizard-button @click.native="received(item.id)" :disabled="form_data.entries.length > 0" class="wizard-footer-right" :style="props.fillButtonStyle">Set this order to received</wizard-button>
+                            <wizard-button @click.native="received(item.id)" :disabled="form_data.entries.length > 0" class="wizard-footer-right" :style="props.fillButtonStyle">Receive Complete</wizard-button>
                             <wizard-button @click.native="submitMultiEntryID" :disabled="form_data.selectedEntries.length === 0" class="wizard-footer-right" style="margin-right: 15px; background-color: #1f91f3; color: white;">Set these item to received</wizard-button>
                         </span>
                     </div>

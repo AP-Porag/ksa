@@ -511,7 +511,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.name.required.$invalid && _vm.show_error ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                        Name is required\n                    ")]) : _vm._e()]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            Name is required\n                        ")]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "mb-3 col-md-6"
   }, [_vm._m(1), _vm._v(" "), _c("input", {
     directives: [{
@@ -543,7 +543,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.email.required.$invalid && _vm.show_error ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                        Email is required\n                    ")]) : _vm._e()]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            Email is required\n                        ")]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "mb-3 col-md-6"
   }, [_c("label", {
     staticClass: "form-label"
@@ -593,7 +593,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.phone.required.$invalid && _vm.show_error ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                        Telephone is required\n                    ")]) : _vm._e()], 1)])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            Telephone is required\n                        ")]) : _vm._e()], 1)])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "card-body"
@@ -637,13 +637,13 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.billing_address_line_one.required.$invalid && _vm.show_error_two ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            One Address Line is required\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                One Address Line is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Address Line two\n                        ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                Address Line two\n                            ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -705,7 +705,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.billing_city.required.$invalid && _vm.show_error_two ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            City is required\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                City is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -749,7 +749,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(province.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.billing_province.required.$invalid && _vm.show_error_two ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            Province is required\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                Province is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -785,7 +785,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.billing_postal.required.$invalid && _vm.show_error_two ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            Postal is required\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                Postal is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-3"
@@ -831,7 +831,31 @@ var render = function render() {
     }, [_vm._v(_vm._s(country.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.billing_country.required.$invalid && _vm.show_error_two ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                Country is required\n                            ")]) : _vm._e()])])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                    Country is required\n                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label w-100 text-capitalize"
+  }, [_vm._v("\n                                    Telephone#\n")]), _vm._v(" "), _c("VuePhoneNumberInput", {
+    staticClass: "mb-text-only",
+    staticStyle: {
+      "background-color": "#e8f0fe !important"
+    },
+    attrs: {
+      id: "phoneNumber1",
+      readonly: _vm.isReadonly,
+      "default-country-code": "CA",
+      "only-countries": _vm.only_phone
+    },
+    model: {
+      value: _vm.form_data.billing_phone,
+      callback: function callback($$v) {
+        _vm.$set(_vm.form_data, "billing_phone", typeof $$v === "string" ? $$v.trim() : $$v);
+      },
+      expression: "form_data.billing_phone"
+    }
+  })], 1)])])])])]), _vm._v(" "), _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "card-body"
@@ -849,7 +873,7 @@ var render = function render() {
       "margin-top": "6px",
       "margin-right": "15px"
     }
-  }, [_vm._v("\n                            Same as billing address\n                        ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                Same as billing address\n                            ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -894,7 +918,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Customer Name (if different)\n                        ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                Customer Name (if different)\n                            ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -930,7 +954,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Contact Name (if different)\n                        ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                Contact Name (if different)\n                            ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -992,13 +1016,13 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.shipping_address_line_one.required.$invalid && _vm.show_error_three ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            One Address is required for shipping\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                One Address is required for shipping\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
   }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Address Line two\n                        ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("\n                                Address Line two\n                            ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model.trim",
@@ -1060,7 +1084,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.shipping_city.required.$invalid && _vm.show_error_three ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            city is required\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                city is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -1104,7 +1128,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(province.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.shipping_province.required.$invalid && _vm.show_error_three ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            Province is required\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                Province is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-3"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -1140,7 +1164,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.shipping_postal.required.$invalid && _vm.show_error_three ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                            Postal is required\n                        ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                Postal is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-3"
@@ -1186,7 +1210,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(country.name))]);
   })], 2), _vm._v(" "), _vm.v$.form_data.shipping_country.required.$invalid && _vm.show_error_three ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                Country is required\n                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                    Country is required\n                                ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -1207,7 +1231,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _vm.v$.form_data.shipping_phone.required.$invalid && _vm.show_error_three ? _c("div", {
     staticClass: "error"
-  }, [_vm._v("\n                                Phone is required\n                            ")]) : _vm._e()], 1)])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                                    Phone is required\n                                ")]) : _vm._e()], 1)])])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "mb-3 offset-md-6 col-md-6"
@@ -1220,14 +1244,14 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa fa-save"
-  }), _vm._v(" Save\n                        ")]), _vm._v(" "), _c("button", {
+  }), _vm._v(" Save\n                            ")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-secondary waves-effect",
     on: {
       click: _vm.cancelCreate
     }
   }, [_c("i", {
     staticClass: "fa fa-times"
-  }), _vm._v(" Cancel\n                        ")])])])])])])]);
+  }), _vm._v(" Cancel\n                            ")])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -1258,7 +1282,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Address Line one\n                            "), _c("span", {
+  }, [_vm._v("\n                                Address Line one\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1266,7 +1290,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            City\n                            "), _c("span", {
+  }, [_vm._v("\n                                City\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1274,7 +1298,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Province/State\n                            "), _c("span", {
+  }, [_vm._v("\n                                Province/State\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1282,7 +1306,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            postal/Zip code\n                            "), _c("span", {
+  }, [_vm._v("\n                                postal/Zip code\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1290,7 +1314,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                Country\n                                "), _c("span", {
+  }, [_vm._v("\n                                    Country\n                                    "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1298,7 +1322,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Address Line one\n                            "), _c("span", {
+  }, [_vm._v("\n                                Address Line one\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1306,7 +1330,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            City\n                            "), _c("span", {
+  }, [_vm._v("\n                                City\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1314,7 +1338,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            Province/State\n                            "), _c("span", {
+  }, [_vm._v("\n                                Province/State\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1322,7 +1346,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                            postal/Zip code\n                            "), _c("span", {
+  }, [_vm._v("\n                                postal/Zip code\n                                "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1330,7 +1354,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                Country\n                                "), _c("span", {
+  }, [_vm._v("\n                                    Country\n                                    "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }, function () {
@@ -1338,7 +1362,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("label", {
     staticClass: "form-label w-100 text-capitalize"
-  }, [_vm._v("\n                                Telephone#\n                                "), _c("span", {
+  }, [_vm._v("\n                                    Telephone#\n                                    "), _c("span", {
     staticClass: "error"
   }, [_vm._v("*")])]);
 }];

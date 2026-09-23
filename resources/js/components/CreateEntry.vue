@@ -671,7 +671,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 text-left">
                                             <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                     Payment Made
@@ -690,7 +690,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 text-left">
                                             <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                     Pay on pickup
@@ -706,7 +706,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-1">
+                                        <div class="col-md-1 text-left">
                                             <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                     COD
@@ -722,7 +722,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-1">
+                                        <div class="col-md-1 text-left">
                                             <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
                                                 <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
                                                     N/A
@@ -738,22 +738,22 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Shopify order number
-                                                </label>
-                                                <input
-                                                    type="number"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="form_data.shopify_order_number"
-                                                />
-<!--                                                <div class="error" v-if="v$.form_data.billing_city.required.$invalid && show_error_two">-->
-<!--                                                    City is required-->
-<!--                                                </div>-->
-                                            </div>
-                                        </div>
+<!--                                        <div class="col-md-3">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label class="form-label w-100 text-capitalize">-->
+<!--                                                    Shopify order number-->
+<!--                                                </label>-->
+<!--                                                <input-->
+<!--                                                    type="number"-->
+<!--                                                    class="form-control mb-text-only"-->
+<!--                                                    placeholder=""-->
+<!--                                                    v-model.trim="form_data.shopify_order_number"-->
+<!--                                                />-->
+<!--&lt;!&ndash;                                                <div class="error" v-if="v$.form_data.billing_city.required.$invalid && show_error_two">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    City is required&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -935,7 +935,6 @@
                                                         v-model.trim="form_data.itemType"
                                                         @change="itemTypeChangeEvent"
                                                 >
-                                                    <option selected disabled>Open this select menu</option>
                                                     <option v-for="(type,index) in itemTypes" :value="type.name" :key="type.id">{{type.name}}</option>
                                                 </select>
                                                 <!--                                            <Select2 v-model="form_data.itemType" :options="itemTypes" @change="itemTypeChangeEvent($event)" />-->
@@ -1790,6 +1789,1517 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!--item type cardNew-->
+                        <div class="col-md-12" v-if="showCardNew">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Fields -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <!-- Description #1 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #1
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Year
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Manufacturer
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #2 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #2
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Number
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #3 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #3
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Serial Number -->
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Serial Number (Only if printed directly on item)
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control serial-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--item type cardNoNumber-->
+                        <div class="col-md-12" v-if="showCardNoNumber">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Fields -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <!-- Description #1 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #1
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Year
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Manufacturer
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #2 FULL WIDTH -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #2
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #3 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #3
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Serial Number -->
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Serial Number (Only if printed directly on item)
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control serial-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--item type cardAuto-->
+                        <div class="col-md-12" v-if="showCardAuto">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Fields -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <!-- Description #1 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #1
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Year
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Manufacturer
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #2 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #2
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #3 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #3
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Serial -->
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Serial Number (Only if printed directly on item)
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control serial-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Authenticator Section -->
+                                                    <div class="row autograph-row">
+
+                                                        <!-- Autographed -->
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="autographed-wrapper">
+
+                                                                <label>
+                                                                    Autographed
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <!-- Authenticator Name -->
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Name
+                                                            </label>
+
+                                                            <select class="form-control">
+                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            </select>
+
+                                                        </div>
+
+
+                                                        <!-- Certified On Card -->
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="certified-wrapper">
+
+                                                                <label>
+                                                                    Certified On Card
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <!-- Certificate Number -->
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Cert. No.
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--item type cardAutoNoNumber-->
+                        <div class="col-md-12" v-if="showCardAutoNoNumber">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Fields -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <!-- Description #1 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #1
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Year
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Manufacturer
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #2 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #2
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #3 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #3
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Serial -->
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Serial Number (Only if printed directly on item)
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control serial-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Authenticator -->
+                                                    <div class="row autograph-row">
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="autographed-wrapper">
+
+                                                                <label>
+                                                                    Autographed
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Name
+                                                            </label>
+
+                                                            <select class="form-control">
+                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            </select>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="certified-wrapper">
+
+                                                                <label>
+                                                                    Certified On Card
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Cert. No.
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--item type indexCard-->
+                        <div class="col-md-12" v-if="showIndexCard">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box index-card-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Fields -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <!-- Description #1 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #1
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #2 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #2
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #3 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #3
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Serial -->
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Serial Number (Only if printed directly on item)
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control serial-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Authenticator -->
+                                                    <div class="row autograph-row">
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="autographed-wrapper">
+
+                                                                <label>
+                                                                    Autographed
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-4 col-md-4 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Name
+                                                            </label>
+
+                                                            <select class="form-control">
+                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            </select>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-5 col-md-5 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Cert. No.
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--item type newCombinedService-->
+                        <div class="col-md-12" v-if="showNewCombinedService">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box combined-service-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Fields -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <!-- Description #1 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #1
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Year
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Manufacturer
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #2 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #2
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #3 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #3
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Serial -->
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Serial Number (Only if printed directly on item)
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control serial-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Authenticator -->
+                                                    <div class="row autograph-row">
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="autographed-wrapper">
+
+                                                                <label>
+                                                                    Autographed
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Name
+                                                            </label>
+
+                                                            <select class="form-control">
+                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            </select>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="certified-wrapper">
+
+                                                                <label>
+                                                                    Certified On Card
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Cert. No.
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--item type newCombinedServiceNoNumber-->
+                        <div class="col-md-12" v-if="showNewCombinedServiceNoNumber">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box combined-service-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Fields -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <!-- Description #1 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #1
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-md-2 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Year
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+
+                                                        <div class="col-md-10 col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Manufacturer
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #2 FULL WIDTH -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #2
+                                                            </label>
+
+                                                        </div>
+
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label-sub">
+                                                                Player Name
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Description #3 -->
+                                                    <div class="row description-row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Description #3
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Serial -->
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Serial Number (Only if printed directly on item)
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control serial-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- Authenticator -->
+                                                    <div class="row autograph-row">
+
+                                                        <div class="col-lg-3 col-md-3 col-12">
+
+                                                            <div class="autographed-wrapper">
+
+                                                                <label>
+                                                                    Autographed
+                                                                </label>
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="custom-checkbox"
+                                                                >
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-4 col-md-4 col-12">
+
+                                                            <label class="field-label">
+                                                                Authenticator Name
+                                                            </label>
+
+                                                            <select class="form-control">
+                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            </select>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--item type newReholder-->
+                        <div class="col-md-12" v-if="showNewReholder">
+                            <div class="ksa-entry-ui">
+                                <!-- Item Details -->
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="item-details-box reholder-box">
+
+                                            <div class="row">
+
+                                                <!-- Quantity -->
+                                                <div class="col-lg-2 col-md-3 col-12">
+
+                                                    <div class="quantity-box">
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-title">
+                                                                    Quantity
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="quantity-number">
+                                                                    1
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- Certification Number -->
+                                                <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                    <div class="row">
+
+                                                        <div class="col-12">
+
+                                                            <label class="field-label">
+                                                                Certification Number
+                                                            </label>
+
+                                                            <input
+                                                                type="text"
+                                                                class="form-control reholder-cert-input"
+                                                            >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </tab-content>
             </form-wizard>
@@ -2300,6 +3810,16 @@ export default {
             showItemTypeReholderBox:false,
             showItemTypeCrossoverBox:false,
 
+
+            showCardNew:false,
+            showCardNoNumber:false,
+            showCardAuto:false,
+            showCardAutoNoNumber:false,
+            showIndexCard:false,
+            showNewCombinedService:false,
+            showNewCombinedServiceNoNumber:false,
+            showNewReholder:false,
+
             itemTypes:[
                 {
                     'id':1,
@@ -2307,20 +3827,41 @@ export default {
                 },
                 {
                     'id':2,
-                    'name':'Autograph Authentication',
+                    'name':'Card (No number)',
                 },
                 {
                     'id':3,
-                    'name':'Combined Service',
+                    'name':'Card Auto',
                 },
                 {
                     'id':4,
-                    'name':'Reholder',
+                    'name':'Card Auto (No Number)',
                 },
                 {
                     'id':5,
-                    'name':'Crossover',
+                    'name':'Index Card',
                 },
+                // {
+                //     'id':6,
+                //     'name':'Autograph Authentication',
+                // },
+                {
+                    'id':7,
+                    'name':'Combined Service',
+                },
+                {
+                    'id':8,
+                    'name':'Combined Service (No Number)',
+                },
+                {
+                    'id':9,
+                    'name':'Reholder',
+                },
+                // {
+                //     'id':10,
+                //     'name':'Crossover',
+                // },
+
             ],
             crossoverItemTypes:[
                 {
@@ -2467,7 +4008,7 @@ export default {
                 itemType:'',
 
                 //next
-                grading_location:'',
+                grading_location:'1',
                 promo_code:'',
                 // payment_made:'',
                 // pay_on_pickup:'',
@@ -2862,43 +4403,157 @@ export default {
         },
         itemTypeChangeEvent(){
             if (this.form_data.itemType == 'Card'){
-                this.showItemTypeCardBox=true;
+                this.showItemTypeCardBox=false;
                 this.showItemTypeAutoAthenticationBox=false;
                 this.showItemTypeCombinedServiceBox=false;
                 this.showItemTypeReholderBox=false;
                 this.showItemTypeCrossoverBox=false;
+                this.showCardNew=true;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
             }
-            if (this.form_data.itemType == 'Autograph Authentication'){
+            if (this.form_data.itemType == 'Card (No number)'){
                 this.showItemTypeCardBox=false;
-                this.showItemTypeAutoAthenticationBox=true;
+                this.showItemTypeAutoAthenticationBox=false;
                 this.showItemTypeCombinedServiceBox=false;
                 this.showItemTypeReholderBox=false;
                 this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=true;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
+            }
+            if (this.form_data.itemType == 'Card Auto'){
+                this.showItemTypeCardBox=false;
+                this.showItemTypeAutoAthenticationBox=false;
+                this.showItemTypeCombinedServiceBox=false;
+                this.showItemTypeReholderBox=false;
+                this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=true;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
+            }
+            if (this.form_data.itemType == 'Card Auto (No Number)'){
+                this.showItemTypeCardBox=false;
+                this.showItemTypeAutoAthenticationBox=false;
+                this.showItemTypeCombinedServiceBox=false;
+                this.showItemTypeReholderBox=false;
+                this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=true;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
+            }
+            if (this.form_data.itemType == 'Index Card'){
+                this.showItemTypeCardBox=false;
+                this.showItemTypeAutoAthenticationBox=false;
+                this.showItemTypeCombinedServiceBox=false;
+                this.showItemTypeReholderBox=false;
+                this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=true;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
+            }
+            if (this.form_data.itemType == 'Autograph Authentication'){
+                this.showItemTypeCardBox=false;
+                this.showItemTypeAutoAthenticationBox=false;
+                this.showItemTypeCombinedServiceBox=false;
+                this.showItemTypeReholderBox=false;
+                this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
             }
             if (this.form_data.itemType == 'Combined Service'){
                 this.showItemTypeCardBox=false;
                 this.showItemTypeAutoAthenticationBox=false;
-                this.showItemTypeCombinedServiceBox=true;
+                this.showItemTypeCombinedServiceBox=false;
                 this.showItemTypeReholderBox=false;
                 this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=true;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
+            }
+            if (this.form_data.itemType == 'Combined Service (No Number)'){
+                this.showItemTypeCardBox=false;
+                this.showItemTypeAutoAthenticationBox=false;
+                this.showItemTypeCombinedServiceBox=false;
+                this.showItemTypeReholderBox=false;
+                this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=true;
+                this.showNewReholder=false;
             }
             if (this.form_data.itemType == 'Reholder'){
                 this.showItemTypeCardBox=false;
                 this.showItemTypeAutoAthenticationBox=false;
                 this.showItemTypeCombinedServiceBox=false;
-                this.showItemTypeReholderBox=true;
+                this.showItemTypeReholderBox=false;
                 this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=true;
             }
             if (this.form_data.itemType == 'Crossover'){
                 this.showItemTypeCardBox=false;
                 this.showItemTypeAutoAthenticationBox=false;
                 this.showItemTypeCombinedServiceBox=false;
                 this.showItemTypeReholderBox=false;
-                this.showItemTypeCrossoverBox=true;
+                this.showItemTypeCrossoverBox=false;
+                this.showCardNew=false;
+                this.showCardNoNumber=false;
+                this.showCardAuto=false;
+                this.showCardAutoNoNumber=false;
+                this.showIndexCard=false;
+                this.showNewCombinedService=false;
+                this.showNewCombinedServiceNoNumber=false;
+                this.showNewReholder=false;
             }
         },
         shippingMethodsChangeEvent(){
-            console.log(this.form_data.shipping_method)
             if (this.form_data.shipping_method == 'Pickup'){
                 this.showPickupLocationBox=true;
                 this.showShowPickupLocationBox=false;
@@ -2972,6 +4627,27 @@ export default {
     mounted() {
         // Set maxDate to today's date when the component is mounted
         this.maxDate = new Date().toISOString().split("T")[0];
+
+        //set default item type
+        this.form_data.itemType = 'Card';
+        if (this.form_data.itemType == 'Card'){
+            this.showItemTypeCardBox=false;
+            this.showItemTypeAutoAthenticationBox=false;
+            this.showItemTypeCombinedServiceBox=false;
+            this.showItemTypeReholderBox=false;
+            this.showItemTypeCrossoverBox=false;
+            this.showCardNew=true;
+        }
+
+        //set default shipping method
+        this.form_data.shipping_method = 'Pickup';
+        if (this.form_data.shipping_method == 'Pickup'){
+            this.showPickupLocationBox=true;
+            this.showShowPickupLocationBox=false;
+            this.showThirdPartyBox=false;
+            this.showUPSBox=false;
+        }
+        this.form_data.pickup_location = 'KSA';
     },
 
     validations: {
@@ -3267,4 +4943,627 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+
+/* ============================================================
+   KSA ENTRY / GRADING - CUSTOM CSS
+   Bootstrap 5
+   ============================================================ */
+
+.ksa-entry-ui {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #40536a;
+    background: #ffffff;
+}
+
+.ksa-entry-ui *,
+.ksa-entry-ui *::before,
+.ksa-entry-ui *::after {
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   ITEM TYPE TOP BOX
+   ============================================================ */
+
+.ksa-entry-ui .item-type-box {
+    background: #eeeeee;
+    border-radius: 3px;
+    padding: 20px 22px 28px;
+    margin-bottom: 24px;
+}
+
+.ksa-entry-ui .item-type-label {
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #40536a;
+    margin-bottom: 9px;
+}
+
+.ksa-entry-ui .required {
+    color: #e53935;
+}
+
+.ksa-entry-ui .item-type-select {
+    width: 48%;
+    max-width: 590px;
+    height: 38px;
+
+    border: 1px solid #aeb7c3;
+    border-radius: 4px;
+
+    background-color: #ffffff;
+    color: #4b5563;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    padding: 5px 14px;
+
+    box-shadow: 0 0 0 1px rgba(93, 105, 255, 0.05);
+}
+
+.ksa-entry-ui .item-type-select:focus {
+    border-color: #8e9cff;
+    box-shadow: 0 0 0 2px rgba(93, 105, 255, 0.14);
+}
+
+
+/* ============================================================
+   ITEM DETAILS BOX
+   ============================================================ */
+
+.ksa-entry-ui .item-details-box {
+    background: #eeeeee;
+    border-radius: 3px;
+    padding: 15px 12px 28px;
+    min-height: 560px;
+}
+
+.ksa-entry-ui .quantity-column {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.ksa-entry-ui .fields-column {
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+
+/* ============================================================
+   QUANTITY
+   ============================================================ */
+
+.ksa-entry-ui .quantity-box {
+    background: #f8f8f8;
+    min-height: 89px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.ksa-entry-ui .quantity-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #40536a;
+    margin-bottom: 27px;
+}
+
+.ksa-entry-ui .quantity-number {
+    font-size: 20px;
+    line-height: 1;
+    color: #40536a;
+}
+
+
+/* ============================================================
+   FORM FIELDS
+   ============================================================ */
+
+.ksa-entry-ui .field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #40536a;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.ksa-entry-ui .field-label-sub {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #40536a;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.ksa-entry-ui .form-control {
+    height: 36px;
+
+    border: 1px solid #d0d5db;
+    border-radius: 4px;
+
+    background: #ffffff;
+    color: #40536a;
+
+    font-size: 14px;
+
+    box-shadow: none;
+}
+
+.ksa-entry-ui .form-control:focus {
+    border-color: #8d9cf7;
+    box-shadow: 0 0 0 1px rgba(91, 105, 255, 0.18);
+}
+
+.ksa-entry-ui .description-row {
+    margin-bottom: 17px;
+}
+
+.ksa-entry-ui .serial-input {
+    max-width: 480px;
+}
+
+
+/* ============================================================
+   AUTOGRAPH / AUTHENTICATOR
+   ============================================================ */
+
+.ksa-entry-ui .autograph-row {
+    margin-top: 8px;
+    align-items: end;
+}
+
+.ksa-entry-ui .autographed-wrapper {
+    display: flex;
+    align-items: center;
+    padding-top: 19px;
+    min-height: 55px;
+}
+
+.ksa-entry-ui .autographed-wrapper label {
+    margin: 0 15px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #40536a;
+}
+
+.ksa-entry-ui .custom-checkbox {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+}
+
+.ksa-entry-ui .certified-wrapper {
+    display: flex;
+    align-items: center;
+    padding-top: 19px;
+    min-height: 55px;
+}
+
+.ksa-entry-ui .certified-wrapper label {
+    margin: 0 12px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #40536a;
+}
+
+
+/* ============================================================
+   REHOLDER
+   ============================================================ */
+
+.ksa-entry-ui .reholder-box {
+    min-height: 530px;
+}
+
+.ksa-entry-ui .reholder-cert-input {
+    max-width: 560px;
+}
+
+
+/* ============================================================
+   INDEX CARD
+   ============================================================ */
+
+.ksa-entry-ui .index-card-box {
+    min-height: 545px;
+}
+
+
+/* ============================================================
+   COMBINED SERVICE
+   ============================================================ */
+
+.ksa-entry-ui .combined-service-box {
+    min-height: 560px;
+}
+
+
+/* ============================================================
+   ORDER GRADING
+   ============================================================ */
+
+.ksa-grading-ui {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #40536a;
+    background: #ffffff;
+    padding: 8px 14px 25px;
+}
+
+.ksa-grading-ui .grading-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 0 30px 8px;
+    color: #40536a;
+}
+
+
+/* ============================================================
+   GRADING PROGRESS
+   ============================================================ */
+
+.ksa-grading-ui .grading-progress {
+    position: relative;
+    height: 70px;
+    margin: 0 7px 4px;
+}
+
+.ksa-grading-ui .grading-progress-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 27px;
+    height: 3px;
+    background: #337ab7;
+}
+
+.ksa-grading-ui .grading-progress-step {
+    position: absolute;
+    right: 63%;
+    top: 6px;
+
+    transform: translateX(50%);
+
+    text-align: center;
+    z-index: 2;
+}
+
+.ksa-grading-ui .grading-progress-circle {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+    border: 3px solid #337ab7;
+
+    background: #337ab7;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 4px;
+
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.ksa-grading-ui .grading-progress-label {
+    font-size: 13px;
+    color: #40536a;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   GRADING TABLE
+   ============================================================ */
+
+.ksa-grading-ui .grading-table-container {
+    background: #eeeeee;
+    padding: 14px 15px 17px;
+    border-radius: 2px;
+
+    overflow-x: auto;
+}
+
+.ksa-grading-ui .grading-table {
+    width: 100%;
+    min-width: 1100px;
+
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    margin: 0;
+    background: #ffffff;
+}
+
+.ksa-grading-ui .grading-table thead th {
+    background: #5d8fe6;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-align: center;
+    vertical-align: middle;
+
+    height: 30px;
+
+    padding: 4px 5px;
+
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+
+    white-space: nowrap;
+}
+
+.ksa-grading-ui .grading-table tbody td {
+    background: #ffffff;
+    color: #40536a;
+
+    font-size: 12px;
+
+    text-align: center;
+    vertical-align: middle;
+
+    height: 34px;
+
+    padding: 3px 5px;
+
+    border-right: 1px solid #eeeeee;
+}
+
+
+/* Column widths */
+
+.ksa-grading-ui .grading-table th:nth-child(1),
+.ksa-grading-ui .grading-table td:nth-child(1) {
+    width: 9%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(2),
+.ksa-grading-ui .grading-table td:nth-child(2) {
+    width: 8%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(3),
+.ksa-grading-ui .grading-table td:nth-child(3) {
+    width: 10%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(4),
+.ksa-grading-ui .grading-table td:nth-child(4) {
+    width: 10%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(5),
+.ksa-grading-ui .grading-table td:nth-child(5) {
+    width: 9%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(6),
+.ksa-grading-ui .grading-table td:nth-child(6) {
+    width: 10%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(7),
+.ksa-grading-ui .grading-table td:nth-child(7) {
+    width: 12%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(8),
+.ksa-grading-ui .grading-table td:nth-child(8) {
+    width: 8%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(9),
+.ksa-grading-ui .grading-table td:nth-child(9) {
+    width: 8%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(10),
+.ksa-grading-ui .grading-table td:nth-child(10) {
+    width: 6%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(11),
+.ksa-grading-ui .grading-table td:nth-child(11) {
+    width: 6%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(12),
+.ksa-grading-ui .grading-table td:nth-child(12) {
+    width: 8%;
+}
+
+.ksa-grading-ui .grading-table th:nth-child(13),
+.ksa-grading-ui .grading-table td:nth-child(13) {
+    width: 8%;
+}
+
+
+/* ============================================================
+   GRADING CONTROLS
+   ============================================================ */
+
+.ksa-grading-ui .grading-select {
+    width: 58px;
+    height: 28px;
+
+    border: 1px solid #d5d9df;
+    border-radius: 2px;
+
+    background: #ffffff;
+
+    font-size: 12px;
+    color: #40536a;
+
+    padding: 2px;
+}
+
+.ksa-grading-ui .grading-checkbox {
+    width: 13px;
+    height: 13px;
+    margin: 0;
+}
+
+.ksa-grading-ui .grading-edit-icon,
+.ksa-grading-ui .grading-remove-icon {
+    font-size: 25px;
+    line-height: 1;
+    color: #333333;
+    font-weight: bold;
+}
+
+.ksa-grading-ui .grading-remove-icon {
+    font-size: 27px;
+}
+
+
+/* ============================================================
+   CONFIRM ALL
+   IMPORTANT:
+   BUTTON IS ON RIGHT SIDE
+   ============================================================ */
+
+.ksa-grading-ui .confirm-all-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin-top: 8px;
+}
+
+.ksa-grading-ui .confirm-all {
+    background: #5b9bea;
+
+    border: 1px solid #4c8bd9;
+    border-radius: 2px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 5px 10px;
+
+    box-shadow: 0 0 0 2px rgba(91, 155, 234, 0.15);
+}
+
+
+/* ============================================================
+   BOTTOM BUTTONS
+   IMPORTANT:
+   ALL BUTTONS ARE ON RIGHT SIDE
+   ============================================================ */
+
+.ksa-grading-ui .grading-bottom-row {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 5px;
+}
+
+.ksa-grading-ui .grading-btn {
+    min-width: 130px;
+    height: 30px;
+
+    border: 0;
+    border-radius: 2px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    padding: 4px 15px;
+}
+
+.ksa-grading-ui .btn-grading-complete,
+.ksa-grading-ui .btn-continue-later {
+    background: #337ab7;
+}
+
+.ksa-grading-ui .btn-cancel {
+    background: #ff9800;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+
+    .ksa-entry-ui .item-type-select {
+        width: 65%;
+    }
+
+    .ksa-entry-ui .quantity-column {
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .ksa-entry-ui .fields-column {
+        padding-left: 0;
+    }
+
+    .ksa-entry-ui .item-details-box {
+        min-height: auto;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+
+    .ksa-entry-ui .item-type-box {
+        padding: 16px;
+    }
+
+    .ksa-entry-ui .item-type-select {
+        width: 100%;
+        max-width: none;
+    }
+
+    .ksa-entry-ui .item-details-box {
+        padding: 15px;
+    }
+
+    .ksa-entry-ui .description-row > div {
+        margin-bottom: 10px;
+    }
+
+    .ksa-entry-ui .serial-input,
+    .ksa-entry-ui .reholder-cert-input {
+        max-width: none;
+        width: 100%;
+    }
+
+    .ksa-entry-ui .autographed-wrapper,
+    .ksa-entry-ui .certified-wrapper {
+        padding-top: 0;
+    }
+
+    .ksa-grading-ui {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .ksa-grading-ui .grading-bottom-row {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .ksa-grading-ui .confirm-all-row {
+        justify-content: flex-end;
+    }
+}
 </style>
