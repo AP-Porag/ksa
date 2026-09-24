@@ -1789,7 +1789,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!--item type cardNew-->
                         <div class="col-md-12" v-if="showCardNew">
                             <div class="ksa-entry-ui">
@@ -1855,6 +1854,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneYear"
                                                             >
 
                                                         </div>
@@ -1869,6 +1869,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneManufacturer"
                                                             >
 
                                                         </div>
@@ -1897,6 +1898,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionTwoNumber"
                                                             >
 
                                                         </div>
@@ -1911,6 +1913,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionTwoPlayerName"
                                                             >
 
                                                         </div>
@@ -1930,6 +1933,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_three"
                                                             >
 
                                                         </div>
@@ -1949,6 +1953,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control serial-input"
+                                                                v-model="form_data.card_serial_number"
                                                             >
 
                                                         </div>
@@ -2031,6 +2036,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneYear"
                                                             >
 
                                                         </div>
@@ -2045,6 +2051,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneManufacturer"
                                                             >
 
                                                         </div>
@@ -2073,6 +2080,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_two"
                                                             >
 
                                                         </div>
@@ -2092,6 +2100,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_three"
                                                             >
 
                                                         </div>
@@ -2111,6 +2120,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control serial-input"
+                                                                v-model="form_data.card_serial_number"
                                                             >
 
                                                         </div>
@@ -2128,6 +2138,7 @@
 
                             </div>
                         </div>
+
                         <!--item type cardAuto-->
                         <div class="col-md-12" v-if="showCardAuto">
                             <div class="ksa-entry-ui">
@@ -2193,6 +2204,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneYear"
                                                             >
 
                                                         </div>
@@ -2207,6 +2219,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneManufacturer"
                                                             >
 
                                                         </div>
@@ -2235,6 +2248,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionTwoNumber"
                                                             >
 
                                                         </div>
@@ -2249,6 +2263,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionTwoPlayerName"
                                                             >
 
                                                         </div>
@@ -2268,6 +2283,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_three"
                                                             >
 
                                                         </div>
@@ -2287,6 +2303,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control serial-input"
+                                                                v-model="form_data.card_serial_number"
                                                             >
 
                                                         </div>
@@ -2309,6 +2326,7 @@
                                                                 <input
                                                                     type="checkbox"
                                                                     class="custom-checkbox"
+                                                                    v-model="form_data.card_autographed"
                                                                 >
 
                                                             </div>
@@ -2323,8 +2341,17 @@
                                                                 Authenticator Name
                                                             </label>
 
-                                                            <select class="form-control">
-                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            <select
+                                                                class="form-control"
+                                                                v-model="form_data.card_authenticator_name"
+                                                            >
+                                                                <option
+                                                                    v-for="(authenticator,index) in authenticators"
+                                                                    :value="authenticator.id"
+                                                                    :key="authenticator.id"
+                                                                >
+                                                                    {{authenticator.name}}
+                                                                </option>
                                                             </select>
 
                                                         </div>
@@ -2342,6 +2369,7 @@
                                                                 <input
                                                                     type="checkbox"
                                                                     class="custom-checkbox"
+                                                                    v-model="form_data.card_certified_on_card"
                                                                 >
 
                                                             </div>
@@ -2359,6 +2387,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_authenticator_cert_no"
                                                             >
 
                                                         </div>
@@ -2441,6 +2470,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneYear"
                                                             >
 
                                                         </div>
@@ -2455,6 +2485,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="cardDescriptionOneManufacturer"
                                                             >
 
                                                         </div>
@@ -2483,6 +2514,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_two"
                                                             >
 
                                                         </div>
@@ -2502,6 +2534,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_three"
                                                             >
 
                                                         </div>
@@ -2521,6 +2554,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control serial-input"
+                                                                v-model="form_data.card_serial_number"
                                                             >
 
                                                         </div>
@@ -2542,6 +2576,7 @@
                                                                 <input
                                                                     type="checkbox"
                                                                     class="custom-checkbox"
+                                                                    v-model="form_data.card_autographed"
                                                                 >
 
                                                             </div>
@@ -2555,8 +2590,17 @@
                                                                 Authenticator Name
                                                             </label>
 
-                                                            <select class="form-control">
-                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            <select
+                                                                class="form-control"
+                                                                v-model="form_data.card_authenticator_name"
+                                                            >
+                                                                <option
+                                                                    v-for="(authenticator,index) in authenticators"
+                                                                    :value="authenticator.id"
+                                                                    :key="authenticator.id"
+                                                                >
+                                                                    {{authenticator.name}}
+                                                                </option>
                                                             </select>
 
                                                         </div>
@@ -2573,6 +2617,7 @@
                                                                 <input
                                                                     type="checkbox"
                                                                     class="custom-checkbox"
+                                                                    v-model="form_data.card_certified_on_card"
                                                                 >
 
                                                             </div>
@@ -2589,6 +2634,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_authenticator_cert_no"
                                                             >
 
                                                         </div>
@@ -2606,6 +2652,7 @@
 
                             </div>
                         </div>
+
                         <!--item type indexCard-->
                         <div class="col-md-12" v-if="showIndexCard">
                             <div class="ksa-entry-ui">
@@ -2662,6 +2709,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_one"
                                                             >
 
                                                         </div>
@@ -2681,6 +2729,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_two"
                                                             >
 
                                                         </div>
@@ -2700,6 +2749,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_description_three"
                                                             >
 
                                                         </div>
@@ -2719,6 +2769,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control serial-input"
+                                                                v-model="form_data.card_serial_number"
                                                             >
 
                                                         </div>
@@ -2740,6 +2791,7 @@
                                                                 <input
                                                                     type="checkbox"
                                                                     class="custom-checkbox"
+                                                                    v-model="form_data.card_autographed"
                                                                 >
 
                                                             </div>
@@ -2753,8 +2805,17 @@
                                                                 Authenticator Name
                                                             </label>
 
-                                                            <select class="form-control">
-                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            <select
+                                                                class="form-control"
+                                                                v-model="form_data.card_authenticator_name"
+                                                            >
+                                                                <option
+                                                                    v-for="(authenticator,index) in authenticators"
+                                                                    :value="authenticator.id"
+                                                                    :key="authenticator.id"
+                                                                >
+                                                                    {{authenticator.name}}
+                                                                </option>
                                                             </select>
 
                                                         </div>
@@ -2769,6 +2830,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.card_authenticator_cert_no"
                                                             >
 
                                                         </div>
@@ -2786,6 +2848,7 @@
 
                             </div>
                         </div>
+
                         <!--item type newCombinedService-->
                         <div class="col-md-12" v-if="showNewCombinedService">
                             <div class="ksa-entry-ui">
@@ -2851,6 +2914,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="combinedServiceDescriptionOneYear"
                                                             >
 
                                                         </div>
@@ -2865,6 +2929,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="combinedServiceDescriptionOneManufacturer"
                                                             >
 
                                                         </div>
@@ -2893,6 +2958,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="combinedServiceDescriptionTwoNumber"
                                                             >
 
                                                         </div>
@@ -2907,8 +2973,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
-                                                            >
-
+                                                                v-model="combinedServiceDescriptionTwoPlayerName">
                                                         </div>
 
                                                     </div>
@@ -2926,6 +2991,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.combined_service_description_three"
                                                             >
 
                                                         </div>
@@ -2945,6 +3011,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control serial-input"
+                                                                v-model="form_data.combined_service_serial_number"
                                                             >
 
                                                         </div>
@@ -2966,6 +3033,7 @@
                                                                 <input
                                                                     type="checkbox"
                                                                     class="custom-checkbox"
+                                                                    v-model="form_data.combined_service_autographed"
                                                                 >
 
                                                             </div>
@@ -2979,8 +3047,17 @@
                                                                 Authenticator Name
                                                             </label>
 
-                                                            <select class="form-control">
-                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            <select
+                                                                class="form-control"
+                                                                v-model="form_data.combined_service_authenticator_name"
+                                                            >
+                                                                <option
+                                                                    v-for="(authenticator,index) in authenticators"
+                                                                    :value="authenticator.id"
+                                                                    :key="authenticator.id"
+                                                                >
+                                                                    {{authenticator.name}}
+                                                                </option>
                                                             </select>
 
                                                         </div>
@@ -3013,6 +3090,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.combined_service_authenticator_cert_no"
                                                             >
 
                                                         </div>
@@ -3030,6 +3108,7 @@
 
                             </div>
                         </div>
+
                         <!--item type newCombinedServiceNoNumber-->
                         <div class="col-md-12" v-if="showNewCombinedServiceNoNumber">
                             <div class="ksa-entry-ui">
@@ -3095,6 +3174,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="combinedServiceDescriptionOneYear"
                                                             >
 
                                                         </div>
@@ -3109,6 +3189,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="combinedServiceDescriptionOneManufacturer"
                                                             >
 
                                                         </div>
@@ -3137,6 +3218,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.combined_service_description_two"
                                                             >
 
                                                         </div>
@@ -3156,6 +3238,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control"
+                                                                v-model="form_data.combined_service_description_three"
                                                             >
 
                                                         </div>
@@ -3175,6 +3258,7 @@
                                                             <input
                                                                 type="text"
                                                                 class="form-control serial-input"
+                                                                v-model="form_data.combined_service_serial_number"
                                                             >
 
                                                         </div>
@@ -3196,6 +3280,7 @@
                                                                 <input
                                                                     type="checkbox"
                                                                     class="custom-checkbox"
+                                                                    v-model="form_data.combined_service_autographed"
                                                                 >
 
                                                             </div>
@@ -3209,8 +3294,17 @@
                                                                 Authenticator Name
                                                             </label>
 
-                                                            <select class="form-control">
-                                                                <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
+                                                            <select
+                                                                class="form-control"
+                                                                v-model="form_data.combined_service_authenticator_name"
+                                                            >
+                                                                <option
+                                                                    v-for="(authenticator,index) in authenticators"
+                                                                    :value="authenticator.id"
+                                                                    :key="authenticator.id"
+                                                                >
+                                                                    {{authenticator.name}}
+                                                                </option>
                                                             </select>
 
                                                         </div>
@@ -3282,8 +3376,13 @@
 
                                                             <input
                                                                 type="text"
-                                                                class="form-control reholder-cert-input"
-                                                            >
+                                                                class="form-control"
+                                                                placeholder=""
+                                                                v-model.trim="v$.form_data.reholder_certification_number.$model"
+                                                            />
+                                                            <div class="error" v-if="v$.form_data.reholder_certification_number.required.$invalid && show_error_fifteen">
+                                                                Certification number is required
+                                                            </div>
 
                                                         </div>
 
@@ -4648,6 +4747,137 @@ export default {
             this.showUPSBox=false;
         }
         this.form_data.pickup_location = 'KSA';
+    },
+
+    computed: {
+        cardDescriptionOneYear: {
+            get() {
+                const value = this.form_data.card_description_one || '';
+                return value.split(' - ')[0] || '';
+            },
+            set(value) {
+                const current = this.form_data.card_description_one || '';
+                const parts = current.split(' - ');
+                const manufacturer = parts.slice(1).join(' - ');
+
+                this.form_data.card_description_one = manufacturer
+                    ? `${value} - ${manufacturer}`
+                    : value;
+            }
+        },
+
+        cardDescriptionOneManufacturer: {
+            get() {
+                const value = this.form_data.card_description_one || '';
+                const parts = value.split(' - ');
+
+                return parts.length > 1
+                    ? parts.slice(1).join(' - ')
+                    : '';
+            },
+            set(value) {
+                const current = this.form_data.card_description_one || '';
+                const year = current.split(' - ')[0] || '';
+
+                this.form_data.card_description_one = year
+                    ? `${year} - ${value}`
+                    : value;
+            }
+        },
+
+        cardDescriptionTwoNumber: {
+            get() {
+                const value = this.form_data.card_description_two || '';
+                return value.split(' - ')[0] || '';
+            },
+            set(value) {
+                const current = this.form_data.card_description_two || '';
+                const parts = current.split(' - ');
+                const playerName = parts.slice(1).join(' - ');
+
+                this.form_data.card_description_two = playerName
+                    ? `${value} - ${playerName}`
+                    : value;
+            }
+        },
+
+        cardDescriptionTwoPlayerName: {
+            get() {
+                const value = this.form_data.card_description_two || '';
+                const parts = value.split(' - ');
+
+                return parts.length > 1
+                    ? parts.slice(1).join(' - ')
+                    : '';
+            },
+            set(value) {
+                const current = this.form_data.card_description_two || '';
+                const number = current.split(' - ')[0] || '';
+
+                this.form_data.card_description_two = number
+                    ? `${number} - ${value}`
+                    : value;
+            }
+        },
+        combinedServiceDescriptionOneYear: {
+            get() {
+                const value = this.form_data.combined_service_description_one || '';
+                return value.split(' - ')[0] || '';
+            },
+            set(value) {
+                const current = this.form_data.combined_service_description_one || '';
+                const parts = current.split(' - ');
+                const manufacturer = parts.slice(1).join(' - ');
+
+                this.form_data.combined_service_description_one = manufacturer
+                    ? `${value} - ${manufacturer}`
+                    : value;
+            }
+        },
+
+        combinedServiceDescriptionOneManufacturer: {
+            get() {
+                const value = this.form_data.combined_service_description_one || '';
+                const parts = value.split(' - ');
+
+                return parts.length > 1
+                    ? parts.slice(1).join(' - ')
+                    : '';
+            },
+            set(value) {
+                const current = this.form_data.combined_service_description_one || '';
+                const year = current.split(' - ')[0] || '';
+
+                this.form_data.combined_service_description_one = year
+                    ? `${year} - ${value}`
+                    : value;
+            }
+        },
+
+        combinedServiceDescriptionTwoPlayerName: {
+            get() {
+                const value = this.form_data.combined_service_description_two || '';
+                return value;
+            },
+            set(value) {
+                this.form_data.combined_service_description_two = value;
+            }
+        },
+        combinedServiceDescriptionTwoNumber: {
+            get() {
+                const value = this.form_data.combined_service_description_two || '';
+                return value.split(' - ')[0] || '';
+            },
+            set(value) {
+                const current = this.form_data.combined_service_description_two || '';
+                const parts = current.split(' - ');
+                const playerName = parts.slice(1).join(' - ');
+
+                this.form_data.combined_service_description_two = playerName
+                    ? `${value} - ${playerName}`
+                    : value;
+            }
+        },
     },
 
     validations: {
