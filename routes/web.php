@@ -13,8 +13,8 @@ use App\Http\Controllers\Admin\Role\RoleController;
 use App\Http\Controllers\Admin\ThirdParty\AuthenticatorController;
 use App\Http\Controllers\Admin\ThirdParty\ThirdPartyDropOffController;
 use App\Http\Controllers\Admin\User\UsersController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\Receiving\ReceivingController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
