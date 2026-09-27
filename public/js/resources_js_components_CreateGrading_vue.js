@@ -18,6 +18,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_js_src_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/js/src/util */ "./node_modules/bootstrap/js/src/util/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
@@ -446,7 +449,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'id': 21,
         'name': '10 (P)'
       }],
-      cardItemGrades: [
+      grades: [
       // {
       //     "id": 1,
       //     "name": "10 (P)",
@@ -577,7 +580,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         "name": "N8",
         "mean": ""
       }],
-      cardAutoGrades: [{
+      autoGrades: [{
         'id': 1,
         'name': '10'
       }, {
@@ -596,588 +599,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'id': 6,
         'name': '5'
       }],
-      autoAuthenticationItemGrades: [{
-        'id': 1,
-        'name': 'Authentic'
-      }, {
-        'id': 2,
-        'name': 'Rejected'
-      }],
-      autoAuthenticationAutoGrades: [{
-        "id": 1,
-        "name": "5"
-      }, {
-        "id": 2,
-        "name": "6"
-      }, {
-        "id": 3,
-        "name": "7"
-      }, {
-        "id": 4,
-        "name": "8"
-      }, {
-        "id": 5,
-        "name": "9"
-      }, {
-        "id": 6,
-        "name": "10"
-      }],
-      combinedServiceItemGrades: [
-      // {
-      //     "id": 1,
-      //     "name": "10 (P)",
-      //     "mean": "GEM"
-      // },
-      {
-        "id": 2,
-        "name": "10",
-        "mean": "MINT"
-      }, {
-        "id": 3,
-        "name": "9.5",
-        "mean": "NGM"
-      }, {
-        "id": 4,
-        "name": "9",
-        "mean": "MINT"
-      }, {
-        "id": 5,
-        "name": "8.5",
-        "mean": "NMM+"
-      }, {
-        "id": 6,
-        "name": "8",
-        "mean": "NMM"
-      }, {
-        "id": 7,
-        "name": "7.5",
-        "mean": "NM+"
-      }, {
-        "id": 8,
-        "name": "7",
-        "mean": "NM"
-      }, {
-        "id": 9,
-        "name": "6.5",
-        "mean": "ENM+"
-      }, {
-        "id": 10,
-        "name": "6",
-        "mean": "ENM"
-      }, {
-        "id": 11,
-        "name": "5.5",
-        "mean": "EX+"
-      }, {
-        "id": 12,
-        "name": "5",
-        "mean": "EX"
-      }, {
-        "id": 13,
-        "name": "4.5",
-        "mean": "VGE+"
-      }, {
-        "id": 14,
-        "name": "4",
-        "mean": "VGE"
-      }, {
-        "id": 15,
-        "name": "3.5",
-        "mean": "VG+"
-      }, {
-        "id": 16,
-        "name": "3",
-        "mean": "VG"
-      }, {
-        "id": 17,
-        "name": "2.5",
-        "mean": "GD+"
-      }, {
-        "id": 18,
-        "name": "2",
-        "mean": "GD"
-      }, {
-        "id": 19,
-        "name": "1.5",
-        "mean": "FR"
-      }, {
-        "id": 20,
-        "name": "1",
-        "mean": "PR"
-      }, {
-        "id": 21,
-        "name": "A",
-        "mean": "AUTH"
-      }, {
-        "id": 22,
-        "name": "AA",
-        "mean": "ALTERED"
-      }, {
-        "id": 23,
-        "name": "AC",
-        "mean": "COL"
-      }, {
-        "id": 24,
-        "name": "AT",
-        "mean": "TRIM"
-      }, {
-        "id": 25,
-        "name": "N1",
-        "mean": ""
-      }, {
-        "id": 26,
-        "name": "N2",
-        "mean": ""
-      }, {
-        "id": 27,
-        "name": "N3",
-        "mean": ""
-      }, {
-        "id": 28,
-        "name": "N4",
-        "mean": ""
-      }, {
-        "id": 29,
-        "name": "N5",
-        "mean": ""
-      }, {
-        "id": 30,
-        "name": "N6",
-        "mean": ""
-      }, {
-        "id": 31,
-        "name": "N7",
-        "mean": ""
-      }, {
-        "id": 32,
-        "name": "N8",
-        "mean": ""
-      }],
-      combinedServiceAutoGrades: [{
-        'id': 1,
-        'name': 'A'
-      }, {
-        'id': 2,
-        'name': 'N1'
-      }, {
-        'id': 3,
-        'name': 'N2'
-      }],
-      reholderItemGrades: [
-      // {
-      //     "id": 1,
-      //     "name": "10 (P)",
-      //     "mean": "GEM"
-      // },
-      {
-        "id": 2,
-        "name": "10",
-        "mean": "MINT"
-      }, {
-        "id": 3,
-        "name": "9.5",
-        "mean": "NGM"
-      }, {
-        "id": 4,
-        "name": "9",
-        "mean": "MINT"
-      }, {
-        "id": 5,
-        "name": "8.5",
-        "mean": "NMM+"
-      }, {
-        "id": 6,
-        "name": "8",
-        "mean": "NMM"
-      }, {
-        "id": 7,
-        "name": "7.5",
-        "mean": "NM+"
-      }, {
-        "id": 8,
-        "name": "7",
-        "mean": "NM"
-      }, {
-        "id": 9,
-        "name": "6.5",
-        "mean": "ENM+"
-      }, {
-        "id": 10,
-        "name": "6",
-        "mean": "ENM"
-      }, {
-        "id": 11,
-        "name": "5.5",
-        "mean": "EX+"
-      }, {
-        "id": 12,
-        "name": "5",
-        "mean": "EX"
-      }, {
-        "id": 13,
-        "name": "4.5",
-        "mean": "VGE+"
-      }, {
-        "id": 14,
-        "name": "4",
-        "mean": "VGE"
-      }, {
-        "id": 15,
-        "name": "3.5",
-        "mean": "VG+"
-      }, {
-        "id": 16,
-        "name": "3",
-        "mean": "VG"
-      }, {
-        "id": 17,
-        "name": "2.5",
-        "mean": "GD+"
-      }, {
-        "id": 18,
-        "name": "2",
-        "mean": "GD"
-      }, {
-        "id": 19,
-        "name": "1.5",
-        "mean": "FR"
-      }, {
-        "id": 20,
-        "name": "1",
-        "mean": "PR"
-      }, {
-        "id": 21,
-        "name": "A",
-        "mean": "AUTH"
-      }, {
-        "id": 22,
-        "name": "AA",
-        "mean": "ALTERED"
-      }, {
-        "id": 23,
-        "name": "AC",
-        "mean": "COL"
-      }, {
-        "id": 24,
-        "name": "AT",
-        "mean": "TRIM"
-      }, {
-        "id": 25,
-        "name": "N1",
-        "mean": ""
-      }, {
-        "id": 26,
-        "name": "N2",
-        "mean": ""
-      }, {
-        "id": 27,
-        "name": "N3",
-        "mean": ""
-      }, {
-        "id": 28,
-        "name": "N4",
-        "mean": ""
-      }, {
-        "id": 29,
-        "name": "N5",
-        "mean": ""
-      }, {
-        "id": 30,
-        "name": "N6",
-        "mean": ""
-      }, {
-        "id": 31,
-        "name": "N7",
-        "mean": ""
-      }, {
-        "id": 32,
-        "name": "N8",
-        "mean": ""
-      }],
-      reholderAutoGrades: [{
-        "id": 1,
-        "name": "A"
-      }, {
-        "id": 2,
-        "name": "N1"
-      }, {
-        "id": 3,
-        "name": "N2"
-      }, {
-        "id": 4,
-        "name": "N3"
-      }, {
-        "id": 5,
-        "name": "N4"
-      }, {
-        "id": 6,
-        "name": "N5"
-      }, {
-        "id": 7,
-        "name": "N6"
-      }],
-      crossoverItemGrades: [
-      // {
-      //     "id": 1,
-      //     "name": "10 (P)",
-      //     "mean": "GEM"
-      // },
-      {
-        "id": 2,
-        "name": "10",
-        "mean": "MINT"
-      }, {
-        "id": 3,
-        "name": "9.5",
-        "mean": "NGM"
-      }, {
-        "id": 4,
-        "name": "9",
-        "mean": "MINT"
-      }, {
-        "id": 5,
-        "name": "8.5",
-        "mean": "NMM+"
-      }, {
-        "id": 6,
-        "name": "8",
-        "mean": "NMM"
-      }, {
-        "id": 7,
-        "name": "7.5",
-        "mean": "NM+"
-      }, {
-        "id": 8,
-        "name": "7",
-        "mean": "NM"
-      }, {
-        "id": 9,
-        "name": "6.5",
-        "mean": "ENM+"
-      }, {
-        "id": 10,
-        "name": "6",
-        "mean": "ENM"
-      }, {
-        "id": 11,
-        "name": "5.5",
-        "mean": "EX+"
-      }, {
-        "id": 12,
-        "name": "5",
-        "mean": "EX"
-      }, {
-        "id": 13,
-        "name": "4.5",
-        "mean": "VGE+"
-      }, {
-        "id": 14,
-        "name": "4",
-        "mean": "VGE"
-      }, {
-        "id": 15,
-        "name": "3.5",
-        "mean": "VG+"
-      }, {
-        "id": 16,
-        "name": "3",
-        "mean": "VG"
-      }, {
-        "id": 17,
-        "name": "2.5",
-        "mean": "GD+"
-      }, {
-        "id": 18,
-        "name": "2",
-        "mean": "GD"
-      }, {
-        "id": 19,
-        "name": "1.5",
-        "mean": "FR"
-      }, {
-        "id": 20,
-        "name": "1",
-        "mean": "PR"
-      }, {
-        "id": 21,
-        "name": "A",
-        "mean": "AUTH"
-      }, {
-        "id": 22,
-        "name": "AA",
-        "mean": "ALTERED"
-      }, {
-        "id": 23,
-        "name": "AC",
-        "mean": "COL"
-      }, {
-        "id": 24,
-        "name": "AT",
-        "mean": "TRIM"
-      }, {
-        "id": 25,
-        "name": "N1",
-        "mean": ""
-      }, {
-        "id": 26,
-        "name": "N2",
-        "mean": ""
-      }, {
-        "id": 27,
-        "name": "N3",
-        "mean": ""
-      }, {
-        "id": 28,
-        "name": "N4",
-        "mean": ""
-      }, {
-        "id": 29,
-        "name": "N5",
-        "mean": ""
-      }, {
-        "id": 30,
-        "name": "N6",
-        "mean": ""
-      }, {
-        "id": 31,
-        "name": "N7",
-        "mean": ""
-      }, {
-        "id": 32,
-        "name": "N8",
-        "mean": ""
-      }],
-      crossoverAutoGrades: [
-      // {
-      //     "id": 1,
-      //     "name": "10 (P)",
-      //     "mean": "GEM"
-      // },
-      {
-        "id": 2,
-        "name": "10",
-        "mean": "MINT"
-      }, {
-        "id": 3,
-        "name": "9.5",
-        "mean": "NGM"
-      }, {
-        "id": 4,
-        "name": "9",
-        "mean": "MINT"
-      }, {
-        "id": 5,
-        "name": "8.5",
-        "mean": "NMM+"
-      }, {
-        "id": 6,
-        "name": "8",
-        "mean": "NMM"
-      }, {
-        "id": 7,
-        "name": "7.5",
-        "mean": "NM+"
-      }, {
-        "id": 8,
-        "name": "7",
-        "mean": "NM"
-      }, {
-        "id": 9,
-        "name": "6.5",
-        "mean": "ENM+"
-      }, {
-        "id": 10,
-        "name": "6",
-        "mean": "ENM"
-      }, {
-        "id": 11,
-        "name": "5.5",
-        "mean": "EX+"
-      }, {
-        "id": 12,
-        "name": "5",
-        "mean": "EX"
-      }, {
-        "id": 13,
-        "name": "4.5",
-        "mean": "VGE+"
-      }, {
-        "id": 14,
-        "name": "4",
-        "mean": "VGE"
-      }, {
-        "id": 15,
-        "name": "3.5",
-        "mean": "VG+"
-      }, {
-        "id": 16,
-        "name": "3",
-        "mean": "VG"
-      }, {
-        "id": 17,
-        "name": "2.5",
-        "mean": "GD+"
-      }, {
-        "id": 18,
-        "name": "2",
-        "mean": "GD"
-      }, {
-        "id": 19,
-        "name": "1.5",
-        "mean": "FR"
-      }, {
-        "id": 20,
-        "name": "1",
-        "mean": "PR"
-      }, {
-        "id": 21,
-        "name": "A",
-        "mean": "AUTH"
-      }, {
-        "id": 22,
-        "name": "AA",
-        "mean": "ALTERED"
-      }, {
-        "id": 23,
-        "name": "AC",
-        "mean": "COL"
-      }, {
-        "id": 24,
-        "name": "AT",
-        "mean": "TRIM"
-      }, {
-        "id": 25,
-        "name": "N1",
-        "mean": ""
-      }, {
-        "id": 26,
-        "name": "N2",
-        "mean": ""
-      }, {
-        "id": 27,
-        "name": "N3",
-        "mean": ""
-      }, {
-        "id": 28,
-        "name": "N4",
-        "mean": ""
-      }, {
-        "id": 29,
-        "name": "N5",
-        "mean": ""
-      }, {
-        "id": 30,
-        "name": "N6",
-        "mean": ""
-      }, {
-        "id": 31,
-        "name": "N7",
-        "mean": ""
-      }, {
-        "id": 32,
-        "name": "N8",
-        "mean": ""
-      }],
+      // Grading table / edit modal state
+      selectAll: false,
+      selectedIds: [],
+      editDraft: null,
       form_data: {
         customer: '',
         name: '',
@@ -1236,70 +661,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     self.form_data.contact_name = self.item.contact_name, self.form_data.item_qty = self.item.item_qty, self.form_data.billing_address_line_one = self.item.billing_address_line_one, self.form_data.billing_address_line_two = self.item.billing_address_line_two, self.form_data.billing_country = self.item.billing_country, self.form_data.billing_province = self.item.billing_province, self.form_data.billing_city = self.item.billing_city, self.form_data.billing_postal = self.item.billing_postal, self.form_data.billing_phone = self.item.billing_phone, self.form_data.same_as_billing = self.item.same_as_billing, self.form_data.autographed = self.item.autographed, self.form_data.shipping_name = self.item.shipping_name, self.form_data.shipping_company_name = self.item.shipping_company_name, self.form_data.shipping_address_line_one = self.item.shipping_address_line_one;
     self.form_data.shipping_address_line_two = self.item.shipping_address_line_two, self.form_data.shipping_country = self.item.shipping_country, self.form_data.shipping_province = self.item.shipping_province, self.form_data.shipping_city = self.item.shipping_city, self.form_data.shipping_postal = self.item.shipping_postal, self.form_data.shipping_phone = self.item.shipping_phone, self.form_data.status = self.item.status, self.form_data.submission_date = self.item.submission_date, self.form_data.products = self.item.products, self.form_data.itemType = self.item.itemType,
     //next
-    self.form_data.grading_location = self.item.grading_location, self.form_data.promo_code = self.item.promo_code, self.form_data.payment_method = self.item.payment_method, self.form_data.shopify_order_number = self.item.shopify_order_number, self.form_data.shipping_method = self.item.shipping_method, self.form_data.pickup_location = self.item.pickup_location, self.form_data.show_pickup_location = self.item.show_pickup_location, self.form_data.third_party_drop_center = self.item.third_party_drop_center, self.form_data.use_customer_account = self.item.use_customer_account, self.form_data.customer_account_number = self.item.customer_account_number, self.entries.map(function (entry) {
-      var en = {
-        entryItemId: entry.id,
-        entryID: entry.entry_id,
-        itemType: entry.itemType,
-        status: entry.status,
-        grading_cert_number: entry.grading_cert_number,
-        //item type card
-        card_description_one: entry.card_description_one,
-        card_description_two: entry.card_description_two,
-        card_description_three: entry.card_description_three,
-        card_serial_number: entry.card_serial_number,
-        card_autographed: entry.card_autographed,
-        card_authenticator_name: entry.card_authenticator_name,
-        card_authenticator_cert_no: entry.card_authenticator_cert_no,
-        card_estimated_value: entry.card_estimated_value,
-        //item type auto authentication
-        auto_authentication_description_one: entry.auto_authentication_description_one,
-        auto_authentication_description_two: entry.auto_authentication_description_two,
-        auto_authentication_description_three: entry.auto_authentication_description_three,
-        auto_authentication_serial_number: entry.auto_authentication_serial_number,
-        auto_authentication_autographed: entry.auto_authentication_autographed,
-        auto_authentication_authenticator_name: entry.auto_authentication_authenticator_name,
-        auto_authentication_authenticator_cert_no: entry.auto_authentication_authenticator_cert_no,
-        auto_authentication_estimated_value: entry.auto_authentication_estimated_value,
-        //item type combined service
-        combined_service_description_one: entry.combined_service_description_one,
-        combined_service_description_two: entry.combined_service_description_two,
-        combined_service_description_three: entry.combined_service_description_three,
-        combined_service_serial_number: entry.combined_service_serial_number,
-        combined_service_autographed: entry.combined_service_autographed,
-        combined_service_authenticator_name: entry.combined_service_authenticator_name,
-        combined_service_authenticator_cert_no: entry.combined_service_authenticator_cert_no,
-        combined_service_estimated_value: entry.combined_service_estimated_value,
-        //item type combined service
-        reholder_certification_number: entry.reholder_certification_number,
-        reholder_estimated_value: entry.reholder_estimated_value,
-        //item type crossover
-        crossover_description_one: entry.crossover_description_one,
-        crossover_description_two: entry.crossover_description_two,
-        crossover_description_three: entry.crossover_description_three,
-        crossover_serial_number: entry.crossover_serial_number,
-        crossover_autographed: entry.crossover_autographed,
-        crossover_authenticator_name: entry.crossover_authenticator_name,
-        crossover_authenticator_cert_no: entry.crossover_authenticator_cert_no,
-        crossover_estimated_value: entry.crossover_estimated_value,
-        crossover_minimum_grade: entry.crossover_minimum_grade,
-        crossover_item_type: entry.crossover_item_type,
-        card_item_grade: entry.card_item_grade,
-        card_item_grade_mean: entry.card_item_grade_mean,
-        card_auto_grade: entry.card_auto_grade,
-        auto_authentication_grade: entry.auto_authentication_grade,
-        auto_authentication_auto_grade: entry.auto_authentication_auto_grade,
-        combined_service_item_grade: entry.combined_service_item_grade,
-        combined_service_item_grade_mean: entry.combined_service_item_grade_mean,
-        combined_service_auto_grade: entry.combined_service_auto_grade,
-        reholder_item_grade: entry.reholder_item_grade,
-        reholder_item_grade_mean: entry.reholder_item_grade_mean,
-        reholder_auto_grade: entry.reholder_auto_grade,
-        crossover_item_grade: entry.crossover_item_grade,
-        crossover_item_grade_mean: entry.crossover_item_grade_mean,
-        crossover_auto_grade: entry.crossover_auto_grade
-      };
-      self.form_data.entries.push(en);
+    self.form_data.grading_location = self.item.grading_location, self.form_data.promo_code = self.item.promo_code, self.form_data.payment_method = self.item.payment_method, self.form_data.shopify_order_number = self.item.shopify_order_number, self.form_data.shipping_method = self.item.shipping_method, self.form_data.pickup_location = self.item.pickup_location, self.form_data.show_pickup_location = self.item.show_pickup_location, self.form_data.third_party_drop_center = self.item.third_party_drop_center, self.form_data.use_customer_account = self.item.use_customer_account, self.form_data.customer_account_number = self.item.customer_account_number, self.form_data.entries = self.entries.map(function (entry) {
+      return self.mapEntry(entry);
     });
     if (self.form_data.shipping_method == "Pickup") {
       self.showPickupLocationBox = true;
@@ -1317,61 +680,387 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
-    submit: function submit(ind) {
+    // =========================================================
+    // ITEM TYPE HELPERS
+    // =========================================================
+    // Item type -> description column prefix
+    prefixOf: function prefixOf(type) {
+      if (!type) return null;
+      if (type.indexOf('Card') === 0 || type === 'Index Card') return 'card';
+      if (type.indexOf('Combined Service') === 0) return 'combined_service';
+      if (type === 'Autograph Authentication') return 'auto_authentication';
+      if (type === 'Crossover') return 'crossover';
+      return null;
+    },
+    // Item type -> grade columns
+    gradeKeysOf: function gradeKeysOf(type) {
+      var prefix = this.prefixOf(type);
+      if (prefix === 'auto_authentication') {
+        return {
+          item: 'auto_authentication_grade',
+          mean: null,
+          auto: 'auto_authentication_auto_grade'
+        };
+      }
+      if (prefix) {
+        return {
+          item: prefix + '_item_grade',
+          mean: prefix + '_item_grade_mean',
+          auto: prefix + '_auto_grade'
+        };
+      }
+      if (type === 'Reholder') {
+        return {
+          item: 'reholder_item_grade',
+          mean: 'reholder_item_grade_mean',
+          auto: 'reholder_auto_grade'
+        };
+      }
+      return null;
+    },
+    isGraded: function isGraded(entry) {
+      return entry.status === 'graded';
+    },
+    isSplit: function isSplit(entry) {
+      return entry.itemType !== 'Index Card' && (entry.prefix === 'card' || entry.prefix === 'combined_service');
+    },
+    hasNumber: function hasNumber(entry) {
+      return ['Card (No Number)', 'Card (Autographed) No Number', 'Combined Service (No Number)'].indexOf(entry.itemType) === -1;
+    },
+    showAutograph: function showAutograph(entry) {
+      return ['Card (Autographed)', 'Card (Autographed) No Number', 'Index Card', 'Combined Service', 'Combined Service (No Number)', 'Autograph Authentication', 'Crossover'].indexOf(entry.itemType) !== -1;
+    },
+    showCertified: function showCertified(entry) {
+      return ['Card (Autographed)', 'Card (Autographed) No Number', 'Combined Service'].indexOf(entry.itemType) !== -1;
+    },
+    showCertNo: function showCertNo(entry) {
+      return this.showAutograph(entry) && entry.itemType !== 'Combined Service (No Number)';
+    },
+    toBool: function toBool(value) {
+      return value === true || value === 1 || value === '1' || value === 'true';
+    },
+    joinParts: function joinParts(a, b) {
+      return [a, b].map(function (value) {
+        return (value || '').toString().trim();
+      }).filter(Boolean).join(', ');
+    },
+    // "1979-80, O-Pee-Chee" -> ["1979-80", "O-Pee-Chee"]
+    splitParts: function splitParts(value) {
+      value = (value || '').toString().trim();
+      var i = value.indexOf(',');
+      return i < 0 ? ['', value] : [value.slice(0, i).trim(), value.slice(i + 1).trim()];
+    },
+    descriptionOf: function descriptionOf(entry, n) {
+      if (entry.prefix) {
+        return entry[entry.prefix + '_description_' + n] || '';
+      }
+      if (entry.itemType === 'Reholder' && n === 'one') {
+        return entry.reholder_certification_number || '';
+      }
+      return n === 'one' ? 'N/A' : '';
+    },
+    // DB description -> split fields
+    fillEntryFields: function fillEntryFields(entry) {
+      if (!this.isSplit(entry)) return;
+      var one = this.splitParts(entry[entry.prefix + '_description_one']);
+      var two = this.splitParts(entry[entry.prefix + '_description_two']);
+      entry.desc_year = one[0];
+      entry.desc_manufacturer = one[1];
+      entry.desc_number = this.hasNumber(entry) ? two[0] : '';
+      entry.desc_player = this.hasNumber(entry) ? two[1] : this.joinParts(two[0], two[1]);
+    },
+    // Split fields -> DB description
+    combineEntryFields: function combineEntryFields(entry) {
+      if (!this.isSplit(entry)) return;
+      entry[entry.prefix + '_description_one'] = this.joinParts(entry.desc_year, entry.desc_manufacturer);
+      entry[entry.prefix + '_description_two'] = this.joinParts(this.hasNumber(entry) ? entry.desc_number : '', entry.desc_player);
+    },
+    // Table grade selects -> item type grade columns
+    applyGrades: function applyGrades(entry) {
+      var keys = this.gradeKeysOf(entry.itemType);
+      if (!keys) return;
+      var grade = this.grades.find(function (g) {
+        return g.name === entry.item_grade;
+      });
+      entry[keys.item] = entry.item_grade || null;
+      entry[keys.auto] = entry.auto_grade || null;
+      if (keys.mean) {
+        entry[keys.mean] = grade ? grade.mean : null;
+      }
+    },
+    // API row -> table entry
+    mapEntry: function mapEntry(entry) {
+      var en = {
+        entryItemId: entry.id,
+        entryID: entry.entry_id,
+        itemType: entry.itemType,
+        status: entry.status,
+        grading_cert_number: entry.grading_cert_number,
+        pieces: entry.pieces,
+        //item type card
+        card_description_one: entry.card_description_one,
+        card_description_two: entry.card_description_two,
+        card_description_three: entry.card_description_three,
+        card_serial_number: entry.card_serial_number,
+        card_autographed: this.toBool(entry.card_autographed),
+        card_certified_on_card: this.toBool(entry.card_certified_on_card),
+        card_authenticator_name: entry.card_authenticator_name || '',
+        card_authenticator_cert_no: entry.card_authenticator_cert_no,
+        card_estimated_value: entry.card_estimated_value,
+        //item type auto authentication
+        auto_authentication_description_one: entry.auto_authentication_description_one,
+        auto_authentication_description_two: entry.auto_authentication_description_two,
+        auto_authentication_description_three: entry.auto_authentication_description_three,
+        auto_authentication_serial_number: entry.auto_authentication_serial_number,
+        auto_authentication_autographed: this.toBool(entry.auto_authentication_autographed),
+        auto_authentication_authenticator_name: entry.auto_authentication_authenticator_name || '',
+        auto_authentication_authenticator_cert_no: entry.auto_authentication_authenticator_cert_no,
+        auto_authentication_estimated_value: entry.auto_authentication_estimated_value,
+        //item type combined service
+        combined_service_description_one: entry.combined_service_description_one,
+        combined_service_description_two: entry.combined_service_description_two,
+        combined_service_description_three: entry.combined_service_description_three,
+        combined_service_serial_number: entry.combined_service_serial_number,
+        combined_service_autographed: this.toBool(entry.combined_service_autographed),
+        combined_service_certified_on_card: this.toBool(entry.combined_service_certified_on_card),
+        combined_service_authenticator_name: entry.combined_service_authenticator_name || '',
+        combined_service_authenticator_cert_no: entry.combined_service_authenticator_cert_no,
+        combined_service_estimated_value: entry.combined_service_estimated_value,
+        //item type reholder
+        reholder_certification_number: entry.reholder_certification_number,
+        reholder_estimated_value: entry.reholder_estimated_value,
+        //item type crossover
+        crossover_description_one: entry.crossover_description_one,
+        crossover_description_two: entry.crossover_description_two,
+        crossover_description_three: entry.crossover_description_three,
+        crossover_serial_number: entry.crossover_serial_number,
+        crossover_autographed: this.toBool(entry.crossover_autographed),
+        crossover_authenticator_name: entry.crossover_authenticator_name || '',
+        crossover_authenticator_cert_no: entry.crossover_authenticator_cert_no,
+        crossover_estimated_value: entry.crossover_estimated_value,
+        crossover_minimum_grade: entry.crossover_minimum_grade,
+        crossover_item_type: entry.crossover_item_type,
+        //grades
+        card_item_grade: entry.card_item_grade,
+        card_item_grade_mean: entry.card_item_grade_mean,
+        card_auto_grade: entry.card_auto_grade,
+        auto_authentication_grade: entry.auto_authentication_grade,
+        auto_authentication_auto_grade: entry.auto_authentication_auto_grade,
+        combined_service_item_grade: entry.combined_service_item_grade,
+        combined_service_item_grade_mean: entry.combined_service_item_grade_mean,
+        combined_service_auto_grade: entry.combined_service_auto_grade,
+        reholder_item_grade: entry.reholder_item_grade,
+        reholder_item_grade_mean: entry.reholder_item_grade_mean,
+        reholder_auto_grade: entry.reholder_auto_grade,
+        crossover_item_grade: entry.crossover_item_grade,
+        crossover_item_grade_mean: entry.crossover_item_grade_mean,
+        crossover_auto_grade: entry.crossover_auto_grade,
+        // UI only (not saved)
+        prefix: this.prefixOf(entry.itemType),
+        item_grade: '',
+        auto_grade: '',
+        grade_error: false,
+        desc_year: '',
+        desc_manufacturer: '',
+        desc_number: '',
+        desc_player: ''
+      };
+      var keys = this.gradeKeysOf(en.itemType);
+      if (keys) {
+        en.item_grade = en[keys.item] || '';
+        en.auto_grade = en[keys.auto] || '';
+      }
+      this.fillEntryFields(en);
+      return en;
+    },
+    // =========================================================
+    // EDIT MODAL
+    // =========================================================
+    openEdit: function openEdit(entry) {
+      var draft = JSON.parse(JSON.stringify(entry));
+      this.fillEntryFields(draft);
+      this.editDraft = draft;
+    },
+    // Save item info only (grades/status are not touched)
+    saveEdit: function saveEdit() {
+      var self = this;
+      var draft = this.editDraft;
+      if (!draft) return;
+      this.combineEntryFields(draft);
+      var payload = Object.assign({}, draft, {
+        item_id: draft.entryItemId,
+        pieces: draft.pieces || 0
+      });
+      axios.post('/admin/entries/edit/new/item', payload).then(function () {
+        var entry = self.form_data.entries.find(function (e) {
+          return e.entryItemId === draft.entryItemId;
+        });
+        if (entry) {
+          // Keep grades selected in the table (not saved yet)
+          draft.item_grade = entry.item_grade;
+          draft.auto_grade = entry.auto_grade;
+          draft.grade_error = entry.grade_error;
+          Object.assign(entry, draft);
+        }
+        var cancelBtn = document.getElementById('gradingEditCancel');
+        if (cancelBtn) cancelBtn.click();
+        Swal.fire("Item Updated!", "", "success");
+      })["catch"](function (err) {
+        return self.handleError(err);
+      });
+    },
+    // =========================================================
+    // GRADING
+    // =========================================================
+    // One request per item (backend gives one cert number per request)
+    gradeEntries: function gradeEntries(entries) {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var self, i;
+        var _iterator, _step, entry, payload;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              // console.log(ind)
-              self = _this;
-              for (i = _this.form_data.entries.length - 1; i >= 0; i--) {
-                if (i !== ind) {
-                  _this.form_data.entries.splice(i, 1);
-                }
-              }
-              axios.post("/admin/grading/upgrade/to/grade/".concat(_this.item.id), _this.form_data).then(function (response) {
-                Swal.fire("Graded!", "", "success").then(function (result) {
-                  if (result.isConfirmed) {
-                    if (response.status == 200) {
-                      // window.location.href = `/admin/entries/${response.data.id}`;
-                      window.location.href = "/admin/grading/".concat(self.item.id, "/edit");
-                      // window.location.reload();
-                      // self.getEntryItemsList(self.item.id);
-                    }
-                  }
-                });
-
-                // window.location.reload()
-                // window.location.href = "/admin/thirds";
-              })["catch"](function (err) {
-                try {
-                  self.showValidationError(err);
-                } catch (e) {
-                  self.showSomethingWrong();
-                }
-              });
+              _iterator = _createForOfIteratorHelper(entries);
+              _context.prev = 1;
+              _iterator.s();
             case 3:
+              if ((_step = _iterator.n()).done) {
+                _context.next = 12;
+                break;
+              }
+              entry = _step.value;
+              _this.combineEntryFields(entry);
+              _this.applyGrades(entry);
+              payload = Object.assign({}, _this.form_data, {
+                entries: [entry]
+              });
+              _context.next = 10;
+              return axios.post("/admin/grading/upgrade/to/grade/".concat(_this.item.id), payload);
+            case 10:
+              _context.next = 3;
+              break;
+            case 12:
+              _context.next = 17;
+              break;
+            case 14:
+              _context.prev = 14;
+              _context.t0 = _context["catch"](1);
+              _iterator.e(_context.t0);
+            case 17:
+              _context.prev = 17;
+              _iterator.f();
+              return _context.finish(17);
+            case 20:
             case "end":
               return _context.stop();
           }
-        }, _callee);
+        }, _callee, null, [[1, 14, 17, 20]]);
       }))();
     },
-    received: function received(id) {
+    // Item Grade & Auto Grade are required before grading
+    validateGrades: function validateGrades(entries) {
+      var valid = true;
+      entries.forEach(function (entry) {
+        entry.grade_error = !entry.item_grade || !entry.auto_grade;
+        if (entry.grade_error) valid = false;
+      });
+      if (!valid) {
+        Swal.fire({
+          title: "Grade required",
+          html: "Please select <b>Item Grade</b> and <b>Auto Grade</b> before grading.",
+          icon: "warning"
+        });
+      }
+      return valid;
+    },
+    confirmOne: function confirmOne(entry) {
+      var self = this;
+      if (!this.validateGrades([entry])) return;
+      Swal.fire({
+        title: "Confirm grading for this item?<br><span style=\"font-size: 16px;\">".concat(entry.itemType, "</span>"),
+        showCancelButton: true,
+        confirmButtonText: "Yes, confirm",
+        icon: "question"
+      }).then(function (result) {
+        if (!result.isConfirmed) return;
+        self.gradeEntries([entry]).then(function () {
+          Swal.fire("Graded!", "", "success");
+          self.getEntryItemsList(self.item.id);
+        })["catch"](function (err) {
+          return self.handleError(err);
+        });
+      });
+    },
+    confirmAll: function confirmAll() {
       var _this2 = this;
+      var self = this;
+      var entries = this.form_data.entries.filter(function (entry) {
+        return _this2.selectedIds.includes(entry.entryItemId) && !_this2.isGraded(entry);
+      });
+      if (entries.length === 0) {
+        Swal.fire("Please select at least one item.", "", "info");
+        return;
+      }
+      if (!this.validateGrades(entries)) return;
+      Swal.fire({
+        title: "Confirm grading for ".concat(entries.length, " selected item(s)?"),
+        showCancelButton: true,
+        confirmButtonText: "Yes, confirm all",
+        icon: "question"
+      }).then(function (result) {
+        if (!result.isConfirmed) return;
+        self.gradeEntries(entries).then(function () {
+          Swal.fire("Graded!", "", "success");
+          self.selectedIds = [];
+          self.getEntryItemsList(self.item.id);
+        })["catch"](function (err) {
+          self.getEntryItemsList(self.item.id);
+          self.handleError(err);
+        });
+      });
+    },
+    handleError: function handleError(err) {
+      try {
+        this.showValidationError(err);
+      } catch (e) {
+        this.showSomethingWrong();
+      }
+    },
+    toggleSelectAll: function toggleSelectAll() {
+      this.selectedIds = this.selectAll ? this.selectableEntries.map(function (entry) {
+        return entry.entryItemId;
+      }) : [];
+    },
+    // Old single submit (kept for compatibility)
+    submit: function submit(ind) {
+      var _this3 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var entry;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              if (!_this2.checkSixthStep()) {
-                _context2.next = 4;
+              entry = _this3.form_data.entries[ind];
+              if (entry) _this3.confirmOne(entry);
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
+    },
+    received: function received(id) {
+      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              if (!_this4.checkSixthStep()) {
+                _context3.next = 4;
                 break;
               }
               Swal.fire({
                 // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
-                title: "Do you want to update this order to graded: <br> ".concat(_this2.form_data.name),
+                title: "Do you want to update this order to graded: <br> ".concat(_this4.form_data.name),
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: "Yes",
@@ -1410,39 +1099,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   // Swal.fire("Changes are not saved", "", "info");
                 }
               });
-              _context2.next = 5;
+              _context3.next = 5;
               break;
             case 4:
-              return _context2.abrupt("return");
+              return _context3.abrupt("return");
             case 5:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2);
-      }))();
-    },
-    checkFirstStep: function checkFirstStep() {
-      var _this3 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              _this3.v$.$touch();
-              if (!_this3.v$.form_data.name.$invalid) {
-                _context3.next = 4;
-                break;
-              }
-              _this3.show_error_one = true;
-              return _context3.abrupt("return", false);
-            case 4:
-              _this3.completed_step_count = 1;
-              _this3.form_wizard_subtitle = 'Please Continue to next';
-              return _context3.abrupt("return", true);
-            case 7:
             case "end":
               return _context3.stop();
           }
         }, _callee3);
+      }))();
+    },
+    checkFirstStep: function checkFirstStep() {
+      var _this5 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _this5.v$.$touch();
+              if (!_this5.v$.form_data.name.$invalid) {
+                _context4.next = 4;
+                break;
+              }
+              _this5.show_error_one = true;
+              return _context4.abrupt("return", false);
+            case 4:
+              _this5.completed_step_count = 1;
+              _this5.form_wizard_subtitle = 'Please Continue to next';
+              return _context4.abrupt("return", true);
+            case 7:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
       }))();
     },
     checkSecondStep: function checkSecondStep() {
@@ -1669,17 +1358,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     customerNameChangeEvent: function customerNameChangeEvent() {
-      var _this4 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var _this6 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
         var self;
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-          while (1) switch (_context4.prev = _context4.next) {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              self = _this4;
-              console.log(_this4.form_data.customer);
-              _this4.form_data.name = _this4.form_data.customer.name;
-              _this4.form_data.customerId = _this4.form_data.customer.id;
-              _context4.next = 6;
+              self = _this6;
+              console.log(_this6.form_data.customer);
+              _this6.form_data.name = _this6.form_data.customer.name;
+              _this6.form_data.customerId = _this6.form_data.customer.id;
+              _context5.next = 6;
               return axios.get("/admin/entries/get-customer/info/".concat(self.form_data.customerId)).then(function (res) {
                 // console.log(res)
                 self.form_data.billing_address_line_one = res.data.data.billing_address_line_one;
@@ -1708,9 +1397,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 6:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
-        }, _callee4);
+        }, _callee5);
       }))();
     },
     customerNameSelectEvent: function customerNameSelectEvent(_ref) {
@@ -1823,101 +1512,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return true;
     },
     getEntryItemsList: function getEntryItemsList(id) {
-      var _this5 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-        var self;
-        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-          while (1) switch (_context5.prev = _context5.next) {
-            case 0:
-              self = _this5;
-              _context5.next = 3;
-              return axios.get("/admin/grading/entry/grade-list/".concat(id)).then(function (res) {
-                // console.log(res.data.data)
-                self.form_data.entries = [];
-                res.data.data.map(function (entry) {
-                  var en = {
-                    entryItemId: entry.id,
-                    entryID: entry.entry_id,
-                    itemType: entry.itemType,
-                    status: entry.status,
-                    //item type card
-                    card_description_one: entry.card_description_one,
-                    card_description_two: entry.card_description_two,
-                    card_description_three: entry.card_description_three,
-                    card_serial_number: entry.card_serial_number,
-                    card_autographed: entry.card_autographed,
-                    card_authenticator_name: entry.card_authenticator_name,
-                    card_authenticator_cert_no: entry.card_authenticator_cert_no,
-                    card_estimated_value: entry.card_estimated_value,
-                    //item type auto authentication
-                    auto_authentication_description_one: entry.auto_authentication_description_one,
-                    auto_authentication_description_two: entry.auto_authentication_description_two,
-                    auto_authentication_description_three: entry.auto_authentication_description_three,
-                    auto_authentication_serial_number: entry.auto_authentication_serial_number,
-                    auto_authentication_autographed: entry.auto_authentication_autographed,
-                    auto_authentication_authenticator_name: entry.auto_authentication_authenticator_name,
-                    auto_authentication_authenticator_cert_no: entry.auto_authentication_authenticator_cert_no,
-                    auto_authentication_estimated_value: entry.auto_authentication_estimated_value,
-                    //item type combined service
-                    combined_service_description_one: entry.combined_service_description_one,
-                    combined_service_description_two: entry.combined_service_description_two,
-                    combined_service_description_three: entry.combined_service_description_three,
-                    combined_service_serial_number: entry.combined_service_serial_number,
-                    combined_service_autographed: entry.combined_service_autographed,
-                    combined_service_authenticator_name: entry.combined_service_authenticator_name,
-                    combined_service_authenticator_cert_no: entry.combined_service_authenticator_cert_no,
-                    combined_service_estimated_value: entry.combined_service_estimated_value,
-                    //item type reholder
-                    reholder_certification_number: entry.reholder_certification_number,
-                    reholder_estimated_value: entry.reholder_estimated_value,
-                    //item type crossover
-                    crossover_description_one: entry.crossover_description_one,
-                    crossover_description_two: entry.crossover_description_two,
-                    crossover_description_three: entry.crossover_description_three,
-                    crossover_serial_number: entry.crossover_serial_number,
-                    crossover_autographed: entry.crossover_autographed,
-                    crossover_authenticator_name: entry.crossover_authenticator_name,
-                    crossover_authenticator_cert_no: entry.crossover_authenticator_cert_no,
-                    crossover_estimated_value: entry.crossover_estimated_value,
-                    crossover_minimum_grade: entry.crossover_minimum_grade,
-                    crossover_item_type: entry.crossover_item_type
-                  };
-                  self.form_data.entries.push(en);
-                });
-
-                // const allGraded = res.data.data.every(entry => entry.status === 'graded');
-
-                // Update isDisabled based on the result
-                // self.isDisabled = !allGraded;
-
-                // console.log("isDisabled: " +self.isDisabled)
-
-                self.startIndex = 6;
-                document.documentElement.querySelector("#cancel_btn").click();
-              })["catch"](function (err) {
-                try {
-                  self.showValidationError(err);
-                } catch (e) {
-                  self.showSomethingWrong();
-                }
-              });
-            case 3:
-            case "end":
-              return _context5.stop();
-          }
-        }, _callee5);
-      }))();
-    },
-    removeItem: function removeItem(id) {
-      var _this6 = this;
+      var _this7 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
         var self;
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
-              self = _this6;
+              self = _this7;
+              _context6.next = 3;
+              return axios.get("/admin/grading/entry/grade-list/".concat(id)).then(function (res) {
+                self.form_data.entries = res.data.data.map(function (entry) {
+                  return self.mapEntry(entry);
+                });
+
+                // Drop selections that are no longer selectable
+                var ids = self.selectableEntries.map(function (entry) {
+                  return entry.entryItemId;
+                });
+                self.selectedIds = self.selectedIds.filter(function (id) {
+                  return ids.includes(id);
+                });
+              })["catch"](function (err) {
+                self.handleError(err);
+              });
+            case 3:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6);
+      }))();
+    },
+    removeItem: function removeItem(id) {
+      var _this8 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+        var self;
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              self = _this8;
               if (!id) {
-                _context6.next = 5;
+                _context7.next = 5;
                 break;
               }
               Swal.fire({
@@ -1954,16 +1588,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 //     // Swal.fire("Changes are not saved", "", "info");
                 // }
               });
-              _context6.next = 6;
+              _context7.next = 6;
               break;
             case 5:
-              return _context6.abrupt("return");
+              return _context7.abrupt("return");
             case 6:
             case "end":
-              return _context6.stop();
+              return _context7.stop();
           }
-        }, _callee6);
+        }, _callee7);
       }))();
+    }
+  },
+  computed: {
+    selectableEntries: function selectableEntries() {
+      var _this9 = this;
+      return this.form_data.entries.filter(function (entry) {
+        return !_this9.isGraded(entry);
+      });
+    }
+  },
+  watch: {
+    selectedIds: function selectedIds(newVal) {
+      this.selectAll = this.selectableEntries.length > 0 && newVal.length === this.selectableEntries.length;
     }
   },
   validations: {
@@ -2252,7 +1899,760 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render=function render(){var _vm=this,_c=_vm._self._c;return _c("div",{},[_c("form-wizard",{attrs:{color:"#3476ae",title:"",subtitle:"","next-button-text":"Continue","finish-button-text":"Save","start-index":_vm.startIndex},on:{"on-complete":_vm.submit},scopedSlots:_vm._u([{key:"footer",fn:function fn(props){return[_c("div",{staticClass:"wizard-footer-left"},[props.activeTabIndex>0?_c("wizard-button",{style:props.fillButtonStyle,nativeOn:{click:function click($event){return props.prevTab();}}},[_vm._v("Back")]):_vm._e()],1),_vm._v(" "),_c("div",{staticClass:"wizard-footer-right"},[_c("wizard-button",{staticClass:"wizard-footer-right finish-button",staticStyle:{background:"orange","margin-left":"15px",color:"white"},nativeOn:{click:function click($event){return _vm.cancel.apply(null,arguments);}}},[_vm._v("Cancel")]),_vm._v(" "),_c("wizard-button",{staticClass:"wizard-footer-right",staticStyle:{"margin-left":"15px"},style:props.fillButtonStyle,nativeOn:{click:function click($event){return _vm.cancel.apply(null,arguments);}}},[_vm._v("Continue Later")]),_vm._v(" "),!props.isLastStep?_c("wizard-button",{staticClass:"wizard-footer-right",style:props.fillButtonStyle,nativeOn:{click:function click($event){return props.nextTab();}}},[_vm._v("Continue")]):_c("wizard-button",{staticClass:"wizard-footer-right",style:props.fillButtonStyle,nativeOn:{click:function click($event){return _vm.received(_vm.item.id);}}},[_vm._v("Grading Complete")])],1)];}}])},[_vm._v(" "),_c("tab-content",{attrs:{title:"Item Type",icon:"ti-gift"}},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"table-responsive"},[_c("table",{staticClass:"table table-bordered mb-0"},[_c("thead",{staticClass:"text-center"},[_c("tr",[_c("th",[_vm._v("Item Type")]),_vm._v(" "),_c("th",[_vm._v("Sub Type")]),_vm._v(" "),_c("th",[_vm._v("Description")]),_vm._v(" "),_c("th",[_vm._v("Autographed")]),_vm._v(" "),_c("th",[_vm._v("Serial Number")]),_vm._v(" "),_c("th",[_vm._v("Actions")])])]),_vm._v(" "),_c("tbody",_vm._l(_vm.form_data.entries,function(entry,index){return _c("tr",{key:entry.entryItemId},[_c("td",{staticClass:"text-capitalize"},[_vm._v(_vm._s(entry.itemType))]),_vm._v(" "),_c("td",[_vm._v(_vm._s(entry.itemType=="Crossover"?entry.crossover_item_type:"N/A"))]),_vm._v(" "),entry.itemType=="Card"?_c("td",[_c("span",[_vm._v(_vm._s(entry.card_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.card_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.card_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Card"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.card_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),entry.itemType=="Autograph Authentication"?_c("td",[_c("span",[_vm._v(_vm._s(entry.auto_authentication_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.auto_authentication_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.auto_authentication_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Autograph Authentication"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.auto_authentication_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),entry.itemType=="Combined Service"?_c("td",[_c("span",[_vm._v(_vm._s(entry.combined_service_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.combined_service_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.combined_service_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Combined Service"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.combined_service_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),entry.itemType=="Reholder"?_c("td",[_c("span",[_vm._v(_vm._s(entry.reholder_certification_number))])]):_vm._e(),_vm._v(" "),entry.itemType=="Reholder"?_c("td",{staticClass:"text-center"},[_vm._v("N/A")]):_vm._e(),_vm._v(" "),entry.itemType=="Crossover"?_c("td",[_c("span",[_vm._v(_vm._s(entry.crossover_description_one))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.crossover_description_two))]),_vm._v(" "),_c("br"),_vm._v(" "),_c("span",[_vm._v(_vm._s(entry.crossover_description_three))])]):_vm._e(),_vm._v(" "),entry.itemType=="Crossover"?_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.crossover_autographed==1?"Yes":"No"))]):_vm._e(),_vm._v(" "),_c("td",{staticClass:"text-center"},[_vm._v(_vm._s(entry.grading_cert_number))]),_vm._v(" "),_c("td",{},[_c("div",{staticClass:"d-flex justify-content-center"},[_c("div",{staticStyle:{"margin-right":"15px"}},[entry.status==="graded"?_c("div",{},[_c("button",{staticClass:"btn btn-sm btn-success",staticStyle:{"padding-left":"10px","padding-right":"10px"},attrs:{type:"button",disabled:""}},[_vm._v("\n                                                                            Already Graded\n                                                                        ")])]):_c("div",{staticClass:"d-flex"},[_c("button",{staticClass:"btn btn-sm btn-success",staticStyle:{"padding-left":"21px","padding-right":"21px","margin-top":"10px","margin-right":"10px"},attrs:{type:"button","data-bs-toggle":"modal","data-bs-target":"#staticBackdropEdit-".concat(entry.entryItemId)}},[_vm._v("\n                                                                            Confirm Grading\n                                                                        ")]),_vm._v(" "),_c("button",{staticClass:"btn btn-sm btn-danger",staticStyle:{"padding-left":"21px","padding-right":"21px","margin-top":"10px"},attrs:{type:"button"},on:{click:function click($event){return _vm.removeItem(entry.entryItemId);}}},[_vm._v("\n                                                                            Remove Item\n                                                                        ")])]),_vm._v(" "),_c("div",{staticClass:"modal fade",staticStyle:{display:"none"},attrs:{id:"staticBackdropEdit-".concat(entry.entryItemId),"data-bs-backdrop":"static","data-bs-keyboard":"false",tabindex:"-1","aria-labelledby":"staticBackdropLabel","aria-hidden":"true"}},[_c("div",{staticClass:"modal-dialog modal-lg"},[_c("div",{staticClass:"modal-content"},[_c("div",{staticClass:"modal-header"},[_c("h5",{staticClass:"modal-title",attrs:{id:"staticBackdropLabel"}},[_vm._v("Confirm Grading")])]),_vm._v(" "),_c("div",{staticClass:"modal-body"},[_c("div",{staticClass:"mb-4"},[_c("form",{attrs:{action:"#",method:"POST"}},[_c("div",{staticClass:"form-group mb-3",staticStyle:{"text-align":"left"}},[_c("div",{staticClass:"row"},[entry.itemType=="Card"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                        Qty\n                                                                                                                    ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",value:"1",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                                                "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_description_one,expression:"entry.card_description_one",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_description_one",id:"card_description_one"},domProps:{value:entry.card_description_one},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"card_description_one",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Description #2\n                                                                                                                            ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_description_two,expression:"entry.card_description_two",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_description_two",id:"card_description_two"},domProps:{value:entry.card_description_two},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"card_description_two",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Description #3\n                                                                                                                            ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_description_three,expression:"entry.card_description_three",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_description_three",id:"card_description_three"},domProps:{value:entry.card_description_three},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"card_description_three",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                Serial Number   (Only if printed directly on item)\n                                                                                                                            ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_serial_number,expression:"entry.card_serial_number",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_serial_number",id:"card_serial_number"},domProps:{value:entry.card_serial_number},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"card_serial_number",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                                        Autographed\n                                                                                                                                    ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_autographed,expression:"entry.card_autographed",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"card_autographed",id:"card_autographed"},domProps:{checked:Array.isArray(entry.card_autographed)?_vm._i(entry.card_autographed,null)>-1:entry.card_autographed},on:{change:function change($event){var $$a=entry.card_autographed,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(entry,"card_autographed",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(entry,"card_autographed",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(entry,"card_autographed",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                                        Authenticator Name\n                                                                                                                                    ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_authenticator_name,expression:"entry.card_authenticator_name",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"card_authenticator_name",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.authenticators,function(authenticator,index){return _c("option",{key:authenticator.id,domProps:{value:authenticator.id}},[_vm._v(_vm._s(authenticator.name))]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                        Authenticator Cert. No.\n                                                                                                                                    ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_authenticator_cert_no,expression:"entry.card_authenticator_cert_no",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"card_authenticator_cert_no",id:"card_authenticator_cert_no"},domProps:{value:entry.card_authenticator_cert_no},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"card_authenticator_cert_no",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                        Estimated Value\n                                                                                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_estimated_value,expression:"entry.card_estimated_value",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",id:"card_estimated_value",name:"card_estimated_value"},domProps:{value:entry.card_estimated_value},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"card_estimated_value",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Item Grade\n")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_item_grade,expression:"entry.card_item_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"card_item_grade",id:"card_item_grade"},on:{change:[function($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"card_item_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);},function($event){var _vm$cardItemGrades$fi;entry.card_item_grade_mean=(_vm$cardItemGrades$fi=_vm.cardItemGrades.find(function(g){return g.name===entry.card_item_grade;}))===null||_vm$cardItemGrades$fi===void 0?void 0:_vm$cardItemGrades$fi.mean;}]}},_vm._l(_vm.cardItemGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_c("div",{staticClass:"d-flex justify-content-between"},[_c("span",[_vm._v(_vm._s(grade.name)+" - ")]),_vm._v(" "),_c("span",[_vm._v("("+_vm._s(grade.mean)+")")])])]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Auto Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.card_auto_grade,expression:"entry.card_auto_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"card_auto_grade",id:"card_auto_grade"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"card_auto_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.cardAutoGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_vm._v(_vm._s(grade.name))]);}),0)])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Autograph Authentication"?_c("div",{staticClass:"col-md-12"},[_vm._v("\n                                                                                                    hello\n                                                                                                    "),_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Qty\n                                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",value:"1",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_description_one,expression:"entry.auto_authentication_description_one",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_description_one",id:"auto_authentication_description_one"},domProps:{value:entry.auto_authentication_description_one},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"auto_authentication_description_one",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Description #2\n                                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_description_two,expression:"entry.auto_authentication_description_two",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_description_two",id:"auto_authentication_description_two"},domProps:{value:entry.auto_authentication_description_two},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"auto_authentication_description_two",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Description #3\n                                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_description_three,expression:"entry.auto_authentication_description_three",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_description_three",id:"auto_authentication_description_three"},domProps:{value:entry.auto_authentication_description_three},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"auto_authentication_description_three",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Serial Number   (Only if printed directly on item)\n                                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_serial_number,expression:"entry.auto_authentication_serial_number",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"auto_authentication_serial_number",id:"auto_authentication_serial_number"},domProps:{value:entry.auto_authentication_serial_number},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"auto_authentication_serial_number",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                                    Autographed\n                                                                                                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_autographed,expression:"entry.auto_authentication_autographed",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"auto_authentication_autographed",id:"auto_authentication_autographed"},domProps:{checked:Array.isArray(entry.auto_authentication_autographed)?_vm._i(entry.auto_authentication_autographed,null)>-1:entry.auto_authentication_autographed},on:{change:function change($event){var $$a=entry.auto_authentication_autographed,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(entry,"auto_authentication_autographed",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(entry,"auto_authentication_autographed",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(entry,"auto_authentication_autographed",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                                    Authenticator Name\n                                                                                                                                ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_authenticator_name,expression:"entry.auto_authentication_authenticator_name",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"auto_authentication_authenticator_name",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.authenticators,function(authenticator,index){return _c("option",{key:authenticator.id,domProps:{value:authenticator.id}},[_vm._v(_vm._s(authenticator.name))]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                                    Authenticator Cert. No.\n                                                                                                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_authenticator_cert_no,expression:"entry.auto_authentication_authenticator_cert_no",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"number",placeholder:"",name:"auto_authentication_authenticator_cert_no",id:"auto_authentication_authenticator_cert_no"},domProps:{value:entry.auto_authentication_authenticator_cert_no},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"auto_authentication_authenticator_cert_no",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Estimated Value\n                                                                                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_estimated_value,expression:"entry.auto_authentication_estimated_value",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"number",placeholder:"",name:"auto_authentication_estimated_value",id:"auto_authentication_estimated_value"},domProps:{value:entry.auto_authentication_estimated_value},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"auto_authentication_estimated_value",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Item Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_grade,expression:"entry.auto_authentication_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"auto_authentication_grade",id:"auto_authentication_grade"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"auto_authentication_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.autoAuthenticationItemGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_vm._v(_vm._s(grade.name))]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Auto Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.auto_authentication_auto_grade,expression:"entry.auto_authentication_auto_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"auto_authentication_auto_grade",id:"auto_authentication_auto_grade"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"auto_authentication_auto_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.autoAuthenticationAutoGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_vm._v(_vm._s(grade.name))]);}),0)])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Combined Service"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Qty\n                                                                                                        ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",value:"1",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                                    "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_description_one,expression:"entry.combined_service_description_one",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_description_one",id:"combined_service_description_one"},domProps:{value:entry.combined_service_description_one},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"combined_service_description_one",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Description #2\n                                                                                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_description_two,expression:"entry.combined_service_description_two",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_description_two",id:"combined_service_description_two"},domProps:{value:entry.combined_service_description_two},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"combined_service_description_two",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Description #3\n                                                                                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_description_three,expression:"entry.combined_service_description_three",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_description_three",id:"combined_service_description_three"},domProps:{value:entry.combined_service_description_three},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"combined_service_description_three",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Serial Number   (Only if printed directly on item)\n                                                                                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_serial_number,expression:"entry.combined_service_serial_number",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_serial_number",id:"combined_service_serial_number"},domProps:{value:entry.combined_service_serial_number},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"combined_service_serial_number",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                            Autographed\n                                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_autographed,expression:"entry.combined_service_autographed",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"combined_service_autographed",id:"combined_service_autographed"},domProps:{checked:Array.isArray(entry.combined_service_autographed)?_vm._i(entry.combined_service_autographed,null)>-1:entry.combined_service_autographed},on:{change:function change($event){var $$a=entry.combined_service_autographed,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(entry,"combined_service_autographed",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(entry,"combined_service_autographed",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(entry,"combined_service_autographed",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Authenticator Name\n                                                                                                                        ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_authenticator_name,expression:"entry.combined_service_authenticator_name",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"combined_service_authenticator_name",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.authenticators,function(authenticator,index){return _c("option",{key:authenticator.id,domProps:{value:authenticator.id}},[_vm._v(_vm._s(authenticator.name))]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                            Authenticator Cert. No.\n                                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_authenticator_cert_no,expression:"entry.combined_service_authenticator_cert_no",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_authenticator_cert_no",id:"combined_service_authenticator_cert_no"},domProps:{value:entry.combined_service_authenticator_cert_no},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"combined_service_authenticator_cert_no",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Estimated Value\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_estimated_value,expression:"entry.combined_service_estimated_value",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"combined_service_estimated_value",id:"combined_service_estimated_value"},domProps:{value:entry.combined_service_estimated_value},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"combined_service_estimated_value",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Item Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_item_grade,expression:"entry.combined_service_item_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"combined_service_item_grade",id:"combined_service_item_grade"},on:{change:[function($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"combined_service_item_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);},function($event){var _vm$combinedServiceIt;entry.combined_service_item_grade_mean=(_vm$combinedServiceIt=_vm.combinedServiceItemGrades.find(function(g){return g.name===entry.combined_service_item_grade;}))===null||_vm$combinedServiceIt===void 0?void 0:_vm$combinedServiceIt.mean;}]}},_vm._l(_vm.combinedServiceItemGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_c("div",{staticClass:"d-flex justify-content-between"},[_c("span",[_vm._v(_vm._s(grade.name)+" - ")]),_vm._v(" "),_c("span",[_vm._v("("+_vm._s(grade.mean)+")")])])]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Auto Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.combined_service_auto_grade,expression:"entry.combined_service_auto_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"combined_service_auto_grade",id:"combined_service_auto_grade"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"combined_service_auto_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.combinedServiceAutoGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_vm._v(_vm._s(grade.name))]);}),0)])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Reholder"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                        Qty\n                                                                                                    ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",readonly:"",value:"1"}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                Certification Number\n                                                                                                                "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.reholder_certification_number,expression:"entry.reholder_certification_number",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"reholder_certification_number",id:"reholder_certification_number"},domProps:{value:entry.reholder_certification_number},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"reholder_certification_number",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                        Estimated Value\n                                                                                                        "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.reholder_estimated_value,expression:"entry.reholder_estimated_value",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"reholder_estimated_value",id:"reholder_estimated_value"},domProps:{value:entry.reholder_estimated_value},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"reholder_estimated_value",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])]),_vm._v(" "),_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Item Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.reholder_item_grade,expression:"entry.reholder_item_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"reholder_item_grade",id:"reholder_item_grade"},on:{change:[function($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"reholder_item_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);},function($event){var _vm$reholderItemGrade;entry.reholder_item_grade_mean=(_vm$reholderItemGrade=_vm.reholderItemGrades.find(function(g){return g.name===entry.reholder_item_grade;}))===null||_vm$reholderItemGrade===void 0?void 0:_vm$reholderItemGrade.mean;}]}},_vm._l(_vm.reholderItemGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_c("div",{staticClass:"d-flex justify-content-between"},[_c("span",[_vm._v(_vm._s(grade.name)+" - ")]),_vm._v(" "),_c("span",[_vm._v("("+_vm._s(grade.mean)+")")])])]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Auto Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.reholder_auto_grade,expression:"entry.reholder_auto_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"reholder_auto_grade",id:"reholder_auto_grade"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"reholder_auto_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.reholderAutoGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_vm._v(_vm._s(grade.name))]);}),0)])])])])])]):_vm._e(),_vm._v(" "),entry.itemType=="Crossover"?_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-1"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                    Qty\n                                                                                                ")]),_vm._v(" "),_c("input",{staticClass:"form-control",attrs:{type:"text",placeholder:"",value:"1",readonly:""}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-9"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Description #1   (Year,Manufacturer,Set,Other)\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_description_one,expression:"entry.crossover_description_one",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_description_one",id:"crossover_description_one"},domProps:{value:entry.crossover_description_one},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"crossover_description_one",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Description #2\n                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_description_two,expression:"entry.crossover_description_two",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_description_two",id:"crossover_description_two"},domProps:{value:entry.crossover_description_two},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"crossover_description_two",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Description #3\n                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_description_three,expression:"entry.crossover_description_three",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_description_three",id:"crossover_description_three"},domProps:{value:entry.crossover_description_three},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"crossover_description_three",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-6"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Serial Number   (Only if printed directly on item)\n                                                                                                        ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_serial_number,expression:"entry.crossover_serial_number",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_serial_number",id:"crossover_serial_number"},domProps:{value:entry.crossover_serial_number},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"crossover_serial_number",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3 d-flex justify-content-start",staticStyle:{"margin-top":"25px"}},[_c("label",{staticClass:"form-label text-capitalize",staticStyle:{"margin-top":"6px","margin-right":"15px"}},[_vm._v("\n                                                                                                                    Autographed\n                                                                                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_autographed,expression:"entry.crossover_autographed",modifiers:{trim:true}}],staticClass:"form-check",attrs:{type:"checkbox",placeholder:"",name:"crossover_autographed",id:"crossover_autographed"},domProps:{checked:Array.isArray(entry.crossover_autographed)?_vm._i(entry.crossover_autographed,null)>-1:entry.crossover_autographed},on:{change:function change($event){var $$a=entry.crossover_autographed,$$el=$event.target,$$c=$$el.checked?true:false;if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&_vm.$set(entry,"crossover_autographed",$$a.concat([$$v]));}else{$$i>-1&&_vm.$set(entry,"crossover_autographed",$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else{_vm.$set(entry,"crossover_autographed",$$c);}}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                    Authenticator Name\n                                                                                                                ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_authenticator_name,expression:"entry.crossover_authenticator_name",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"crossover_authenticator_name",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.authenticators,function(authenticator,index){return _c("option",{key:authenticator.id,domProps:{value:authenticator.id}},[_vm._v(_vm._s(authenticator.name))]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                                    Authenticator Cert. No.\n                                                                                                                ")]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_authenticator_cert_no,expression:"entry.crossover_authenticator_cert_no",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_authenticator_cert_no",id:"crossover_authenticator_cert_no"},domProps:{value:entry.crossover_authenticator_cert_no},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"crossover_authenticator_cert_no",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])])])])])]),_vm._v(" "),_c("div",{staticClass:"col-md-2"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100"},[_vm._v("\n                                                                                                            Estimated Value\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("input",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_estimated_value,expression:"entry.crossover_estimated_value",modifiers:{trim:true}}],staticClass:"form-control",attrs:{type:"text",placeholder:"",name:"crossover_estimated_value",id:"crossover_estimated_value"},domProps:{value:entry.crossover_estimated_value},on:{input:function input($event){if($event.target.composing)return;_vm.$set(entry,"crossover_estimated_value",$event.target.value.trim());},blur:function blur($event){return _vm.$forceUpdate();}}})])]),_vm._v(" "),_c("div",{staticClass:"col-md-12"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                            Minimum Grade\n                                                                                                            "),_c("span",{staticClass:"error"},[_vm._v("*")])]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_minimum_grade,expression:"entry.crossover_minimum_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"crossover_minimum_grade",id:"crossover_minimum_grade"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"crossover_minimum_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.minimumGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_vm._v(_vm._s(grade.name))]);}),0)])])])])])])]),_vm._v(" "),_c("div",{staticClass:"card shipping_address_card"},[_c("div",{staticClass:"card-body"},[_c("div",{staticClass:"row"},[_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Item Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_item_grade,expression:"entry.crossover_item_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"crossover_item_grade",id:"crossover_item_grade"},on:{change:[function($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"crossover_item_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);},function($event){var _vm$crossoverItemGrad;entry.crossover_item_grade_mean=(_vm$crossoverItemGrad=_vm.crossoverItemGrades.find(function(g){return g.name===entry.crossover_item_grade;}))===null||_vm$crossoverItemGrad===void 0?void 0:_vm$crossoverItemGrad.mean;}]}},_vm._l(_vm.crossoverItemGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_c("div",{staticClass:"d-flex justify-content-between"},[_c("span",[_vm._v(_vm._s(grade.name)+" - ")]),_vm._v(" "),_c("span",[_vm._v("("+_vm._s(grade.mean)+")")])])]);}),0)])]),_vm._v(" "),_c("div",{staticClass:"col-md-4"},[_c("div",{staticClass:"mb-3"},[_c("label",{staticClass:"form-label w-100 text-capitalize"},[_vm._v("\n                                                                                                                            Auto Grade\n                                                                                                                            ")]),_vm._v(" "),_c("select",{directives:[{name:"model",rawName:"v-model.trim",value:entry.crossover_auto_grade,expression:"entry.crossover_auto_grade",modifiers:{trim:true}}],staticClass:"form-select mb-text-only",attrs:{"aria-label":"Default select example",name:"crossover_auto_grade",id:"crossover_auto_grade"},on:{change:function change($event){var $$selectedVal=Array.prototype.filter.call($event.target.options,function(o){return o.selected;}).map(function(o){var val="_value"in o?o._value:o.value;return val;});_vm.$set(entry,"crossover_auto_grade",$event.target.multiple?$$selectedVal:$$selectedVal[0]);}}},_vm._l(_vm.crossoverAutoGrades,function(grade,index){return _c("option",{key:grade.id,domProps:{value:grade.name}},[_vm._v(_vm._s(grade.name))]);}),0)])])])])])]):_vm._e()]),_vm._v(" "),_c("div",{staticClass:"w-100 d-flex justify-content-end"},[_c("button",{staticClass:"btn btn-primary",staticStyle:{"margin-right":"15px"},attrs:{type:"button",id:"edit_item_submit_btn"},on:{click:function click($event){return _vm.submit(index);}}},[_vm._v("Confirm")]),_vm._v(" "),_c("button",{staticClass:"btn btn-secondary",attrs:{type:"button",id:"cancel_btn","data-bs-dismiss":"modal"}},[_vm._v("Cancel")])])])])])])])])])])])])]);}),0)])])])])])])])])])],1)],1);};var staticRenderFns=[];render._withStripped=true;
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {}, [_c("form-wizard", {
+    attrs: {
+      color: "#3476ae",
+      title: "",
+      subtitle: "",
+      "next-button-text": "Continue",
+      "finish-button-text": "Save",
+      "start-index": _vm.startIndex
+    },
+    on: {
+      "on-complete": _vm.submit
+    },
+    scopedSlots: _vm._u([{
+      key: "footer",
+      fn: function fn(props) {
+        return [_c("div", {
+          staticClass: "wizard-footer-left"
+        }, [props.activeTabIndex > 0 ? _c("wizard-button", {
+          style: props.fillButtonStyle,
+          nativeOn: {
+            click: function click($event) {
+              return props.prevTab();
+            }
+          }
+        }, [_vm._v("Back")]) : _vm._e()], 1), _vm._v(" "), _c("div", {
+          staticClass: "wizard-footer-right"
+        }, [_c("wizard-button", {
+          staticClass: "wizard-footer-right finish-button",
+          staticStyle: {
+            background: "orange",
+            "margin-left": "15px",
+            color: "white"
+          },
+          nativeOn: {
+            click: function click($event) {
+              return _vm.cancel.apply(null, arguments);
+            }
+          }
+        }, [_vm._v("Cancel")]), _vm._v(" "), _c("wizard-button", {
+          staticClass: "wizard-footer-right",
+          staticStyle: {
+            "margin-left": "15px"
+          },
+          style: props.fillButtonStyle,
+          nativeOn: {
+            click: function click($event) {
+              return _vm.cancel.apply(null, arguments);
+            }
+          }
+        }, [_vm._v("Continue Later")]), _vm._v(" "), !props.isLastStep ? _c("wizard-button", {
+          staticClass: "wizard-footer-right",
+          style: props.fillButtonStyle,
+          nativeOn: {
+            click: function click($event) {
+              return props.nextTab();
+            }
+          }
+        }, [_vm._v("Continue")]) : _c("wizard-button", {
+          staticClass: "wizard-footer-right",
+          style: props.fillButtonStyle,
+          nativeOn: {
+            click: function click($event) {
+              return _vm.received(_vm.item.id);
+            }
+          }
+        }, [_vm._v("Grading Complete")])], 1)];
+      }
+    }])
+  }, [_vm._v(" "), _c("tab-content", {
+    attrs: {
+      title: "Item Type",
+      icon: "ti-gift"
+    }
+  }, [_c("div", {
+    staticClass: "grading-order-header"
+  }, [_c("h5", {
+    staticClass: "card-title text-capitalize mb-0"
+  }, [_vm._v(_vm._s(_vm.item.customer_name))]), _vm._v(" "), _c("h5", {
+    staticClass: "card-title mb-0"
+  }, [_vm._v("Order # " + _vm._s(_vm.item.entrySKU))])]), _vm._v(" "), _c("div", {
+    staticClass: "grading-table-container"
+  }, [_c("div", {
+    staticClass: "table-responsive grading-table-scroll"
+  }, [_c("table", {
+    staticClass: "table mb-0 grading-table"
+  }, [_c("thead", [_c("tr", [_c("th", [_vm._v("Item Type")]), _vm._v(" "), _c("th", [_vm._v("Sub Type")]), _vm._v(" "), _c("th", [_vm._v("Description 1")]), _vm._v(" "), _c("th", [_vm._v("Description 2")]), _vm._v(" "), _c("th", [_vm._v("Description 3")]), _vm._v(" "), _c("th", [_vm._v("Autographed")]), _vm._v(" "), _c("th", [_vm._v("Serial Number")]), _vm._v(" "), _c("th", [_vm._v("Item Grade")]), _vm._v(" "), _c("th", [_vm._v("Auto Grade")]), _vm._v(" "), _c("th", [_vm._v("Actions")]), _vm._v(" "), _c("th", {
+    staticClass: "select-col"
+  }, [_c("label", {
+    staticClass: "select-all-label"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.selectAll,
+      expression: "selectAll"
+    }],
+    attrs: {
+      type: "checkbox",
+      disabled: _vm.selectableEntries.length === 0
+    },
+    domProps: {
+      checked: Array.isArray(_vm.selectAll) ? _vm._i(_vm.selectAll, null) > -1 : _vm.selectAll
+    },
+    on: {
+      change: [function ($event) {
+        var $$a = _vm.selectAll,
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.selectAll = $$a.concat([$$v]));
+          } else {
+            $$i > -1 && (_vm.selectAll = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.selectAll = $$c;
+        }
+      }, _vm.toggleSelectAll]
+    }
+  }), _vm._v("\n                                    Select All\n                                ")])])])]), _vm._v(" "), _c("tbody", [_vm.form_data.entries.length === 0 ? _c("tr", [_c("td", {
+    staticClass: "text-muted-na",
+    attrs: {
+      colspan: "11"
+    }
+  }, [_vm._v("No item found")])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.form_data.entries, function (entry) {
+    return _c("tr", {
+      key: entry.entryItemId,
+      "class": {
+        "row-graded": _vm.isGraded(entry)
+      }
+    }, [_c("td", {
+      staticClass: "type-cell"
+    }, [_vm._v(_vm._s(entry.itemType))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entry.itemType == "Crossover" ? entry.crossover_item_type : "N/A"))]), _vm._v(" "), _c("td", {
+      staticClass: "desc-cell"
+    }, [_vm._v(_vm._s(_vm.descriptionOf(entry, "one")))]), _vm._v(" "), _c("td", {
+      staticClass: "desc-cell"
+    }, [_vm._v(_vm._s(_vm.descriptionOf(entry, "two")))]), _vm._v(" "), _c("td", {
+      staticClass: "desc-cell"
+    }, [_vm._v(_vm._s(_vm.descriptionOf(entry, "three")))]), _vm._v(" "), _c("td", [!entry.prefix ? _c("span", {
+      staticClass: "status-badge status-na"
+    }, [_vm._v("N/A")]) : entry[entry.prefix + "_autographed"] ? _c("span", {
+      staticClass: "status-badge status-yes"
+    }, [_vm._v("Yes")]) : _c("span", {
+      staticClass: "status-badge status-no"
+    }, [_vm._v("No")])]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entry.grading_cert_number))]), _vm._v(" "), _c("td", [_c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: entry.item_grade,
+        expression: "entry.item_grade"
+      }],
+      staticClass: "form-select grade-select",
+      "class": {
+        "grade-invalid": entry.grade_error && !entry.item_grade
+      },
+      attrs: {
+        disabled: _vm.isGraded(entry)
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(entry, "item_grade", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        value: ""
+      }
+    }), _vm._v(" "), _vm._l(_vm.grades, function (grade) {
+      return _c("option", {
+        key: grade.id,
+        domProps: {
+          value: grade.name
+        }
+      }, [_vm._v("\n                                        " + _vm._s(grade.name) + _vm._s(grade.mean ? " - " + grade.mean : "") + "\n                                    ")]);
+    })], 2)]), _vm._v(" "), _c("td", [_c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: entry.auto_grade,
+        expression: "entry.auto_grade"
+      }],
+      staticClass: "form-select grade-select",
+      "class": {
+        "grade-invalid": entry.grade_error && !entry.auto_grade
+      },
+      attrs: {
+        disabled: _vm.isGraded(entry)
+      },
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(entry, "auto_grade", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        value: ""
+      }
+    }), _vm._v(" "), _vm._l(_vm.autoGrades, function (grade) {
+      return _c("option", {
+        key: grade.id,
+        domProps: {
+          value: grade.name
+        }
+      }, [_vm._v(_vm._s(grade.name))]);
+    })], 2)]), _vm._v(" "), _c("td", [!_vm.isGraded(entry) ? _c("div", {
+      staticClass: "action-group"
+    }, [_c("button", {
+      staticClass: "action-btn action-edit",
+      attrs: {
+        type: "button",
+        title: "Edit",
+        "data-bs-toggle": "modal",
+        "data-bs-target": "#gradingEditModal"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.openEdit(entry);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-edit"
+    })]), _vm._v(" "), _c("button", {
+      staticClass: "action-btn action-remove",
+      attrs: {
+        type: "button",
+        title: "Remove"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.removeItem(entry.entryItemId);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fa fa-trash"
+    })]), _vm._v(" "), _c("button", {
+      staticClass: "action-btn action-yes",
+      attrs: {
+        type: "button",
+        title: "Confirm Grading"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.confirmOne(entry);
+        }
+      }
+    }, [_vm._v("\n                                        Yes\n                                    ")])]) : _c("span", {
+      staticClass: "status-badge status-yes"
+    }, [_vm._v("Graded")])]), _vm._v(" "), _c("td", {
+      staticClass: "select-col"
+    }, [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: _vm.selectedIds,
+        expression: "selectedIds"
+      }],
+      attrs: {
+        type: "checkbox",
+        disabled: _vm.isGraded(entry)
+      },
+      domProps: {
+        value: entry.entryItemId,
+        checked: Array.isArray(_vm.selectedIds) ? _vm._i(_vm.selectedIds, entry.entryItemId) > -1 : _vm.selectedIds
+      },
+      on: {
+        change: function change($event) {
+          var $$a = _vm.selectedIds,
+            $$el = $event.target,
+            $$c = $$el.checked ? true : false;
+          if (Array.isArray($$a)) {
+            var $$v = entry.entryItemId,
+              $$i = _vm._i($$a, $$v);
+            if ($$el.checked) {
+              $$i < 0 && (_vm.selectedIds = $$a.concat([$$v]));
+            } else {
+              $$i > -1 && (_vm.selectedIds = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.selectedIds = $$c;
+          }
+        }
+      }
+    })])]);
+  })], 2)])])]), _vm._v(" "), _c("div", {
+    staticClass: "confirm-all-wrap"
+  }, [_c("button", {
+    staticClass: "btn btn-primary confirm-all-btn",
+    attrs: {
+      type: "button",
+      disabled: _vm.selectedIds.length === 0
+    },
+    on: {
+      click: _vm.confirmAll
+    }
+  }, [_vm._v("\n                    Confirm All\n                ")])]), _vm._v(" "), _c("div", {
+    staticClass: "modal fade grading-item-modal",
+    attrs: {
+      id: "gradingEditModal",
+      "data-bs-backdrop": "static",
+      "data-bs-keyboard": "false",
+      tabindex: "-1",
+      "aria-hidden": "true"
+    }
+  }, [_c("div", {
+    staticClass: "modal-dialog modal-xl"
+  }, [_c("div", {
+    staticClass: "modal-content"
+  }, [_c("div", {
+    staticClass: "modal-header"
+  }, [_c("h5", {
+    staticClass: "modal-title"
+  }, [_vm._v("Edit Item")])]), _vm._v(" "), _c("div", {
+    staticClass: "modal-body"
+  }, [_vm.editDraft ? _c("div", {
+    staticClass: "ksa-entry-ui"
+  }, [_vm.editDraft.prefix ? _c("div", {
+    staticClass: "item-details-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("Quantity")]), _vm._v(" "), _c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("1")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_vm.isSplit(_vm.editDraft) ? [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Description #1")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("Year")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft.desc_year,
+      expression: "editDraft.desc_year"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft.desc_year
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, "desc_year", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-10 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("Manufacturer")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft.desc_manufacturer,
+      expression: "editDraft.desc_manufacturer"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft.desc_manufacturer
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, "desc_manufacturer", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Description #2")])]), _vm._v(" "), _vm.hasNumber(_vm.editDraft) ? _c("div", {
+    staticClass: "col-md-2 col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("Number")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft.desc_number,
+      expression: "editDraft.desc_number"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft.desc_number
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, "desc_number", $event.target.value);
+      }
+    }
+  })]) : _vm._e(), _vm._v(" "), _c("div", {
+    "class": _vm.hasNumber(_vm.editDraft) ? "col-md-10 col-12" : "col-12"
+  }, [_c("label", {
+    staticClass: "field-label-sub"
+  }, [_vm._v("Player Name")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft.desc_player,
+      expression: "editDraft.desc_player"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft.desc_player
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, "desc_player", $event.target.value);
+      }
+    }
+  })])])] : [_c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Description #1")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_description_one"],
+      expression: "editDraft[editDraft.prefix + '_description_one']"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft[_vm.editDraft.prefix + "_description_one"]
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_description_one", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Description #2")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_description_two"],
+      expression: "editDraft[editDraft.prefix + '_description_two']"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft[_vm.editDraft.prefix + "_description_two"]
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_description_two", $event.target.value);
+      }
+    }
+  })])])], _vm._v(" "), _c("div", {
+    staticClass: "row description-row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Description #3")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_description_three"],
+      expression: "editDraft[editDraft.prefix + '_description_three']"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft[_vm.editDraft.prefix + "_description_three"]
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_description_three", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Serial Number (Only if printed directly on item)")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_serial_number"],
+      expression: "editDraft[editDraft.prefix + '_serial_number']"
+    }],
+    staticClass: "form-control serial-input",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft[_vm.editDraft.prefix + "_serial_number"]
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_serial_number", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _vm.showAutograph(_vm.editDraft) ? _c("div", {
+    staticClass: "row autograph-row"
+  }, [_c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "autographed-wrapper"
+  }, [_c("label", [_vm._v("Autographed")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_autographed"],
+      expression: "editDraft[editDraft.prefix + '_autographed']"
+    }],
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.editDraft[_vm.editDraft.prefix + "_autographed"]) ? _vm._i(_vm.editDraft[_vm.editDraft.prefix + "_autographed"], null) > -1 : _vm.editDraft[_vm.editDraft.prefix + "_autographed"]
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.editDraft[_vm.editDraft.prefix + "_autographed"],
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_autographed", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_autographed", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_autographed", $$c);
+        }
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    "class": _vm.showCertified(_vm.editDraft) ? "col-lg-3 col-md-3 col-12" : "col-lg-4 col-md-4 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Authenticator Name")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_authenticator_name"],
+      expression: "editDraft[editDraft.prefix + '_authenticator_name']"
+    }],
+    staticClass: "form-control",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_authenticator_name", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: ""
+    }
+  }, [_vm._v("Select")]), _vm._v(" "), _vm._l(_vm.authenticators, function (authenticator) {
+    return _c("option", {
+      key: authenticator.id,
+      domProps: {
+        value: authenticator.id
+      }
+    }, [_vm._v(_vm._s(authenticator.name))]);
+  })], 2)]), _vm._v(" "), _vm.showCertified(_vm.editDraft) ? _c("div", {
+    staticClass: "col-lg-3 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "certified-wrapper"
+  }, [_c("label", [_vm._v("Certified On Card")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_certified_on_card"],
+      expression: "editDraft[editDraft.prefix + '_certified_on_card']"
+    }],
+    staticClass: "custom-checkbox",
+    attrs: {
+      type: "checkbox"
+    },
+    domProps: {
+      checked: Array.isArray(_vm.editDraft[_vm.editDraft.prefix + "_certified_on_card"]) ? _vm._i(_vm.editDraft[_vm.editDraft.prefix + "_certified_on_card"], null) > -1 : _vm.editDraft[_vm.editDraft.prefix + "_certified_on_card"]
+    },
+    on: {
+      change: function change($event) {
+        var $$a = _vm.editDraft[_vm.editDraft.prefix + "_certified_on_card"],
+          $$el = $event.target,
+          $$c = $$el.checked ? true : false;
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_certified_on_card", $$a.concat([$$v]));
+          } else {
+            $$i > -1 && _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_certified_on_card", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+          }
+        } else {
+          _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_certified_on_card", $$c);
+        }
+      }
+    }
+  })])]) : _vm._e(), _vm._v(" "), _vm.showCertNo(_vm.editDraft) ? _c("div", {
+    "class": _vm.showCertified(_vm.editDraft) ? "col-lg-3 col-md-3 col-12" : "col-lg-5 col-md-5 col-12"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Authenticator Cert. No.")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.editDraft[_vm.editDraft.prefix + "_authenticator_cert_no"],
+      expression: "editDraft[editDraft.prefix + '_authenticator_cert_no']"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft[_vm.editDraft.prefix + "_authenticator_cert_no"]
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, _vm.editDraft.prefix + "_authenticator_cert_no", $event.target.value);
+      }
+    }
+  })]) : _vm._e()]) : _vm._e()], 2)])]) : _vm.editDraft.itemType == "Reholder" ? _c("div", {
+    staticClass: "item-details-box reholder-box"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-2 col-md-3 col-12"
+  }, [_c("div", {
+    staticClass: "quantity-box"
+  }, [_c("div", {
+    staticClass: "quantity-title"
+  }, [_vm._v("Quantity")]), _vm._v(" "), _c("div", {
+    staticClass: "quantity-number"
+  }, [_vm._v("1")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-10 col-md-9 col-12 px-2"
+  }, [_c("label", {
+    staticClass: "field-label"
+  }, [_vm._v("Certification Number")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.editDraft.reholder_certification_number,
+      expression: "editDraft.reholder_certification_number",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control reholder-cert-input",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.editDraft.reholder_certification_number
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.editDraft, "reholder_certification_number", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })])])]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "modal-footer"
+  }, [_c("button", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: _vm.saveEdit
+    }
+  }, [_vm._v("Save")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-secondary",
+    attrs: {
+      type: "button",
+      "data-bs-dismiss": "modal",
+      id: "gradingEditCancel"
+    }
+  }, [_vm._v("Cancel")])])])])])])], 1)], 1);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
 
 /***/ }),
 
@@ -2622,7 +3022,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-045ba5dd]::-webkit-outer-spin-button,\ninput[data-v-045ba5dd]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-045ba5dd] {\n    -moz-appearance: textfield;\n}\n\n\n/*responsive table css start*/\n.table-responsive[data-v-045ba5dd] {\n    width: 100%;\n    overflow-x: auto;\n    -webkit-overflow-scrolling: touch;\n    margin-bottom: 1rem;\n    border-radius: 4px;\n}\ntable.table[data-v-045ba5dd] {\n    width: 100%;\n    border-collapse: collapse;\n    min-width: 900px; /* Adjust based on content */\n}\nthead[data-v-045ba5dd] {\n    background: cornflowerblue;\n    color: white;\n}\nthead th[data-v-045ba5dd],\ntbody td[data-v-045ba5dd] {\n    padding: 8px 12px;\n    text-align: center;\n    white-space: nowrap; /* Prevent wrapping */\n}\nthead th[data-v-045ba5dd] {\n    height: 40px;\n    font-weight: bold;\n}\n\n/* Optional: Zebra striping */\ntbody tr[data-v-045ba5dd]:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n/*responsive table css end*/\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-045ba5dd]::-webkit-outer-spin-button,\ninput[data-v-045ba5dd]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-045ba5dd] {\n    -moz-appearance: textfield;\n}\n\n\n/*responsive table css start*/\n.table-responsive[data-v-045ba5dd] {\n    width: 100%;\n    overflow-x: auto;\n    -webkit-overflow-scrolling: touch;\n    margin-bottom: 1rem;\n    border-radius: 4px;\n}\ntable.table[data-v-045ba5dd] {\n    width: 100%;\n    border-collapse: collapse;\n    min-width: 900px; /* Adjust based on content */\n}\nthead[data-v-045ba5dd] {\n    background: cornflowerblue;\n    color: white;\n}\nthead th[data-v-045ba5dd],\ntbody td[data-v-045ba5dd] {\n    padding: 8px 12px;\n    text-align: center;\n    white-space: nowrap; /* Prevent wrapping */\n}\nthead th[data-v-045ba5dd] {\n    height: 40px;\n    font-weight: bold;\n}\n\n/* Optional: Zebra striping */\ntbody tr[data-v-045ba5dd]:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n/*responsive table css end*/\n\n\n/* ============================================================\n   ORDER GRADING - HEADER\n   ============================================================ */\n.grading-order-header[data-v-045ba5dd] {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    flex-wrap: wrap;\n    gap: 8px;\n    margin-bottom: 16px;\n    padding: 0 4px;\n}\n\n/* ============================================================\n   ORDER GRADING - TABLE\n   ============================================================ */\n.grading-table-container[data-v-045ba5dd] {\n    background: #eeeeee;\n    padding: 14px 15px 17px;\n    border-radius: 4px;\n}\n.grading-table-scroll[data-v-045ba5dd] {\n    margin-bottom: 0;\n    border-radius: 3px;\n    background: #ffffff;\n}\n.grading-table[data-v-045ba5dd] {\n    width: 100%;\n    min-width: 1150px;\n    border-collapse: collapse;\n    background: #ffffff;\n}\n.grading-table thead[data-v-045ba5dd] {\n    background: #5d8fe6;\n    color: #ffffff;\n}\n.grading-table thead th[data-v-045ba5dd] {\n    height: 42px;\n    padding: 8px 8px;\n    font-size: 13px;\n    font-weight: 600;\n    text-align: center;\n    vertical-align: middle;\n    white-space: nowrap;\n    border-right: 1px solid rgba(255, 255, 255, 0.35);\n    border-bottom: 0;\n}\n.grading-table thead th[data-v-045ba5dd]:last-child {\n    border-right: 0;\n}\n.grading-table tbody td[data-v-045ba5dd] {\n    padding: 10px 8px;\n    font-size: 13px;\n    color: #40536a;\n    text-align: center;\n    vertical-align: middle;\n    white-space: normal;\n    border-right: 1px solid #eeeeee;\n    border-bottom: 1px solid #eeeeee;\n}\n.grading-table tbody td[data-v-045ba5dd]:last-child {\n    border-right: 0;\n}\n.grading-table tbody tr[data-v-045ba5dd]:nth-child(odd) {\n    background-color: #fafafa;\n}\n.grading-table tbody tr[data-v-045ba5dd]:hover {\n    background-color: #f1f5ff;\n}\n.grading-table .row-graded[data-v-045ba5dd] {\n    background-color: #f6fbf7 !important;\n}\n.grading-table .type-cell[data-v-045ba5dd] {\n    font-weight: 600;\n    white-space: nowrap;\n}\n.grading-table .desc-cell[data-v-045ba5dd] {\n    min-width: 120px;\n    max-width: 200px;\n    word-break: break-word;\n}\n.grading-table .grade-select[data-v-045ba5dd] {\n    min-width: 110px;\n    height: 34px;\n    padding: 4px 28px 4px 8px;\n    font-size: 13px;\n    border: 1px solid #d0d5db;\n    border-radius: 4px;\n    color: #40536a;\n    background-color: #ffffff;\n}\n.grading-table .grade-select[data-v-045ba5dd]:focus {\n    border-color: #8d9cf7;\n    box-shadow: 0 0 0 1px rgba(91, 105, 255, 0.18);\n}\n.grading-table .select-col[data-v-045ba5dd] {\n    width: 95px;\n    white-space: nowrap;\n}\n.grading-table .select-all-label[data-v-045ba5dd] {\n    display: inline-flex;\n    align-items: center;\n    gap: 6px;\n    margin: 0;\n    cursor: pointer;\n}\n.grading-table input[type=\"checkbox\"][data-v-045ba5dd] {\n    width: 15px;\n    height: 15px;\n    cursor: pointer;\n    vertical-align: middle;\n}\n.grading-table input[type=\"checkbox\"][data-v-045ba5dd]:disabled {\n    cursor: not-allowed;\n}\n.grading-table .grade-select.grade-invalid[data-v-045ba5dd] {\n    border-color: #e5484d;\n    box-shadow: 0 0 0 1px rgba(229, 72, 77, 0.2);\n}\n\n/* Action buttons */\n.action-group[data-v-045ba5dd] {\n    display: inline-flex;\n    align-items: center;\n    gap: 6px;\n}\n.action-btn[data-v-045ba5dd] {\n    min-width: 34px;\n    height: 32px;\n    padding: 0 10px;\n    border: 0;\n    border-radius: 4px;\n    font-size: 13px;\n    font-weight: 600;\n    color: #ffffff;\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    transition: opacity 0.15s ease, transform 0.15s ease;\n}\n.action-btn[data-v-045ba5dd]:hover {\n    opacity: 0.88;\n    transform: translateY(-1px);\n}\n.action-edit[data-v-045ba5dd] {\n    background: #5d8fe6;\n}\n.action-remove[data-v-045ba5dd] {\n    background: #e5484d;\n}\n.action-yes[data-v-045ba5dd] {\n    background: #28a745;\n    min-width: 46px;\n}\n\n/* Badges */\n.status-badge[data-v-045ba5dd] {\n    display: inline-block;\n    min-width: 44px;\n    padding: 3px 10px;\n    border-radius: 20px;\n    font-size: 12px;\n    font-weight: 600;\n}\n.status-yes[data-v-045ba5dd] {\n    background: #e7f6ec;\n    color: #1e8e3e;\n}\n.status-no[data-v-045ba5dd] {\n    background: #f1f3f5;\n    color: #6b7280;\n}\n.status-na[data-v-045ba5dd],\n.text-muted-na[data-v-045ba5dd] {\n    color: #9ca3af;\n}\n\n/* Confirm All */\n.confirm-all-wrap[data-v-045ba5dd] {\n    display: flex;\n    justify-content: flex-end;\n    margin: 16px 0 6px;\n}\n.confirm-all-btn[data-v-045ba5dd] {\n    min-width: 140px;\n}\n\n/* ============================================================\n   EDIT MODAL - ITEM CARD (same design as Create Entry)\n   ============================================================ */\n.grading-item-modal .modal-dialog[data-v-045ba5dd] {\n    max-width: 1100px;\n    width: calc(100% - 30px);\n}\n.grading-item-modal .modal-content[data-v-045ba5dd] {\n    border: 0;\n    border-radius: 4px;\n    text-align: left;\n}\n.grading-item-modal .modal-body[data-v-045ba5dd] {\n    max-height: calc(100vh - 200px);\n    overflow-y: auto;\n}\n.grading-item-modal .modal-footer[data-v-045ba5dd] {\n    border-top: 1px solid #e5e7eb;\n}\n.ksa-entry-ui[data-v-045ba5dd] {\n    font-family: Arial, Helvetica, sans-serif;\n    color: #40536a;\n    background: #ffffff;\n    text-align: left;\n    white-space: normal;\n}\n.ksa-entry-ui *[data-v-045ba5dd],\n.ksa-entry-ui *[data-v-045ba5dd]::before,\n.ksa-entry-ui *[data-v-045ba5dd]::after {\n    box-sizing: border-box;\n}\n.ksa-entry-ui .item-details-box[data-v-045ba5dd] {\n    background: #eeeeee;\n    border-radius: 3px;\n    padding: 15px 12px 28px;\n    min-height: 420px;\n}\n.ksa-entry-ui .quantity-box[data-v-045ba5dd] {\n    background: #f8f8f8;\n    min-height: 89px;\n    text-align: center;\n    padding-top: 8px;\n}\n.ksa-entry-ui .quantity-title[data-v-045ba5dd] {\n    font-size: 16px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 27px;\n}\n.ksa-entry-ui .quantity-number[data-v-045ba5dd] {\n    font-size: 20px;\n    line-height: 1;\n    color: #40536a;\n}\n.ksa-entry-ui .field-label[data-v-045ba5dd] {\n    display: block;\n    font-size: 14px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .field-label-sub[data-v-045ba5dd] {\n    display: block;\n    font-size: 15px;\n    font-weight: 500;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .form-control[data-v-045ba5dd] {\n    height: 36px;\n    border: 1px solid #d0d5db;\n    border-radius: 4px;\n    background: #ffffff;\n    color: #40536a;\n    font-size: 14px;\n    box-shadow: none;\n}\n.ksa-entry-ui .form-control[data-v-045ba5dd]:focus {\n    border-color: #8d9cf7;\n    box-shadow: 0 0 0 1px rgba(91, 105, 255, 0.18);\n}\n.ksa-entry-ui .description-row[data-v-045ba5dd] {\n    margin-bottom: 17px;\n}\n.ksa-entry-ui .serial-input[data-v-045ba5dd] {\n    max-width: 480px;\n}\n.ksa-entry-ui .autograph-row[data-v-045ba5dd] {\n    margin-top: 8px;\n    align-items: end;\n}\n.ksa-entry-ui .autographed-wrapper[data-v-045ba5dd],\n.ksa-entry-ui .certified-wrapper[data-v-045ba5dd] {\n    display: flex;\n    align-items: center;\n    padding-top: 19px;\n    min-height: 55px;\n}\n.ksa-entry-ui .autographed-wrapper label[data-v-045ba5dd] {\n    margin: 0 15px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n.ksa-entry-ui .certified-wrapper label[data-v-045ba5dd] {\n    margin: 0 12px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n.ksa-entry-ui .custom-checkbox[data-v-045ba5dd] {\n    width: 15px;\n    height: 15px;\n    margin: 0;\n}\n.ksa-entry-ui .reholder-box[data-v-045ba5dd] {\n    min-height: 400px;\n}\n.ksa-entry-ui .reholder-cert-input[data-v-045ba5dd] {\n    max-width: 560px;\n}\n\n/* ============================================================\n   RESPONSIVE\n   ============================================================ */\n@media (max-width: 767px) {\n.grading-table-container[data-v-045ba5dd] {\n        padding: 10px;\n}\n.grading-order-header h5[data-v-045ba5dd] {\n        font-size: 15px;\n}\n.confirm-all-wrap[data-v-045ba5dd] {\n        justify-content: stretch;\n}\n.confirm-all-btn[data-v-045ba5dd] {\n        width: 100%;\n}\n.ksa-entry-ui .item-details-box[data-v-045ba5dd] {\n        min-height: auto;\n}\n.ksa-entry-ui .quantity-box[data-v-045ba5dd] {\n        min-height: 60px;\n        margin-bottom: 12px;\n}\n.ksa-entry-ui .quantity-title[data-v-045ba5dd] {\n        margin-bottom: 8px;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

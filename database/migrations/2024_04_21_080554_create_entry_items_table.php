@@ -53,6 +53,7 @@ return new class extends Migration
             $table->string('combined_service_autographed')->nullable();
             $table->string('combined_service_authenticator_name')->nullable();
             $table->string('combined_service_authenticator_cert_no')->nullable();
+            $table->string('combined_service_certified_on_card')->nullable();
             $table->string('combined_service_estimated_value')->nullable();
 
             $table->string('combined_service_item_grade')->nullable();

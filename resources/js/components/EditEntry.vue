@@ -1,60 +1,59 @@
 <template>
     <div class="">
-            <!--            :title="`Create Third party with ${step_count} steps`"-->
-            <!--        :subtitle="form_wizard_subtitle"-->
-            <!--        @on-change="handleTabChange"-->
+        <!--            :title="`Create Third party with ${step_count} steps`"-->
+        <!--        :subtitle="form_wizard_subtitle"-->
+        <!--        @on-change="handleTabChange"-->
 
 
-            <form-wizard
-                @on-complete="submit"
-                color="#3476ae"
-                title=""
-                subtitle=""
-                next-button-text="Continue"
-                finish-button-text="Save"
-                :start-index="startIndex"
-            >
+        <form-wizard
+            @on-complete="submit"
+            color="#3476ae"
+            title=""
+            subtitle=""
+            next-button-text="Continue"
+            finish-button-text="Save"
+            :start-index="startIndex"
+        >
 
-                <template v-slot:footer="props">
-                    <div class="wizard-footer-left">
-                        <wizard-button  v-if="props.activeTabIndex > 0" @click.native="props.prevTab()" :style="props.fillButtonStyle">Back</wizard-button>
-                    </div>
-                    <div class="wizard-footer-right">
-                        <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
-                        <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
-                        <span class="" v-else>
+            <template v-slot:footer="props">
+                <div class="wizard-footer-left">
+                    <wizard-button  v-if="props.activeTabIndex > 0" @click.native="props.prevTab()" :style="props.fillButtonStyle">Back</wizard-button>
+                </div>
+                <div class="wizard-footer-right">
+                    <wizard-button @click.native="cancel" class="wizard-footer-right finish-button" style="background: orange;margin-left: 15px;color: white;">Cancel</wizard-button>
+                    <wizard-button v-if="!props.isLastStep"@click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Continue</wizard-button>
+                    <span class="" v-else>
                             <wizard-button @click.native="received(item.id)" :disabled="form_data.entries.length > 0" class="wizard-footer-right" :style="props.fillButtonStyle">Receive Complete</wizard-button>
                             <wizard-button @click.native="submitMultiEntryID" :disabled="form_data.selectedEntries.length === 0" class="wizard-footer-right" style="margin-right: 15px; background-color: #1f91f3; color: white;">Set these item to received</wizard-button>
                         </span>
-                    </div>
-                </template>
-                <tab-content
-                    title="Customer Info"
-                    icon="ti-user"
-                    :before-change="checkFirstStep"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Customer Name
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="form_data.customer"
-                                                        @change="customerNameChangeEvent"
-                                                >
-                                                    <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(customer,index) in customers" :value="customer" :key="customer.id">{{customer.name}}</option>
-                                                </select>
-                                                <!--                                            <Select2 v-model="form_data.name" :options="customers" placeholder="Select customer..." @change="customerNameChangeEvent($event)" />-->
-                                                <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">
-                                                    Customer name is required
-                                                </div>
+                </div>
+            </template>
+            <tab-content
+                title="Customer Info"
+                icon="ti-user"
+                :before-change="checkFirstStep"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Customer Name
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="form_data.customer"
+                                                    @change="customerNameChangeEvent"
+                                            >
+                                                <option selected disabled>Open this select menu</option>
+                                                <option v-for="(customer,index) in customers" :value="customer" :key="customer.id">{{customer.name}}</option>
+                                            </select>
+                                            <!--                                            <Select2 v-model="form_data.name" :options="customers" placeholder="Select customer..." @change="customerNameChangeEvent($event)" />-->
+                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">
+                                                Customer name is required
                                             </div>
                                         </div>
                                     </div>
@@ -62,94 +61,94 @@
                             </div>
                         </div>
                     </div>
-                </tab-content>
-                <tab-content
-                    title="Grading Location"
-                    icon="ti-map-alt"
-                    :before-change="checkSecondStep"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!--                        <div class="card shipping_address_card">-->
-                            <!--                            <div class="card-body">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Drop Off Center-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
-                            <!--                                                Name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100">-->
-                            <!--                                                Contact Name-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
-                            <!--                                                contact name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Email Address-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="email"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.email.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
-                            <!--                                                email is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                        </div>-->
-<!--                            <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>-->
-                        </div>
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Select the grading location for this order
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="v$.form_data.grading_location.$model"
-                                                >
-                                                    <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(location,index) in gradingLocations" :value="location.id" :key="location.id">{{location.name}}</option>
-                                                </select>
+                </div>
+            </tab-content>
+            <tab-content
+                title="Grading Location"
+                icon="ti-map-alt"
+                :before-change="checkSecondStep"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--                        <div class="card shipping_address_card">-->
+                        <!--                            <div class="card-body">-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100 text-capitalize">-->
+                        <!--                                                Drop Off Center-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="text"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.name.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
+                        <!--                                                Name is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100">-->
+                        <!--                                                Contact Name-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="text"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
+                        <!--                                                contact name is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100 text-capitalize">-->
+                        <!--                                                Email Address-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="email"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.email.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
+                        <!--                                                email is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                            <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>-->
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Select the grading location for this order
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="v$.form_data.grading_location.$model"
+                                            >
+                                                <option selected disabled>Open this select menu</option>
+                                                <option v-for="(location,index) in gradingLocations" :value="location.id" :key="location.id">{{location.name}}</option>
+                                            </select>
 
-                                                <!--                                            <Select2 v-model="form_data.grading_location" :options="gradingLocations" />-->
-                                                <div class="error" v-if="v$.form_data.grading_location.required.$invalid && show_error_two">
-                                                    Grading location is required
-                                                </div>
+                                            <!--                                            <Select2 v-model="form_data.grading_location" :options="gradingLocations" />-->
+                                            <div class="error" v-if="v$.form_data.grading_location.required.$invalid && show_error_two">
+                                                Grading location is required
                                             </div>
                                         </div>
                                     </div>
@@ -157,204 +156,722 @@
                             </div>
                         </div>
                     </div>
-                </tab-content>
-                <tab-content
-                    title="Billing Address"
-                    icon="ti-infinite"
-                    :before-change="checkThirdStep"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!--                        <div class="card shipping_address_card">-->
-                            <!--                            <div class="card-body">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Drop Off Center-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
-                            <!--                                                Name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100">-->
-                            <!--                                                Contact Name-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
-                            <!--                                                contact name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Email Address-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="email"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.email.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
-                            <!--                                                email is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                        </div>-->
-<!--                            <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>-->
-                        </div>
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
+                </div>
+            </tab-content>
+            <tab-content
+                title="Billing Address"
+                icon="ti-infinite"
+                :before-change="checkThirdStep"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--                        <div class="card shipping_address_card">-->
+                        <!--                            <div class="card-body">-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100 text-capitalize">-->
+                        <!--                                                Drop Off Center-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="text"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.name.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
+                        <!--                                                Name is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100">-->
+                        <!--                                                Contact Name-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="text"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
+                        <!--                                                contact name is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100 text-capitalize">-->
+                        <!--                                                Email Address-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="email"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.email.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
+                        <!--                                                email is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                            <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>-->
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Address Line one
+                                                <span class="error">*</span>
+                                            </label>
+                                            <input
+                                                autofocus
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.billing_address_line_one.$model"
+                                                ref="billing_address_line_one"
+                                            />
+                                            <div class="error" v-if="v$.form_data.billing_address_line_one.required.$invalid && show_error_three">
+                                                One Address Line is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Address Line two
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="form_data.billing_address_line_two"
+                                            />
+                                            <!--                                            <div class="error" v-if="v$.form_data.billing_address_line_two.required.$invalid && show_error">-->
+                                            <!--                                                Second address Line two is required-->
+                                            <!--                                            </div>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                City
+                                                <span class="error">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.billing_city.$model"
+                                            />
+                                            <div class="error" v-if="v$.form_data.billing_city.required.$invalid && show_error_three">
+                                                City is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Province/State
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="v$.form_data.billing_province.$model"
+                                            >
+                                                <option selected disabled>Open this select menu</option>
+                                                <option v-for="(province,index) in provinces" :value="province.name.toLowerCase()" :key="province.id">{{province.name}}</option>
+                                            </select>
+                                            <div class="error" v-if="v$.form_data.billing_province.required.$invalid && show_error_three">
+                                                Province is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                postal/Zip code
+                                                <span class="error">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.billing_postal.$model"
+                                                @input="event => v$.form_data.billing_postal.$model = event.target.value.toUpperCase()"
+                                            />
+                                            <div class="error" v-if="v$.form_data.billing_postal.required.$invalid && show_error_three">
+                                                Postal is required
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Address Line one
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <input
-                                                    autofocus
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.billing_address_line_one.$model"
-                                                    ref="billing_address_line_one"
-                                                />
-                                                <div class="error" v-if="v$.form_data.billing_address_line_one.required.$invalid && show_error_three">
-                                                    One Address Line is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Address Line two
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="form_data.billing_address_line_two"
-                                                />
-                                                <!--                                            <div class="error" v-if="v$.form_data.billing_address_line_two.required.$invalid && show_error">-->
-                                                <!--                                                Second address Line two is required-->
-                                                <!--                                            </div>-->
-                                            </div>
-                                        </div>
-
                                         <div class="col-md-3">
                                             <div class="mb-3">
                                                 <label class="form-label w-100 text-capitalize">
-                                                    City
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.billing_city.$model"
-                                                />
-                                                <div class="error" v-if="v$.form_data.billing_city.required.$invalid && show_error_three">
-                                                    City is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Province/State
+                                                    Country
                                                     <span class="error">*</span>
                                                 </label>
                                                 <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="v$.form_data.billing_province.$model"
+                                                        v-model.trim="v$.form_data.billing_country.$model"
                                                 >
                                                     <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(province,index) in provinces" :value="province.name.toLowerCase()" :key="province.id">{{province.name}}</option>
+                                                    <option v-for="(country,index) in countries" :value="country.name.toLowerCase()" :key="country.id">{{country.name}}</option>
                                                 </select>
-                                                <div class="error" v-if="v$.form_data.billing_province.required.$invalid && show_error_three">
-                                                    Province is required
+                                                <div class="error" v-if="v$.form_data.billing_country.required.$invalid && show_error_three">
+                                                    Country is required
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label w-100 text-capitalize">
+                                                    Telephone#
+                                                    <!--                                                        <span class="error">*</span>-->
+                                                </label>
+                                                <VuePhoneNumberInput
+                                                    id="phoneNumber1"
+                                                    class="mb-text-only"
+                                                    v-model.trim="form_data.billing_phone"
+                                                    default-country-code="CA"
+                                                    :only-countries="countries_phone"
+                                                    style="background-color: #e8f0fe !important;"
+                                                />
+                                                <!--                                                    <div class="error" v-if="v$.form_data.billing_phone.required.$invalid && show_error_three">-->
+                                                <!--                                                        Phone is required-->
+                                                <!--                                                    </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab-content>
+            <tab-content
+                title="Shipping Address"
+                icon="ti-infinite"
+                :before-change="checkFourthStep"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--                        <div class="card shipping_address_card">-->
+                        <!--                            <div class="card-body">-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100 text-capitalize">-->
+                        <!--                                                Drop Off Center-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="text"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.name.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
+                        <!--                                                Name is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100">-->
+                        <!--                                                Contact Name-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="text"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
+                        <!--                                                contact name is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-md-4">-->
+                        <!--                                        <div class="mb-3">-->
+                        <!--                                            <label class="form-label w-100 text-capitalize">-->
+                        <!--                                                Email Address-->
+                        <!--                                            </label>-->
+                        <!--                                            <input-->
+                        <!--                                                type="email"-->
+                        <!--                                                class="form-control md-readonly"-->
+                        <!--                                                placeholder=""-->
+                        <!--                                                v-model.trim="v$.form_data.email.$model"-->
+                        <!--                                                readonly-->
+                        <!--                                            />-->
+                        <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
+                        <!--                                                email is required-->
+                        <!--                                            </div>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                            <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>-->
+                    </div>
 
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3 d-flex justify-content-start">
+                                            <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                Same as billing address
+                                            </label>
+                                            <input
+                                                type="checkbox"
+                                                class="form-check"
+                                                placeholder=""
+                                                v-model.trim="form_data.same_as_billing"
+                                                @change="sameAsBillingChanged($event)"
+                                            />
+                                            <!--                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">-->
+                                            <!--                                                Same as Billing is required-->
+                                            <!--                                            </div>-->
+                                        </div>
+                                    </div>
 
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Customer Name (if different)
+                                            </label>
+                                            <input
+                                                autofocus
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="form_data.shipping_name"
+                                                ref="shipping_name"
+                                            />
+                                            <!--                                            <div class="error" v-if="v$.form_data.shipping_name.required.$invalid && show_error">-->
+                                            <!--                                                Name for shipping is required-->
+                                            <!--                                            </div>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Contact Name (if different)
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.shipping_company_name.$model"
+                                            />
+                                            <!--                                            <div class="error" v-if="v$.form_data.shipping_company_name.required.$invalid && show_error">-->
+                                            <!--                                                Company name is required-->
+                                            <!--                                            </div>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Address Line one
+                                                <span class="error">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.shipping_address_line_one.$model"
+                                            />
+                                            <div class="error" v-if="v$.form_data.shipping_address_line_one.required.$invalid && show_error_four">
+                                                One Address is required for shipping
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Address Line two
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="form_data.shipping_address_line_two"
+                                            />
+                                            <!--                                            <div class="error" v-if="v$.form_data.shipping_address_line_two.required.$invalid && show_error">-->
+                                            <!--                                                Second shipping address required-->
+                                            <!--                                            </div>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                City
+                                                <span class="error">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.shipping_city.$model"
+                                            />
+                                            <div class="error" v-if="v$.form_data.shipping_city.required.$invalid && show_error_four">
+                                                city is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Province/State
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="v$.form_data.shipping_province.$model"
+                                            >
+                                                <option selected disabled>Open this select menu</option>
+                                                <option v-for="(province,index) in provinces" :value="province.name.toLowerCase()" :key="province.id">{{province.name}}</option>
+                                            </select>
+                                            <div class="error" v-if="v$.form_data.shipping_province.required.$invalid && show_error_four">
+                                                Province is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                postal/Zip code
+                                                <span class="error">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.shipping_postal.$model"
+                                                @input="event => v$.form_data.shipping_postal.$model = event.target.value.toUpperCase()"
+                                            />
+                                            <div class="error" v-if="v$.form_data.shipping_postal.required.$invalid && show_error_four">
+                                                Postal is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-md-3">
                                             <div class="mb-3">
                                                 <label class="form-label w-100 text-capitalize">
-                                                    postal/Zip code
+                                                    Country
                                                     <span class="error">*</span>
                                                 </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.billing_postal.$model"
-                                                    @input="event => v$.form_data.billing_postal.$model = event.target.value.toUpperCase()"
-                                                />
-                                                <div class="error" v-if="v$.form_data.billing_postal.required.$invalid && show_error_three">
-                                                    Postal is required
+                                                <select class="form-select mb-text-only" aria-label="Default select example"
+                                                        v-model.trim="v$.form_data.shipping_country.$model"
+                                                >
+                                                    <option selected disabled>Open this select menu</option>
+                                                    <option v-for="(country,index) in countries" :value="country.name.toLowerCase()" :key="country.id">{{country.name}}</option>
+                                                </select>
+                                                <div class="error" v-if="v$.form_data.shipping_country.required.$invalid && show_error_four">
+                                                    Country is required
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label w-100 text-capitalize">
+                                                    Telephone#
+                                                    <!--                                                        <span class="error">*</span>-->
+                                                </label>
+                                                <VuePhoneNumberInput
+                                                    id="phoneNumber1"
+                                                    class="mb-text-only"
+                                                    v-model.trim="form_data.shipping_phone"
+                                                    default-country-code="CA"
+                                                    :only-countries="countries_phone"
+                                                />
+                                                <!--                                                    <div class="error" v-if="v$.form_data.shipping_phone.required.$invalid && show_error_four">-->
+                                                <!--                                                        Phone is required-->
+                                                <!--                                                    </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </tab-content>
+            <tab-content
+                title="Extra Fields"
+                icon="ti-server"
+                :before-change="checkFifthStep"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Submission date
+                                                <span class="error">*</span>
+                                            </label>
+                                            <input
+                                                autofocus
+                                                type="date"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="v$.form_data.submission_date.$model"
+                                                ref="billing_address_line_one"
+                                            />
+                                            <div class="error" v-if="v$.form_data.submission_date.required.$invalid && show_error_five">
+                                                Submission date is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Promo code
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="form_data.promo_code"
+                                            >
+                                                <option selected disabled v-if="promos.length > 0">Open this select menu</option>
+                                                <option selected disabled v-else>There is no promo code</option>
+                                                <option v-for="(promo,index) in promos" :value="promo.id" :key="promo.id">{{promo.name}}</option>
+                                            </select>
+                                            <!--                                            <Select2 v-model="form_data.promo_code" :options="promoCodes" />-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
+                                            <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                Payment Made
+                                            </label>
+                                            <input
+                                                type="radio"
+                                                class="form-check"
+                                                name="payment_method"
+                                                placeholder=""
+                                                value="pym"
+                                                v-model.trim="form_data.payment_method"
+                                            />
+                                            <!--                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">-->
+                                            <!--                                                Same as Billing is required-->
+                                            <!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
+                                            <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                Pay on pickup
+                                            </label>
+                                            <input
+                                                type="radio"
+                                                class="form-check"
+                                                name="payment_method"
+                                                placeholder=""
+                                                value="pop"
+                                                v-model.trim="form_data.payment_method"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
+                                            <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                COD
+                                            </label>
+                                            <input
+                                                type="radio"
+                                                class="form-check"
+                                                name="payment_method"
+                                                placeholder=""
+                                                value="cod"
+                                                v-model.trim="form_data.payment_method"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
+                                            <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                N/A
+                                            </label>
+                                            <input
+                                                type="radio"
+                                                class="form-check"
+                                                name="payment_method"
+                                                placeholder=""
+                                                value="n/a"
+                                                v-model.trim="form_data.payment_method"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Shopify order number
+                                            </label>
+                                            <input
+                                                type="number"
+                                                class="form-control mb-text-only"
+                                                placeholder=""
+                                                v-model.trim="form_data.shopify_order_number"
+                                            />
+                                            <!--                                                <div class="error" v-if="v$.form_data.billing_city.required.$invalid && show_error_two">-->
+                                            <!--                                                    City is required-->
+                                            <!--                                                </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab-content>
+            <tab-content
+                title="Shipping Method"
+                icon="ti-credit-card"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Shipping Method
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="form_data.shipping_method"
+                                                    @change="shippingMethodsChangeEvent"
+                                            >
+                                                <option selected disabled>Open this select menu</option>
+                                                <option v-for="(shipping,index) in shippingMethods" :value="shipping.name" :key="shipping.id">{{shipping.name}}</option>
+                                            </select>
+                                            <!--                                            <Select2 v-model="form_data.shipping_method" :options="shippingMethods" @change="shippingMethodsChangeEvent($event)" />-->
+                                            <div class="error" v-if="v$.form_data.shipping_method.required.$invalid && show_error_six">
+                                                Shipping method is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" v-if="showPickupLocationBox">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Pickup location
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="form_data.pickup_location"
+                                            >
+                                                <option selected disabled>Open this select menu</option>
+                                                <option v-for="(pickup,index) in pickUpLocations" :value="pickup.name" :key="pickup.id">{{pickup.name}}</option>
+                                            </select>
+                                            <!--                                            <Select2 v-model="form_data.pickup_location" :options="pickUpLocations" />-->
+                                            <div class="error" v-if="v$.form_data.pickup_location.required.$invalid && show_error_seven">
+                                                Pickup location is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" v-if="showShowPickupLocationBox">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Pickup Location
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="form_data.show_pickup_location"
+                                            >
+                                                <option selected disabled>Open this select menu</option>
+                                                <option v-for="(showPickup,index) in pickUpLocations" :value="showPickup.name" :key="showPickup.id">{{showPickup.name}}</option>
+                                            </select>
+                                            <!--                                            <Select2 v-model="form_data.show_pickup_location" :options="pickUpLocations" />-->
+                                            <div class="error" v-if="v$.form_data.show_pickup_location.required.$invalid && show_error_eight">
+                                                Pickup location is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" v-if="showThirdPartyBox">
+                                        <div class="mb-3">
+                                            <label class="form-label w-100 text-capitalize">
+                                                Third party drop off center
+                                                <span class="error">*</span>
+                                            </label>
+                                            <select class="form-select mb-text-only" aria-label="Default select example"
+                                                    v-model.trim="form_data.third_party_drop_center"
+                                            >
+                                                <option selected disabled v-if="parties.length > 0">Open this select menu</option>
+                                                <option selected disabled v-else>There is no third party</option>
+                                                <option v-for="(third,index) in parties" :value="third.id" :key="third.id">{{third.name}}</option>
+                                            </select>
+                                            <div class="error" v-if="v$.form_data.third_party_drop_center.required.$invalid && show_error_nine">
+                                                Third party drop off center is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" v-if="showUPSBox">
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
+                                                <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
+                                                    <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
+                                                        Use Customer Account
+                                                    </label>
+                                                    <input
+                                                        type="checkbox"
+                                                        class="form-check"
+                                                        placeholder=""
+                                                        v-model.trim="form_data.use_customer_account"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label w-100 text-capitalize">
-                                                        Country
+                                                        Customer Account number
                                                         <span class="error">*</span>
                                                     </label>
-                                                    <select class="form-select mb-text-only" aria-label="Default select example"
-                                                            v-model.trim="v$.form_data.billing_country.$model"
-                                                    >
-                                                        <option selected disabled>Open this select menu</option>
-                                                        <option v-for="(country,index) in countries" :value="country.name.toLowerCase()" :key="country.id">{{country.name}}</option>
-                                                    </select>
-                                                    <div class="error" v-if="v$.form_data.billing_country.required.$invalid && show_error_three">
-                                                        Country is required
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100 text-capitalize">
-                                                        Telephone#
-<!--                                                        <span class="error">*</span>-->
-                                                    </label>
-                                                    <VuePhoneNumberInput
-                                                        id="phoneNumber1"
-                                                        class="mb-text-only"
-                                                        v-model.trim="form_data.billing_phone"
-                                                        default-country-code="CA"
-                                                        :only-countries="countries_phone"
-                                                        style="background-color: #e8f0fe !important;"
+                                                    <input
+                                                        type="number"
+                                                        class="form-control mb-text-only"
+                                                        placeholder=""
+                                                        v-model.trim="form_data.customer_account_number"
                                                     />
-<!--                                                    <div class="error" v-if="v$.form_data.billing_phone.required.$invalid && show_error_three">-->
-<!--                                                        Phone is required-->
-<!--                                                    </div>-->
+                                                    <!--                                                        <div class="error" v-if="v$.form_data.customer_account_number.required.$invalid && show_error_ten">-->
+                                                    <!--                                                            Customer account number is required-->
+                                                    <!--                                                        </div>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -363,1452 +880,315 @@
                             </div>
                         </div>
                     </div>
-                </tab-content>
-                <tab-content
-                    title="Shipping Address"
-                    icon="ti-infinite"
-                    :before-change="checkFourthStep"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!--                        <div class="card shipping_address_card">-->
-                            <!--                            <div class="card-body">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Drop Off Center-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.name.required.$invalid && show_error_one">-->
-                            <!--                                                Name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100">-->
-                            <!--                                                Contact Name-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="text"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.contact_name.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.contact_name.required.$invalid && show_error_one">-->
-                            <!--                                                contact name is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-md-4">-->
-                            <!--                                        <div class="mb-3">-->
-                            <!--                                            <label class="form-label w-100 text-capitalize">-->
-                            <!--                                                Email Address-->
-                            <!--                                            </label>-->
-                            <!--                                            <input-->
-                            <!--                                                type="email"-->
-                            <!--                                                class="form-control md-readonly"-->
-                            <!--                                                placeholder=""-->
-                            <!--                                                v-model.trim="v$.form_data.email.$model"-->
-                            <!--                                                readonly-->
-                            <!--                                            />-->
-                            <!--                                            <div class="error" v-if="v$.form_data.email.required.$invalid && show_error_one">-->
-                            <!--                                                email is required-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                        </div>-->
-<!--                            <h3 class="mb-only-name">{{v$.form_data.name.$model}}</h3>-->
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="mb-3 d-flex justify-content-start">
-                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                    Same as billing address
-                                                </label>
-                                                <input
-                                                    type="checkbox"
-                                                    class="form-check"
-                                                    placeholder=""
-                                                    v-model.trim="form_data.same_as_billing"
-                                                    @change="sameAsBillingChanged($event)"
-                                                />
-                                                <!--                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">-->
-                                                <!--                                                Same as Billing is required-->
-                                                <!--                                            </div>-->
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Customer Name (if different)
-                                                </label>
-                                                <input
-                                                    autofocus
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="form_data.shipping_name"
-                                                    ref="shipping_name"
-                                                />
-                                                <!--                                            <div class="error" v-if="v$.form_data.shipping_name.required.$invalid && show_error">-->
-                                                <!--                                                Name for shipping is required-->
-                                                <!--                                            </div>-->
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Contact Name (if different)
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.shipping_company_name.$model"
-                                                />
-                                                <!--                                            <div class="error" v-if="v$.form_data.shipping_company_name.required.$invalid && show_error">-->
-                                                <!--                                                Company name is required-->
-                                                <!--                                            </div>-->
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Address Line one
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.shipping_address_line_one.$model"
-                                                />
-                                                <div class="error" v-if="v$.form_data.shipping_address_line_one.required.$invalid && show_error_four">
-                                                    One Address is required for shipping
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Address Line two
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="form_data.shipping_address_line_two"
-                                                />
-                                                <!--                                            <div class="error" v-if="v$.form_data.shipping_address_line_two.required.$invalid && show_error">-->
-                                                <!--                                                Second shipping address required-->
-                                                <!--                                            </div>-->
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    City
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.shipping_city.$model"
-                                                />
-                                                <div class="error" v-if="v$.form_data.shipping_city.required.$invalid && show_error_four">
-                                                    city is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Province/State
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="v$.form_data.shipping_province.$model"
-                                                >
-                                                    <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(province,index) in provinces" :value="province.name.toLowerCase()" :key="province.id">{{province.name}}</option>
-                                                </select>
-                                                <div class="error" v-if="v$.form_data.shipping_province.required.$invalid && show_error_four">
-                                                    Province is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    postal/Zip code
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.shipping_postal.$model"
-                                                    @input="event => v$.form_data.shipping_postal.$model = event.target.value.toUpperCase()"
-                                                />
-                                                <div class="error" v-if="v$.form_data.shipping_postal.required.$invalid && show_error_four">
-                                                    Postal is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100 text-capitalize">
-                                                        Country
-                                                        <span class="error">*</span>
-                                                    </label>
-                                                    <select class="form-select mb-text-only" aria-label="Default select example"
-                                                            v-model.trim="v$.form_data.shipping_country.$model"
-                                                    >
-                                                        <option selected disabled>Open this select menu</option>
-                                                        <option v-for="(country,index) in countries" :value="country.name.toLowerCase()" :key="country.id">{{country.name}}</option>
-                                                    </select>
-                                                    <div class="error" v-if="v$.form_data.shipping_country.required.$invalid && show_error_four">
-                                                        Country is required
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100 text-capitalize">
-                                                        Telephone#
-<!--                                                        <span class="error">*</span>-->
-                                                    </label>
-                                                    <VuePhoneNumberInput
-                                                        id="phoneNumber1"
-                                                        class="mb-text-only"
-                                                        v-model.trim="form_data.shipping_phone"
-                                                        default-country-code="CA"
-                                                        :only-countries="countries_phone"
-                                                    />
-<!--                                                    <div class="error" v-if="v$.form_data.shipping_phone.required.$invalid && show_error_four">-->
-<!--                                                        Phone is required-->
-<!--                                                    </div>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </tab-content>
-                <tab-content
-                    title="Extra Fields"
-                    icon="ti-server"
-                    :before-change="checkFifthStep"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Submission date
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <input
-                                                    autofocus
-                                                    type="date"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="v$.form_data.submission_date.$model"
-                                                    ref="billing_address_line_one"
-                                                />
-                                                <div class="error" v-if="v$.form_data.submission_date.required.$invalid && show_error_five">
-                                                    Submission date is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Promo code
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="form_data.promo_code"
-                                                >
-                                                    <option selected disabled v-if="promos.length > 0">Open this select menu</option>
-                                                    <option selected disabled v-else>There is no promo code</option>
-                                                    <option v-for="(promo,index) in promos" :value="promo.id" :key="promo.id">{{promo.name}}</option>
-                                                </select>
-                                                <!--                                            <Select2 v-model="form_data.promo_code" :options="promoCodes" />-->
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2">
-                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
-                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                    Payment Made
-                                                </label>
-                                                <input
-                                                    type="radio"
-                                                    class="form-check"
-                                                    name="payment_method"
-                                                    placeholder=""
-                                                    value="pym"
-                                                    v-model.trim="form_data.payment_method"
-                                                />
-                                                <!--                                            <div class="error" v-if="v$.form_data.same_as_billing.required.$invalid && show_error">-->
-                                                <!--                                                Same as Billing is required-->
-                                                <!--                                            </div>-->
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
-                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                    Pay on pickup
-                                                </label>
-                                                <input
-                                                    type="radio"
-                                                    class="form-check"
-                                                    name="payment_method"
-                                                    placeholder=""
-                                                    value="pop"
-                                                    v-model.trim="form_data.payment_method"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
-                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                    COD
-                                                </label>
-                                                <input
-                                                    type="radio"
-                                                    class="form-check"
-                                                    name="payment_method"
-                                                    placeholder=""
-                                                    value="cod"
-                                                    v-model.trim="form_data.payment_method"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <div class="mb-3 d-flex justify-content-end" style="margin-top: 25px;">
-                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                    N/A
-                                                </label>
-                                                <input
-                                                    type="radio"
-                                                    class="form-check"
-                                                    name="payment_method"
-                                                    placeholder=""
-                                                    value="n/a"
-                                                    v-model.trim="form_data.payment_method"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Shopify order number
-                                                </label>
-                                                <input
-                                                    type="number"
-                                                    class="form-control mb-text-only"
-                                                    placeholder=""
-                                                    v-model.trim="form_data.shopify_order_number"
-                                                />
-<!--                                                <div class="error" v-if="v$.form_data.billing_city.required.$invalid && show_error_two">-->
-<!--                                                    City is required-->
-<!--                                                </div>-->
-                                            </div>
+                </div>
+            </tab-content>
+            <tab-content
+                title="Quantity"
+                icon="ti-package"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label text-capitalize">
+                                                Number of items in this order
+                                            </label>
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                placeholder="Number of items (Number only)"
+                                                v-model.trim="form_data.item_qty"
+                                            />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </tab-content>
-                <tab-content
-                    title="Shipping Method"
-                    icon="ti-credit-card"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Shipping Method
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="form_data.shipping_method"
-                                                        @change="shippingMethodsChangeEvent"
-                                                >
-                                                    <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(shipping,index) in shippingMethods" :value="shipping.name" :key="shipping.id">{{shipping.name}}</option>
-                                                </select>
-                                                <!--                                            <Select2 v-model="form_data.shipping_method" :options="shippingMethods" @change="shippingMethodsChangeEvent($event)" />-->
-                                                <div class="error" v-if="v$.form_data.shipping_method.required.$invalid && show_error_six">
-                                                    Shipping method is required
-                                                </div>
-                                            </div>
-                                        </div>
+                </div>
+            </tab-content>
+            <tab-content
+                title="Item Type"
+                icon="ti-gift"
+            >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shipping_address_card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered mb-0">
 
-                                        <div class="col-md-6" v-if="showPickupLocationBox">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Pickup location
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="form_data.pickup_location"
-                                                >
-                                                    <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(pickup,index) in pickUpLocations" :value="pickup.name" :key="pickup.id">{{pickup.name}}</option>
-                                                </select>
-                                                <!--                                            <Select2 v-model="form_data.pickup_location" :options="pickUpLocations" />-->
-                                                <div class="error" v-if="v$.form_data.pickup_location.required.$invalid && show_error_seven">
-                                                    Pickup location is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6" v-if="showShowPickupLocationBox">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Pickup Location
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="form_data.show_pickup_location"
-                                                >
-                                                    <option selected disabled>Open this select menu</option>
-                                                    <option v-for="(showPickup,index) in pickUpLocations" :value="showPickup.name" :key="showPickup.id">{{showPickup.name}}</option>
-                                                </select>
-                                                <!--                                            <Select2 v-model="form_data.show_pickup_location" :options="pickUpLocations" />-->
-                                                <div class="error" v-if="v$.form_data.show_pickup_location.required.$invalid && show_error_eight">
-                                                    Pickup location is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6" v-if="showThirdPartyBox">
-                                            <div class="mb-3">
-                                                <label class="form-label w-100 text-capitalize">
-                                                    Third party drop off center
-                                                    <span class="error">*</span>
-                                                </label>
-                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                        v-model.trim="form_data.third_party_drop_center"
-                                                >
-                                                    <option selected disabled v-if="parties.length > 0">Open this select menu</option>
-                                                    <option selected disabled v-else>There is no third party</option>
-                                                    <option v-for="(third,index) in parties" :value="third.id" :key="third.id">{{third.name}}</option>
-                                                </select>
-                                                <div class="error" v-if="v$.form_data.third_party_drop_center.required.$invalid && show_error_nine">
-                                                    Third party drop off center is required
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6" v-if="showUPSBox">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
-                                                        <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                            Use Customer Account
+                                                <thead class="text-center">
+                                                <tr>
+                                                    <th>
+                                                        <!-- Select All Checkbox -->
+                                                        <label>
+                                                            <input type="checkbox" v-model="selectAll" @change="toggleSelectAll"> Select All
                                                         </label>
-                                                        <input
-                                                            type="checkbox"
-                                                            class="form-check"
-                                                            placeholder=""
-                                                            v-model.trim="form_data.use_customer_account"
-                                                        />
-                                                    </div>
-                                                </div>
+                                                    </th>
+                                                    <th>No.</th>
+                                                    <th>Item Type</th>
+                                                    <th>Sub Type</th>
+                                                    <th>Description</th>
+                                                    <th>Serial Number</th>
+                                                    <th>Autographed</th>
+                                                    <th>Authenticator</th>
+                                                    <th>Certificate No.</th>
+                                                    <th>Edit</th>
+                                                    <th>Remove</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
 
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label w-100 text-capitalize">
-                                                            Customer Account number
-                                                            <span class="error">*</span>
-                                                        </label>
-                                                        <input
-                                                            type="number"
-                                                            class="form-control mb-text-only"
-                                                            placeholder=""
-                                                            v-model.trim="form_data.customer_account_number"
-                                                        />
-<!--                                                        <div class="error" v-if="v$.form_data.customer_account_number.required.$invalid && show_error_ten">-->
-<!--                                                            Customer account number is required-->
-<!--                                                        </div>-->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </tab-content>
-                <tab-content
-                    title="Quantity"
-                    icon="ti-package"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label text-capitalize">
-                                                    Number of items in this order
-                                                </label>
-                                                <input
-                                                    type="number"
-                                                    class="form-control"
-                                                    placeholder="Number of items (Number only)"
-                                                    v-model.trim="form_data.item_qty"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </tab-content>
-                <tab-content
-                    title="Item Type"
-                    icon="ti-gift"
-                >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card shipping_address_card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered mb-0">
+                                                <tr v-for="(entry,index) in form_data.entries" :key="entry.entryItemId">
+                                                    <td>
+                                                        <input type="checkbox" :value="entry.entryItemId" v-model="form_data.selectedEntries">
+                                                    </td>
+                                                    <td class="text-capitalize">{{index+1}}</td>
+                                                    <td>{{entry.itemType}}</td>
+                                                    <td>{{entry.itemType == 'Crossover' ? entry.crossover_item_type : 'N/A'}}</td>
 
-                                                    <thead class="text-center">
-                                                    <tr>
-                                                        <th>
-                                                            <!-- Select All Checkbox -->
-                                                            <label>
-                                                                <input type="checkbox" v-model="selectAll" @change="toggleSelectAll"> Select All
-                                                            </label>
-                                                        </th>
-                                                        <th>No.</th>
-                                                        <th>Item Type</th>
-                                                        <th>Sub Type</th>
-                                                        <th>Description</th>
-                                                        <th>Serial Number</th>
-                                                        <th>Autographed</th>
-                                                        <th>Authenticator</th>
-                                                        <th>Certificate No.</th>
-                                                        <th>Edit</th>
-                                                        <th>Remove</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
+                                                    <!-- Description -->
+                                                    <td class="item-description">
+                                                        <template v-if="entry.prefix">
+                                                            <span v-for="(line, i) in descriptionsOf(entry)" :key="i">{{line}}</span>
+                                                            <span v-if="descriptionsOf(entry).length === 0" class="text-muted-na">—</span>
+                                                        </template>
+                                                        <span v-else class="text-muted-na">N/A</span>
+                                                    </td>
 
+                                                    <!-- Serial Number -->
+                                                    <td>{{ entry.prefix ? (entry[entry.prefix + '_serial_number'] || '') : '' }}</td>
 
-                                                    <tr v-for="(entry,index) in form_data.entries" :key="entry.entryItemId">
-                                                        <td>
-                                                            <input type="checkbox" :value="entry.entryItemId" v-model="form_data.selectedEntries">
-                                                        </td>
-                                                        <td class="text-capitalize">{{index+1}}</td>
-                                                        <td class="text-capitalize">{{entry.itemType}}</td>
-                                                        <td>{{entry.itemType == 'Crossover' ? entry.crossover_item_type: 'N/A'}}</td>
+                                                    <!-- Autographed -->
+                                                    <td class="text-center">
+                                                        <template v-if="entry.prefix">
+                                                            {{ entry[entry.prefix + '_autographed'] ? 'Yes' : 'No' }}
+                                                        </template>
+                                                        <template v-else>N/A</template>
+                                                    </td>
 
-                                                        <td v-if="entry.itemType == 'Card'">
-                                                            <span>{{entry.card_description_one}}</span>
-                                                            <br>
-                                                            <span>{{entry.card_description_two}}</span>
-                                                            <br>
-                                                            <span>{{entry.card_description_three}}</span>
-                                                        </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Card'">{{entry.card_serial_number}}</td>
-                                                        <td class="text-center" v-if="entry.itemType == 'Card'">{{entry.card_autographed == 1 ? 'Yes' : 'No'}}</td>
+                                                    <!-- Authenticator -->
+                                                    <td>{{ authenticatorNameOf(entry) }}</td>
 
-                                                        <td v-if="entry.itemType == 'Autograph Authentication'">
-                                                            <span>{{entry.auto_authentication_description_one}}</span>
-                                                            <br>
-                                                            <span>{{entry.auto_authentication_description_two}}</span>
-                                                            <br>
-                                                            <span>{{entry.auto_authentication_description_three}}</span>
-                                                        </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Autograph Authentication'">{{entry.auto_authentication_serial_number}}</td>
-                                                        <td class="text-center" v-if="entry.itemType == 'Autograph Authentication'">{{entry.auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
+                                                    <!-- Certificate No. -->
+                                                    <td>{{ entry.prefix ? (entry[entry.prefix + '_authenticator_cert_no'] || 'N/A') : 'N/A' }}</td>
 
-
-                                                        <td v-if="entry.itemType == 'Combined Service'">
-                                                            <span>{{entry.combined_service_description_one}}</span>
-                                                            <br>
-                                                            <span>{{entry.combined_service_description_two}}</span>
-                                                            <br>
-                                                            <span>{{entry.combined_service_description_three}}</span>
-                                                        </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Combined Service'">{{entry.combined_service_serial_number}}</td>
-                                                        <td class="text-center" v-if="entry.itemType == 'Combined Service'">{{entry.combined_service_autographed == 1 ? 'Yes' : 'No'}}</td>
-
-                                                        <td v-if="entry.itemType == 'Reholder'">
-                                                            <span>N/A</span>
-                                                            <br>
-                                                            <span>N/A</span>
-                                                            <br>
-                                                            <span>N/A</span>
-                                                        </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Reholder'"></td>
-                                                        <td class="text-center" v-if="entry.itemType == 'Reholder'">N/A</td>
-
-                                                        <td v-if="entry.itemType == 'Crossover'">
-                                                            <span>{{entry.crossover_description_one}}</span>
-                                                            <br>
-                                                            <span>{{entry.crossover_description_two}}</span>
-                                                            <br>
-                                                            <span>{{entry.crossover_description_three}}</span>
-                                                        </td>
-                                                        <td class="text-capitalize" v-if="entry.itemType == 'Crossover'">{{entry.crossover_serial_number}}</td>
-                                                        <td class="text-center" v-if="entry.itemType == 'Crossover'">{{entry.crossover_autographed == 1 ? 'Yes' : 'No'}}</td>
-
-<!--                                                        <td class="text-capitalize">-->
-<!--                                                            {{-->
-<!--                                                                entry.itemType == 'Card' ? entry.card_authenticator_name :-->
-<!--                                                                    (entry.itemType == 'Autograph Authentication' ? entry.auto_authentication_authenticator_name :-->
-<!--                                                                        (entry.itemType == 'Combined Service' ? entry.combined_service_authenticator_name :-->
-<!--                                                                            (entry.itemType == 'Crossover' ? entry.crossover_authenticator_name : 'N/A')))-->
-<!--                                                            }}-->
-<!--                                                        </td>-->
-                                                        <td class="text-capitalize">
-                                                            {{ entry.authenticator_display_name }}
-                                                        </td>
-                                                        <td class="text-capitalize">
-                                                            {{
-                                                                entry.itemType == 'Card' ? entry.card_authenticator_cert_no :
-                                                                    (entry.itemType == 'Autograph Authentication' ? entry.auto_authentication_authenticator_cert_no :
-                                                                        (entry.itemType == 'Combined Service' ? entry.combined_service_authenticator_cert_no :
-                                                                            (entry.itemType == 'Crossover' ? entry.crossover_authenticator_cert_no : 'N/A')))
-                                                            }}
-                                                        </td>
-                                                        <td class="text-capitalize">
-                                                            <div class="text-center">
-                                                                <div class="">
-                                                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`">
-                                                                        <i class="fa fa-edit"> Edit</i>
+                                                    <td class="text-capitalize">
+                                                        <div class="text-center">
+                                                            <div class="">
+                                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`" @click="fillEntryFields(entry)">
+                                                                    <i class="fa fa-edit"> Edit</i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="">
+                                                        <div class="d-flex justify-content-center">
+                                                            <div class="">
+                                                                <div class="text-center" v-if="entry.status === 'not-received'">
+                                                                    <button type="button" class="btn btn-sm btn-danger" @click="removeItem(entry.entryItemId)">
+                                                                        <i class="fa fa-trash"> Delete</i>
                                                                     </button>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="">
-                                                                    <div class="text-center" v-if="entry.status === 'not-received'">
-                                                                        <button type="button" class="btn btn-sm btn-danger" @click="removeItem(entry.entryItemId)">
-                                                                            <i class="fa fa-trash"> Delete</i>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="" v-else>
-                                                                        <button type="button" class="btn btn-sm btn-success" disabled style="padding-left: 10px;padding-right: 10px;">
-                                                                            Already Received
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal fade" :id="`staticBackdropEdit-${entry.entryItemId}`" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-lg">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm Receiving</h5>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <div class="mb-4">
-                                                                                        <form action="#" method="POST">
-                                                                                            <div class="form-group mb-3" style="text-align: left;">
-                                                                                                <div class="row">
+                                                                <div class="" v-else>
+                                                                    <button type="button" class="btn btn-sm btn-success" disabled style="padding-left: 10px;padding-right: 10px;">
+                                                                        Already Received
+                                                                    </button>
+                                                                </div>
 
-                                                                                                <!--item type card-->
-                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Card'">
-                                                                                                <div class="card shipping_address_card">
-                                                                                                    <div class="card-body">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-md-1">
-                                                                                                                <div class="mb-3">
-                                                                                                                    <label class="form-label w-100">
-                                                                                                                        Qty
-                                                                                                                    </label>
-                                                                                                                    <input
-                                                                                                                        type="text"
-                                                                                                                        class="form-control"
-                                                                                                                        placeholder=""
-                                                                                                                        value="1"
-                                                                                                                        readonly
-                                                                                                                    />
-                                                                                                                </div>
-                                                                                                            </div>
-
-                                                                                                            <div class="col-md-9">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-md-12">
-                                                                                                                        <div class="mb-3">
-                                                                                                                            <label class="form-label w-100">
-                                                                                                                                Description #1   (Year,Manufacturer,Set,Other)
-                                                                                                                                <span class="error">*</span>
-                                                                                                                            </label>
-                                                                                                                            <input
-                                                                                                                                type="text"
-                                                                                                                                class="form-control"
-                                                                                                                                placeholder=""
-                                                                                                                                name="card_description_one"
-                                                                                                                                id="card_description_one"
-                                                                                                                                v-model.trim="entry.card_description_one"
-                                                                                                                            />
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-                                                                                                                    <div class="col-md-12">
-                                                                                                                        <div class="mb-3">
-                                                                                                                            <label class="form-label w-100">
-                                                                                                                                Description #2
-                                                                                                                            </label>
-                                                                                                                            <input
-                                                                                                                                type="text"
-                                                                                                                                class="form-control"
-                                                                                                                                placeholder=""
-                                                                                                                                name="card_description_two"
-                                                                                                                                id="card_description_two"
-                                                                                                                                v-model.trim="entry.card_description_two"
-                                                                                                                            />
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-                                                                                                                    <div class="col-md-12">
-                                                                                                                        <div class="mb-3">
-                                                                                                                            <label class="form-label w-100">
-                                                                                                                                Description #3
-                                                                                                                            </label>
-                                                                                                                            <input
-                                                                                                                                type="text"
-                                                                                                                                class="form-control"
-                                                                                                                                placeholder=""
-                                                                                                                                name="card_description_three"
-                                                                                                                                id="card_description_three"
-                                                                                                                                v-model.trim="entry.card_description_three"
-                                                                                                                            />
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="mb-3">
-                                                                                                                            <label class="form-label w-100">
-                                                                                                                                Serial Number   (Only if printed directly on item)
-                                                                                                                            </label>
-                                                                                                                            <input
-                                                                                                                                type="text"
-                                                                                                                                class="form-control"
-                                                                                                                                placeholder=""
-                                                                                                                                name="card_serial_number"
-                                                                                                                                id="card_serial_number"
-                                                                                                                                v-model.trim="entry.card_serial_number"
-                                                                                                                            />
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-                                                                                                                    <div class="col-md-12">
-                                                                                                                        <div class="row">
-                                                                                                                            <div class="col-md-3">
-                                                                                                                                <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
-                                                                                                                                    <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                                                                                                        Autographed
-                                                                                                                                    </label>
-                                                                                                                                    <input
-                                                                                                                                        type="checkbox"
-                                                                                                                                        class="form-check"
-                                                                                                                                        placeholder=""
-                                                                                                                                        name="card_autographed"
-                                                                                                                                        id="card_autographed"
-                                                                                                                                        v-model.trim="entry.card_autographed"
-                                                                                                                                    />
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                            <div class="col-md-3">
-                                                                                                                                <div class="mb-3">
-                                                                                                                                    <label class="form-label w-100 text-capitalize">
-                                                                                                                                        Authenticator Name
-                                                                                                                                    </label>
-                                                                                                                                    <select class="form-select mb-text-only" aria-label="Default select example"
-                                                                                                                                            v-model.trim="entry.card_authenticator_name"
-                                                                                                                                    >
-                                                                                                                                        <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
-                                                                                                                                    </select>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                            <div class="col-md-3">
-                                                                                                                                <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
-                                                                                                                                    <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                                                                                                        Certified on card
-                                                                                                                                    </label>
-                                                                                                                                    <input
-                                                                                                                                        type="checkbox"
-                                                                                                                                        class="form-check"
-                                                                                                                                        placeholder=""
-                                                                                                                                        v-model.trim="entry.card_certified_on_card"
-                                                                                                                                    />
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                            <div class="col-md-3">
-                                                                                                                                <div class="mb-3">
-                                                                                                                                    <label class="form-label w-100">
-                                                                                                                                        Authenticator Cert. No.
-                                                                                                                                    </label>
-                                                                                                                                    <input
-                                                                                                                                        type="text"
-                                                                                                                                        class="form-control"
-                                                                                                                                        placeholder=""
-                                                                                                                                        name="card_authenticator_cert_no"
-                                                                                                                                        id="card_authenticator_cert_no"
-                                                                                                                                        v-model.trim="entry.card_authenticator_cert_no"
-                                                                                                                                    />
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-
-                                                                                                            <div class="col-md-2">
-                                                                                                                <div class="mb-3">
-                                                                                                                    <label class="form-label w-100">
-                                                                                                                        Estimated Value
-                                                                                                                        <span class="error">*</span>
-                                                                                                                    </label>
-                                                                                                                    <input
-                                                                                                                        type="text"
-                                                                                                                        class="form-control"
-                                                                                                                        placeholder=""
-                                                                                                                        id="card_estimated_value"
-                                                                                                                        name="card_estimated_value"
-                                                                                                                        v-model.trim="entry.card_estimated_value"
-                                                                                                                    />
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                                    <!--item type auto authentication-->
-                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Autograph Authentication'">
-                                                                                                    <div class="card shipping_address_card">
-                                                                                                    <div class="card-body">
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-md-1">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100">
-                                                                                                                    Qty
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="text"
-                                                                                                                    class="form-control"
-                                                                                                                    placeholder=""
-                                                                                                                    value="1"
-                                                                                                                    readonly
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                        <div class="col-md-9">
-                                                                                                            <div class="row">
-                                                                                                                <div class="col-md-12">
-                                                                                                                    <div class="mb-3">
-                                                                                                                        <label class="form-label w-100">
-                                                                                                                            Description #1   (Year,Manufacturer,Set,Other)
-                                                                                                                            <span class="error">*</span>
-                                                                                                                        </label>
-                                                                                                                        <input
-                                                                                                                            type="text"
-                                                                                                                            class="form-control"
-                                                                                                                            placeholder=""
-                                                                                                                            name="auto_authentication_description_one"
-                                                                                                                            id="auto_authentication_description_one"
-                                                                                                                            v-model.trim="entry.auto_authentication_description_one"
-                                                                                                                        />
-                                                                                                                    </div>
-                                                                                                                </div>
-
-                                                                                                                <div class="col-md-12">
-                                                                                                                    <div class="mb-3">
-                                                                                                                        <label class="form-label w-100">
-                                                                                                                            Description #2
-                                                                                                                        </label>
-                                                                                                                        <input
-                                                                                                                            type="text"
-                                                                                                                            class="form-control"
-                                                                                                                            placeholder=""
-                                                                                                                            name="auto_authentication_description_two"
-                                                                                                                            id="auto_authentication_description_two"
-                                                                                                                            v-model.trim="entry.auto_authentication_description_two"
-                                                                                                                        />
-                                                                                                                    </div>
-                                                                                                                </div>
-
-                                                                                                                <div class="col-md-12">
-                                                                                                                    <div class="mb-3">
-                                                                                                                        <label class="form-label w-100">
-                                                                                                                            Description #3
-                                                                                                                        </label>
-                                                                                                                        <input
-                                                                                                                            type="text"
-                                                                                                                            class="form-control"
-                                                                                                                            placeholder=""
-                                                                                                                            name="auto_authentication_description_three"
-                                                                                                                            id="auto_authentication_description_three"
-                                                                                                                            v-model.trim="entry.auto_authentication_description_three"
-                                                                                                                        />
-                                                                                                                    </div>
-                                                                                                                </div>
-
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="mb-3">
-                                                                                                                        <label class="form-label w-100">
-                                                                                                                            Serial Number   (Only if printed directly on item)
-                                                                                                                        </label>
-                                                                                                                        <input
-                                                                                                                            type="text"
-                                                                                                                            class="form-control"
-                                                                                                                            placeholder=""
-                                                                                                                            name="auto_authentication_serial_number"
-                                                                                                                            id="auto_authentication_serial_number"
-                                                                                                                            v-model.trim="entry.auto_authentication_serial_number"
-                                                                                                                        />
-                                                                                                                    </div>
-                                                                                                                </div>
-
-                                                                                                                <div class="col-md-12">
-                                                                                                                    <div class="row">
-                                                                                                                        <div class="col-md-4">
-                                                                                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
-                                                                                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                                                                                                    Autographed
-                                                                                                                                </label>
-                                                                                                                                <input
-                                                                                                                                    type="checkbox"
-                                                                                                                                    class="form-check"
-                                                                                                                                    placeholder=""
-                                                                                                                                    name="auto_authentication_autographed"
-                                                                                                                                    id="auto_authentication_autographed"
-                                                                                                                                    v-model.trim="entry.auto_authentication_autographed"
-                                                                                                                                />
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                        <div class="col-md-4">
-                                                                                                                            <div class="mb-3">
-                                                                                                                                <label class="form-label w-100 text-capitalize">
-                                                                                                                                    Authenticator Name
-                                                                                                                                </label>
-                                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                                                                                                        v-model.trim="entry.auto_authentication_authenticator_name"
-                                                                                                                                >
-                                                                                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
-                                                                                                                                </select>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                        <div class="col-md-4">
-                                                                                                                            <div class="mb-3">
-                                                                                                                                <label class="form-label w-100">
-                                                                                                                                    Authenticator Cert. No.
-                                                                                                                                </label>
-                                                                                                                                <input
-                                                                                                                                    type="number"
-                                                                                                                                    class="form-control"
-                                                                                                                                    placeholder=""
-                                                                                                                                    name="auto_authentication_authenticator_cert_no"
-                                                                                                                                    id="auto_authentication_authenticator_cert_no"
-                                                                                                                                    v-model.trim="entry.auto_authentication_authenticator_cert_no"
-                                                                                                                                />
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                        <div class="col-md-2">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100">
-                                                                                                                    Estimated Value
-                                                                                                                    <span class="error">*</span>
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="number"
-                                                                                                                    class="form-control"
-                                                                                                                    placeholder=""
-                                                                                                                    name="auto_authentication_estimated_value"
-                                                                                                                    id="auto_authentication_estimated_value"
-                                                                                                                    v-model.trim="entry.auto_authentication_estimated_value"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-
-
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                    </div>
-
-                                                                                                <!--item type combined service-->
-                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Combined Service'">
-                                                                                    <div class="card shipping_address_card">
-                                                                                        <div class="card-body">
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-1">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100">
-                                                                                                            Qty
-                                                                                                        </label>
-                                                                                                        <input
-                                                                                                            type="text"
-                                                                                                            class="form-control"
-                                                                                                            placeholder=""
-                                                                                                            value="1"
-                                                                                                            readonly
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="col-md-9">
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-md-12">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100">
-                                                                                                                    Description #1   (Year,Manufacturer,Set,Other)
-                                                                                                                    <span class="error">*</span>
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="text"
-                                                                                                                    class="form-control"
-                                                                                                                    placeholder=""
-                                                                                                                    name="combined_service_description_one"
-                                                                                                                    id="combined_service_description_one"
-                                                                                                                    v-model.trim="entry.combined_service_description_one"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                        <div class="col-md-12">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100">
-                                                                                                                    Description #2
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="text"
-                                                                                                                    class="form-control"
-                                                                                                                    placeholder=""
-                                                                                                                    name="combined_service_description_two"
-                                                                                                                    id="combined_service_description_two"
-                                                                                                                    v-model.trim="entry.combined_service_description_two"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                        <div class="col-md-12">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100">
-                                                                                                                    Description #3
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="text"
-                                                                                                                    class="form-control"
-                                                                                                                    placeholder=""
-                                                                                                                    name="combined_service_description_three"
-                                                                                                                    id="combined_service_description_three"
-                                                                                                                    v-model.trim="entry.combined_service_description_three"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                        <div class="col-md-6">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100">
-                                                                                                                    Serial Number   (Only if printed directly on item)
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="text"
-                                                                                                                    class="form-control"
-                                                                                                                    placeholder=""
-                                                                                                                    name="combined_service_serial_number"
-                                                                                                                    id="combined_service_serial_number"
-                                                                                                                    v-model.trim="entry.combined_service_serial_number"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                        <div class="col-md-12">
-                                                                                                            <div class="row">
-                                                                                                                <div class="col-md-4">
-                                                                                                                    <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
-                                                                                                                        <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                                                                                            Autographed
-                                                                                                                        </label>
-                                                                                                                        <input
-                                                                                                                            type="checkbox"
-                                                                                                                            class="form-check"
-                                                                                                                            placeholder=""
-                                                                                                                            name="combined_service_autographed"
-                                                                                                                            id="combined_service_autographed"
-                                                                                                                            v-model.trim="entry.combined_service_autographed"
-                                                                                                                        />
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-4">
-                                                                                                                    <div class="mb-3">
-                                                                                                                        <label class="form-label w-100 text-capitalize">
-                                                                                                                            Authenticator Name
-                                                                                                                        </label>
-                                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example"
-                                                                                                                                v-model.trim="entry.combined_service_authenticator_name"
-                                                                                                                        >
-                                                                                                                            <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
-                                                                                                                        </select>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-4">
-                                                                                                                    <div class="mb-3">
-                                                                                                                        <label class="form-label w-100">
-                                                                                                                            Authenticator Cert. No.
-                                                                                                                        </label>
-                                                                                                                        <input
-                                                                                                                            type="text"
-                                                                                                                            class="form-control"
-                                                                                                                            placeholder=""
-                                                                                                                            name="combined_service_authenticator_cert_no"
-                                                                                                                            id="combined_service_authenticator_cert_no"
-                                                                                                                            v-model.trim="entry.combined_service_authenticator_cert_no"
-                                                                                                                        />
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="col-md-2">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100">
-                                                                                                            Estimated Value
-                                                                                                            <span class="error">*</span>
-                                                                                                        </label>
-                                                                                                        <input
-                                                                                                            type="text"
-                                                                                                            class="form-control"
-                                                                                                            placeholder=""
-                                                                                                            name="combined_service_estimated_value"
-                                                                                                            id="combined_service_estimated_value"
-                                                                                                            v-model.trim="entry.combined_service_estimated_value"
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                </div>
-
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                                <!--item type reholder-->
-                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Reholder'">
-                                                                                <div class="card shipping_address_card">
-                                                                                    <div class="card-body">
-                                                                                        <div class="row">
-                                                                                            <div class="col-md-1">
-                                                                                                <div class="mb-3">
-                                                                                                    <label class="form-label w-100">
-                                                                                                        Qty
-                                                                                                    </label>
-                                                                                                    <input
-                                                                                                        type="text"
-                                                                                                        class="form-control"
-                                                                                                        placeholder=""
-                                                                                                        readonly
-                                                                                                        value="1"
-                                                                                                    />
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-md-9">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-md-12">
-                                                                                                        <div class="mb-3">
-                                                                                                            <label class="form-label w-100">
-                                                                                                                Certification Number
-                                                                                                                <span class="error">*</span>
-                                                                                                            </label>
-                                                                                                            <input
-                                                                                                                type="text"
-                                                                                                                class="form-control"
-                                                                                                                placeholder=""
-                                                                                                                name="reholder_certification_number"
-                                                                                                                id="reholder_certification_number"
-                                                                                                                v-model.trim="entry.reholder_certification_number"
-                                                                                                            />
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-md-2">
-                                                                                                <div class="mb-3">
-                                                                                                    <label class="form-label w-100">
-                                                                                                        Estimated Value
-                                                                                                        <span class="error">*</span>
-                                                                                                    </label>
-                                                                                                    <input
-                                                                                                        type="text"
-                                                                                                        class="form-control"
-                                                                                                        placeholder=""
-                                                                                                        name="reholder_estimated_value"
-                                                                                                        id="reholder_estimated_value"
-                                                                                                        v-model.trim="entry.reholder_estimated_value"
-                                                                                                    />
-                                                                                                </div>
-                                                                                            </div>
-
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                <!-- =========================================================
+                                                                     EDIT ITEM MODAL
+                                                                ========================================================= -->
+                                                                <div class="modal fade receiving-item-modal" :id="`staticBackdropEdit-${entry.entryItemId}`" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-xl">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title">Confirm Receiving</h5>
                                                                             </div>
-                                                                                                <!--item type crossover-->
-                                                                                                <div class="col-md-12" v-if="entry.itemType == 'Crossover'">
-                                                                            <div class="card shipping_address_card">
-                                                                                <div class="card-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-1">
-                                                                                            <div class="mb-3">
-                                                                                                <label class="form-label w-100">
-                                                                                                    Qty
-                                                                                                </label>
-                                                                                                <input
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    placeholder=""
-                                                                                                    value="1"
-                                                                                                    readonly
-                                                                                                />
-                                                                                            </div>
-                                                                                        </div>
 
-                                                                                        <div class="col-md-9">
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100">
-                                                                                                            Description #1   (Year,Manufacturer,Set,Other)
-                                                                                                            <span class="error">*</span>
-                                                                                                        </label>
-                                                                                                        <input
-                                                                                                            type="text"
-                                                                                                            class="form-control"
-                                                                                                            placeholder=""
-                                                                                                            name="crossover_description_one"
-                                                                                                            id="crossover_description_one"
-                                                                                                            v-model.trim="entry.crossover_description_one"
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="ksa-entry-ui">
 
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100">
-                                                                                                            Description #2
-                                                                                                        </label>
-                                                                                                        <input
-                                                                                                            type="text"
-                                                                                                            class="form-control"
-                                                                                                            placeholder=""
-                                                                                                            name="crossover_description_two"
-                                                                                                            id="crossover_description_two"
-                                                                                                            v-model.trim="entry.crossover_description_two"
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                    <!-- ==========================================
+                                                                                         CARD / COMBINED / INDEX / OLD TYPES
+                                                                                    =========================================== -->
+                                                                                    <div class="item-details-box" v-if="entry.prefix">
+                                                                                        <div class="row">
 
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100">
-                                                                                                            Description #3
-                                                                                                        </label>
-                                                                                                        <input
-                                                                                                            type="text"
-                                                                                                            class="form-control"
-                                                                                                            placeholder=""
-                                                                                                            name="crossover_description_three"
-                                                                                                            id="crossover_description_three"
-                                                                                                            v-model.trim="entry.crossover_description_three"
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="col-md-6">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100">
-                                                                                                            Serial Number   (Only if printed directly on item)
-                                                                                                        </label>
-                                                                                                        <input
-                                                                                                            type="text"
-                                                                                                            class="form-control"
-                                                                                                            placeholder=""
-                                                                                                            name="crossover_serial_number"
-                                                                                                            id="crossover_serial_number"
-                                                                                                            v-model.trim="entry.crossover_serial_number"
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-md-4">
-                                                                                                            <div class="mb-3 d-flex justify-content-start" style="margin-top: 25px;">
-                                                                                                                <label class="form-label text-capitalize" style="margin-top: 6px;margin-right: 15px;">
-                                                                                                                    Autographed
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="checkbox"
-                                                                                                                    class="form-check"
-                                                                                                                    placeholder=""
-                                                                                                                    name="crossover_autographed"
-                                                                                                                    id="crossover_autographed"
-                                                                                                                    v-model.trim="entry.crossover_autographed"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="col-md-4">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100 text-capitalize">
-                                                                                                                    Authenticator Name
-                                                                                                                </label>
-                                                                                                                <select class="form-select mb-text-only" aria-label="Default select example"
-                                                                                                                        v-model.trim="entry.crossover_authenticator_name"
-                                                                                                                >
-                                                                                                                    <option v-for="(authenticator,index) in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="col-md-4">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label class="form-label w-100">
-                                                                                                                    Authenticator Cert. No.
-                                                                                                                </label>
-                                                                                                                <input
-                                                                                                                    type="text"
-                                                                                                                    class="form-control"
-                                                                                                                    placeholder=""
-                                                                                                                    name="crossover_authenticator_cert_no"
-                                                                                                                    id="crossover_authenticator_cert_no"
-                                                                                                                    v-model.trim="entry.crossover_authenticator_cert_no"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
+                                                                                            <!-- Quantity -->
+                                                                                            <div class="col-lg-2 col-md-3 col-12">
+                                                                                                <div class="quantity-box">
+                                                                                                    <div class="quantity-title">Quantity</div>
+                                                                                                    <div class="quantity-number">1</div>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        </div>
 
-                                                                                        <div class="col-md-2">
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100">
-                                                                                                            Estimated Value
-                                                                                                            <span class="error">*</span>
-                                                                                                        </label>
-                                                                                                        <input
-                                                                                                            type="text"
-                                                                                                            class="form-control"
-                                                                                                            placeholder=""
-                                                                                                            name="crossover_estimated_value"
-                                                                                                            id="crossover_estimated_value"
-                                                                                                            v-model.trim="entry.crossover_estimated_value"
-                                                                                                        />
+                                                                                            <!-- Fields -->
+                                                                                            <div class="col-lg-10 col-md-9 col-12 px-2">
+
+                                                                                                <!-- Split descriptions: Card / Combined Service -->
+                                                                                                <template v-if="isSplit(entry)">
+
+                                                                                                    <!-- Description #1 -->
+                                                                                                    <div class="row description-row">
+                                                                                                        <div class="col-12">
+                                                                                                            <label class="field-label">Description #1</label>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-2 col-12">
+                                                                                                            <label class="field-label-sub">Year</label>
+                                                                                                            <input type="text" class="form-control" v-model="entry.desc_year">
+                                                                                                        </div>
+                                                                                                        <div class="col-md-10 col-12">
+                                                                                                            <label class="field-label-sub">Manufacturer</label>
+                                                                                                            <input type="text" class="form-control" v-model="entry.desc_manufacturer">
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <!-- Description #2 -->
+                                                                                                    <div class="row description-row">
+                                                                                                        <div class="col-12">
+                                                                                                            <label class="field-label">Description #2</label>
+                                                                                                        </div>
+                                                                                                        <div class="col-md-2 col-12" v-if="hasNumber(entry)">
+                                                                                                            <label class="field-label-sub">Number</label>
+                                                                                                            <input type="text" class="form-control" v-model="entry.desc_number">
+                                                                                                        </div>
+                                                                                                        <div :class="hasNumber(entry) ? 'col-md-10 col-12' : 'col-12'">
+                                                                                                            <label class="field-label-sub">Player Name</label>
+                                                                                                            <input type="text" class="form-control" v-model="entry.desc_player">
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </template>
+
+                                                                                                <!-- Plain descriptions: Index Card / old types -->
+                                                                                                <template v-else>
+
+                                                                                                    <div class="row description-row">
+                                                                                                        <div class="col-12">
+                                                                                                            <label class="field-label">Description #1</label>
+                                                                                                            <input type="text" class="form-control" v-model="entry[entry.prefix + '_description_one']">
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="row description-row">
+                                                                                                        <div class="col-12">
+                                                                                                            <label class="field-label">Description #2</label>
+                                                                                                            <input type="text" class="form-control" v-model="entry[entry.prefix + '_description_two']">
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </template>
+
+                                                                                                <!-- Description #3 -->
+                                                                                                <div class="row description-row">
+                                                                                                    <div class="col-12">
+                                                                                                        <label class="field-label">Description #3</label>
+                                                                                                        <input type="text" class="form-control" v-model="entry[entry.prefix + '_description_three']">
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label class="form-label w-100 text-capitalize">
-                                                                                                            Minimum Grade
-                                                                                                            <span class="error">*</span>
-                                                                                                        </label>
-                                                                                                        <select class="form-select mb-text-only" aria-label="Default select example" name="crossover_minimum_grade" id="crossover_minimum_grade"
-                                                                                                                v-model.trim="entry.crossover_minimum_grade"
-                                                                                                        >
-                                                                                                            <option v-for="(grade,index) in minimumGrades" :value="grade.id" :key="grade.id">{{grade.name}}</option>
+
+                                                                                                <!-- Serial Number -->
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12">
+                                                                                                        <label class="field-label">Serial Number (Only if printed directly on item)</label>
+                                                                                                        <input type="text" class="form-control serial-input" v-model="entry[entry.prefix + '_serial_number']">
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- Autograph / Authenticator -->
+                                                                                                <div class="row autograph-row" v-if="showAutograph(entry)">
+
+                                                                                                    <div class="col-lg-3 col-md-3 col-12">
+                                                                                                        <div class="autographed-wrapper">
+                                                                                                            <label>Autographed</label>
+                                                                                                            <input type="checkbox" class="custom-checkbox" v-model="entry[entry.prefix + '_autographed']">
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div :class="showCertified(entry) ? 'col-lg-3 col-md-3 col-12' : 'col-lg-4 col-md-4 col-12'">
+                                                                                                        <label class="field-label">Authenticator Name</label>
+                                                                                                        <select class="form-control" v-model="entry[entry.prefix + '_authenticator_name']">
+                                                                                                            <option value="">Select</option>
+                                                                                                            <option v-for="authenticator in authenticators" :value="authenticator.id" :key="authenticator.id">{{authenticator.name}}</option>
                                                                                                         </select>
                                                                                                     </div>
+
+                                                                                                    <div class="col-lg-3 col-md-3 col-12" v-if="showCertified(entry)">
+                                                                                                        <div class="certified-wrapper">
+                                                                                                            <label>Certified On Card</label>
+                                                                                                            <input type="checkbox" class="custom-checkbox" v-model="entry[entry.prefix + '_certified_on_card']">
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div :class="showCertified(entry) ? 'col-lg-3 col-md-3 col-12' : 'col-lg-5 col-md-5 col-12'" v-if="showCertNo(entry)">
+                                                                                                        <label class="field-label">Authenticator Cert. No.</label>
+                                                                                                        <input type="text" class="form-control" v-model="entry[entry.prefix + '_authenticator_cert_no']">
+                                                                                                    </div>
+
                                                                                                 </div>
+
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
+
+                                                                                    <!-- ==========================================
+                                                                                         REHOLDER
+                                                                                    =========================================== -->
+                                                                                    <div class="item-details-box reholder-box" v-else-if="entry.itemType == 'Reholder'">
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-lg-2 col-md-3 col-12">
+                                                                                                <div class="quantity-box">
+                                                                                                    <div class="quantity-title">Quantity</div>
+                                                                                                    <div class="quantity-number">1</div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="col-lg-10 col-md-9 col-12 px-2">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12">
+                                                                                                        <label class="field-label">Certification Number</label>
+                                                                                                        <input type="text" class="form-control reholder-cert-input" v-model.trim="entry.reholder_certification_number">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+
                                                                                 </div>
+                                                                            </div>
+
+                                                                            <div class="modal-footer">
+                                                                                <button @click="submit(index)" type="button" class="btn btn-primary">Confirm</button>
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-<!--                                                                    <input type="number" hidden="" class="form-control" name="item_id" value="" style="width: 33%;margin: 0 auto;">-->
-                                                                <div class="w-100 d-flex justify-content-end">
-                                                                    <button @click="submit(index)" type="button" id="edit_item_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
-                                                                    <button type="button" id="cancel_btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                                 </div>
-                                                                                            </div>
-        </form>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
                                                             </div>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </tab-content>
-            </form-wizard>
+                </div>
+            </tab-content>
+        </form-wizard>
     </div>
 </template>
 
@@ -2442,7 +1822,7 @@ export default {
             self.form_data.shipping_name= self.item.shipping_name,
             self.form_data.shipping_company_name= self.item.shipping_company_name,
             self.form_data.shipping_address_line_one= self.item.shipping_address_line_one;
-            self.form_data.shipping_address_line_two= self.item.shipping_address_line_two,
+        self.form_data.shipping_address_line_two= self.item.shipping_address_line_two,
             self.form_data.shipping_country= self.item.shipping_country,
             self.form_data.shipping_province= self.item.shipping_province,
             self.form_data.shipping_city= self.item.shipping_city,
@@ -2474,123 +1854,237 @@ export default {
             // self.form_data.crossover_minimum_grade= self.item.crossover_minimum_grade,
 
 
-            self.entries.map(function(entry) {
+            self.form_data.entries = self.entries.map(entry => self.mapEntry(entry));
 
-                let en = {
-                    entryItemId : entry.id,
-                    entryID : entry.entry_id,
-                    itemType : entry.itemType,
-                    status : entry.status,
-                    //item type card
-                    card_description_one: entry.card_description_one,
-                    card_description_two : entry.card_description_two,
-                    card_description_three : entry.card_description_three,
-                    card_serial_number : entry.card_serial_number,
-                    card_autographed : entry.card_autographed,
-                    card_certified_on_card : entry.card_certified_on_card,
-                    card_authenticator_name : entry.card_authenticator_name,
-                    card_authenticator_cert_no : entry.card_authenticator_cert_no,
-                    card_estimated_value : entry.card_estimated_value,
+        if (self.form_data.shipping_method == "Pickup"){
+            self.showPickupLocationBox=true;
+        }else if(self.form_data.shipping_method == "Show Pickup") {
+            self.showShowPickupLocationBox = true;
+        }else if(self.form_data.shipping_method == "Return to Third Party"){
+            self.showThirdPartyBox=true;
+        }else if(self.form_data.shipping_method == "Delivery"){
+            self.showPickupLocationBox=false;
+            self.showShowPickupLocationBox = false;
+            self.showThirdPartyBox=false;
+            self.showUPSBox=false;
+        } else {
+            self.showUPSBox=true;
+        }
 
-                    //item type auto authentication
-                    auto_authentication_description_one : entry.auto_authentication_description_one,
-                    auto_authentication_description_two : entry.auto_authentication_description_two,
-                    auto_authentication_description_three : entry.auto_authentication_description_three,
-                    auto_authentication_serial_number : entry.auto_authentication_serial_number,
-                    auto_authentication_autographed : entry.auto_authentication_autographed,
-                    auto_authentication_authenticator_name : entry.auto_authentication_authenticator_name,
-                    auto_authentication_authenticator_cert_no : entry.auto_authentication_authenticator_cert_no,
-                    auto_authentication_estimated_value : entry.auto_authentication_estimated_value,
-
-                    //item type combined service
-                    combined_service_description_one : entry.combined_service_description_one,
-                    combined_service_description_two : entry.combined_service_description_two,
-                    combined_service_description_three : entry.combined_service_description_three,
-                    combined_service_serial_number : entry.combined_service_serial_number,
-                    combined_service_autographed : entry.combined_service_autographed,
-                    combined_service_authenticator_name : entry.combined_service_authenticator_name,
-                    combined_service_authenticator_cert_no : entry.combined_service_authenticator_cert_no,
-                    combined_service_estimated_value : entry.combined_service_estimated_value,
-
-                    //item type combined service
-                    reholder_certification_number : entry.reholder_certification_number,
-                    reholder_estimated_value : entry.reholder_estimated_value,
-
-                    //item type crossover
-                    crossover_description_one : entry.crossover_description_one,
-                    crossover_description_two : entry.crossover_description_two,
-                    crossover_description_three : entry.crossover_description_three,
-                    crossover_serial_number : entry.crossover_serial_number,
-                    crossover_autographed : entry.crossover_autographed,
-                    crossover_authenticator_name : entry.crossover_authenticator_name,
-                    crossover_authenticator_cert_no : entry.crossover_authenticator_cert_no,
-                    crossover_estimated_value : entry.crossover_estimated_value,
-                    crossover_minimum_grade : entry.crossover_minimum_grade,
-                    crossover_item_type : entry.crossover_item_type,
-                }
-                self.form_data.entries.push(en)
-            });
-
-            if (self.form_data.shipping_method == "Pickup"){
-                self.showPickupLocationBox=true;
-            }else if(self.form_data.shipping_method == "Show Pickup") {
-                self.showShowPickupLocationBox = true;
-            }else if(self.form_data.shipping_method == "Return to Third Party"){
-                self.showThirdPartyBox=true;
-            }else if(self.form_data.shipping_method == "Delivery"){
-                self.showPickupLocationBox=false;
-                self.showShowPickupLocationBox = false;
-                self.showThirdPartyBox=false;
-                self.showUPSBox=false;
-            } else {
-                self.showUPSBox=true;
-            }
-
-        self.form_data.entries = self.form_data.entries.map(entry => {
-            let authId = null;
-
-            if (entry.itemType === 'Card') {
-                authId = entry.card_authenticator_name;
-            } else if (entry.itemType === 'Autograph Authentication') {
-                authId = entry.auto_authentication_authenticator_name;
-            } else if (entry.itemType === 'Combined Service') {
-                authId = entry.combined_service_authenticator_name;
-            } else if (entry.itemType === 'Crossover') {
-                authId = entry.crossover_authenticator_name;
-            }
-
-            const auth = self.authenticators.find(a => a.id == authId);
-            entry.authenticator_display_name = auth ? auth.name : 'N/A';
-
-            return entry;
-        });
     },
     methods:{
-        async submit(ind){
-            // console.log(ind)
-            let self = this;
+        // =========================================================
+        // ITEM TYPE HELPERS
+        // =========================================================
 
-            for (let i = this.form_data.entries.length - 1; i >= 0; i--) {
-                if (i !== ind) {
-                    this.form_data.entries.splice(i, 1);
-                }
-            }
+        // Item type -> DB column prefix
+        prefixOf(type){
+            if (!type) return null;
+            if (type.indexOf('Card') === 0 || type === 'Index Card') return 'card';
+            if (type.indexOf('Combined Service') === 0) return 'combined_service';
+            if (type === 'Autograph Authentication') return 'auto_authentication';
+            if (type === 'Crossover') return 'crossover';
+            return null;
+        },
+
+        // Card / Combined Service use Year + Manufacturer, Number + Player Name
+        isSplit(entry){
+            return entry.itemType !== 'Index Card'
+                && (entry.prefix === 'card' || entry.prefix === 'combined_service');
+        },
+
+        hasNumber(entry){
+            return [
+                'Card (No Number)',
+                'Card (Autographed) No Number',
+                'Combined Service (No Number)',
+            ].indexOf(entry.itemType) === -1;
+        },
+
+        showAutograph(entry){
+            return [
+                'Card (Autographed)',
+                'Card (Autographed) No Number',
+                'Index Card',
+                'Combined Service',
+                'Combined Service (No Number)',
+                'Autograph Authentication',
+                'Crossover',
+            ].indexOf(entry.itemType) !== -1;
+        },
+
+        showCertified(entry){
+            return [
+                'Card (Autographed)',
+                'Card (Autographed) No Number',
+                'Combined Service',
+            ].indexOf(entry.itemType) !== -1;
+        },
+
+        showCertNo(entry){
+            return this.showAutograph(entry) && entry.itemType !== 'Combined Service (No Number)';
+        },
+
+        toBool(value){
+            return value === true || value === 1 || value === '1' || value === 'true';
+        },
+
+        joinParts(a, b){
+            return [a, b]
+                .map(value => (value || '').toString().trim())
+                .filter(Boolean)
+                .join(', ');
+        },
+
+        // "1979-80, O-Pee-Chee" -> ["1979-80", "O-Pee-Chee"]
+        splitParts(value){
+            value = (value || '').toString().trim();
+            const i = value.indexOf(',');
+
+            return i < 0
+                ? ['', value]
+                : [value.slice(0, i).trim(), value.slice(i + 1).trim()];
+        },
+
+        // DB description -> split fields (modal open)
+        fillEntryFields(entry){
+            if (!this.isSplit(entry)) return;
+
+            const one = this.splitParts(entry[entry.prefix + '_description_one']);
+            const two = this.splitParts(entry[entry.prefix + '_description_two']);
+
+            entry.desc_year = one[0];
+            entry.desc_manufacturer = one[1];
+            entry.desc_number = this.hasNumber(entry) ? two[0] : '';
+            entry.desc_player = this.hasNumber(entry) ? two[1] : this.joinParts(two[0], two[1]);
+        },
+
+        // Split fields -> DB description (before save)
+        combineEntryFields(entry){
+            if (!this.isSplit(entry)) return;
+
+            entry[entry.prefix + '_description_one'] = this.joinParts(entry.desc_year, entry.desc_manufacturer);
+            entry[entry.prefix + '_description_two'] = this.joinParts(
+                this.hasNumber(entry) ? entry.desc_number : '',
+                entry.desc_player
+            );
+        },
+
+        descriptionsOf(entry){
+            if (!entry.prefix) return [];
+
+            return [
+                entry[entry.prefix + '_description_one'],
+                entry[entry.prefix + '_description_two'],
+                entry[entry.prefix + '_description_three'],
+            ].filter(Boolean);
+        },
+
+        authenticatorNameOf(entry){
+            if (!entry.prefix) return 'N/A';
+
+            const id = entry[entry.prefix + '_authenticator_name'];
+            const auth = (this.authenticators || []).find(a => a.id == id);
+
+            return auth ? auth.name : 'N/A';
+        },
+
+        // API row -> table/form entry
+        mapEntry(entry){
+            const en = {
+                entryItemId : entry.id,
+                entryID : entry.entry_id,
+                itemType : entry.itemType,
+                status : entry.status,
+
+                //item type card
+                card_description_one: entry.card_description_one,
+                card_description_two : entry.card_description_two,
+                card_description_three : entry.card_description_three,
+                card_serial_number : entry.card_serial_number,
+                card_autographed : this.toBool(entry.card_autographed),
+                card_certified_on_card : this.toBool(entry.card_certified_on_card),
+                card_authenticator_name : entry.card_authenticator_name || '',
+                card_authenticator_cert_no : entry.card_authenticator_cert_no,
+                card_estimated_value : entry.card_estimated_value,
+
+                //item type auto authentication
+                auto_authentication_description_one : entry.auto_authentication_description_one,
+                auto_authentication_description_two : entry.auto_authentication_description_two,
+                auto_authentication_description_three : entry.auto_authentication_description_three,
+                auto_authentication_serial_number : entry.auto_authentication_serial_number,
+                auto_authentication_autographed : this.toBool(entry.auto_authentication_autographed),
+                auto_authentication_authenticator_name : entry.auto_authentication_authenticator_name || '',
+                auto_authentication_authenticator_cert_no : entry.auto_authentication_authenticator_cert_no,
+                auto_authentication_estimated_value : entry.auto_authentication_estimated_value,
+
+                //item type combined service
+                combined_service_description_one : entry.combined_service_description_one,
+                combined_service_description_two : entry.combined_service_description_two,
+                combined_service_description_three : entry.combined_service_description_three,
+                combined_service_serial_number : entry.combined_service_serial_number,
+                combined_service_autographed : this.toBool(entry.combined_service_autographed),
+                combined_service_certified_on_card : false,
+                combined_service_authenticator_name : entry.combined_service_authenticator_name || '',
+                combined_service_authenticator_cert_no : entry.combined_service_authenticator_cert_no,
+                combined_service_estimated_value : entry.combined_service_estimated_value,
+
+                //item type reholder
+                reholder_certification_number : entry.reholder_certification_number,
+                reholder_estimated_value : entry.reholder_estimated_value,
+
+                //item type crossover
+                crossover_description_one : entry.crossover_description_one,
+                crossover_description_two : entry.crossover_description_two,
+                crossover_description_three : entry.crossover_description_three,
+                crossover_serial_number : entry.crossover_serial_number,
+                crossover_autographed : this.toBool(entry.crossover_autographed),
+                crossover_authenticator_name : entry.crossover_authenticator_name || '',
+                crossover_authenticator_cert_no : entry.crossover_authenticator_cert_no,
+                crossover_estimated_value : entry.crossover_estimated_value,
+                crossover_minimum_grade : entry.crossover_minimum_grade,
+                crossover_item_type : entry.crossover_item_type,
+
+                // UI only (not saved)
+                prefix : this.prefixOf(entry.itemType),
+                desc_year : '',
+                desc_manufacturer : '',
+                desc_number : '',
+                desc_player : '',
+            };
+
+            this.fillEntryFields(en);
+
+            return en;
+        },
+
+        async submit(ind){
+            let self = this;
+            const entry = this.form_data.entries[ind];
+
+            if (!entry) return;
+
+            // Year/Manufacturer, Number/Player -> description fields
+            this.combineEntryFields(entry);
+
+            // Close this entry's modal
+            const modal = document.getElementById(`staticBackdropEdit-${entry.entryItemId}`);
+            const closeBtn = modal ? modal.querySelector('[data-bs-dismiss="modal"]') : null;
+            if (closeBtn) closeBtn.click();
+
+            // Send only this entry
+            const payload = Object.assign({}, this.form_data, { entries: [entry] });
+
             axios
-                .put(`/admin/receiving/${this.item.id}`, this.form_data)
+                .put(`/admin/receiving/${this.item.id}`, payload)
                 .then(function (response) {
                     Swal.fire("Successfully Updated!", "", "success").then((result)=>{
                         if (result.isConfirmed){
                             if (response.status == 200){
-                                // window.location.href = `/admin/entries/${response.data.id}`;
-                                // window.location.href = `/admin/receiving/${this.item.id}/edit`;
-                                // window.location.reload();
                                 self.getEntryItemsList(self.item.id);
                             }
                         }
                     });
-
-                    // window.location.reload()
-                    // window.location.href = "/admin/thirds";
                 })
                 .catch(function (err) {
                     try {
@@ -2729,9 +2223,9 @@ export default {
                 this.show_error_nine = true;
                 return false;
             }
-            // else if (this.v$.form_data.customer_account_number.$invalid) {
-            //     this.show_error_ten = true;
-            //     return false;
+                // else if (this.v$.form_data.customer_account_number.$invalid) {
+                //     this.show_error_ten = true;
+                //     return false;
             // }
             else {
                 return true;
@@ -3042,69 +2536,8 @@ export default {
             await axios
                 .get(`/admin/receiving/entry/rec-list/${id}`)
                 .then(function (res) {
-                    // console.log(res.data.data)
-                    self.form_data.entries = []
-                    res.data.data.map(function(entry) {
-                        let en = {
-                            entryItemId : entry.id,
-                            entryID : entry.entry_id,
-                            itemType : entry.itemType,
-                            status : entry.status,
-                            //item type card
-                            card_description_one: entry.card_description_one,
-                            card_description_two : entry.card_description_two,
-                            card_description_three : entry.card_description_three,
-                            card_serial_number : entry.card_serial_number,
-                            card_autographed : entry.card_autographed,
-                            card_certified_on_card : entry.card_certified_on_card,
-                            card_authenticator_name : entry.card_authenticator_name,
-                            card_authenticator_cert_no : entry.card_authenticator_cert_no,
-                            card_estimated_value : entry.card_estimated_value,
-
-                            //item type auto authentication
-                            auto_authentication_description_one : entry.auto_authentication_description_one,
-                            auto_authentication_description_two : entry.auto_authentication_description_two,
-                            auto_authentication_description_three : entry.auto_authentication_description_three,
-                            auto_authentication_serial_number : entry.auto_authentication_serial_number,
-                            auto_authentication_autographed : entry.auto_authentication_autographed,
-                            auto_authentication_authenticator_name : entry.auto_authentication_authenticator_name,
-                            auto_authentication_authenticator_cert_no : entry.auto_authentication_authenticator_cert_no,
-                            auto_authentication_estimated_value : entry.auto_authentication_estimated_value,
-
-                            //item type combined service
-                            combined_service_description_one : entry.combined_service_description_one,
-                            combined_service_description_two : entry.combined_service_description_two,
-                            combined_service_description_three : entry.combined_service_description_three,
-                            combined_service_serial_number : entry.combined_service_serial_number,
-                            combined_service_autographed : entry.combined_service_autographed,
-                            combined_service_authenticator_name : entry.combined_service_authenticator_name,
-                            combined_service_authenticator_cert_no : entry.combined_service_authenticator_cert_no,
-                            combined_service_estimated_value : entry.combined_service_estimated_value,
-
-                            //item type combined service
-                            reholder_certification_number : entry.reholder_certification_number,
-                            reholder_estimated_value : entry.reholder_estimated_value,
-
-                            //item type crossover
-                            crossover_description_one : entry.crossover_description_one,
-                            crossover_description_two : entry.crossover_description_two,
-                            crossover_description_three : entry.crossover_description_three,
-                            crossover_serial_number : entry.crossover_serial_number,
-                            crossover_autographed : entry.crossover_autographed,
-                            crossover_authenticator_name : entry.crossover_authenticator_name,
-                            crossover_authenticator_cert_no : entry.crossover_authenticator_cert_no,
-                            crossover_estimated_value : entry.crossover_estimated_value,
-                            crossover_minimum_grade : entry.crossover_minimum_grade,
-                            crossover_item_type : entry.crossover_item_type,
-                        }
-                        self.form_data.entries.push(en)
-
-                    });
-                    console.log(self.form_data.entries)
+                    self.form_data.entries = res.data.data.map(entry => self.mapEntry(entry));
                     self.startIndex = 6;
-
-                    document.documentElement.querySelector("#cancel_btn").click();
-
                 })
                 .catch(function (err) {
                     try {
@@ -3512,5 +2945,168 @@ tbody tr:nth-child(odd) {
 }
 
 /*responsive table css end*/
+
+
+/* ============================================================
+   RECEIVING EDIT MODAL - ITEM CARD (same design as Create Entry)
+   ============================================================ */
+
+.receiving-item-modal .modal-dialog {
+    max-width: 1100px;
+    width: calc(100% - 30px);
+}
+
+.receiving-item-modal .modal-content {
+    border: 0;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.receiving-item-modal .modal-body {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.receiving-item-modal .modal-footer {
+    border-top: 1px solid #e5e7eb;
+}
+
+.receiving-item-modal tbody td,
+.receiving-item-modal td {
+    white-space: normal;
+}
+
+.ksa-entry-ui {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #40536a;
+    background: #ffffff;
+    text-align: left;
+    white-space: normal;
+}
+
+.ksa-entry-ui *,
+.ksa-entry-ui *::before,
+.ksa-entry-ui *::after {
+    box-sizing: border-box;
+}
+
+.ksa-entry-ui .item-details-box {
+    background: #eeeeee;
+    border-radius: 3px;
+    padding: 15px 12px 28px;
+    min-height: 420px;
+}
+
+.ksa-entry-ui .quantity-box {
+    background: #f8f8f8;
+    min-height: 89px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.ksa-entry-ui .quantity-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #40536a;
+    margin-bottom: 27px;
+}
+
+.ksa-entry-ui .quantity-number {
+    font-size: 20px;
+    line-height: 1;
+    color: #40536a;
+}
+
+.ksa-entry-ui .field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #40536a;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.ksa-entry-ui .field-label-sub {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #40536a;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.ksa-entry-ui .form-control {
+    height: 36px;
+    border: 1px solid #d0d5db;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #40536a;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.ksa-entry-ui .form-control:focus {
+    border-color: #8d9cf7;
+    box-shadow: 0 0 0 1px rgba(91, 105, 255, 0.18);
+}
+
+.ksa-entry-ui .description-row {
+    margin-bottom: 17px;
+}
+
+.ksa-entry-ui .serial-input {
+    max-width: 480px;
+}
+
+.ksa-entry-ui .autograph-row {
+    margin-top: 8px;
+    align-items: end;
+}
+
+.ksa-entry-ui .autographed-wrapper,
+.ksa-entry-ui .certified-wrapper {
+    display: flex;
+    align-items: center;
+    padding-top: 19px;
+    min-height: 55px;
+}
+
+.ksa-entry-ui .autographed-wrapper label {
+    margin: 0 15px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #40536a;
+}
+
+.ksa-entry-ui .certified-wrapper label {
+    margin: 0 12px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #40536a;
+}
+
+.ksa-entry-ui .custom-checkbox {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+}
+
+.ksa-entry-ui .reholder-box {
+    min-height: 400px;
+}
+
+.ksa-entry-ui .reholder-cert-input {
+    max-width: 560px;
+}
+
+/* Table description cell */
+.item-description span {
+    display: block;
+    white-space: normal;
+}
+
+.text-muted-na {
+    color: #9ca3af;
+}
 
 </style>

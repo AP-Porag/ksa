@@ -824,56 +824,50 @@
 
                                         <!-- Form -->
                                         <form action="{{ route('admin.entries.add.new.item') }}"
-                                              method="POST"
-                                              id="addNewItemForm">
-
+                                              method="POST" id="addNewItemForm">
                                             @csrf
 
-                                            <input type="hidden"
-                                                   name="entry_id"
-                                                   value="{{ $entry->id }}">
+                                            <input type="hidden" name="entry_id" value="{{ $entry->id }}">
 
                                             <div class="modal-body">
 
-                                                <!-- Item Type Selector -->
+                                                <!-- ITEM TYPE -->
                                                 <div class="item-type-panel">
                                                     <label for="itemSelect" class="form-label">
                                                         Select The Item Type To Be Entered
                                                         <span class="text-danger">*</span>
                                                     </label>
 
-                                                    <select name="itemType"
-                                                            id="itemSelect"
-                                                            class="form-select"
-                                                            required>
-
+                                                    <select name="itemType" id="itemSelect"
+                                                            class="form-select" required>
                                                         <option value="">Select Item Type</option>
                                                         <option value="Card">Card</option>
-                                                        <option value="Card (No number)">Card (No number)</option>
-                                                        <option value="Card Auto">Card (Autographed)</option>
-                                                        <option value="Card Auto (No Number)">Card (Autographed) No Number</option>
+                                                        <option value="Card (No Number)">Card (No Number)</option>
+                                                        <option value="Card (Autographed)">Card (Autographed)</option>
+                                                        <option value="Card (Autographed) No Number">
+                                                            Card (Autographed) No Number
+                                                        </option>
                                                         <option value="Index Card">Index Card</option>
                                                         <option value="Combined Service">Combined Service</option>
-                                                        <option value="Combined Service (No Number)">Combined Service (No Number)</option>
+                                                        <option value="Combined Service (No Number)">
+                                                            Combined Service (No Number)
+                                                        </option>
                                                         <option value="Reholder">Reholder</option>
-
                                                     </select>
                                                 </div>
 
-
                                                 <div class="item-detail-panel">
-                                                    <!-- =================================================
+                                                    <!-- ==================================================
                                                      CARD SECTION
-                                                ================================================== -->
-                                                    <div class="item-section"
-                                                         id="showItemTypeCardBox"
-                                                         data-section="card">
+                                                     Card / Card (No Number) /
+                                                     Card (Autographed) / Card (Autographed) No Number
+                                                =================================================== -->
+                                                    <div class="item-section" id="showItemTypeCardBox"
+                                                         data-section="card" style="display:none;">
 
                                                         <div class="item-form-card">
-
                                                             <div class="item-layout">
 
-                                                                <!-- Quantity -->
                                                                 <div class="quantity-column">
                                                                     <div class="quantity-box">
                                                                         <div class="quantity-title">Quantity</div>
@@ -881,136 +875,96 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <!-- Card Fields -->
                                                                 <div class="details-column">
 
-                                                                    <!-- Description #1 -->
+                                                                    <!-- Description 1 -->
                                                                     <div class="description-block">
-                                                                        <div class="description-heading">
-                                                                            Description #1
-                                                                        </div>
+                                                                        <div class="description-heading">Description #1</div>
 
                                                                         <div class="row g-2">
                                                                             <div class="col-md-2">
-                                                                                <label for="card_year" class="field-label">
-                                                                                    Year
-                                                                                </label>
-
-                                                                                <input type="text"
-                                                                                       id="card_year"
+                                                                                <label for="card_year" class="field-label">Year</label>
+                                                                                <input type="text" id="card_year"
                                                                                        class="form-control">
                                                                             </div>
 
                                                                             <div class="col-md-10">
-                                                                                <label for="card_manufacturer"
-                                                                                       class="field-label">
+                                                                                <label for="card_manufacturer" class="field-label">
                                                                                     Manufacturer
                                                                                 </label>
-
-                                                                                <input type="text"
-                                                                                       id="card_manufacturer"
+                                                                                <input type="text" id="card_manufacturer"
                                                                                        class="form-control">
                                                                             </div>
                                                                         </div>
 
-                                                                        <input type="hidden"
-                                                                               name="card_description_one"
+                                                                        <input type="hidden" name="card_description_one"
                                                                                id="card_description_one">
                                                                     </div>
 
-
-                                                                    <!-- Description #2 -->
+                                                                    <!-- Description 2 -->
                                                                     <div class="description-block">
-                                                                        <div class="description-heading">
-                                                                            Description #2
-                                                                        </div>
+                                                                        <div class="description-heading">Description #2</div>
 
                                                                         <div class="row g-2">
-
-                                                                            <div class="col-md-2"
-                                                                                 data-number-field>
-                                                                                <label for="card_number"
-                                                                                       class="field-label">
+                                                                            <div class="col-md-2" data-number-field>
+                                                                                <label for="card_number" class="field-label">
                                                                                     Number
                                                                                 </label>
-
-                                                                                <input type="text"
-                                                                                       id="card_number"
+                                                                                <input type="text" id="card_number"
                                                                                        class="form-control">
                                                                             </div>
 
-                                                                            <div class="col-md-10"
-                                                                                 data-player-field>
-                                                                                <label for="card_player_name"
-                                                                                       class="field-label">
+                                                                            <div class="col-md-10">
+                                                                                <label for="card_player_name" class="field-label">
                                                                                     Player Name
                                                                                 </label>
-
-                                                                                <input type="text"
-                                                                                       id="card_player_name"
+                                                                                <input type="text" id="card_player_name"
                                                                                        class="form-control">
                                                                             </div>
-
                                                                         </div>
 
-                                                                        <input type="hidden"
-                                                                               name="card_description_two"
+                                                                        <input type="hidden" name="card_description_two"
                                                                                id="card_description_two">
                                                                     </div>
 
-
-                                                                    <!-- Description #3 -->
+                                                                    <!-- Description 3 -->
                                                                     <div class="description-block">
-                                                                        <label class="field-label">
+                                                                        <label for="card_description_three" class="field-label">
                                                                             Description #3
                                                                         </label>
-
-                                                                        <input type="text"
-                                                                               name="card_description_three"
-                                                                               class="form-control">
+                                                                        <input type="text" name="card_description_three"
+                                                                               id="card_description_three" class="form-control">
                                                                     </div>
-
 
                                                                     <!-- Serial Number -->
                                                                     <div class="serial-block">
-                                                                        <label class="field-label">
+                                                                        <label for="card_serial_number" class="field-label">
                                                                             Serial Number (Only if printed directly on item)
                                                                         </label>
-
-                                                                        <input type="text"
-                                                                               name="card_serial_number"
-                                                                               class="form-control">
+                                                                        <input type="text" name="card_serial_number"
+                                                                               id="card_serial_number" class="form-control">
                                                                     </div>
 
-
                                                                     <!-- Autograph Fields -->
-                                                                    <div class="autograph-row"
-                                                                         data-autograph-fields>
+                                                                    <div class="autograph-row" data-autograph-fields>
 
                                                                         <div class="autograph-checkbox">
-                                                                            <label class="field-label"
-                                                                                   for="card_autographed">
+                                                                            <label for="card_autographed" class="field-label">
                                                                                 Autographed
                                                                             </label>
-
-                                                                            <input type="checkbox"
-                                                                                   class="form-check-input"
+                                                                            <input type="checkbox" class="form-check-input"
                                                                                    id="card_autographed"
-                                                                                   name="card_autographed"
-                                                                                   value="1">
+                                                                                   name="card_autographed" value="1">
                                                                         </div>
 
                                                                         <div class="autograph-authenticator">
-                                                                            <label class="field-label"
-                                                                                   for="card_authenticator_name">
+                                                                            <label for="card_authenticator_name" class="field-label">
                                                                                 Authenticator Name
                                                                             </label>
-
                                                                             <select class="form-select"
                                                                                     id="card_authenticator_name"
                                                                                     name="card_authenticator_name">
                                                                                 <option value="">Select</option>
-
                                                                                 @foreach($authenticators as $authenticator)
                                                                                     <option value="{{ $authenticator->id }}">
                                                                                         {{ $authenticator->name }}
@@ -1020,30 +974,22 @@
                                                                         </div>
 
                                                                         <div class="certified-checkbox">
-                                                                            <label class="field-label"
-                                                                                   for="card_certified_on_card">
+                                                                            <label for="card_certified_on_card" class="field-label">
                                                                                 Certified On Card
                                                                             </label>
-
-                                                                            <input type="checkbox"
-                                                                                   class="form-check-input"
+                                                                            <input type="checkbox" class="form-check-input"
                                                                                    id="card_certified_on_card"
-                                                                                   name="card_certified_on_card"
-                                                                                   value="1">
+                                                                                   name="card_certified_on_card" value="1">
                                                                         </div>
 
                                                                         <div class="auth-cert-number">
-                                                                            <label class="field-label"
-                                                                                   for="card_authenticator_cert_no">
+                                                                            <label for="card_authenticator_cert_no" class="field-label">
                                                                                 Authenticator Cert. No.
                                                                             </label>
-
-                                                                            <input type="text"
-                                                                                   class="form-control"
+                                                                            <input type="text" class="form-control"
                                                                                    id="card_authenticator_cert_no"
                                                                                    name="card_authenticator_cert_no">
                                                                         </div>
-
                                                                     </div>
 
                                                                 </div>
@@ -1051,16 +997,13 @@
                                                         </div>
                                                     </div>
 
-
-                                                    <!-- =================================================
+                                                    <!-- ==================================================
                                                          INDEX CARD SECTION
-                                                    ================================================== -->
-                                                    <div class="item-section"
-                                                         id="showItemTypeIndexCardBox"
-                                                         data-section="index-card">
+                                                    =================================================== -->
+                                                    <div class="item-section" id="showItemTypeIndexCardBox"
+                                                         data-section="index-card" style="display:none;">
 
                                                         <div class="item-form-card">
-
                                                             <div class="item-layout">
 
                                                                 <div class="quantity-column">
@@ -1073,74 +1016,56 @@
                                                                 <div class="details-column">
 
                                                                     <div class="description-block">
-                                                                        <label class="field-label">
-                                                                            Description #1
-                                                                        </label>
-
-                                                                        <input type="text"
-                                                                               class="form-control"
+                                                                        <label for="index_card_description_one"
+                                                                               class="field-label">Description #1</label>
+                                                                        <input type="text" class="form-control"
                                                                                name="card_description_one"
                                                                                id="index_card_description_one">
                                                                     </div>
 
                                                                     <div class="description-block">
-                                                                        <label class="field-label">
-                                                                            Description #2
-                                                                        </label>
-
-                                                                        <input type="text"
-                                                                               class="form-control"
+                                                                        <label for="index_card_description_two"
+                                                                               class="field-label">Description #2</label>
+                                                                        <input type="text" class="form-control"
                                                                                name="card_description_two"
                                                                                id="index_card_description_two">
                                                                     </div>
 
                                                                     <div class="description-block">
-                                                                        <label class="field-label">
-                                                                            Description #3
-                                                                        </label>
-
-                                                                        <input type="text"
-                                                                               class="form-control"
+                                                                        <label for="index_card_description_three"
+                                                                               class="field-label">Description #3</label>
+                                                                        <input type="text" class="form-control"
                                                                                name="card_description_three"
                                                                                id="index_card_description_three">
                                                                     </div>
 
                                                                     <div class="serial-block">
-                                                                        <label class="field-label">
+                                                                        <label for="index_card_serial_number"
+                                                                               class="field-label">
                                                                             Serial Number (Only if printed directly on item)
                                                                         </label>
-
-                                                                        <input type="text"
-                                                                               class="form-control"
+                                                                        <input type="text" class="form-control"
                                                                                name="card_serial_number"
                                                                                id="index_card_serial_number">
                                                                     </div>
 
-                                                                    <div class="autograph-row"
-                                                                         data-autograph-fields>
+                                                                    <div class="autograph-row" data-autograph-fields>
 
                                                                         <div class="autograph-checkbox">
-                                                                            <label class="field-label"
-                                                                                   for="index_card_autographed">
-                                                                                Autographed
-                                                                            </label>
-
-                                                                            <input type="checkbox"
-                                                                                   class="form-check-input"
+                                                                            <label for="index_card_autographed"
+                                                                                   class="field-label">Autographed</label>
+                                                                            <input type="checkbox" class="form-check-input"
                                                                                    id="index_card_autographed"
-                                                                                   name="card_autographed"
-                                                                                   value="1">
+                                                                                   name="card_autographed" value="1">
                                                                         </div>
 
                                                                         <div class="autograph-authenticator">
-                                                                            <label class="field-label">
-                                                                                Authenticator Name
-                                                                            </label>
-
+                                                                            <label for="index_card_authenticator_name"
+                                                                                   class="field-label">Authenticator Name</label>
                                                                             <select class="form-select"
+                                                                                    id="index_card_authenticator_name"
                                                                                     name="card_authenticator_name">
                                                                                 <option value="">Select</option>
-
                                                                                 @foreach($authenticators as $authenticator)
                                                                                     <option value="{{ $authenticator->id }}">
                                                                                         {{ $authenticator->name }}
@@ -1150,12 +1075,12 @@
                                                                         </div>
 
                                                                         <div class="auth-cert-number">
-                                                                            <label class="field-label">
+                                                                            <label for="index_card_authenticator_cert_no"
+                                                                                   class="field-label">
                                                                                 Authenticator Cert. No.
                                                                             </label>
-
-                                                                            <input type="text"
-                                                                                   class="form-control"
+                                                                            <input type="text" class="form-control"
+                                                                                   id="index_card_authenticator_cert_no"
                                                                                    name="card_authenticator_cert_no">
                                                                         </div>
 
@@ -1166,16 +1091,14 @@
                                                         </div>
                                                     </div>
 
-
-                                                    <!-- =================================================
+                                                    <!-- ==================================================
                                                          COMBINED SERVICE SECTION
-                                                    ================================================== -->
-                                                    <div class="item-section"
-                                                         id="showItemTypeCombinedServiceBox"
-                                                         data-section="combined">
+                                                         Combined Service / Combined Service (No Number)
+                                                    =================================================== -->
+                                                    <div class="item-section" id="showItemTypeCombinedServiceBox"
+                                                         data-section="combined" style="display:none;">
 
                                                         <div class="item-form-card">
-
                                                             <div class="item-layout">
 
                                                                 <div class="quantity-column">
@@ -1187,30 +1110,21 @@
 
                                                                 <div class="details-column">
 
-                                                                    <!-- Description #1 -->
+                                                                    <!-- Description 1 -->
                                                                     <div class="description-block">
-                                                                        <div class="description-heading">
-                                                                            Description #1
-                                                                        </div>
+                                                                        <div class="description-heading">Description #1</div>
 
                                                                         <div class="row g-2">
                                                                             <div class="col-md-2">
                                                                                 <label for="combined_service_year"
-                                                                                       class="field-label">
-                                                                                    Year
-                                                                                </label>
-
-                                                                                <input type="text"
-                                                                                       id="combined_service_year"
+                                                                                       class="field-label">Year</label>
+                                                                                <input type="text" id="combined_service_year"
                                                                                        class="form-control">
                                                                             </div>
 
                                                                             <div class="col-md-10">
                                                                                 <label for="combined_service_manufacturer"
-                                                                                       class="field-label">
-                                                                                    Manufacturer
-                                                                                </label>
-
+                                                                                       class="field-label">Manufacturer</label>
                                                                                 <input type="text"
                                                                                        id="combined_service_manufacturer"
                                                                                        class="form-control">
@@ -1222,39 +1136,25 @@
                                                                                id="combined_service_description_one">
                                                                     </div>
 
-
-                                                                    <!-- Description #2 -->
+                                                                    <!-- Description 2 -->
                                                                     <div class="description-block">
-                                                                        <div class="description-heading">
-                                                                            Description #2
-                                                                        </div>
+                                                                        <div class="description-heading">Description #2</div>
 
                                                                         <div class="row g-2">
-
-                                                                            <div class="col-md-2"
-                                                                                 data-number-field>
+                                                                            <div class="col-md-2" data-number-field>
                                                                                 <label for="combined_service_number"
-                                                                                       class="field-label">
-                                                                                    Player Name
-                                                                                </label>
-
-                                                                                <input type="text"
-                                                                                       id="combined_service_number"
+                                                                                       class="field-label">Number</label>
+                                                                                <input type="text" id="combined_service_number"
                                                                                        class="form-control">
                                                                             </div>
 
-                                                                            <div class="col-md-10"
-                                                                                 data-player-field>
+                                                                            <div class="col-md-10">
                                                                                 <label for="combined_service_player_name"
-                                                                                       class="field-label">
-                                                                                    Player Name
-                                                                                </label>
-
+                                                                                       class="field-label">Player Name</label>
                                                                                 <input type="text"
                                                                                        id="combined_service_player_name"
                                                                                        class="form-control">
                                                                             </div>
-
                                                                         </div>
 
                                                                         <input type="hidden"
@@ -1262,58 +1162,44 @@
                                                                                id="combined_service_description_two">
                                                                     </div>
 
-
-                                                                    <!-- Description #3 -->
+                                                                    <!-- Description 3 -->
                                                                     <div class="description-block">
-                                                                        <label class="field-label">
-                                                                            Description #3
-                                                                        </label>
-
-                                                                        <input type="text"
-                                                                               class="form-control"
-                                                                               name="combined_service_description_three">
+                                                                        <label for="combined_service_description_three"
+                                                                               class="field-label">Description #3</label>
+                                                                        <input type="text" class="form-control"
+                                                                               name="combined_service_description_three"
+                                                                               id="combined_service_description_three">
                                                                     </div>
-
 
                                                                     <!-- Serial Number -->
                                                                     <div class="serial-block">
-                                                                        <label class="field-label">
+                                                                        <label for="combined_service_serial_number"
+                                                                               class="field-label">
                                                                             Serial Number (Only if printed directly on item)
                                                                         </label>
-
-                                                                        <input type="text"
-                                                                               class="form-control"
-                                                                               name="combined_service_serial_number">
+                                                                        <input type="text" class="form-control"
+                                                                               name="combined_service_serial_number"
+                                                                               id="combined_service_serial_number">
                                                                     </div>
 
-
-                                                                    <!-- Combined Service Autograph -->
+                                                                    <!-- Autograph Fields -->
                                                                     <div class="autograph-row">
 
                                                                         <div class="autograph-checkbox">
-                                                                            <label class="field-label"
-                                                                                   for="combined_service_autographed">
-                                                                                Autographed
-                                                                            </label>
-
-                                                                            <input type="checkbox"
-                                                                                   class="form-check-input"
+                                                                            <label for="combined_service_autographed"
+                                                                                   class="field-label">Autographed</label>
+                                                                            <input type="checkbox" class="form-check-input"
                                                                                    id="combined_service_autographed"
-                                                                                   name="combined_service_autographed"
-                                                                                   value="1">
+                                                                                   name="combined_service_autographed" value="1">
                                                                         </div>
 
                                                                         <div class="autograph-authenticator">
-                                                                            <label class="field-label"
-                                                                                   for="combined_service_authenticator_name">
-                                                                                Authenticator Name
-                                                                            </label>
-
+                                                                            <label for="combined_service_authenticator_name"
+                                                                                   class="field-label">Authenticator Name</label>
                                                                             <select class="form-select"
                                                                                     id="combined_service_authenticator_name"
                                                                                     name="combined_service_authenticator_name">
                                                                                 <option value="">Select</option>
-
                                                                                 @foreach($authenticators as $authenticator)
                                                                                     <option value="{{ $authenticator->id }}">
                                                                                         {{ $authenticator->name }}
@@ -1322,27 +1208,12 @@
                                                                             </select>
                                                                         </div>
 
-                                                                        <div class="certified-checkbox">
-                                                                            <label class="field-label"
-                                                                                   for="combined_service_certified_on_card">
-                                                                                Certified On Card
-                                                                            </label>
-
-                                                                            <input type="checkbox"
-                                                                                   class="form-check-input"
-                                                                                   id="combined_service_certified_on_card"
-                                                                                   name="combined_service_certified_on_card"
-                                                                                   value="1">
-                                                                        </div>
-
                                                                         <div class="auth-cert-number">
-                                                                            <label class="field-label"
-                                                                                   for="combined_service_authenticator_cert_no">
+                                                                            <label for="combined_service_authenticator_cert_no"
+                                                                                   class="field-label">
                                                                                 Authenticator Cert. No.
                                                                             </label>
-
-                                                                            <input type="text"
-                                                                                   class="form-control"
+                                                                            <input type="text" class="form-control"
                                                                                    id="combined_service_authenticator_cert_no"
                                                                                    name="combined_service_authenticator_cert_no">
                                                                         </div>
@@ -1354,16 +1225,13 @@
                                                         </div>
                                                     </div>
 
-
-                                                    <!-- =================================================
+                                                    <!-- ==================================================
                                                          REHOLDER SECTION
-                                                    ================================================== -->
-                                                    <div class="item-section"
-                                                         id="showItemTypeReholderBox"
-                                                         data-section="reholder">
+                                                    =================================================== -->
+                                                    <div class="item-section" id="showItemTypeReholderBox"
+                                                         data-section="reholder" style="display:none;">
 
                                                         <div class="item-form-card">
-
                                                             <div class="item-layout">
 
                                                                 <div class="quantity-column">
@@ -1374,19 +1242,17 @@
                                                                 </div>
 
                                                                 <div class="details-column">
-
                                                                     <div class="description-block">
-                                                                        <label class="field-label">
+                                                                        <label for="reholder_certification_number"
+                                                                               class="field-label">
                                                                             Certification Number
                                                                         </label>
-
-                                                                        <input type="text"
-                                                                               class="form-control"
+                                                                        <input type="text" class="form-control"
                                                                                name="reholder_certification_number"
                                                                                id="reholder_certification_number">
                                                                     </div>
-
                                                                 </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1394,23 +1260,12 @@
 
                                             </div>
 
-
-                                            <!-- Footer -->
                                             <div class="modal-footer">
+                                                <button type="submit" id="add_item_submit_btn"
+                                                        class="btn btn-primary">Confirm</button>
 
-                                                <button type="submit"
-                                                        id="add_item_submit_btn"
-                                                        class="btn btn-primary">
-                                                    Confirm
-                                                </button>
-
-                                                <button type="button"
-                                                        class="btn btn-secondary"
-                                                        data-bs-dismiss="modal"
-                                                        id="cancel_btn">
-                                                    Cancel
-                                                </button>
-
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal" id="cancel_btn">Cancel</button>
                                             </div>
 
                                         </form>
@@ -1425,143 +1280,144 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="">
-                                <div class="d-flex justify-content-between mb-4">
-                                    <h5 class="card-title text-capitalize">{{$entry->customer_name}}</h5>
-                                    <h5 class="card-title text-capitalize">Order # {{$entry->entrySKU}}</h5>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered mb-0">
+{{--        <div class="col-md-12">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-body">--}}
+{{--                            <div class="">--}}
+{{--                                <div class="d-flex justify-content-between mb-4">--}}
+{{--                                    <h5 class="card-title text-capitalize">{{$entry->customer_name}}</h5>--}}
+{{--                                    <h5 class="card-title text-capitalize">Order # {{$entry->entrySKU}}</h5>--}}
+{{--                                </div>--}}
 
-                                                <thead class="text-center">
-                                                <tr>
-                                                    <th>Item Type</th>
-                                                    <th>Sub Type</th>
-                                                    <th>Description</th>
-                                                    <th>Autographed</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-12">--}}
+{{--                                        <div class="table-responsive">--}}
+{{--                                            <table class="table table-bordered mb-0">--}}
 
-                                                @if($items->count() > 0)
-                                                    @foreach($items as $item)
-                                                        <tr>
-                                                            <td class="text-capitalize">{{$item->itemType}}</td>
-                                                            <td>{{$item->itemType == 'Crossover' ? $item->crossover_item_type: 'N/A'}}</td>
+{{--                                                <thead class="text-center">--}}
+{{--                                                <tr>--}}
+{{--                                                    <th>Item Type</th>--}}
+{{--                                                    <th>Sub Type</th>--}}
+{{--                                                    <th>Description</th>--}}
+{{--                                                    <th>Autographed</th>--}}
+{{--                                                    <th>Actions</th>--}}
+{{--                                                </tr>--}}
+{{--                                                </thead>--}}
+{{--                                                <tbody>--}}
 
-                                                            @if($item->itemType == 'Card')
-                                                                <td>
-                                                                    <span>{{$item->card_description_one}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->card_description_two}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->card_description_three}}</span>
-                                                                </td>
-                                                                <td class="text-center">{{$item->card_autographed == 1 ? 'Yes' : 'No'}}</td>
-                                                            @endif
+{{--                                                @if($items->count() > 0)--}}
+{{--                                                    @foreach($items as $item)--}}
+{{--                                                        <tr>--}}
+{{--                                                            <td class="text-capitalize">{{$item->itemType}}</td>--}}
+{{--                                                            <td>{{$item->itemType == 'Crossover' ? $item->crossover_item_type: 'N/A'}}</td>--}}
 
-
-                                                            @if($item->itemType == 'Autograph Authentication')
-                                                                <td>
-                                                                    <span>{{$item->auto_authentication_description_one}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->auto_authentication_description_two}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->auto_authentication_description_three}}</span>
-                                                                </td>
-                                                                <td class="text-center">{{$item->auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>
-                                                            @endif
+{{--                                                            @if($item->itemType == 'Card')--}}
+{{--                                                                <td>--}}
+{{--                                                                    <span>{{$item->card_description_one}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->card_description_two}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->card_description_three}}</span>--}}
+{{--                                                                </td>--}}
+{{--                                                                <td class="text-center">{{$item->card_autographed == 1 ? 'Yes' : 'No'}}</td>--}}
+{{--                                                            @endif--}}
 
 
-                                                            @if($item->itemType == 'Combined Service')
-                                                                <td>
-                                                                    <span>{{$item->combined_service_description_one}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->combined_service_description_two}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->combined_service_description_three}}</span>
-                                                                </td>
-                                                                <td class="text-center">{{$item->combined_service_autographed == 1 ? 'Yes' : 'No'}}</td>
-                                                            @endif
+{{--                                                            @if($item->itemType == 'Autograph Authentication')--}}
+{{--                                                                <td>--}}
+{{--                                                                    <span>{{$item->auto_authentication_description_one}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->auto_authentication_description_two}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->auto_authentication_description_three}}</span>--}}
+{{--                                                                </td>--}}
+{{--                                                                <td class="text-center">{{$item->auto_authentication_autographed == 1 ? 'Yes' : 'No'}}</td>--}}
+{{--                                                            @endif--}}
 
-                                                            @if($item->itemType == 'Reholder')
-                                                                <td>
-                                                                    <span>N/A</span>
-                                                                    <br>
-                                                                    <span>N/A</span>
-                                                                    <br>
-                                                                    <span>N/A</span>
-                                                                </td>
-                                                                <td class="text-center">N/A</td>
-                                                            @endif
 
-                                                            @if($item->itemType == 'Crossover')
-                                                                <td>
-                                                                    <span>{{$item->crossover_description_one}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->crossover_description_two}}</span>
-                                                                    <br>
-                                                                    <span>{{$item->crossover_description_three}}</span>
-                                                                </td>
-                                                                <td class="text-center">{{$item->crossover_autographed == 1 ? 'Yes' : 'No'}}</td>
-                                                            @endif
-                                                            <td class="">
-                                                                <div class="d-flex justify-content-center">
-                                                                    <div class="" style="margin-right: 15px;">
-                                                                        <button type="button" class="btn text-primary btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$item->id}}">
-                                                                            <i class="fa fa-angle-double-up"></i>
-                                                                        </button>
-                                                                        <div class="modal fade" id="staticBackdrop-{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
-                                                                            <div class="modal-dialog">
-                                                                                <div class="modal-content">
-                                                                                    {{--                                                                    <div class="modal-header">--}}
-                                                                                    {{--                                                                        <h5 class="modal-title" id="staticBackdropLabel">Multiple Qty--}}
-                                                                                    {{--                                                                        </h5>--}}
-                                                                                    {{--                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
-                                                                                    {{--                                                                    </div>--}}
-                                                                                    <div class="modal-body mt-3 text-center">
-                                                                                        <div class="question-icon-box">
-                                                                                            <i class="fa fa-question" style="color: #3d7cb1;font-size: 32px;"></i>
-                                                                                        </div>
-                                                                                        <span class="question-text" style="font-size: 24px;">
-                                                                            How much additional pieces of <br>
-                                                                            this item do you want to add?
-                                                                        </span>
-                                                                                    </div>
-                                                                                    <div class="mb-4 text-center">
-                                                                                        <form action="{{route('admin.entries.addAdditional.pieces')}}" method="POST">
-                                                                                            @method('POST')
-                                                                                            @csrf
-                                                                                            <div class="form-group mb-3">
-                                                                                                <input type="number" id="quantity-input-box" class="form-control" name="pieces" style="width: 33%;margin: 0 auto;">
-                                                                                                <p class="quantity-warning-text text-danger" id="quantity-warning-text">Quantity is required</p>
-                                                                                                <input type="number" hidden=""  class="form-control" name="item_id" value="{{$item->id}}" style="width: 33%;margin: 0 auto;">
+{{--                                                            @if($item->itemType == 'Combined Service')--}}
+{{--                                                                <td>--}}
+{{--                                                                    <span>{{$item->combined_service_description_one}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->combined_service_description_two}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->combined_service_description_three}}</span>--}}
+{{--                                                                </td>--}}
+{{--                                                                <td class="text-center">{{$item->combined_service_autographed == 1 ? 'Yes' : 'No'}}</td>--}}
+{{--                                                            @endif--}}
+
+{{--                                                            @if($item->itemType == 'Reholder')--}}
+{{--                                                                <td>--}}
+{{--                                                                    <span>N/A</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>N/A</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>N/A</span>--}}
+{{--                                                                </td>--}}
+{{--                                                                <td class="text-center">N/A</td>--}}
+{{--                                                            @endif--}}
+
+{{--                                                            @if($item->itemType == 'Crossover')--}}
+{{--                                                                <td>--}}
+{{--                                                                    <span>{{$item->crossover_description_one}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->crossover_description_two}}</span>--}}
+{{--                                                                    <br>--}}
+{{--                                                                    <span>{{$item->crossover_description_three}}</span>--}}
+{{--                                                                </td>--}}
+{{--                                                                <td class="text-center">{{$item->crossover_autographed == 1 ? 'Yes' : 'No'}}</td>--}}
+{{--                                                            @endif--}}
+{{--                                                            <td class="">--}}
+{{--                                                                <div class="d-flex justify-content-center">--}}
+{{--                                                                    <div class="" style="margin-right: 15px;">--}}
+{{--                                                                        <button type="button" class="btn text-primary btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$item->id}}">--}}
+{{--                                                                            <i class="fa fa-angle-double-up"></i>--}}
+{{--                                                                        </button>--}}
+{{--                                                                        <div class="modal fade" id="staticBackdrop-{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">--}}
+{{--                                                                            <div class="modal-dialog">--}}
+{{--                                                                                <div class="modal-content">--}}
+{{--                                                                                    --}}{{--                                                                    <div class="modal-header">--}}
+{{--                                                                                    --}}{{--                                                                        <h5 class="modal-title" id="staticBackdropLabel">Multiple Qty--}}
+{{--                                                                                    --}}{{--                                                                        </h5>--}}
+{{--                                                                                    --}}{{--                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+{{--                                                                                    --}}{{--                                                                    </div>--}}
+{{--                                                                                    <div class="modal-body mt-3 text-center">--}}
+{{--                                                                                        <div class="question-icon-box">--}}
+{{--                                                                                            <i class="fa fa-question" style="color: #3d7cb1;font-size: 32px;"></i>--}}
+{{--                                                                                        </div>--}}
+{{--                                                                                        <span class="question-text" style="font-size: 24px;">--}}
+{{--                                                                            How much additional pieces of <br>--}}
+{{--                                                                            this item do you want to add?--}}
+{{--                                                                        </span>--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                    <div class="mb-4 text-center">--}}
+{{--                                                                                        <form action="{{route('admin.entries.addAdditional.pieces')}}" method="POST">--}}
+{{--                                                                                            @method('POST')--}}
+{{--                                                                                            @csrf--}}
+{{--                                                                                            <div class="form-group mb-3">--}}
+{{--                                                                                                <input type="number" id="quantity-input-box" class="form-control" name="pieces" style="width: 33%;margin: 0 auto;">--}}
+{{--                                                                                                <p class="quantity-warning-text text-danger" id="quantity-warning-text">Quantity is required</p>--}}
+{{--                                                                                                <input type="number" hidden=""  class="form-control" name="item_id" value="{{$item->id}}" style="width: 33%;margin: 0 auto;">--}}
 {{--                                                                                                <input type="number" hidden="" class="form-control" name="item_name" value="Card" style="width: 33%;margin: 0 auto;">--}}
-                                                                                            </div>
-                                                                                            <button type="submit" id="extra_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
-                                                                                            <button type="button" id="cancel_btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                                        </form>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- /.modal-content -->
-                                                                            </div>
-                                                                            <!-- /.modal-dialog -->
-                                                                        </div>
-                                                                    </div>
+{{--                                                                                            </div>--}}
+{{--                                                                                            <button type="submit" id="extra_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>--}}
+{{--                                                                                            <button type="button" id="cancel_btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>--}}
+{{--                                                                                        </form>--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                </div>--}}
+{{--                                                                                <!-- /.modal-content -->--}}
+{{--                                                                            </div>--}}
+{{--                                                                            <!-- /.modal-dialog -->--}}
+{{--                                                                        </div>--}}
+{{--                                                                    </div>--}}
 
-                                                                    <div class="" style="margin-right: 15px;">
-                                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#editItemModal-{{$item->id}}">
-                                                                            <i class="fa fa-edit" style="padding-top: 6px;padding-bottom: 6px;"></i>
-                                                                        </button>
+{{--                                                                    <div class="" style="margin-right: 15px;">--}}
+{{--                                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#editItemModal-{{$item->id}}">--}}
+{{--                                                                            <i class="fa fa-edit" style="padding-top: 6px;padding-bottom: 6px;"></i>--}}
+{{--                                                                        </button>--}}
 {{--                                                                        <div class="modal fade" id="staticBackdropEdit-{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">--}}
 {{--                                                                            <div class="modal-dialog modal-lg">--}}
 {{--                                                                                <div class="modal-content">--}}
@@ -2382,10 +2238,662 @@
 {{--                                                                            <!-- /.modal-dialog -->--}}
 {{--                                                                        </div>--}}
 
+{{--                                                                        <!-- EDIT ITEM DESCRIPTION SECTION -->--}}
+
+{{--                                                                        <!-- EDIT ITEM MODAL -->--}}
+{{--                                                                        <div id="editItemModal-{{$item->id}}" class="modal fade item-modal text-left" tabindex="-1">--}}
+{{--                                                                            <div class="modal-dialog modal-xl">--}}
+{{--                                                                                <div class="modal-content">--}}
+
+{{--                                                                                    <!-- Modal Header -->--}}
+{{--                                                                                    <div class="modal-header">--}}
+{{--                                                                                        <h5 class="modal-title">Edit Item</h5>--}}
+{{--                                                                                        <button type="button" class="btn-close"--}}
+{{--                                                                                                data-bs-dismiss="modal"></button>--}}
+{{--                                                                                    </div>--}}
+
+{{--                                                                                        <form id="editItemForm" method="POST"--}}
+{{--                                                                                              action="{{ route('admin.entries.edit.new.item', $item->id) }}">--}}
+{{--                                                                                            @csrf--}}
+{{--                                                                                            @method('POST')--}}
+
+{{--                                                                                        <input type="hidden" name="id" value="{{ $item->id }}">--}}
+{{--                                                                                        <input type="hidden" name="itemType" value="{{ $item->itemType }}">--}}
+
+{{--                                                                                        <div class="modal-body">--}}
+
+{{--                                                                                            <!-- READ-ONLY ITEM TYPE -->--}}
+{{--                                                                                            <div class="item-type-panel">--}}
+{{--                                                                                                <label for="editItemType" class="form-label">Item Type</label>--}}
+{{--                                                                                                <input type="text" id="editItemType" class="form-control"--}}
+{{--                                                                                                       value="{{ $item->itemType }}" readonly>--}}
+{{--                                                                                            </div>--}}
+
+{{--                                                                                            <div class="item-detail-panel">--}}
+{{--                                                                                                <!-- ==================================================--}}
+{{--                                                                                                 CARD SECTION--}}
+{{--                                                                                            =================================================== -->--}}
+{{--                                                                                                <div class="item-section" id="editShowItemTypeCardBox"--}}
+{{--                                                                                                     data-section="card" style="display:none;">--}}
+
+{{--                                                                                                    <div class="item-form-card">--}}
+{{--                                                                                                        <div class="item-layout">--}}
+
+{{--                                                                                                            <div class="quantity-column">--}}
+{{--                                                                                                                <div class="quantity-box">--}}
+{{--                                                                                                                    <div class="quantity-title">Quantity</div>--}}
+{{--                                                                                                                    <div class="quantity-value">1</div>--}}
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+
+{{--                                                                                                            <div class="details-column">--}}
+
+{{--                                                                                                                <!-- Description 1 -->--}}
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <div class="description-heading">Description #1</div>--}}
+
+{{--                                                                                                                    <div class="row g-2">--}}
+{{--                                                                                                                        <div class="col-md-2">--}}
+{{--                                                                                                                            <label for="edit_card_year" class="field-label">--}}
+{{--                                                                                                                                Year--}}
+{{--                                                                                                                            </label>--}}
+{{--                                                                                                                            <input type="text" id="edit_card_year"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+
+{{--                                                                                                                        <div class="col-md-10">--}}
+{{--                                                                                                                            <label for="edit_card_manufacturer"--}}
+{{--                                                                                                                                   class="field-label">Manufacturer</label>--}}
+{{--                                                                                                                            <input type="text" id="edit_card_manufacturer"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <input type="hidden" name="card_description_one"--}}
+{{--                                                                                                                           id="edit_card_description_one"--}}
+{{--                                                                                                                           value="{{ $item->card_description_one }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Description 2 -->--}}
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <div class="description-heading">Description #2</div>--}}
+
+{{--                                                                                                                    <div class="row g-2">--}}
+{{--                                                                                                                        <div class="col-md-2" data-number-field>--}}
+{{--                                                                                                                            <label for="edit_card_number"--}}
+{{--                                                                                                                                   class="field-label">Number</label>--}}
+{{--                                                                                                                            <input type="text" id="edit_card_number"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+
+{{--                                                                                                                        <div class="col-md-10">--}}
+{{--                                                                                                                            <label for="edit_card_player_name"--}}
+{{--                                                                                                                                   class="field-label">Player Name</label>--}}
+{{--                                                                                                                            <input type="text" id="edit_card_player_name"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <input type="hidden" name="card_description_two"--}}
+{{--                                                                                                                           id="edit_card_description_two"--}}
+{{--                                                                                                                           value="{{ $item->card_description_two }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Description 3 -->--}}
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <label for="edit_card_description_three"--}}
+{{--                                                                                                                           class="field-label">Description #3</label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="card_description_three"--}}
+{{--                                                                                                                           id="edit_card_description_three"--}}
+{{--                                                                                                                           value="{{ $item->card_description_three }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Serial Number -->--}}
+{{--                                                                                                                <div class="serial-block">--}}
+{{--                                                                                                                    <label for="edit_card_serial_number"--}}
+{{--                                                                                                                           class="field-label">--}}
+{{--                                                                                                                        Serial Number (Only if printed directly on item)--}}
+{{--                                                                                                                    </label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="card_serial_number"--}}
+{{--                                                                                                                           id="edit_card_serial_number"--}}
+{{--                                                                                                                           value="{{ $item->card_serial_number }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Autograph Fields -->--}}
+{{--                                                                                                                <div class="autograph-row" data-autograph-fields>--}}
+
+{{--                                                                                                                    <div class="autograph-checkbox">--}}
+{{--                                                                                                                        <label for="edit_card_autographed"--}}
+{{--                                                                                                                               class="field-label">Autographed</label>--}}
+{{--                                                                                                                        <input type="checkbox" class="form-check-input"--}}
+{{--                                                                                                                               id="edit_card_autographed"--}}
+{{--                                                                                                                               name="card_autographed" value="1"--}}
+{{--                                                                                                                            {{ $item->card_autographed ? 'checked' : '' }}>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <div class="autograph-authenticator">--}}
+{{--                                                                                                                        <label for="edit_card_authenticator_name"--}}
+{{--                                                                                                                               class="field-label">Authenticator Name</label>--}}
+{{--                                                                                                                        <select class="form-select"--}}
+{{--                                                                                                                                id="edit_card_authenticator_name"--}}
+{{--                                                                                                                                name="card_authenticator_name">--}}
+{{--                                                                                                                            <option value="">Select</option>--}}
+{{--                                                                                                                            @foreach($authenticators as $authenticator)--}}
+{{--                                                                                                                                <option value="{{ $authenticator->id }}"--}}
+{{--                                                                                                                                    {{ $item->card_authenticator_name == $authenticator->id ? 'selected' : '' }}>--}}
+{{--                                                                                                                                    {{ $authenticator->name }}--}}
+{{--                                                                                                                                </option>--}}
+{{--                                                                                                                            @endforeach--}}
+{{--                                                                                                                        </select>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <div class="certified-checkbox">--}}
+{{--                                                                                                                        <label for="edit_card_certified_on_card"--}}
+{{--                                                                                                                               class="field-label">Certified On Card</label>--}}
+{{--                                                                                                                        <input type="checkbox" class="form-check-input"--}}
+{{--                                                                                                                               id="edit_card_certified_on_card"--}}
+{{--                                                                                                                               name="card_certified_on_card" value="1"--}}
+{{--                                                                                                                            {{ $item->card_certified_on_card ? 'checked' : '' }}>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <div class="auth-cert-number">--}}
+{{--                                                                                                                        <label for="edit_card_authenticator_cert_no"--}}
+{{--                                                                                                                               class="field-label">--}}
+{{--                                                                                                                            Authenticator Cert. No.--}}
+{{--                                                                                                                        </label>--}}
+{{--                                                                                                                        <input type="text" class="form-control"--}}
+{{--                                                                                                                               id="edit_card_authenticator_cert_no"--}}
+{{--                                                                                                                               name="card_authenticator_cert_no"--}}
+{{--                                                                                                                               value="{{ $item->card_authenticator_cert_no }}">--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+{{--                                                                                                        </div>--}}
+{{--                                                                                                    </div>--}}
+{{--                                                                                                </div>--}}
+
+{{--                                                                                                <!-- ==================================================--}}
+{{--                                                                                                     INDEX CARD SECTION--}}
+{{--                                                                                                =================================================== -->--}}
+{{--                                                                                                <div class="item-section" id="editShowItemTypeIndexCardBox"--}}
+{{--                                                                                                     data-section="index-card" style="display:none;">--}}
+
+{{--                                                                                                    <div class="item-form-card">--}}
+{{--                                                                                                        <div class="item-layout">--}}
+
+{{--                                                                                                            <div class="quantity-column">--}}
+{{--                                                                                                                <div class="quantity-box">--}}
+{{--                                                                                                                    <div class="quantity-title">Quantity</div>--}}
+{{--                                                                                                                    <div class="quantity-value">1</div>--}}
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+
+{{--                                                                                                            <div class="details-column">--}}
+
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <label for="edit_index_card_description_one"--}}
+{{--                                                                                                                           class="field-label">Description #1</label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="card_description_one"--}}
+{{--                                                                                                                           id="edit_index_card_description_one"--}}
+{{--                                                                                                                           value="{{ $item->card_description_one }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <label for="edit_index_card_description_two"--}}
+{{--                                                                                                                           class="field-label">Description #2</label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="card_description_two"--}}
+{{--                                                                                                                           id="edit_index_card_description_two"--}}
+{{--                                                                                                                           value="{{ $item->card_description_two }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <label for="edit_index_card_description_three"--}}
+{{--                                                                                                                           class="field-label">Description #3</label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="card_description_three"--}}
+{{--                                                                                                                           id="edit_index_card_description_three"--}}
+{{--                                                                                                                           value="{{ $item->card_description_three }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <div class="serial-block">--}}
+{{--                                                                                                                    <label for="edit_index_card_serial_number"--}}
+{{--                                                                                                                           class="field-label">--}}
+{{--                                                                                                                        Serial Number (Only if printed directly on item)--}}
+{{--                                                                                                                    </label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="card_serial_number"--}}
+{{--                                                                                                                           id="edit_index_card_serial_number"--}}
+{{--                                                                                                                           value="{{ $item->card_serial_number }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <div class="autograph-row" data-autograph-fields>--}}
+
+{{--                                                                                                                    <div class="autograph-checkbox">--}}
+{{--                                                                                                                        <label for="edit_index_card_autographed"--}}
+{{--                                                                                                                               class="field-label">Autographed</label>--}}
+{{--                                                                                                                        <input type="checkbox" class="form-check-input"--}}
+{{--                                                                                                                               id="edit_index_card_autographed"--}}
+{{--                                                                                                                               name="card_autographed" value="1"--}}
+{{--                                                                                                                            {{ $item->card_autographed ? 'checked' : '' }}>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <div class="autograph-authenticator">--}}
+{{--                                                                                                                        <label for="edit_index_card_authenticator_name"--}}
+{{--                                                                                                                               class="field-label">Authenticator Name</label>--}}
+{{--                                                                                                                        <select class="form-select"--}}
+{{--                                                                                                                                id="edit_index_card_authenticator_name"--}}
+{{--                                                                                                                                name="card_authenticator_name">--}}
+{{--                                                                                                                            <option value="">Select</option>--}}
+{{--                                                                                                                            @foreach($authenticators as $authenticator)--}}
+{{--                                                                                                                                <option value="{{ $authenticator->id }}"--}}
+{{--                                                                                                                                    {{ $item->card_authenticator_name == $authenticator->id ? 'selected' : '' }}>--}}
+{{--                                                                                                                                    {{ $authenticator->name }}--}}
+{{--                                                                                                                                </option>--}}
+{{--                                                                                                                            @endforeach--}}
+{{--                                                                                                                        </select>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <div class="auth-cert-number">--}}
+{{--                                                                                                                        <label for="edit_index_card_authenticator_cert_no"--}}
+{{--                                                                                                                               class="field-label">--}}
+{{--                                                                                                                            Authenticator Cert. No.--}}
+{{--                                                                                                                        </label>--}}
+{{--                                                                                                                        <input type="text" class="form-control"--}}
+{{--                                                                                                                               id="edit_index_card_authenticator_cert_no"--}}
+{{--                                                                                                                               name="card_authenticator_cert_no"--}}
+{{--                                                                                                                               value="{{ $item->card_authenticator_cert_no }}">--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+{{--                                                                                                        </div>--}}
+{{--                                                                                                    </div>--}}
+{{--                                                                                                </div>--}}
+
+{{--                                                                                                <!-- ==================================================--}}
+{{--                                                                                                     COMBINED SERVICE SECTION--}}
+{{--                                                                                                =================================================== -->--}}
+{{--                                                                                                <div class="item-section" id="editShowItemTypeCombinedServiceBox"--}}
+{{--                                                                                                     data-section="combined" style="display:none;">--}}
+
+{{--                                                                                                    <div class="item-form-card">--}}
+{{--                                                                                                        <div class="item-layout">--}}
+
+{{--                                                                                                            <div class="quantity-column">--}}
+{{--                                                                                                                <div class="quantity-box">--}}
+{{--                                                                                                                    <div class="quantity-title">Quantity</div>--}}
+{{--                                                                                                                    <div class="quantity-value">1</div>--}}
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+
+{{--                                                                                                            <div class="details-column">--}}
+
+{{--                                                                                                                <!-- Description 1 -->--}}
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <div class="description-heading">Description #1</div>--}}
+
+{{--                                                                                                                    <div class="row g-2">--}}
+{{--                                                                                                                        <div class="col-md-2">--}}
+{{--                                                                                                                            <label for="edit_combined_service_year"--}}
+{{--                                                                                                                                   class="field-label">Year</label>--}}
+{{--                                                                                                                            <input type="text" id="edit_combined_service_year"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+
+{{--                                                                                                                        <div class="col-md-10">--}}
+{{--                                                                                                                            <label for="edit_combined_service_manufacturer"--}}
+{{--                                                                                                                                   class="field-label">Manufacturer</label>--}}
+{{--                                                                                                                            <input type="text"--}}
+{{--                                                                                                                                   id="edit_combined_service_manufacturer"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <input type="hidden"--}}
+{{--                                                                                                                           name="combined_service_description_one"--}}
+{{--                                                                                                                           id="edit_combined_service_description_one"--}}
+{{--                                                                                                                           value="{{ $item->combined_service_description_one }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Description 2 -->--}}
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <div class="description-heading">Description #2</div>--}}
+
+{{--                                                                                                                    <div class="row g-2">--}}
+{{--                                                                                                                        <div class="col-md-2" data-number-field>--}}
+{{--                                                                                                                            <label for="edit_combined_service_number"--}}
+{{--                                                                                                                                   class="field-label">Number</label>--}}
+{{--                                                                                                                            <input type="text"--}}
+{{--                                                                                                                                   id="edit_combined_service_number"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+
+{{--                                                                                                                        <div class="col-md-10">--}}
+{{--                                                                                                                            <label for="edit_combined_service_player_name"--}}
+{{--                                                                                                                                   class="field-label">Player Name</label>--}}
+{{--                                                                                                                            <input type="text"--}}
+{{--                                                                                                                                   id="edit_combined_service_player_name"--}}
+{{--                                                                                                                                   class="form-control">--}}
+{{--                                                                                                                        </div>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <input type="hidden"--}}
+{{--                                                                                                                           name="combined_service_description_two"--}}
+{{--                                                                                                                           id="edit_combined_service_description_two"--}}
+{{--                                                                                                                           value="{{ $item->combined_service_description_two }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Description 3 -->--}}
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <label for="edit_combined_service_description_three"--}}
+{{--                                                                                                                           class="field-label">Description #3</label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="combined_service_description_three"--}}
+{{--                                                                                                                           id="edit_combined_service_description_three"--}}
+{{--                                                                                                                           value="{{ $item->combined_service_description_three }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Serial Number -->--}}
+{{--                                                                                                                <div class="serial-block">--}}
+{{--                                                                                                                    <label for="edit_combined_service_serial_number"--}}
+{{--                                                                                                                           class="field-label">--}}
+{{--                                                                                                                        Serial Number (Only if printed directly on item)--}}
+{{--                                                                                                                    </label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="combined_service_serial_number"--}}
+{{--                                                                                                                           id="edit_combined_service_serial_number"--}}
+{{--                                                                                                                           value="{{ $item->combined_service_serial_number }}">--}}
+{{--                                                                                                                </div>--}}
+
+{{--                                                                                                                <!-- Autograph Fields -->--}}
+{{--                                                                                                                <div class="autograph-row">--}}
+
+{{--                                                                                                                    <div class="autograph-checkbox">--}}
+{{--                                                                                                                        <label for="edit_combined_service_autographed"--}}
+{{--                                                                                                                               class="field-label">Autographed</label>--}}
+{{--                                                                                                                        <input type="checkbox" class="form-check-input"--}}
+{{--                                                                                                                               id="edit_combined_service_autographed"--}}
+{{--                                                                                                                               name="combined_service_autographed" value="1"--}}
+{{--                                                                                                                            {{ $item->combined_service_autographed ? 'checked' : '' }}>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <div class="autograph-authenticator">--}}
+{{--                                                                                                                        <label for="edit_combined_service_authenticator_name"--}}
+{{--                                                                                                                               class="field-label">Authenticator Name</label>--}}
+{{--                                                                                                                        <select class="form-select"--}}
+{{--                                                                                                                                id="edit_combined_service_authenticator_name"--}}
+{{--                                                                                                                                name="combined_service_authenticator_name">--}}
+{{--                                                                                                                            <option value="">Select</option>--}}
+{{--                                                                                                                            @foreach($authenticators as $authenticator)--}}
+{{--                                                                                                                                <option value="{{ $authenticator->id }}"--}}
+{{--                                                                                                                                    {{ $item->combined_service_authenticator_name == $authenticator->id ? 'selected' : '' }}>--}}
+{{--                                                                                                                                    {{ $authenticator->name }}--}}
+{{--                                                                                                                                </option>--}}
+{{--                                                                                                                            @endforeach--}}
+{{--                                                                                                                        </select>--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                    <div class="auth-cert-number">--}}
+{{--                                                                                                                        <label for="edit_combined_service_authenticator_cert_no"--}}
+{{--                                                                                                                               class="field-label">--}}
+{{--                                                                                                                            Authenticator Cert. No.--}}
+{{--                                                                                                                        </label>--}}
+{{--                                                                                                                        <input type="text" class="form-control"--}}
+{{--                                                                                                                               id="edit_combined_service_authenticator_cert_no"--}}
+{{--                                                                                                                               name="combined_service_authenticator_cert_no"--}}
+{{--                                                                                                                               value="{{ $item->combined_service_authenticator_cert_no }}">--}}
+{{--                                                                                                                    </div>--}}
+
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+{{--                                                                                                        </div>--}}
+{{--                                                                                                    </div>--}}
+{{--                                                                                                </div>--}}
+
+{{--                                                                                                <!-- ==================================================--}}
+{{--                                                                                                     REHOLDER SECTION--}}
+{{--                                                                                                =================================================== -->--}}
+{{--                                                                                                <div class="item-section" id="editShowItemTypeReholderBox"--}}
+{{--                                                                                                     data-section="reholder" style="display:none;">--}}
+
+{{--                                                                                                    <div class="item-form-card">--}}
+{{--                                                                                                        <div class="item-layout">--}}
+
+{{--                                                                                                            <div class="quantity-column">--}}
+{{--                                                                                                                <div class="quantity-box">--}}
+{{--                                                                                                                    <div class="quantity-title">Quantity</div>--}}
+{{--                                                                                                                    <div class="quantity-value">1</div>--}}
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+
+{{--                                                                                                            <div class="details-column">--}}
+{{--                                                                                                                <div class="description-block">--}}
+{{--                                                                                                                    <label for="edit_reholder_certification_number"--}}
+{{--                                                                                                                           class="field-label">Certification Number</label>--}}
+{{--                                                                                                                    <input type="text" class="form-control"--}}
+{{--                                                                                                                           name="reholder_certification_number"--}}
+{{--                                                                                                                           id="edit_reholder_certification_number"--}}
+{{--                                                                                                                           value="{{ $item->reholder_certification_number }}">--}}
+{{--                                                                                                                </div>--}}
+{{--                                                                                                            </div>--}}
+
+{{--                                                                                                        </div>--}}
+{{--                                                                                                    </div>--}}
+{{--                                                                                                </div>--}}
+{{--                                                                                            </div>--}}
+
+{{--                                                                                        </div>--}}
+
+{{--                                                                                        <div class="modal-footer">--}}
+{{--                                                                                            <button type="submit" class="btn btn-primary" id="edit_item_submit_btn">--}}
+{{--                                                                                                Save Changes--}}
+{{--                                                                                            </button>--}}
+
+{{--                                                                                            <button type="button" class="btn btn-secondary"--}}
+{{--                                                                                                    data-bs-dismiss="modal">Cancel</button>--}}
+{{--                                                                                        </div>--}}
+
+{{--                                                                                    </form>--}}
+{{--                                                                                </div>--}}
+{{--                                                                            </div>--}}
+{{--                                                                        </div>--}}
+{{--                                                                    </div>--}}
+
+{{--                                                                    delete modal--}}
+{{--                                                                    <div class="">--}}
+{{--                                                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdropDelete">--}}
+{{--                                                                            <i class="fa fa-archive" style="padding-top: 6px;padding-bottom: 6px;"></i>--}}
+{{--                                                                        </button>--}}
+{{--                                                                        <div class="modal fade" id="staticBackdropDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">--}}
+{{--                                                                            <div class="modal-dialog">--}}
+{{--                                                                                <div class="modal-content">--}}
+{{--                                                                                    <div class="modal-body mt-3 text-center">--}}
+{{--                                                                                        <div class="question-icon-box">--}}
+{{--                                                                                            <i class="fa fa-exclamation" style="color: darkorange;font-size: 32px;"></i>--}}
+{{--                                                                                        </div>--}}
+{{--                                                                                        <span class="question-text" style="font-size: 24px;">--}}
+{{--                                                                            Are you sure ? <br>--}}
+{{--                                                                            <span style="font-size: 14px;">You won't be able to revert this!</span>--}}
+{{--                                                                        </span>--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                    <div class="mb-4 text-center">--}}
+{{--                                                                                        <form action="{{route('admin.entries.entry.item.destroy')}}" method="POST">--}}
+{{--                                                                                            @method('post')--}}
+{{--                                                                                            @csrf--}}
+{{--                                                                                            <div class="form-group mb-3">--}}
+{{--                                                                                                <input type="number" hidden="" class="form-control" name="item_id" value="{{$item->id}}" style="width: 33%;margin: 0 auto;">--}}
+{{--                                                                                            </div>--}}
+{{--                                                                                            <button type="submit" id="" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>--}}
+{{--                                                                                            <button type="button" id="" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>--}}
+{{--                                                                                        </form>--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                </div>--}}
+{{--                                                                                <!-- /.modal-content -->--}}
+{{--                                                                            </div>--}}
+{{--                                                                            <!-- /.modal-dialog -->--}}
+{{--                                                                        </div>--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
+{{--                                                            </td>--}}
+{{--                                                        </tr>--}}
+{{--                                                    @endforeach--}}
+{{--                                                @else--}}
+{{--                                                    <tr width="100">--}}
+{{--                                                        <td class="text-capitalize text-center text-warning">No item found with this entry</td>--}}
+{{--                                                    </tr>--}}
+{{--                                                @endif--}}
+{{--                                                </tbody>--}}
+{{--                                            </table>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                                <div class=""></div>--}}
+{{--                                <div class="text-end mt-4">--}}
+{{--                                    <a class="btn btn-primary" style="margin-right: 15px;" href="{{route('admin.entries.index')}}">Entry Complete</a>--}}
+{{--                                    <a class="btn btn-secondary" href="{{route('admin.entries.index')}}">Continue Later</a>--}}
+{{--                                </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h5 class="card-title text-capitalize">{{$entry->customer_name}}</h5>
+                                    <h5 class="card-title text-capitalize">Order # {{$entry->entrySKU}}</h5>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered mb-0 entry-items-table">
+
+                                                <thead class="text-center">
+                                                <tr>
+                                                    <th>Item Type</th>
+                                                    <th>Sub Type</th>
+                                                    <th>Description</th>
+                                                    <th>Autographed</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                @if($items->count() > 0)
+                                                    @foreach($items as $item)
+                                                        @php
+                                                            // Item type -> DB column prefix
+                                                            $prefix = match (true) {
+                                                                str_starts_with($item->itemType, 'Card'),
+                                                                $item->itemType == 'Index Card' => 'card',
+                                                                str_starts_with($item->itemType, 'Combined Service') => 'combined_service',
+                                                                $item->itemType == 'Autograph Authentication' => 'auto_authentication',
+                                                                $item->itemType == 'Crossover' => 'crossover',
+                                                                default => null,
+                                                            };
+
+                                                            $descriptions = $prefix
+                                                                ? array_filter([
+                                                                    $item->{$prefix . '_description_one'},
+                                                                    $item->{$prefix . '_description_two'},
+                                                                    $item->{$prefix . '_description_three'},
+                                                                ])
+                                                                : [];
+
+                                                            $autographed = $prefix ? $item->{$prefix . '_autographed'} : null;
+                                                        @endphp
+
+                                                        <tr>
+                                                            <td class="item-type-cell">{{$item->itemType}}</td>
+                                                            <td>{{$item->itemType == 'Crossover' ? $item->crossover_item_type : 'N/A'}}</td>
+
+                                                            <td class="item-description">
+                                                                @if(!$prefix)
+                                                                    <span class="text-muted-na">N/A</span>
+                                                                @elseif(count($descriptions))
+                                                                    @foreach($descriptions as $description)
+                                                                        <span>{{$description}}</span>
+                                                                    @endforeach
+                                                                @else
+                                                                    <span class="text-muted-na">—</span>
+                                                                @endif
+                                                            </td>
+
+                                                            <td>
+                                                                @if(!$prefix)
+                                                                    <span class="status-badge status-na">N/A</span>
+                                                                @elseif($autographed == 1)
+                                                                    <span class="status-badge status-yes">Yes</span>
+                                                                @else
+                                                                    <span class="status-badge status-no">No</span>
+                                                                @endif
+                                                            </td>
+
+                                                            <td class="">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <div class="" style="margin-right: 15px;">
+                                                                        <button type="button" class="btn text-primary btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$item->id}}">
+                                                                            <i class="fa fa-angle-double-up"></i>
+                                                                        </button>
+                                                                        <div class="modal fade" id="staticBackdrop-{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    {{--                                                                    <div class="modal-header">--}}
+                                                                                    {{--                                                                        <h5 class="modal-title" id="staticBackdropLabel">Multiple Qty--}}
+                                                                                    {{--                                                                        </h5>--}}
+                                                                                    {{--                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+                                                                                    {{--                                                                    </div>--}}
+                                                                                    <div class="modal-body mt-3 text-center">
+                                                                                        <div class="question-icon-box">
+                                                                                            <i class="fa fa-question" style="color: #3d7cb1;font-size: 32px;"></i>
+                                                                                        </div>
+                                                                                        <span class="question-text" style="font-size: 24px;">
+                                                                            How much additional pieces of <br>
+                                                                            this item do you want to add?
+                                                                        </span>
+                                                                                    </div>
+                                                                                    <div class="mb-4 text-center">
+                                                                                        <form action="{{route('admin.entries.addAdditional.pieces')}}" method="POST">
+                                                                                            @method('POST')
+                                                                                            @csrf
+                                                                                            <div class="form-group mb-3">
+                                                                                                <input type="number" id="quantity-input-box" class="form-control" name="pieces" style="width: 33%;margin: 0 auto;">
+                                                                                                <p class="quantity-warning-text text-danger" id="quantity-warning-text">Quantity is required</p>
+                                                                                                <input type="number" hidden=""  class="form-control" name="item_id" value="{{$item->id}}" style="width: 33%;margin: 0 auto;">
+                                                                                                {{--                                                                                                <input type="number" hidden="" class="form-control" name="item_name" value="Card" style="width: 33%;margin: 0 auto;">--}}
+                                                                                            </div>
+                                                                                            <button type="submit" id="extra_submit_btn" class="btn btn-primary" style="margin-right: 15px;">Confirm</button>
+                                                                                            <button type="button" id="cancel_btn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- /.modal-content -->
+                                                                            </div>
+                                                                            <!-- /.modal-dialog -->
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="" style="margin-right: 15px;">
+                                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#editItemModal-{{$item->id}}">
+                                                                            <i class="fa fa-edit" style="padding-top: 6px;padding-bottom: 6px;"></i>
+                                                                        </button>
+
                                                                         <!-- EDIT ITEM DESCRIPTION SECTION -->
 
                                                                         <!-- EDIT ITEM MODAL -->
-                                                                        <div id="editItemModal-{{$item->id}}" class="modal fade item-modal" tabindex="-1">
+                                                                        <div id="editItemModal-{{$item->id}}" class="modal fade item-modal text-left" tabindex="-1">
                                                                             <div class="modal-dialog modal-xl">
                                                                                 <div class="modal-content">
 
@@ -2399,29 +2907,30 @@
                                                                                     <form id="editItemForm" method="POST"
                                                                                           action="{{ route('admin.entries.edit.new.item', $item->id) }}">
                                                                                         @csrf
-                                                                                        @method('PUT')
+                                                                                        @method('POST')
+
+                                                                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                                                                        <input type="hidden" name="itemType" value="{{ $item->itemType }}">
 
                                                                                         <div class="modal-body">
 
-                                                                                            <!-- ITEM TYPE -->
+                                                                                            <!-- READ-ONLY ITEM TYPE -->
                                                                                             <div class="item-type-panel">
-                                                                                                <label class="form-label">Item Type</label>
-
-                                                                                                <input type="text" class="form-control"
+                                                                                                <label for="editItemType" class="form-label">Item Type</label>
+                                                                                                <input type="text" id="editItemType" class="form-control"
                                                                                                        value="{{ $item->itemType }}" readonly>
-
-                                                                                                <input type="hidden" id="edit_item_type"
-                                                                                                       name="itemType"
-                                                                                                       value="{{ $item->itemType }}">
                                                                                             </div>
 
                                                                                             <div class="item-detail-panel">
-                                                                                                <!-- CARD SECTION -->
-                                                                                                <div id="editCardSection" class="item-section">
+                                                                                                <!-- ==================================================
+                                                                                                 CARD SECTION
+                                                                                            =================================================== -->
+                                                                                                <div class="item-section" id="editShowItemTypeCardBox"
+                                                                                                     data-section="card" style="display:none;">
+
                                                                                                     <div class="item-form-card">
                                                                                                         <div class="item-layout">
 
-                                                                                                            <!-- Quantity -->
                                                                                                             <div class="quantity-column">
                                                                                                                 <div class="quantity-box">
                                                                                                                     <div class="quantity-title">Quantity</div>
@@ -2429,150 +2938,144 @@
                                                                                                                 </div>
                                                                                                             </div>
 
-                                                                                                            <!-- Details -->
                                                                                                             <div class="details-column">
 
-                                                                                                                <!-- Description #1 -->
+                                                                                                                <!-- Description 1 -->
                                                                                                                 <div class="description-block">
-                                                                                                                    <div class="description-heading">
-                                                                                                                        Description #1
-                                                                                                                    </div>
+                                                                                                                    <div class="description-heading">Description #1</div>
 
-                                                                                                                    <div class="row">
+                                                                                                                    <div class="row g-2">
                                                                                                                         <div class="col-md-2">
-                                                                                                                            <label class="field-label">Year</label>
-                                                                                                                            <input type="text"
-                                                                                                                                   id="edit_card_year"
+                                                                                                                            <label for="edit_card_year" class="field-label">
+                                                                                                                                Year
+                                                                                                                            </label>
+                                                                                                                            <input type="text" id="edit_card_year"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
 
                                                                                                                         <div class="col-md-10">
-                                                                                                                            <label class="field-label">
-                                                                                                                                Manufacturer
-                                                                                                                            </label>
-                                                                                                                            <input type="text"
-                                                                                                                                   id="edit_card_manufacturer"
+                                                                                                                            <label for="edit_card_manufacturer"
+                                                                                                                                   class="field-label">Manufacturer</label>
+                                                                                                                            <input type="text" id="edit_card_manufacturer"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
                                                                                                                     </div>
 
-                                                                                                                    <input type="hidden"
+                                                                                                                    <input type="hidden" name="card_description_one"
                                                                                                                            id="edit_card_description_one"
-                                                                                                                           name="card_description_one"
                                                                                                                            value="{{ $item->card_description_one }}">
                                                                                                                 </div>
 
-                                                                                                                <!-- Description #2 -->
+                                                                                                                <!-- Description 2 -->
                                                                                                                 <div class="description-block">
-                                                                                                                    <div class="description-heading">
-                                                                                                                        Description #2
-                                                                                                                    </div>
+                                                                                                                    <div class="description-heading">Description #2</div>
 
-                                                                                                                    <div class="row">
-                                                                                                                        <div class="col-md-2"
-                                                                                                                             id="editCardNumberField">
-                                                                                                                            <label class="field-label">Number</label>
-                                                                                                                            <input type="text"
-                                                                                                                                   id="edit_card_number"
+                                                                                                                    <div class="row g-2">
+                                                                                                                        <div class="col-md-2" data-number-field>
+                                                                                                                            <label for="edit_card_number"
+                                                                                                                                   class="field-label">Number</label>
+                                                                                                                            <input type="text" id="edit_card_number"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
 
                                                                                                                         <div class="col-md-10">
-                                                                                                                            <label class="field-label">
-                                                                                                                                Player Name
-                                                                                                                            </label>
-                                                                                                                            <input type="text"
-                                                                                                                                   id="edit_card_player_name"
+                                                                                                                            <label for="edit_card_player_name"
+                                                                                                                                   class="field-label">Player Name</label>
+                                                                                                                            <input type="text" id="edit_card_player_name"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
                                                                                                                     </div>
 
-                                                                                                                    <input type="hidden"
+                                                                                                                    <input type="hidden" name="card_description_two"
                                                                                                                            id="edit_card_description_two"
-                                                                                                                           name="card_description_two"
                                                                                                                            value="{{ $item->card_description_two }}">
                                                                                                                 </div>
 
-                                                                                                                <!-- Description #3 -->
+                                                                                                                <!-- Description 3 -->
                                                                                                                 <div class="description-block">
-                                                                                                                    <label class="field-label">
-                                                                                                                        Description #3
-                                                                                                                    </label>
-                                                                                                                    <input type="text"
-                                                                                                                           class="form-control"
+                                                                                                                    <label for="edit_card_description_three"
+                                                                                                                           class="field-label">Description #3</label>
+                                                                                                                    <input type="text" class="form-control"
                                                                                                                            name="card_description_three"
+                                                                                                                           id="edit_card_description_three"
                                                                                                                            value="{{ $item->card_description_three }}">
                                                                                                                 </div>
 
                                                                                                                 <!-- Serial Number -->
                                                                                                                 <div class="serial-block">
-                                                                                                                    <label class="field-label">
-                                                                                                                        Serial Number
+                                                                                                                    <label for="edit_card_serial_number"
+                                                                                                                           class="field-label">
+                                                                                                                        Serial Number (Only if printed directly on item)
                                                                                                                     </label>
-                                                                                                                    <input type="text"
-                                                                                                                           class="form-control"
+                                                                                                                    <input type="text" class="form-control"
                                                                                                                            name="card_serial_number"
+                                                                                                                           id="edit_card_serial_number"
                                                                                                                            value="{{ $item->card_serial_number }}">
                                                                                                                 </div>
 
-                                                                                                                <!-- Autograph Options -->
-                                                                                                                <div class="autograph-row">
+                                                                                                                <!-- Autograph Fields -->
+                                                                                                                <div class="autograph-row" data-autograph-fields>
 
                                                                                                                     <div class="autograph-checkbox">
-                                                                                                                        <input type="checkbox"
-                                                                                                                               class="form-check-input"
-                                                                                                                               name="card_autographed"
-                                                                                                                               value="1"
+                                                                                                                        <label for="edit_card_autographed"
+                                                                                                                               class="field-label">Autographed</label>
+                                                                                                                        <input type="checkbox" class="form-check-input"
+                                                                                                                               id="edit_card_autographed"
+                                                                                                                               name="card_autographed" value="1"
                                                                                                                             {{ $item->card_autographed ? 'checked' : '' }}>
-                                                                                                                        <label class="field-label">
-                                                                                                                            Autographed
-                                                                                                                        </label>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="autograph-authenticator">
+                                                                                                                        <label for="edit_card_authenticator_name"
+                                                                                                                               class="field-label">Authenticator Name</label>
+                                                                                                                        <select class="form-select"
+                                                                                                                                id="edit_card_authenticator_name"
+                                                                                                                                name="card_authenticator_name">
+                                                                                                                            <option value="">Select</option>
+                                                                                                                            @foreach($authenticators as $authenticator)
+                                                                                                                                <option value="{{ $authenticator->id }}"
+                                                                                                                                    {{ $item->card_authenticator_name == $authenticator->id ? 'selected' : '' }}>
+                                                                                                                                    {{ $authenticator->name }}
+                                                                                                                                </option>
+                                                                                                                            @endforeach
+                                                                                                                        </select>
                                                                                                                     </div>
 
                                                                                                                     <div class="certified-checkbox">
-                                                                                                                        <input type="checkbox"
-                                                                                                                               class="form-check-input"
-                                                                                                                               name="card_certified_on_card"
-                                                                                                                               value="1"
+                                                                                                                        <label for="edit_card_certified_on_card"
+                                                                                                                               class="field-label">Certified On Card</label>
+                                                                                                                        <input type="checkbox" class="form-check-input"
+                                                                                                                               id="edit_card_certified_on_card"
+                                                                                                                               name="card_certified_on_card" value="1"
                                                                                                                             {{ $item->card_certified_on_card ? 'checked' : '' }}>
-                                                                                                                        <label class="field-label">
-                                                                                                                            Certified on Card
-                                                                                                                        </label>
                                                                                                                     </div>
 
-                                                                                                                    <div>
-                                                                                                                        <label class="field-label">
-                                                                                                                            Authenticator
+                                                                                                                    <div class="auth-cert-number">
+                                                                                                                        <label for="edit_card_authenticator_cert_no"
+                                                                                                                               class="field-label">
+                                                                                                                            Authenticator Cert. No.
                                                                                                                         </label>
-                                                                                                                        <input type="text"
-                                                                                                                               class="form-control"
-                                                                                                                               name="card_authenticator_name"
-                                                                                                                               value="{{ $item->card_authenticator_name }}">
-                                                                                                                    </div>
-
-                                                                                                                    <div>
-                                                                                                                        <label class="field-label">
-                                                                                                                            Certification Number
-                                                                                                                        </label>
-                                                                                                                        <input type="text"
-                                                                                                                               class="form-control"
+                                                                                                                        <input type="text" class="form-control"
+                                                                                                                               id="edit_card_authenticator_cert_no"
                                                                                                                                name="card_authenticator_cert_no"
                                                                                                                                value="{{ $item->card_authenticator_cert_no }}">
                                                                                                                     </div>
 
                                                                                                                 </div>
-
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
 
-                                                                                                <!-- COMBINED SERVICE SECTION -->
-                                                                                                <div id="editCombinedServiceSection" class="item-section">
+                                                                                                <!-- ==================================================
+                                                                                                     INDEX CARD SECTION
+                                                                                                =================================================== -->
+                                                                                                <div class="item-section" id="editShowItemTypeIndexCardBox"
+                                                                                                     data-section="index-card" style="display:none;">
+
                                                                                                     <div class="item-form-card">
                                                                                                         <div class="item-layout">
 
-                                                                                                            <!-- Quantity -->
                                                                                                             <div class="quantity-column">
                                                                                                                 <div class="quantity-box">
                                                                                                                     <div class="quantity-title">Quantity</div>
@@ -2580,131 +3083,257 @@
                                                                                                                 </div>
                                                                                                             </div>
 
-                                                                                                            <!-- Details -->
                                                                                                             <div class="details-column">
 
-                                                                                                                <!-- Description #1 -->
                                                                                                                 <div class="description-block">
-                                                                                                                    <div class="description-heading">
-                                                                                                                        Description #1
+                                                                                                                    <label for="edit_index_card_description_one"
+                                                                                                                           class="field-label">Description #1</label>
+                                                                                                                    <input type="text" class="form-control"
+                                                                                                                           name="card_description_one"
+                                                                                                                           id="edit_index_card_description_one"
+                                                                                                                           value="{{ $item->card_description_one }}">
+                                                                                                                </div>
+
+                                                                                                                <div class="description-block">
+                                                                                                                    <label for="edit_index_card_description_two"
+                                                                                                                           class="field-label">Description #2</label>
+                                                                                                                    <input type="text" class="form-control"
+                                                                                                                           name="card_description_two"
+                                                                                                                           id="edit_index_card_description_two"
+                                                                                                                           value="{{ $item->card_description_two }}">
+                                                                                                                </div>
+
+                                                                                                                <div class="description-block">
+                                                                                                                    <label for="edit_index_card_description_three"
+                                                                                                                           class="field-label">Description #3</label>
+                                                                                                                    <input type="text" class="form-control"
+                                                                                                                           name="card_description_three"
+                                                                                                                           id="edit_index_card_description_three"
+                                                                                                                           value="{{ $item->card_description_three }}">
+                                                                                                                </div>
+
+                                                                                                                <div class="serial-block">
+                                                                                                                    <label for="edit_index_card_serial_number"
+                                                                                                                           class="field-label">
+                                                                                                                        Serial Number (Only if printed directly on item)
+                                                                                                                    </label>
+                                                                                                                    <input type="text" class="form-control"
+                                                                                                                           name="card_serial_number"
+                                                                                                                           id="edit_index_card_serial_number"
+                                                                                                                           value="{{ $item->card_serial_number }}">
+                                                                                                                </div>
+
+                                                                                                                <div class="autograph-row" data-autograph-fields>
+
+                                                                                                                    <div class="autograph-checkbox">
+                                                                                                                        <label for="edit_index_card_autographed"
+                                                                                                                               class="field-label">Autographed</label>
+                                                                                                                        <input type="checkbox" class="form-check-input"
+                                                                                                                               id="edit_index_card_autographed"
+                                                                                                                               name="card_autographed" value="1"
+                                                                                                                            {{ $item->card_autographed ? 'checked' : '' }}>
                                                                                                                     </div>
 
-                                                                                                                    <div class="row">
+                                                                                                                    <div class="autograph-authenticator">
+                                                                                                                        <label for="edit_index_card_authenticator_name"
+                                                                                                                               class="field-label">Authenticator Name</label>
+                                                                                                                        <select class="form-select"
+                                                                                                                                id="edit_index_card_authenticator_name"
+                                                                                                                                name="card_authenticator_name">
+                                                                                                                            <option value="">Select</option>
+                                                                                                                            @foreach($authenticators as $authenticator)
+                                                                                                                                <option value="{{ $authenticator->id }}"
+                                                                                                                                    {{ $item->card_authenticator_name == $authenticator->id ? 'selected' : '' }}>
+                                                                                                                                    {{ $authenticator->name }}
+                                                                                                                                </option>
+                                                                                                                            @endforeach
+                                                                                                                        </select>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="auth-cert-number">
+                                                                                                                        <label for="edit_index_card_authenticator_cert_no"
+                                                                                                                               class="field-label">
+                                                                                                                            Authenticator Cert. No.
+                                                                                                                        </label>
+                                                                                                                        <input type="text" class="form-control"
+                                                                                                                               id="edit_index_card_authenticator_cert_no"
+                                                                                                                               name="card_authenticator_cert_no"
+                                                                                                                               value="{{ $item->card_authenticator_cert_no }}">
+                                                                                                                    </div>
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- ==================================================
+                                                                                                     COMBINED SERVICE SECTION
+                                                                                                =================================================== -->
+                                                                                                <div class="item-section" id="editShowItemTypeCombinedServiceBox"
+                                                                                                     data-section="combined" style="display:none;">
+
+                                                                                                    <div class="item-form-card">
+                                                                                                        <div class="item-layout">
+
+                                                                                                            <div class="quantity-column">
+                                                                                                                <div class="quantity-box">
+                                                                                                                    <div class="quantity-title">Quantity</div>
+                                                                                                                    <div class="quantity-value">1</div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="details-column">
+
+                                                                                                                <!-- Description 1 -->
+                                                                                                                <div class="description-block">
+                                                                                                                    <div class="description-heading">Description #1</div>
+
+                                                                                                                    <div class="row g-2">
                                                                                                                         <div class="col-md-2">
-                                                                                                                            <label class="field-label">Year</label>
-                                                                                                                            <input type="text"
-                                                                                                                                   id="edit_combined_year"
+                                                                                                                            <label for="edit_combined_service_year"
+                                                                                                                                   class="field-label">Year</label>
+                                                                                                                            <input type="text" id="edit_combined_service_year"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
 
                                                                                                                         <div class="col-md-10">
-                                                                                                                            <label class="field-label">
-                                                                                                                                Manufacturer
-                                                                                                                            </label>
+                                                                                                                            <label for="edit_combined_service_manufacturer"
+                                                                                                                                   class="field-label">Manufacturer</label>
                                                                                                                             <input type="text"
-                                                                                                                                   id="edit_combined_manufacturer"
+                                                                                                                                   id="edit_combined_service_manufacturer"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
                                                                                                                     </div>
 
                                                                                                                     <input type="hidden"
-                                                                                                                           id="edit_combined_description_one"
                                                                                                                            name="combined_service_description_one"
+                                                                                                                           id="edit_combined_service_description_one"
                                                                                                                            value="{{ $item->combined_service_description_one }}">
                                                                                                                 </div>
 
-                                                                                                                <!-- Description #2 -->
+                                                                                                                <!-- Description 2 -->
                                                                                                                 <div class="description-block">
-                                                                                                                    <div class="description-heading">
-                                                                                                                        Description #2
-                                                                                                                    </div>
+                                                                                                                    <div class="description-heading">Description #2</div>
 
-                                                                                                                    <div class="row">
-                                                                                                                        <div class="col-md-2"
-                                                                                                                             id="editCombinedNumberField">
-                                                                                                                            <label class="field-label">Number</label>
+                                                                                                                    <div class="row g-2">
+                                                                                                                        <div class="col-md-2" data-number-field>
+                                                                                                                            <label for="edit_combined_service_number"
+                                                                                                                                   class="field-label">Number</label>
                                                                                                                             <input type="text"
-                                                                                                                                   id="edit_combined_number"
+                                                                                                                                   id="edit_combined_service_number"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
 
                                                                                                                         <div class="col-md-10">
-                                                                                                                            <label class="field-label">
-                                                                                                                                Player Name
-                                                                                                                            </label>
+                                                                                                                            <label for="edit_combined_service_player_name"
+                                                                                                                                   class="field-label">Player Name</label>
                                                                                                                             <input type="text"
-                                                                                                                                   id="edit_combined_player_name"
+                                                                                                                                   id="edit_combined_service_player_name"
                                                                                                                                    class="form-control">
                                                                                                                         </div>
                                                                                                                     </div>
 
                                                                                                                     <input type="hidden"
-                                                                                                                           id="edit_combined_description_two"
                                                                                                                            name="combined_service_description_two"
+                                                                                                                           id="edit_combined_service_description_two"
                                                                                                                            value="{{ $item->combined_service_description_two }}">
                                                                                                                 </div>
 
-                                                                                                                <!-- Description #3 -->
+                                                                                                                <!-- Description 3 -->
                                                                                                                 <div class="description-block">
-                                                                                                                    <label class="field-label">
-                                                                                                                        Description #3
-                                                                                                                    </label>
-                                                                                                                    <input type="text"
-                                                                                                                           class="form-control"
+                                                                                                                    <label for="edit_combined_service_description_three"
+                                                                                                                           class="field-label">Description #3</label>
+                                                                                                                    <input type="text" class="form-control"
                                                                                                                            name="combined_service_description_three"
+                                                                                                                           id="edit_combined_service_description_three"
                                                                                                                            value="{{ $item->combined_service_description_three }}">
                                                                                                                 </div>
 
                                                                                                                 <!-- Serial Number -->
                                                                                                                 <div class="serial-block">
-                                                                                                                    <label class="field-label">
-                                                                                                                        Serial Number
+                                                                                                                    <label for="edit_combined_service_serial_number"
+                                                                                                                           class="field-label">
+                                                                                                                        Serial Number (Only if printed directly on item)
                                                                                                                     </label>
-                                                                                                                    <input type="text"
-                                                                                                                           class="form-control"
+                                                                                                                    <input type="text" class="form-control"
                                                                                                                            name="combined_service_serial_number"
+                                                                                                                           id="edit_combined_service_serial_number"
                                                                                                                            value="{{ $item->combined_service_serial_number }}">
                                                                                                                 </div>
 
-                                                                                                                <!-- Autograph Options -->
+                                                                                                                <!-- Autograph Fields -->
                                                                                                                 <div class="autograph-row">
 
                                                                                                                     <div class="autograph-checkbox">
-                                                                                                                        <input type="checkbox"
-                                                                                                                               class="form-check-input"
-                                                                                                                               name="combined_service_autographed"
-                                                                                                                               value="1"
+                                                                                                                        <label for="edit_combined_service_autographed"
+                                                                                                                               class="field-label">Autographed</label>
+                                                                                                                        <input type="checkbox" class="form-check-input"
+                                                                                                                               id="edit_combined_service_autographed"
+                                                                                                                               name="combined_service_autographed" value="1"
                                                                                                                             {{ $item->combined_service_autographed ? 'checked' : '' }}>
-                                                                                                                        <label class="field-label">
-                                                                                                                            Autographed
-                                                                                                                        </label>
                                                                                                                     </div>
 
-                                                                                                                    <div></div>
-
-                                                                                                                    <div>
-                                                                                                                        <label class="field-label">
-                                                                                                                            Authenticator
-                                                                                                                        </label>
-                                                                                                                        <input type="text"
-                                                                                                                               class="form-control"
-                                                                                                                               name="combined_service_authenticator_name"
-                                                                                                                               value="{{ $item->combined_service_authenticator_name }}">
+                                                                                                                    <div class="autograph-authenticator">
+                                                                                                                        <label for="edit_combined_service_authenticator_name"
+                                                                                                                               class="field-label">Authenticator Name</label>
+                                                                                                                        <select class="form-select"
+                                                                                                                                id="edit_combined_service_authenticator_name"
+                                                                                                                                name="combined_service_authenticator_name">
+                                                                                                                            <option value="">Select</option>
+                                                                                                                            @foreach($authenticators as $authenticator)
+                                                                                                                                <option value="{{ $authenticator->id }}"
+                                                                                                                                    {{ $item->combined_service_authenticator_name == $authenticator->id ? 'selected' : '' }}>
+                                                                                                                                    {{ $authenticator->name }}
+                                                                                                                                </option>
+                                                                                                                            @endforeach
+                                                                                                                        </select>
                                                                                                                     </div>
 
-                                                                                                                    <div>
-                                                                                                                        <label class="field-label">
-                                                                                                                            Certification Number
+                                                                                                                    <div class="auth-cert-number">
+                                                                                                                        <label for="edit_combined_service_authenticator_cert_no"
+                                                                                                                               class="field-label">
+                                                                                                                            Authenticator Cert. No.
                                                                                                                         </label>
-                                                                                                                        <input type="text"
-                                                                                                                               class="form-control"
+                                                                                                                        <input type="text" class="form-control"
+                                                                                                                               id="edit_combined_service_authenticator_cert_no"
                                                                                                                                name="combined_service_authenticator_cert_no"
                                                                                                                                value="{{ $item->combined_service_authenticator_cert_no }}">
                                                                                                                     </div>
 
                                                                                                                 </div>
-
                                                                                                             </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <!-- ==================================================
+                                                                                                     REHOLDER SECTION
+                                                                                                =================================================== -->
+                                                                                                <div class="item-section" id="editShowItemTypeReholderBox"
+                                                                                                     data-section="reholder" style="display:none;">
+
+                                                                                                    <div class="item-form-card">
+                                                                                                        <div class="item-layout">
+
+                                                                                                            <div class="quantity-column">
+                                                                                                                <div class="quantity-box">
+                                                                                                                    <div class="quantity-title">Quantity</div>
+                                                                                                                    <div class="quantity-value">1</div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="details-column">
+                                                                                                                <div class="description-block">
+                                                                                                                    <label for="edit_reholder_certification_number"
+                                                                                                                           class="field-label">Certification Number</label>
+                                                                                                                    <input type="text" class="form-control"
+                                                                                                                           name="reholder_certification_number"
+                                                                                                                           id="edit_reholder_certification_number"
+                                                                                                                           value="{{ $item->reholder_certification_number }}">
+                                                                                                                </div>
+                                                                                                            </div>
+
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -2712,16 +3341,13 @@
 
                                                                                         </div>
 
-                                                                                        <!-- Modal Footer -->
                                                                                         <div class="modal-footer">
-                                                                                            <button type="submit" class="btn btn-primary">
+                                                                                            <button type="submit" class="btn btn-primary" id="edit_item_submit_btn">
                                                                                                 Save Changes
                                                                                             </button>
 
                                                                                             <button type="button" class="btn btn-secondary"
-                                                                                                    data-bs-dismiss="modal">
-                                                                                                Cancel
-                                                                                            </button>
+                                                                                                    data-bs-dismiss="modal">Cancel</button>
                                                                                         </div>
 
                                                                                     </form>
@@ -2730,12 +3356,12 @@
                                                                         </div>
                                                                     </div>
 
-{{--                                                                    delete modal--}}
+                                                                    {{--delete modal--}}
                                                                     <div class="">
-                                                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdropDelete">
+                                                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdropDelete-{{$item->id}}">
                                                                             <i class="fa fa-archive" style="padding-top: 6px;padding-bottom: 6px;"></i>
                                                                         </button>
-                                                                        <div class="modal fade" id="staticBackdropDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+                                                                        <div class="modal fade" id="staticBackdropDelete-{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
                                                                             <div class="modal-dialog">
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-body mt-3 text-center">
@@ -2768,10 +3394,6 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach
-{{--                                                @else--}}
-{{--                                                    <tr width="100">--}}
-{{--                                                        <td class="text-capitalize text-center text-warning">No item found with this entry</td>--}}
-{{--                                                    </tr>--}}
                                                 @endif
                                                 </tbody>
                                             </table>
@@ -2779,11 +3401,11 @@
                                     </div>
                                 </div>
                             </div>
-                                <div class=""></div>
-                                <div class="text-end mt-4">
-                                    <a class="btn btn-primary" style="margin-right: 15px;" href="{{route('admin.entries.index')}}">Entry Complete</a>
-                                    <a class="btn btn-secondary" href="{{route('admin.entries.index')}}">Continue Later</a>
-                                </div>
+                            <div class=""></div>
+                            <div class="text-end mt-4">
+                                <a class="btn btn-primary" style="margin-right: 15px;" href="{{route('admin.entries.index')}}">Entry Complete</a>
+                                <a class="btn btn-secondary" href="{{route('admin.entries.index')}}">Continue Later</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2836,37 +3458,87 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         margin-bottom: 1rem;
-        border-radius: 4px;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
     }
 
-    table.table {
+    .entry-items-table {
         width: 100%;
+        min-width: 900px;
         border-collapse: collapse;
-        min-width: 900px; /* Adjust based on content */
+        margin-bottom: 0;
     }
 
-    thead {
+    .entry-items-table thead {
         background: cornflowerblue;
-        color: white;
+        color: #fff;
     }
 
-    thead th,
-    tbody td {
-        padding: 8px 12px;
+    .entry-items-table thead th {
+        height: 44px;
+        padding: 10px 12px;
+        font-weight: 600;
         text-align: center;
-        white-space: nowrap; /* Prevent wrapping */
+        vertical-align: middle;
+        white-space: nowrap;
+        border-color: rgba(255, 255, 255, 0.25);
     }
 
-    thead th {
-        height: 40px;
-        font-weight: bold;
+    .entry-items-table tbody td {
+        padding: 10px 12px;
+        text-align: center;
+        vertical-align: middle;
+        border-color: #eef0f3;
     }
 
-    /* Optional: Zebra striping */
-    tbody tr:nth-child(odd) {
+    .entry-items-table tbody tr:nth-child(odd) {
         background-color: #f9f9f9;
     }
 
+    .entry-items-table tbody tr:hover {
+        background-color: #f1f5ff;
+    }
+
+    .entry-items-table .item-type-cell {
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .entry-items-table .item-description {
+        min-width: 220px;
+        line-height: 1.5;
+    }
+
+    .entry-items-table .item-description span {
+        display: block;
+    }
+
+    .entry-items-table .text-muted-na {
+        color: #9ca3af;
+    }
+
+    .entry-items-table .status-badge {
+        display: inline-block;
+        min-width: 44px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .entry-items-table .status-yes {
+        background: #e7f6ec;
+        color: #1e8e3e;
+    }
+
+    .entry-items-table .status-no {
+        background: #f1f3f5;
+        color: #6b7280;
+    }
+
+    .entry-items-table .status-na {
+        color: #9ca3af;
+    }
     /*responsive table css end*/
 
     /* =========================================================
@@ -2907,6 +3579,7 @@
         border-radius: 5px;
         padding: 22px 20px 32px;
         margin-bottom: 22px;
+        text-align: left;
     }
 
     .item-modal .item-type-panel .form-label {
@@ -3797,881 +4470,1144 @@
 {{--            }--}}
 {{--        });--}}
 {{--    </script>--}}
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--        'use strict';--}}
+
+{{--        /* =========================================================--}}
+{{--         * CONFIGURATION--}}
+{{--         * ========================================================= */--}}
+
+{{--        const $modal = $('.item-modal');--}}
+{{--        const $form = $('#addNewItemForm');--}}
+{{--        const $itemSelect = $('#itemSelect');--}}
+{{--        const $editItemSelect = $('#editItemSelect');--}}
+
+{{--        const ITEM_TYPES = {--}}
+{{--            CARD: 'Card',--}}
+{{--            CARD_NO_NUMBER: 'Card (No Number)',--}}
+{{--            CARD_AUTO: 'Card (Autographed)',--}}
+{{--            CARD_AUTO_NO_NUMBER: 'Card (Autographed) No Number',--}}
+{{--            INDEX_CARD: 'Index Card',--}}
+{{--            COMBINED: 'Combined Service',--}}
+{{--            COMBINED_NO_NUMBER: 'Combined Service (No Number)',--}}
+{{--            REHOLDER: 'Reholder'--}}
+{{--        };--}}
+
+{{--        const SECTION_IDS = [--}}
+{{--            '#showItemTypeCardBox',--}}
+{{--            '#showItemTypeAutoAthenticationBox',--}}
+{{--            '#showItemTypeCombinedServiceBox',--}}
+{{--            '#showItemTypeReholderBox',--}}
+{{--            '#showItemTypeCrossoverBoxOne',--}}
+{{--            '#showItemTypeCrossoverBoxTwo'--}}
+{{--        ];--}}
+
+{{--        const NO_NUMBER_TYPES = [--}}
+{{--            ITEM_TYPES.CARD_NO_NUMBER,--}}
+{{--            ITEM_TYPES.CARD_AUTO_NO_NUMBER,--}}
+{{--            ITEM_TYPES.COMBINED_NO_NUMBER--}}
+{{--        ];--}}
+
+{{--        const AUTOGRAPH_CARD_TYPES = [--}}
+{{--            ITEM_TYPES.CARD_AUTO,--}}
+{{--            ITEM_TYPES.CARD_AUTO_NO_NUMBER,--}}
+{{--            ITEM_TYPES.INDEX_CARD--}}
+{{--        ];--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * COMMON HELPERS--}}
+{{--         * ========================================================= */--}}
+
+{{--        function getValue(selector) {--}}
+{{--            return $.trim($(selector).val() || '');--}}
+{{--        }--}}
+
+{{--        function joinDescription(values) {--}}
+{{--            return values--}}
+{{--                .map(function (value) {--}}
+{{--                    return $.trim(value || '');--}}
+{{--                })--}}
+{{--                .filter(Boolean)--}}
+{{--                .join(', ');--}}
+{{--        }--}}
+
+{{--        function setValue(selector, value) {--}}
+{{--            $(selector).val(value);--}}
+{{--        }--}}
+
+{{--        function setRequired(selector, required) {--}}
+{{--            $(selector).prop('required', required);--}}
+{{--        }--}}
+
+{{--        function showWarning(show) {--}}
+{{--            $('#warning_text_box').toggle(!!show);--}}
+{{--        }--}}
+
+{{--        function resetWarnings() {--}}
+{{--            $('#warning_text_box').hide();--}}
+{{--            $('#quantity-warning-text').hide();--}}
+{{--        }--}}
+
+{{--        function disableSectionInputs($section) {--}}
+{{--            $section.find(':input').prop('disabled', true);--}}
+{{--        }--}}
+
+{{--        function enableSectionInputs($section) {--}}
+{{--            $section.find(':input').prop('disabled', false);--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * ITEM TYPE -> SECTION MAPPING--}}
+{{--         * ========================================================= */--}}
+
+{{--        function getSectionForItemType(itemType) {--}}
+{{--            switch (itemType) {--}}
+{{--                case ITEM_TYPES.CARD:--}}
+{{--                case ITEM_TYPES.CARD_NO_NUMBER:--}}
+{{--                case ITEM_TYPES.CARD_AUTO:--}}
+{{--                case ITEM_TYPES.CARD_AUTO_NO_NUMBER:--}}
+{{--                case ITEM_TYPES.INDEX_CARD:--}}
+{{--                    return 'card';--}}
+
+{{--                case ITEM_TYPES.COMBINED:--}}
+{{--                case ITEM_TYPES.COMBINED_NO_NUMBER:--}}
+{{--                    return 'combined';--}}
+
+{{--                case ITEM_TYPES.REHOLDER:--}}
+{{--                    return 'reholder';--}}
+
+{{--                default:--}}
+{{--                    return '';--}}
+{{--            }--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * ITEM TYPE SECTION SWITCHING--}}
+{{--         * ========================================================= */--}}
+
+{{--        function showItemSection(itemType, $container) {--}}
+{{--            const $scope = $container && $container.length--}}
+{{--                ? $container--}}
+{{--                : $modal;--}}
+
+{{--            const sectionName = getSectionForItemType(itemType);--}}
+
+{{--            // Hide all sections and disable their inputs.--}}
+{{--            SECTION_IDS.forEach(function (selector) {--}}
+{{--                const $section = $scope.find(selector);--}}
+
+{{--                $section.hide();--}}
+{{--                disableSectionInputs($section);--}}
+{{--            });--}}
+
+{{--            if (!sectionName) {--}}
+{{--                return;--}}
+{{--            }--}}
+
+{{--            let $activeSection;--}}
+
+{{--            switch (sectionName) {--}}
+{{--                case 'card':--}}
+{{--                    $activeSection = $scope.find('#showItemTypeCardBox');--}}
+{{--                    break;--}}
+
+{{--                case 'combined':--}}
+{{--                    $activeSection = $scope.find(--}}
+{{--                        '#showItemTypeCombinedServiceBox'--}}
+{{--                    );--}}
+{{--                    break;--}}
+
+{{--                case 'reholder':--}}
+{{--                    $activeSection = $scope.find(--}}
+{{--                        '#showItemTypeReholderBox'--}}
+{{--                    );--}}
+{{--                    break;--}}
+
+{{--                default:--}}
+{{--                    return;--}}
+{{--            }--}}
+
+{{--            // Show the selected section without changing its design.--}}
+{{--            $activeSection.show();--}}
+{{--            enableSectionInputs($activeSection);--}}
+
+{{--            // Hide Number field for No Number item types.--}}
+{{--            const hideNumber = NO_NUMBER_TYPES.includes(itemType);--}}
+
+{{--            $activeSection--}}
+{{--                .find('[data-number-field]')--}}
+{{--                .toggle(!hideNumber);--}}
+
+{{--            if (hideNumber) {--}}
+{{--                $activeSection--}}
+{{--                    .find('[data-number-field]')--}}
+{{--                    .find('input')--}}
+{{--                    .val('');--}}
+{{--            }--}}
+
+{{--            // Show autograph-specific fields for applicable Card types.--}}
+{{--            const showAutograph = AUTOGRAPH_CARD_TYPES.includes(itemType);--}}
+
+{{--            $activeSection--}}
+{{--                .find('[data-autograph-fields]')--}}
+{{--                .toggle(showAutograph);--}}
+
+{{--            // Set the Card Autographed checkbox based on the selected type.--}}
+{{--            if (--}}
+{{--                itemType === ITEM_TYPES.CARD_AUTO ||--}}
+{{--                itemType === ITEM_TYPES.CARD_AUTO_NO_NUMBER--}}
+{{--            ) {--}}
+{{--                $activeSection--}}
+{{--                    .find('#card_autographed')--}}
+{{--                    .prop('checked', true);--}}
+{{--            } else if (sectionName === 'card') {--}}
+{{--                $activeSection--}}
+{{--                    .find('#card_autographed')--}}
+{{--                    .prop('checked', false);--}}
+{{--            }--}}
+
+{{--            // Clear autograph fields when the selected type is not autographed.--}}
+{{--            if (!showAutograph) {--}}
+{{--                $activeSection--}}
+{{--                    .find('[data-autograph-fields]')--}}
+{{--                    .find('input')--}}
+{{--                    .val('');--}}
+{{--            }--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * CARD DESCRIPTION CONCATENATION--}}
+{{--         *--}}
+{{--         * Year + Manufacturer -> card_description_one--}}
+{{--         * Number + Player Name -> card_description_two--}}
+{{--         *--}}
+{{--         * Index Card descriptions remain unchanged.--}}
+{{--         * ========================================================= */--}}
+
+{{--        function prepareCardDescriptions() {--}}
+{{--            const itemType = $itemSelect.val();--}}
+
+{{--            if (itemType === ITEM_TYPES.INDEX_CARD) {--}}
+{{--                return;--}}
+{{--            }--}}
+
+{{--            const year = getValue('#card_year');--}}
+{{--            const manufacturer = getValue('#card_manufacturer');--}}
+
+{{--            const number = NO_NUMBER_TYPES.includes(itemType)--}}
+{{--                ? ''--}}
+{{--                : getValue('#card_number');--}}
+
+{{--            const playerName = getValue('#card_player_name');--}}
+
+{{--            const descriptionOne = joinDescription([--}}
+{{--                year,--}}
+{{--                manufacturer--}}
+{{--            ]);--}}
+
+{{--            const descriptionTwo = joinDescription([--}}
+{{--                number,--}}
+{{--                playerName--}}
+{{--            ]);--}}
+
+{{--            setValue('#card_description_one', descriptionOne);--}}
+{{--            setValue('#card_description_two', descriptionTwo);--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * COMBINED SERVICE DESCRIPTION CONCATENATION--}}
+{{--         *--}}
+{{--         * Year + Manufacturer -> combined_service_description_one--}}
+{{--         * Number + Player Name -> combined_service_description_two--}}
+{{--         * ========================================================= */--}}
+
+{{--        function prepareCombinedServiceDescriptions() {--}}
+{{--            const itemType = $itemSelect.val();--}}
+
+{{--            const year = getValue('#combined_service_year');--}}
+{{--            const manufacturer = getValue(--}}
+{{--                '#combined_service_manufacturer'--}}
+{{--            );--}}
+
+{{--            const number = itemType === ITEM_TYPES.COMBINED_NO_NUMBER--}}
+{{--                ? ''--}}
+{{--                : getValue('#combined_service_number');--}}
+
+{{--            const playerName = getValue(--}}
+{{--                '#combined_service_player_name'--}}
+{{--            );--}}
+
+{{--            const descriptionOne = joinDescription([--}}
+{{--                year,--}}
+{{--                manufacturer--}}
+{{--            ]);--}}
+
+{{--            const descriptionTwo = joinDescription([--}}
+{{--                number,--}}
+{{--                playerName--}}
+{{--            ]);--}}
+
+{{--            setValue(--}}
+{{--                '#combined_service_description_one',--}}
+{{--                descriptionOne--}}
+{{--            );--}}
+
+{{--            setValue(--}}
+{{--                '#combined_service_description_two',--}}
+{{--                descriptionTwo--}}
+{{--            );--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * PREPARE DESCRIPTIONS BEFORE SUBMISSION--}}
+{{--         * ========================================================= */--}}
+
+{{--        function prepareDescriptions() {--}}
+{{--            const itemType = $itemSelect.val();--}}
+
+{{--            switch (itemType) {--}}
+{{--                case ITEM_TYPES.CARD:--}}
+{{--                case ITEM_TYPES.CARD_NO_NUMBER:--}}
+{{--                case ITEM_TYPES.CARD_AUTO:--}}
+{{--                case ITEM_TYPES.CARD_AUTO_NO_NUMBER:--}}
+{{--                    prepareCardDescriptions();--}}
+{{--                    break;--}}
+
+{{--                case ITEM_TYPES.INDEX_CARD:--}}
+{{--                    // Keep Index Card descriptions unchanged.--}}
+{{--                    break;--}}
+
+{{--                case ITEM_TYPES.COMBINED:--}}
+{{--                case ITEM_TYPES.COMBINED_NO_NUMBER:--}}
+{{--                    prepareCombinedServiceDescriptions();--}}
+{{--                    break;--}}
+{{--            }--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * VALIDATION--}}
+{{--         * ========================================================= */--}}
+
+{{--        function validateCurrentItem() {--}}
+{{--            const itemType = $itemSelect.val();--}}
+
+{{--            if (!itemType) {--}}
+{{--                return false;--}}
+{{--            }--}}
+
+{{--            switch (itemType) {--}}
+
+{{--                case ITEM_TYPES.CARD:--}}
+{{--                case ITEM_TYPES.CARD_NO_NUMBER:--}}
+{{--                case ITEM_TYPES.CARD_AUTO:--}}
+{{--                case ITEM_TYPES.CARD_AUTO_NO_NUMBER:--}}
+
+{{--                    prepareCardDescriptions();--}}
+
+{{--                    if (--}}
+{{--                        !getValue('#card_description_one')--}}
+{{--                        // || !getValue('#card_estimated_value')--}}
+{{--                    ) {--}}
+{{--                        return false;--}}
+{{--                    }--}}
+
+{{--                    if (--}}
+{{--                        AUTOGRAPH_CARD_TYPES.includes(itemType) &&--}}
+{{--                        $('#card_autographed').is(':checked')--}}
+{{--                    ) {--}}
+{{--                        if (--}}
+{{--                            !getValue('#card_authenticator_name') ||--}}
+{{--                            !getValue('#card_authenticator_cert_no')--}}
+{{--                        ) {--}}
+{{--                            return false;--}}
+{{--                        }--}}
+{{--                    }--}}
+
+{{--                    return true;--}}
+
+
+{{--                case ITEM_TYPES.INDEX_CARD:--}}
+
+{{--                    if (--}}
+{{--                        !getValue('#card_description_one')--}}
+{{--                        // || !getValue('#card_estimated_value')--}}
+{{--                    ) {--}}
+{{--                        return false;--}}
+{{--                    }--}}
+
+{{--                    return true;--}}
+
+
+{{--                case ITEM_TYPES.COMBINED:--}}
+{{--                case ITEM_TYPES.COMBINED_NO_NUMBER:--}}
+
+{{--                    prepareCombinedServiceDescriptions();--}}
+
+{{--                    if (--}}
+{{--                        !getValue('#combined_service_description_one')--}}
+{{--                        // || !getValue('#combined_service_estimated_value')--}}
+{{--                    ) {--}}
+{{--                        return false;--}}
+{{--                    }--}}
+
+{{--                    return true;--}}
+
+
+{{--                case ITEM_TYPES.REHOLDER:--}}
+
+{{--                    if (--}}
+{{--                        !getValue('#reholder_certification_number')--}}
+{{--                        // || !getValue('#reholder_estimated_value')--}}
+{{--                    ) {--}}
+{{--                        return false;--}}
+{{--                    }--}}
+
+{{--                    return true;--}}
+
+
+{{--                default:--}}
+{{--                    return false;--}}
+{{--            }--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * ADD ITEM FORM SUBMISSION--}}
+{{--         * ========================================================= */--}}
+
+{{--        if ($form.length) {--}}
+{{--            $form--}}
+{{--                .off('submit.entryItem')--}}
+{{--                .on('submit.entryItem', function (e) {--}}
+
+{{--                    // Prepare concatenated descriptions first.--}}
+{{--                    prepareDescriptions();--}}
+
+{{--                    // Validate the selected item.--}}
+{{--                    if (!validateCurrentItem()) {--}}
+{{--                        e.preventDefault();--}}
+{{--                        showWarning(true);--}}
+{{--                        return false;--}}
+{{--                    }--}}
+
+{{--                    showWarning(false);--}}
+
+{{--                    // Allow normal Laravel form submission.--}}
+{{--                    return true;--}}
+{{--                });--}}
+{{--        }--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * ADD ITEM BUTTON--}}
+{{--         * ========================================================= */--}}
+
+{{--        $('#add_item_submit_btn')--}}
+{{--            .off('click.entryItem')--}}
+{{--            .on('click.entryItem', function () {--}}
+{{--                // Validation is handled by the form submit event.--}}
+{{--                prepareDescriptions();--}}
+{{--            });--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * ITEM SELECT CHANGE--}}
+{{--         * ========================================================= */--}}
+
+{{--        $itemSelect--}}
+{{--            .off('change.entryItem')--}}
+{{--            .on('change.entryItem', function () {--}}
+{{--                showItemSection($(this).val(), $modal);--}}
+{{--                resetWarnings();--}}
+{{--            });--}}
+
+
+{{--        // =========================================================--}}
+{{--// EDIT ITEM: ITEM TYPE CHANGE--}}
+{{--// =========================================================--}}
+
+{{--        const $editModal = $editItemSelect.closest('.modal');--}}
+
+{{--        $editItemSelect--}}
+{{--            .off('change.entryItem')--}}
+{{--            .on('change.entryItem', function () {--}}
+{{--                const itemType = $(this).val();--}}
+
+{{--                // Show the selected item section inside Edit Item modal only--}}
+{{--                showItemSection(itemType, $editModal);--}}
+{{--            });--}}
+
+{{--// Initialize the correct section when the modal opens--}}
+{{--        $editModal--}}
+{{--            .off('shown.bs.modal.entryItem')--}}
+{{--            .on('shown.bs.modal.entryItem', function () {--}}
+{{--                const itemType = $editItemSelect.val();--}}
+
+{{--                if (itemType) {--}}
+{{--                    showItemSection(itemType, $editModal);--}}
+{{--                }--}}
+{{--            });--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * AUTOGRAPH CHECKBOX REQUIRED FIELDS--}}
+{{--         * ========================================================= */--}}
+
+{{--        function updateAuthenticatorRequired(--}}
+{{--            checkboxSelector,--}}
+{{--            nameSelector,--}}
+{{--            certSelector--}}
+{{--        ) {--}}
+{{--            const checked = $(checkboxSelector).is(':checked');--}}
+
+{{--            setRequired(nameSelector, checked);--}}
+{{--            setRequired(certSelector, checked);--}}
+{{--        }--}}
+
+{{--        $('#card_autographed')--}}
+{{--            .off('change.entryItem')--}}
+{{--            .on('change.entryItem', function () {--}}
+{{--                updateAuthenticatorRequired(--}}
+{{--                    '#card_autographed',--}}
+{{--                    '#card_authenticator_name',--}}
+{{--                    '#card_authenticator_cert_no'--}}
+{{--                );--}}
+{{--            });--}}
+
+{{--        $('#combined_service_autographed')--}}
+{{--            .off('change.entryItem')--}}
+{{--            .on('change.entryItem', function () {--}}
+{{--                updateAuthenticatorRequired(--}}
+{{--                    '#combined_service_autographed',--}}
+{{--                    '#combined_service_authenticator_name',--}}
+{{--                    '#combined_service_authenticator_cert_no'--}}
+{{--                );--}}
+{{--            });--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * CHECKBOX VALUE HANDLING--}}
+{{--         * ========================================================= */--}}
+
+{{--        $('.form-check')--}}
+{{--            .off('change.entryItem')--}}
+{{--            .on('change.entryItem', function () {--}}
+{{--                this.value = this.checked ? 1 : 0;--}}
+{{--            });--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * QUANTITY VALIDATION--}}
+{{--         * ========================================================= */--}}
+
+{{--        $('#extra_submit_btn')--}}
+{{--            .off('click.entryItem')--}}
+{{--            .on('click.entryItem', function (e) {--}}
+{{--                const quantity = getValue('#quantity-input-box');--}}
+
+{{--                if (!quantity || Number(quantity) <= 0) {--}}
+{{--                    e.preventDefault();--}}
+
+{{--                    $(this).attr('type', 'button');--}}
+{{--                    $('#quantity-warning-text').show();--}}
+
+{{--                    return false;--}}
+{{--                }--}}
+
+{{--                $('#quantity-warning-text').hide();--}}
+{{--                $(this).attr('type', 'submit');--}}
+{{--            });--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * CANCEL BUTTON--}}
+{{--         * ========================================================= */--}}
+
+{{--        $('#cancel_btn')--}}
+{{--            .off('click.entryItem')--}}
+{{--            .on('click.entryItem', function () {--}}
+
+{{--                if ($form.length) {--}}
+{{--                    $form[0].reset();--}}
+{{--                }--}}
+
+{{--                $itemSelect.val('');--}}
+
+{{--                // Hide and disable all sections.--}}
+{{--                SECTION_IDS.forEach(function (selector) {--}}
+{{--                    const $section = $modal.find(selector);--}}
+
+{{--                    $section.hide();--}}
+{{--                    disableSectionInputs($section);--}}
+{{--                });--}}
+
+{{--                resetWarnings();--}}
+
+{{--                // Clear split Card fields.--}}
+{{--                $(--}}
+{{--                    '#card_year, ' +--}}
+{{--                    '#card_manufacturer, ' +--}}
+{{--                    '#card_number, ' +--}}
+{{--                    '#card_player_name'--}}
+{{--                ).val('');--}}
+
+{{--                // Clear split Combined Service fields.--}}
+{{--                $(--}}
+{{--                    '#combined_service_year, ' +--}}
+{{--                    '#combined_service_manufacturer, ' +--}}
+{{--                    '#combined_service_number, ' +--}}
+{{--                    '#combined_service_player_name'--}}
+{{--                ).val('');--}}
+
+{{--                // Clear concatenated description fields.--}}
+{{--                $(--}}
+{{--                    '#card_description_one, ' +--}}
+{{--                    '#card_description_two, ' +--}}
+{{--                    '#card_description_three, ' +--}}
+{{--                    '#combined_service_description_one, ' +--}}
+{{--                    '#combined_service_description_two, ' +--}}
+{{--                    '#combined_service_description_three'--}}
+{{--                ).val('');--}}
+
+{{--                // Reset autograph requirements.--}}
+{{--                $('#card_autographed').trigger('change');--}}
+{{--                $('#combined_service_autographed').trigger('change');--}}
+{{--            });--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * MODAL RESET--}}
+{{--         * ========================================================= */--}}
+
+{{--        $modal--}}
+{{--            .off('hidden.bs.modal.entryItem')--}}
+{{--            .on('hidden.bs.modal.entryItem', function () {--}}
+
+{{--                if ($form.length) {--}}
+{{--                    $form[0].reset();--}}
+{{--                }--}}
+
+{{--                $itemSelect.val('');--}}
+
+{{--                SECTION_IDS.forEach(function (selector) {--}}
+{{--                    const $section = $modal.find(selector);--}}
+
+{{--                    $section.hide();--}}
+{{--                    disableSectionInputs($section);--}}
+{{--                });--}}
+
+{{--                resetWarnings();--}}
+
+{{--                $('#card_autographed').trigger('change');--}}
+{{--                $('#combined_service_autographed').trigger('change');--}}
+{{--            });--}}
+
+
+{{--        /* =========================================================--}}
+{{--         * INITIAL STATE--}}
+{{--         * ========================================================= */--}}
+
+{{--        SECTION_IDS.forEach(function (selector) {--}}
+{{--            const $section = $modal.find(selector);--}}
+
+{{--            $section.hide();--}}
+{{--            disableSectionInputs($section);--}}
+{{--        });--}}
+
+{{--        resetWarnings();--}}
+
+{{--        if ($itemSelect.val()) {--}}
+{{--            showItemSection($itemSelect.val(), $modal);--}}
+{{--        }--}}
+
+{{--    });--}}
+
+{{--</script>--}}
+
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--        'use strict';--}}
+
+{{--        // Handle each Edit Item modal separately.--}}
+{{--        $('[id^="editItemModal-"]').each(function () {--}}
+
+{{--            const $editModal = $(this);--}}
+{{--            const $editForm = $editModal.find('#editItemForm');--}}
+{{--            const $editItemType = $editModal.find('#edit_item_type');--}}
+
+{{--            function getValue(selector) {--}}
+{{--                return $.trim($editModal.find(selector).val() || '');--}}
+{{--            }--}}
+
+{{--            // Split: "1979-80, O-Pee-Chee"--}}
+{{--            // Result: ["1979-80", "O-Pee-Chee"]--}}
+{{--            function splitDescription(value) {--}}
+{{--                value = $.trim(value || '');--}}
+
+{{--                if (!value) {--}}
+{{--                    return ['', ''];--}}
+{{--                }--}}
+
+{{--                const index = value.indexOf(', ');--}}
+
+{{--                if (index === -1) {--}}
+{{--                    return [value, ''];--}}
+{{--                }--}}
+
+{{--                return [--}}
+{{--                    value.substring(0, index).trim(),--}}
+{{--                    value.substring(index + 2).trim()--}}
+{{--                ];--}}
+{{--            }--}}
+
+{{--            // Join separate fields into the existing DB format.--}}
+{{--            function joinDescription(values) {--}}
+{{--                return values--}}
+{{--                    .map(function (value) {--}}
+{{--                        return $.trim(value || '');--}}
+{{--                    })--}}
+{{--                    .filter(Boolean)--}}
+{{--                    .join(', ');--}}
+{{--            }--}}
+
+{{--            // Populate Card fields.--}}
+{{--            function populateCardFields() {--}}
+{{--                const descOne = splitDescription(--}}
+{{--                    getValue('#edit_card_description_one')--}}
+{{--                );--}}
+
+{{--                const descTwo = splitDescription(--}}
+{{--                    getValue('#edit_card_description_two')--}}
+{{--                );--}}
+
+{{--                $editModal.find('#edit_card_year').val(descOne[0]);--}}
+{{--                $editModal.find('#edit_card_manufacturer').val(descOne[1]);--}}
+
+{{--                $editModal.find('#edit_card_number').val(descTwo[0]);--}}
+{{--                $editModal.find('#edit_card_player_name').val(descTwo[1]);--}}
+{{--            }--}}
+
+{{--            // Populate Combined Service fields.--}}
+{{--            function populateCombinedFields() {--}}
+{{--                const descOne = splitDescription(--}}
+{{--                    getValue('#edit_combined_description_one')--}}
+{{--                );--}}
+
+{{--                const descTwo = splitDescription(--}}
+{{--                    getValue('#edit_combined_description_two')--}}
+{{--                );--}}
+
+{{--                $editModal.find('#edit_combined_year').val(descOne[0]);--}}
+{{--                $editModal.find('#edit_combined_manufacturer').val(descOne[1]);--}}
+
+{{--                $editModal.find('#edit_combined_number').val(descTwo[0]);--}}
+{{--                $editModal.find('#edit_combined_player_name').val(descTwo[1]);--}}
+{{--            }--}}
+
+{{--            // Prepare Card descriptions before saving.--}}
+{{--            function prepareCardDescriptions() {--}}
+{{--                const itemType = $editItemType.val();--}}
+
+{{--                const noNumber = [--}}
+{{--                    'Card (No Number)',--}}
+{{--                    'Card (Autographed) No Number'--}}
+{{--                ].includes(itemType);--}}
+
+{{--                const number = noNumber--}}
+{{--                    ? ''--}}
+{{--                    : getValue('#edit_card_number');--}}
+
+{{--                $editModal.find('#edit_card_description_one').val(--}}
+{{--                    joinDescription([--}}
+{{--                        getValue('#edit_card_year'),--}}
+{{--                        getValue('#edit_card_manufacturer')--}}
+{{--                    ])--}}
+{{--                );--}}
+
+{{--                $editModal.find('#edit_card_description_two').val(--}}
+{{--                    joinDescription([--}}
+{{--                        number,--}}
+{{--                        getValue('#edit_card_player_name')--}}
+{{--                    ])--}}
+{{--                );--}}
+{{--            }--}}
+
+{{--            // Prepare Combined Service descriptions before saving.--}}
+{{--            function prepareCombinedDescriptions() {--}}
+{{--                const noNumber =--}}
+{{--                    $editItemType.val() === 'Combined Service (No Number)';--}}
+
+{{--                const number = noNumber--}}
+{{--                    ? ''--}}
+{{--                    : getValue('#edit_combined_number');--}}
+
+{{--                $editModal.find('#edit_combined_description_one').val(--}}
+{{--                    joinDescription([--}}
+{{--                        getValue('#edit_combined_year'),--}}
+{{--                        getValue('#edit_combined_manufacturer')--}}
+{{--                    ])--}}
+{{--                );--}}
+
+{{--                $editModal.find('#edit_combined_description_two').val(--}}
+{{--                    joinDescription([--}}
+{{--                        number,--}}
+{{--                        getValue('#edit_combined_player_name')--}}
+{{--                    ])--}}
+{{--                );--}}
+{{--            }--}}
+
+{{--            // Show the correct section without changing Item Type.--}}
+{{--            function showEditSection() {--}}
+{{--                const itemType = $editItemType.val();--}}
+
+{{--                $editModal.find(--}}
+{{--                    '#editCardSection, #editCombinedServiceSection'--}}
+{{--                ).hide();--}}
+
+{{--                if ([--}}
+{{--                    'Card',--}}
+{{--                    'Card (No Number)',--}}
+{{--                    'Card (Autographed)',--}}
+{{--                    'Card (Autographed) No Number',--}}
+{{--                    'Index Card'--}}
+{{--                ].includes(itemType)) {--}}
+
+{{--                    $editModal.find('#editCardSection').show();--}}
+
+{{--                    const noNumber = [--}}
+{{--                        'Card (No Number)',--}}
+{{--                        'Card (Autographed) No Number',--}}
+{{--                        'Index Card'--}}
+{{--                    ].includes(itemType);--}}
+
+{{--                    $editModal.find('#editCardNumberField').toggle(!noNumber);--}}
+{{--                }--}}
+
+{{--                if ([--}}
+{{--                    'Combined Service',--}}
+{{--                    'Combined Service (No Number)'--}}
+{{--                ].includes(itemType)) {--}}
+
+{{--                    $editModal.find('#editCombinedServiceSection').show();--}}
+
+{{--                    const noNumber =--}}
+{{--                        itemType === 'Combined Service (No Number)';--}}
+
+{{--                    $editModal.find('#editCombinedNumberField').toggle(!noNumber);--}}
+{{--                }--}}
+{{--            }--}}
+
+{{--            // Populate fields when the modal opens.--}}
+{{--            $editModal--}}
+{{--                .off('shown.bs.modal.editDescriptions')--}}
+{{--                .on('shown.bs.modal.editDescriptions', function () {--}}
+
+{{--                    showEditSection();--}}
+
+{{--                    populateCardFields();--}}
+{{--                    populateCombinedFields();--}}
+{{--                });--}}
+
+{{--            // Prepare concatenated values before saving.--}}
+{{--            $editForm--}}
+{{--                .off('submit.editDescriptions')--}}
+{{--                .on('submit.editDescriptions', function () {--}}
+
+{{--                    const itemType = $editItemType.val();--}}
+
+{{--                    if ([--}}
+{{--                        'Card',--}}
+{{--                        'Card (No Number)',--}}
+{{--                        'Card (Autographed)',--}}
+{{--                        'Card (Autographed) No Number'--}}
+{{--                    ].includes(itemType)) {--}}
+
+{{--                        prepareCardDescriptions();--}}
+{{--                    }--}}
+
+{{--                    if ([--}}
+{{--                        'Combined Service',--}}
+{{--                        'Combined Service (No Number)'--}}
+{{--                    ].includes(itemType)) {--}}
+
+{{--                        prepareCombinedDescriptions();--}}
+{{--                    }--}}
+{{--                });--}}
+
+{{--            // Initial state.--}}
+{{--            showEditSection();--}}
+
+{{--        });--}}
+{{--    });--}}
+
+{{--    $(document).ready(function () {--}}
+{{--        'use strict';--}}
+
+{{--        const form = document.getElementById('addNewItemForm');--}}
+{{--        const button = document.getElementById('add_item_submit_btn');--}}
+
+{{--        if (!form || !button) {--}}
+{{--            console.error('Add Item form or button not found.');--}}
+{{--            return;--}}
+{{--        }--}}
+
+{{--        // Check whether the form is valid.--}}
+{{--        button.addEventListener('click', function () {--}}
+{{--            console.log('Confirm clicked');--}}
+
+{{--            if (!form.checkValidity()) {--}}
+{{--                console.log('Form validation failed');--}}
+{{--                form.reportValidity();--}}
+{{--            } else {--}}
+{{--                console.log('Form validation passed');--}}
+{{--            }--}}
+{{--        });--}}
+
+{{--        // Check whether the form submission is triggered.--}}
+{{--        form.addEventListener('submit', function (event) {--}}
+{{--            console.log('Add Item form submit event triggered');--}}
+{{--            console.log('Form action:', form.action);--}}
+{{--            console.log('Form method:', form.method);--}}
+{{--        });--}}
+
+{{--    });--}}
+
+{{--    function joinDescription(...values) {--}}
+{{--        return values--}}
+{{--            .map(value => (value || '').trim())--}}
+{{--            .filter(Boolean)--}}
+{{--            .join(', ');--}}
+{{--    }--}}
+
+{{--    $(document).on('submit', 'form.js-card-form', function () {--}}
+{{--        const form = $(this);--}}
+
+{{--        form.find('.js-card-description-one').val(--}}
+{{--            joinDescription(--}}
+{{--                form.find('.js-card-year').val(),--}}
+{{--                form.find('.js-card-manufacturer').val()--}}
+{{--            )--}}
+{{--        );--}}
+
+{{--        form.find('.js-card-description-two').val(--}}
+{{--            joinDescription(--}}
+{{--                form.find('.js-card-number').val(),--}}
+{{--                form.find('.js-card-player').val()--}}
+{{--            )--}}
+{{--        );--}}
+{{--    });--}}
+{{--</script>--}}
 <script>
-    $(document).ready(function () {
+    $(function () {
         'use strict';
 
         /* =========================================================
-         * CONFIGURATION
+         * CONFIG
          * ========================================================= */
 
-        const $modal = $('.item-modal');
-        const $form = $('#addNewItemForm');
-        const $itemSelect = $('#itemSelect');
-        const $editItemSelect = $('#editItemSelect');
-
-        const ITEM_TYPES = {
-            CARD: 'Card',
-            CARD_NO_NUMBER: 'Card (No number)',
-            CARD_AUTO: 'Card Auto',
-            CARD_AUTO_NO_NUMBER: 'Card Auto (No Number)',
-            INDEX_CARD: 'Index Card',
-            COMBINED: 'Combined Service',
-            COMBINED_NO_NUMBER: 'Combined Service (No Number)',
-            REHOLDER: 'Reholder'
+        // Item type -> data-section (HTML e already ache)
+        const SECTION = {
+            'Card': 'card',
+            'Card (No Number)': 'card',
+            'Card (Autographed)': 'card',
+            'Card (Autographed) No Number': 'card',
+            'Index Card': 'index-card',
+            'Combined Service': 'combined',
+            'Combined Service (No Number)': 'combined',
+            'Reholder': 'reholder'
         };
 
-        const SECTION_IDS = [
-            '#showItemTypeCardBox',
-            '#showItemTypeAutoAthenticationBox',
-            '#showItemTypeCombinedServiceBox',
-            '#showItemTypeReholderBox',
-            '#showItemTypeCrossoverBoxOne',
-            '#showItemTypeCrossoverBoxTwo'
+        const NO_NUMBER = [
+            'Card (No Number)',
+            'Card (Autographed) No Number',
+            'Combined Service (No Number)'
         ];
 
-        const NO_NUMBER_TYPES = [
-            ITEM_TYPES.CARD_NO_NUMBER,
-            ITEM_TYPES.CARD_AUTO_NO_NUMBER,
-            ITEM_TYPES.COMBINED_NO_NUMBER
+        const AUTOGRAPH = [
+            'Card (Autographed)',
+            'Card (Autographed) No Number',
+            'Index Card'
         ];
 
-        const AUTOGRAPH_CARD_TYPES = [
-            ITEM_TYPES.CARD_AUTO,
-            ITEM_TYPES.CARD_AUTO_NO_NUMBER,
-            ITEM_TYPES.INDEX_CARD
+        const AUTO_CHECKED = [
+            'Card (Autographed)',
+            'Card (Autographed) No Number'
         ];
 
-
         /* =========================================================
-         * COMMON HELPERS
+         * HELPERS
          * ========================================================= */
 
-        function getValue(selector) {
-            return $.trim($(selector).val() || '');
+        function join(a, b) {
+            return [$.trim(a || ''), $.trim(b || '')].filter(Boolean).join(', ');
         }
 
-        function joinDescription(values) {
-            return values
-                .map(function (value) {
-                    return $.trim(value || '');
-                })
-                .filter(Boolean)
-                .join(', ');
+        // "1979-80, O-Pee-Chee" -> ["1979-80", "O-Pee-Chee"]
+        function split(value) {
+            value = $.trim(value || '');
+            const i = value.indexOf(',');
+
+            return i < 0
+                ? ['', value]
+                : [$.trim(value.slice(0, i)), $.trim(value.slice(i + 1))];
         }
 
-        function setValue(selector, value) {
-            $(selector).val(value);
+        // card -> "card_", combined -> "combined_service_"
+        function basePrefix(type) {
+            if (SECTION[type] === 'card') return 'card_';
+            if (SECTION[type] === 'combined') return 'combined_service_';
+            return null;
         }
 
-        function setRequired(selector, required) {
-            $(selector).prop('required', required);
+        // Shudhu active section show hobe, baki gulor input disable
+        // (disabled input submit hoy na, tai same name er field override korbe na)
+        function showSection($modal, type) {
+            const $sections = $modal.find('.item-section');
+
+            $sections.hide().find(':input').prop('disabled', true);
+
+            const $active = $sections.filter('[data-section="' + SECTION[type] + '"]');
+
+            if (!$active.length) return;
+
+            $active.show().find(':input').prop('disabled', false);
+
+            // No Number type hole Number field hide
+            const noNumber = NO_NUMBER.includes(type);
+
+            $active.find('[data-number-field]')
+                .toggle(!noNumber)
+                .find(':input').prop('disabled', noNumber);
+
+            // Autograph fields shudhu Autographed Card / Index Card e
+            const autograph = AUTOGRAPH.includes(type);
+
+            $active.find('[data-autograph-fields]')
+                .toggle(autograph)
+                .find(':input').prop('disabled', !autograph);
         }
 
-        function showWarning(show) {
-            $('#warning_text_box').toggle(!!show);
+        // Year + Manufacturer -> description_one
+        // Number + Player Name -> description_two
+        function combine($modal, prefix, type) {
+            const base = basePrefix(type);
+            if (!base) return;
+
+            const f = name => $modal.find('#' + prefix + base + name);
+            const number = NO_NUMBER.includes(type) ? '' : f('number').val();
+
+            f('description_one').val(join(f('year').val(), f('manufacturer').val()));
+            f('description_two').val(join(number, f('player_name').val()));
         }
 
-        function resetWarnings() {
-            $('#warning_text_box').hide();
-            $('#quantity-warning-text').hide();
-        }
+        // description_one / description_two -> alada field e split (Edit)
+        function fill($modal, prefix, type) {
+            const base = basePrefix(type);
+            if (!base) return;
 
-        function disableSectionInputs($section) {
-            $section.find(':input').prop('disabled', true);
-        }
+            const f = name => $modal.find('#' + prefix + base + name);
+            const one = split(f('description_one').val());
+            const two = split(f('description_two').val());
 
-        function enableSectionInputs($section) {
-            $section.find(':input').prop('disabled', false);
+            f('year').val(one[0]);
+            f('manufacturer').val(one[1]);
+            f('number').val(NO_NUMBER.includes(type) ? '' : two[0]);
+            f('player_name').val(two[1]);
         }
-
 
         /* =========================================================
-         * ITEM TYPE -> SECTION MAPPING
+         * ADD ITEM
          * ========================================================= */
 
-        function getSectionForItemType(itemType) {
-            switch (itemType) {
-                case ITEM_TYPES.CARD:
-                case ITEM_TYPES.CARD_NO_NUMBER:
-                case ITEM_TYPES.CARD_AUTO:
-                case ITEM_TYPES.CARD_AUTO_NO_NUMBER:
-                case ITEM_TYPES.INDEX_CARD:
-                    return 'card';
-
-                case ITEM_TYPES.COMBINED:
-                case ITEM_TYPES.COMBINED_NO_NUMBER:
-                    return 'combined';
-
-                case ITEM_TYPES.REHOLDER:
-                    return 'reholder';
-
-                default:
-                    return '';
-            }
-        }
-
-
-        /* =========================================================
-         * ITEM TYPE SECTION SWITCHING
-         * ========================================================= */
-
-        function showItemSection(itemType, $container) {
-            const $scope = $container && $container.length
-                ? $container
-                : $modal;
-
-            const sectionName = getSectionForItemType(itemType);
-
-            // Hide all sections and disable their inputs.
-            SECTION_IDS.forEach(function (selector) {
-                const $section = $scope.find(selector);
-
-                $section.hide();
-                disableSectionInputs($section);
-            });
-
-            if (!sectionName) {
-                return;
-            }
-
-            let $activeSection;
-
-            switch (sectionName) {
-                case 'card':
-                    $activeSection = $scope.find('#showItemTypeCardBox');
-                    break;
-
-                case 'combined':
-                    $activeSection = $scope.find(
-                        '#showItemTypeCombinedServiceBox'
-                    );
-                    break;
-
-                case 'reholder':
-                    $activeSection = $scope.find(
-                        '#showItemTypeReholderBox'
-                    );
-                    break;
-
-                default:
-                    return;
-            }
-
-            // Show the selected section without changing its design.
-            $activeSection.show();
-            enableSectionInputs($activeSection);
-
-            // Hide Number field for No Number item types.
-            const hideNumber = NO_NUMBER_TYPES.includes(itemType);
-
-            $activeSection
-                .find('[data-number-field]')
-                .toggle(!hideNumber);
-
-            if (hideNumber) {
-                $activeSection
-                    .find('[data-number-field]')
-                    .find('input')
-                    .val('');
-            }
-
-            // Show autograph-specific fields for applicable Card types.
-            const showAutograph = AUTOGRAPH_CARD_TYPES.includes(itemType);
-
-            $activeSection
-                .find('[data-autograph-fields]')
-                .toggle(showAutograph);
-
-            // Set the Card Autographed checkbox based on the selected type.
-            if (
-                itemType === ITEM_TYPES.CARD_AUTO ||
-                itemType === ITEM_TYPES.CARD_AUTO_NO_NUMBER
-            ) {
-                $activeSection
-                    .find('#card_autographed')
-                    .prop('checked', true);
-            } else if (sectionName === 'card') {
-                $activeSection
-                    .find('#card_autographed')
-                    .prop('checked', false);
-            }
-
-            // Clear autograph fields when the selected type is not autographed.
-            if (!showAutograph) {
-                $activeSection
-                    .find('[data-autograph-fields]')
-                    .find('input')
-                    .val('');
-            }
-        }
-
-
-        /* =========================================================
-         * CARD DESCRIPTION CONCATENATION
-         *
-         * Year + Manufacturer -> card_description_one
-         * Number + Player Name -> card_description_two
-         *
-         * Index Card descriptions remain unchanged.
-         * ========================================================= */
-
-        function prepareCardDescriptions() {
-            const itemType = $itemSelect.val();
-
-            if (itemType === ITEM_TYPES.INDEX_CARD) {
-                return;
-            }
-
-            const year = getValue('#card_year');
-            const manufacturer = getValue('#card_manufacturer');
-
-            const number = NO_NUMBER_TYPES.includes(itemType)
-                ? ''
-                : getValue('#card_number');
-
-            const playerName = getValue('#card_player_name');
-
-            const descriptionOne = joinDescription([
-                year,
-                manufacturer
-            ]);
-
-            const descriptionTwo = joinDescription([
-                number,
-                playerName
-            ]);
-
-            setValue('#card_description_one', descriptionOne);
-            setValue('#card_description_two', descriptionTwo);
-        }
-
-
-        /* =========================================================
-         * COMBINED SERVICE DESCRIPTION CONCATENATION
-         *
-         * Year + Manufacturer -> combined_service_description_one
-         * Number + Player Name -> combined_service_description_two
-         * ========================================================= */
-
-        function prepareCombinedServiceDescriptions() {
-            const itemType = $itemSelect.val();
-
-            const year = getValue('#combined_service_year');
-            const manufacturer = getValue(
-                '#combined_service_manufacturer'
-            );
-
-            const number = itemType === ITEM_TYPES.COMBINED_NO_NUMBER
-                ? ''
-                : getValue('#combined_service_number');
-
-            const playerName = getValue(
-                '#combined_service_player_name'
-            );
-
-            const descriptionOne = joinDescription([
-                year,
-                manufacturer
-            ]);
-
-            const descriptionTwo = joinDescription([
-                number,
-                playerName
-            ]);
-
-            setValue(
-                '#combined_service_description_one',
-                descriptionOne
-            );
-
-            setValue(
-                '#combined_service_description_two',
-                descriptionTwo
-            );
-        }
-
-
-        /* =========================================================
-         * PREPARE DESCRIPTIONS BEFORE SUBMISSION
-         * ========================================================= */
-
-        function prepareDescriptions() {
-            const itemType = $itemSelect.val();
-
-            switch (itemType) {
-                case ITEM_TYPES.CARD:
-                case ITEM_TYPES.CARD_NO_NUMBER:
-                case ITEM_TYPES.CARD_AUTO:
-                case ITEM_TYPES.CARD_AUTO_NO_NUMBER:
-                    prepareCardDescriptions();
-                    break;
-
-                case ITEM_TYPES.INDEX_CARD:
-                    // Keep Index Card descriptions unchanged.
-                    break;
-
-                case ITEM_TYPES.COMBINED:
-                case ITEM_TYPES.COMBINED_NO_NUMBER:
-                    prepareCombinedServiceDescriptions();
-                    break;
-            }
-        }
-
-
-        /* =========================================================
-         * VALIDATION
-         * ========================================================= */
-
-        function validateCurrentItem() {
-            const itemType = $itemSelect.val();
-
-            if (!itemType) {
-                return false;
-            }
-
-            switch (itemType) {
-
-                case ITEM_TYPES.CARD:
-                case ITEM_TYPES.CARD_NO_NUMBER:
-                case ITEM_TYPES.CARD_AUTO:
-                case ITEM_TYPES.CARD_AUTO_NO_NUMBER:
-
-                    prepareCardDescriptions();
-
-                    if (
-                        !getValue('#card_description_one') ||
-                        !getValue('#card_estimated_value')
-                    ) {
-                        return false;
-                    }
-
-                    if (
-                        AUTOGRAPH_CARD_TYPES.includes(itemType) &&
-                        $('#card_autographed').is(':checked')
-                    ) {
-                        if (
-                            !getValue('#card_authenticator_name') ||
-                            !getValue('#card_authenticator_cert_no')
-                        ) {
-                            return false;
-                        }
-                    }
-
-                    return true;
-
-
-                case ITEM_TYPES.INDEX_CARD:
-
-                    if (
-                        !getValue('#card_description_one') ||
-                        !getValue('#card_estimated_value')
-                    ) {
-                        return false;
-                    }
-
-                    return true;
-
-
-                case ITEM_TYPES.COMBINED:
-                case ITEM_TYPES.COMBINED_NO_NUMBER:
-
-                    prepareCombinedServiceDescriptions();
-
-                    if (
-                        !getValue('#combined_service_description_one') ||
-                        !getValue('#combined_service_estimated_value')
-                    ) {
-                        return false;
-                    }
-
-                    return true;
-
-
-                case ITEM_TYPES.REHOLDER:
-
-                    if (
-                        !getValue('#reholder_certification_number') ||
-                        !getValue('#reholder_estimated_value')
-                    ) {
-                        return false;
-                    }
-
-                    return true;
-
-
-                default:
-                    return false;
-            }
-        }
-
-
-        /* =========================================================
-         * ADD ITEM FORM SUBMISSION
-         * ========================================================= */
-
-        if ($form.length) {
-            $form
-                .off('submit.entryItem')
-                .on('submit.entryItem', function (e) {
-
-                    // Prepare concatenated descriptions first.
-                    prepareDescriptions();
-
-                    // Validate the selected item.
-                    if (!validateCurrentItem()) {
-                        e.preventDefault();
-                        showWarning(true);
-                        return false;
-                    }
-
-                    showWarning(false);
-
-                    // Allow normal Laravel form submission.
-                    return true;
-                });
-        }
-
-
-        /* =========================================================
-         * ADD ITEM BUTTON
-         * ========================================================= */
-
-        $('#add_item_submit_btn')
-            .off('click.entryItem')
-            .on('click.entryItem', function () {
-                // Validation is handled by the form submit event.
-                prepareDescriptions();
-            });
-
-
-        /* =========================================================
-         * ITEM SELECT CHANGE
-         * ========================================================= */
-
-        $itemSelect
-            .off('change.entryItem')
-            .on('change.entryItem', function () {
-                showItemSection($(this).val(), $modal);
-                resetWarnings();
-            });
-
-
-        // =========================================================
-// EDIT ITEM: ITEM TYPE CHANGE
-// =========================================================
-
-        const $editModal = $editItemSelect.closest('.modal');
-
-        $editItemSelect
-            .off('change.entryItem')
-            .on('change.entryItem', function () {
-                const itemType = $(this).val();
-
-                // Show the selected item section inside Edit Item modal only
-                showItemSection(itemType, $editModal);
-            });
-
-// Initialize the correct section when the modal opens
-        $editModal
-            .off('shown.bs.modal.entryItem')
-            .on('shown.bs.modal.entryItem', function () {
-                const itemType = $editItemSelect.val();
-
-                if (itemType) {
-                    showItemSection(itemType, $editModal);
+        const $add = $('#addNewItemModal');
+        const $addForm = $('#addNewItemForm');
+        const $type = $('#itemSelect');
+
+        function resetAdd() {
+            $add.find('.item-section :input').each(function () {
+                if (this.type === 'checkbox' || this.type === 'radio') {
+                    this.checked = false;
+                } else {
+                    $(this).val('');
                 }
             });
-
-
-        /* =========================================================
-         * AUTOGRAPH CHECKBOX REQUIRED FIELDS
-         * ========================================================= */
-
-        function updateAuthenticatorRequired(
-            checkboxSelector,
-            nameSelector,
-            certSelector
-        ) {
-            const checked = $(checkboxSelector).is(':checked');
-
-            setRequired(nameSelector, checked);
-            setRequired(certSelector, checked);
         }
 
-        $('#card_autographed')
-            .off('change.entryItem')
-            .on('change.entryItem', function () {
-                updateAuthenticatorRequired(
-                    '#card_autographed',
-                    '#card_authenticator_name',
-                    '#card_authenticator_cert_no'
-                );
-            });
+        // Type change -> shob field reset + notun section show
+        $type.on('change', function () {
+            const type = $(this).val();
 
-        $('#combined_service_autographed')
-            .off('change.entryItem')
-            .on('change.entryItem', function () {
-                updateAuthenticatorRequired(
-                    '#combined_service_autographed',
-                    '#combined_service_authenticator_name',
-                    '#combined_service_authenticator_cert_no'
-                );
-            });
+            resetAdd();
+            showSection($add, type);
 
-
-        /* =========================================================
-         * CHECKBOX VALUE HANDLING
-         * ========================================================= */
-
-        $('.form-check')
-            .off('change.entryItem')
-            .on('change.entryItem', function () {
-                this.value = this.checked ? 1 : 0;
-            });
-
-
-        /* =========================================================
-         * QUANTITY VALIDATION
-         * ========================================================= */
-
-        $('#extra_submit_btn')
-            .off('click.entryItem')
-            .on('click.entryItem', function (e) {
-                const quantity = getValue('#quantity-input-box');
-
-                if (!quantity || Number(quantity) <= 0) {
-                    e.preventDefault();
-
-                    $(this).attr('type', 'button');
-                    $('#quantity-warning-text').show();
-
-                    return false;
-                }
-
-                $('#quantity-warning-text').hide();
-                $(this).attr('type', 'submit');
-            });
-
-
-        /* =========================================================
-         * CANCEL BUTTON
-         * ========================================================= */
-
-        $('#cancel_btn')
-            .off('click.entryItem')
-            .on('click.entryItem', function () {
-
-                if ($form.length) {
-                    $form[0].reset();
-                }
-
-                $itemSelect.val('');
-
-                // Hide and disable all sections.
-                SECTION_IDS.forEach(function (selector) {
-                    const $section = $modal.find(selector);
-
-                    $section.hide();
-                    disableSectionInputs($section);
-                });
-
-                resetWarnings();
-
-                // Clear split Card fields.
-                $(
-                    '#card_year, ' +
-                    '#card_manufacturer, ' +
-                    '#card_number, ' +
-                    '#card_player_name'
-                ).val('');
-
-                // Clear split Combined Service fields.
-                $(
-                    '#combined_service_year, ' +
-                    '#combined_service_manufacturer, ' +
-                    '#combined_service_number, ' +
-                    '#combined_service_player_name'
-                ).val('');
-
-                // Clear concatenated description fields.
-                $(
-                    '#card_description_one, ' +
-                    '#card_description_two, ' +
-                    '#card_description_three, ' +
-                    '#combined_service_description_one, ' +
-                    '#combined_service_description_two, ' +
-                    '#combined_service_description_three'
-                ).val('');
-
-                // Reset autograph requirements.
-                $('#card_autographed').trigger('change');
-                $('#combined_service_autographed').trigger('change');
-            });
-
-
-        /* =========================================================
-         * MODAL RESET
-         * ========================================================= */
-
-        $modal
-            .off('hidden.bs.modal.entryItem')
-            .on('hidden.bs.modal.entryItem', function () {
-
-                if ($form.length) {
-                    $form[0].reset();
-                }
-
-                $itemSelect.val('');
-
-                SECTION_IDS.forEach(function (selector) {
-                    const $section = $modal.find(selector);
-
-                    $section.hide();
-                    disableSectionInputs($section);
-                });
-
-                resetWarnings();
-
-                $('#card_autographed').trigger('change');
-                $('#combined_service_autographed').trigger('change');
-            });
-
-
-        /* =========================================================
-         * INITIAL STATE
-         * ========================================================= */
-
-        SECTION_IDS.forEach(function (selector) {
-            const $section = $modal.find(selector);
-
-            $section.hide();
-            disableSectionInputs($section);
+            if (AUTO_CHECKED.includes(type)) {
+                $add.find('#card_autographed').prop('checked', true);
+            }
         });
 
-        resetWarnings();
+        // Submit er age description join
+        $addForm.on('submit', function () {
+            combine($add, '', $type.val());
+        });
 
-        if ($itemSelect.val()) {
-            showItemSection($itemSelect.val(), $modal);
+        // Modal close hole puro reset
+        $add.on('hidden.bs.modal', function () {
+            $type.val('');
+            resetAdd();
+            showSection($add, '');
+        });
+
+        // Initial state
+        showSection($add, $type.val());
+
+        /* =========================================================
+ * EDIT ITEM (prottek modal alada)
+ * ========================================================= */
+
+        // Form e hidden input set kora (thakle value update, na thakle add)
+        function setHidden($form, name, value) {
+            let $input = $form.find('input[name="' + name + '"]');
+
+            if (!$input.length) {
+                $input = $('<input>', { type: 'hidden', name: name }).appendTo($form);
+            }
+
+            $input.prop('disabled', false).val(value);
         }
 
-    });
-
-</script>
-
-<script>
-    $(document).ready(function () {
-        'use strict';
-
-        // Handle each Edit Item modal separately.
         $('[id^="editItemModal-"]').each(function () {
+            const $modal = $(this);
+            const $form = $modal.find('form');
+            const type = $.trim($modal.find('#editItemType').val());
+            const itemId = this.id.replace('editItemModal-', '');
 
-            const $editModal = $(this);
-            const $editForm = $editModal.find('#editItemForm');
-            const $editItemType = $editModal.find('#edit_item_type');
+            // Initial state
+            showSection($modal, type);
 
-            function getValue(selector) {
-                return $.trim($editModal.find(selector).val() || '');
-            }
+            // Modal open hole section show + DB value split kore field e boshano
+            $modal.on('show.bs.modal', function (e) {
+                if (e.target !== this) return;
 
-            // Split: "1979-80, O-Pee-Chee"
-            // Result: ["1979-80", "O-Pee-Chee"]
-            function splitDescription(value) {
-                value = $.trim(value || '');
+                showSection($modal, type);
+                fill($modal, 'edit_', type);
+            });
 
-                if (!value) {
-                    return ['', ''];
-                }
+            // Save er age description join + id / itemType pathano
+            $form.on('submit', function () {
+                combine($modal, 'edit_', type);
 
-                const index = value.indexOf(', ');
-
-                if (index === -1) {
-                    return [value, ''];
-                }
-
-                return [
-                    value.substring(0, index).trim(),
-                    value.substring(index + 2).trim()
-                ];
-            }
-
-            // Join separate fields into the existing DB format.
-            function joinDescription(values) {
-                return values
-                    .map(function (value) {
-                        return $.trim(value || '');
-                    })
-                    .filter(Boolean)
-                    .join(', ');
-            }
-
-            // Populate Card fields.
-            function populateCardFields() {
-                const descOne = splitDescription(
-                    getValue('#edit_card_description_one')
-                );
-
-                const descTwo = splitDescription(
-                    getValue('#edit_card_description_two')
-                );
-
-                $editModal.find('#edit_card_year').val(descOne[0]);
-                $editModal.find('#edit_card_manufacturer').val(descOne[1]);
-
-                $editModal.find('#edit_card_number').val(descTwo[0]);
-                $editModal.find('#edit_card_player_name').val(descTwo[1]);
-            }
-
-            // Populate Combined Service fields.
-            function populateCombinedFields() {
-                const descOne = splitDescription(
-                    getValue('#edit_combined_description_one')
-                );
-
-                const descTwo = splitDescription(
-                    getValue('#edit_combined_description_two')
-                );
-
-                $editModal.find('#edit_combined_year').val(descOne[0]);
-                $editModal.find('#edit_combined_manufacturer').val(descOne[1]);
-
-                $editModal.find('#edit_combined_number').val(descTwo[0]);
-                $editModal.find('#edit_combined_player_name').val(descTwo[1]);
-            }
-
-            // Prepare Card descriptions before saving.
-            function prepareCardDescriptions() {
-                const itemType = $editItemType.val();
-
-                const noNumber = [
-                    'Card (No Number)',
-                    'Card (Autographed) No Number'
-                ].includes(itemType);
-
-                const number = noNumber
-                    ? ''
-                    : getValue('#edit_card_number');
-
-                $editModal.find('#edit_card_description_one').val(
-                    joinDescription([
-                        getValue('#edit_card_year'),
-                        getValue('#edit_card_manufacturer')
-                    ])
-                );
-
-                $editModal.find('#edit_card_description_two').val(
-                    joinDescription([
-                        number,
-                        getValue('#edit_card_player_name')
-                    ])
-                );
-            }
-
-            // Prepare Combined Service descriptions before saving.
-            function prepareCombinedDescriptions() {
-                const noNumber =
-                    $editItemType.val() === 'Combined Service (No Number)';
-
-                const number = noNumber
-                    ? ''
-                    : getValue('#edit_combined_number');
-
-                $editModal.find('#edit_combined_description_one').val(
-                    joinDescription([
-                        getValue('#edit_combined_year'),
-                        getValue('#edit_combined_manufacturer')
-                    ])
-                );
-
-                $editModal.find('#edit_combined_description_two').val(
-                    joinDescription([
-                        number,
-                        getValue('#edit_combined_player_name')
-                    ])
-                );
-            }
-
-            // Show the correct section without changing Item Type.
-            function showEditSection() {
-                const itemType = $editItemType.val();
-
-                $editModal.find(
-                    '#editCardSection, #editCombinedServiceSection'
-                ).hide();
-
-                if ([
-                    'Card',
-                    'Card (No Number)',
-                    'Card (Autographed)',
-                    'Card (Autographed) No Number',
-                    'Index Card'
-                ].includes(itemType)) {
-
-                    $editModal.find('#editCardSection').show();
-
-                    const noNumber = [
-                        'Card (No Number)',
-                        'Card (Autographed) No Number',
-                        'Index Card'
-                    ].includes(itemType);
-
-                    $editModal.find('#editCardNumberField').toggle(!noNumber);
-                }
-
-                if ([
-                    'Combined Service',
-                    'Combined Service (No Number)'
-                ].includes(itemType)) {
-
-                    $editModal.find('#editCombinedServiceSection').show();
-
-                    const noNumber =
-                        itemType === 'Combined Service (No Number)';
-
-                    $editModal.find('#editCombinedNumberField').toggle(!noNumber);
-                }
-            }
-
-            // Populate fields when the modal opens.
-            $editModal
-                .off('shown.bs.modal.editDescriptions')
-                .on('shown.bs.modal.editDescriptions', function () {
-
-                    showEditSection();
-
-                    populateCardFields();
-                    populateCombinedFields();
-                });
-
-            // Prepare concatenated values before saving.
-            $editForm
-                .off('submit.editDescriptions')
-                .on('submit.editDescriptions', function () {
-
-                    const itemType = $editItemType.val();
-
-                    if ([
-                        'Card',
-                        'Card (No Number)',
-                        'Card (Autographed)',
-                        'Card (Autographed) No Number'
-                    ].includes(itemType)) {
-
-                        prepareCardDescriptions();
-                    }
-
-                    if ([
-                        'Combined Service',
-                        'Combined Service (No Number)'
-                    ].includes(itemType)) {
-
-                        prepareCombinedDescriptions();
-                    }
-                });
-
-            // Initial state.
-            showEditSection();
-
+                setHidden($form, 'id', itemId);
+                setHidden($form, 'item_id', itemId);
+                setHidden($form, 'itemType', type);
+            });
         });
     });
 </script>

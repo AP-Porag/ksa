@@ -129,6 +129,7 @@ class EntryController extends Controller
                 'combined_service_autographed' => $entryData['combined_service_autographed'],
                 'combined_service_authenticator_name' => $entryData['combined_service_authenticator_name'],
                 'combined_service_authenticator_cert_no' => $entryData['combined_service_authenticator_cert_no'],
+                'combined_service_certified_on_card' => $entryData['combined_service_certified_on_card'],
                 'combined_service_estimated_value' => $entryData['combined_service_estimated_value'],
 
                 //item type combined service
@@ -417,6 +418,7 @@ class EntryController extends Controller
             "combined_service_autographed" => $item->combined_service_autographed,
             "combined_service_authenticator_name" => $item->combined_service_authenticator_name,
             "combined_service_authenticator_cert_no" => $item->combined_service_authenticator_cert_no,
+            "combined_service_certified_on_card" => $item->combined_service_certified_on_card,
             "combined_service_estimated_value" => $item->combined_service_estimated_value,
             "reholder_certification_number" => $item->reholder_certification_number,
             "reholder_estimated_value" => $item->reholder_estimated_value,
@@ -471,6 +473,7 @@ class EntryController extends Controller
         $item->combined_service_autographed = $request->combined_service_autographed;
         $item->combined_service_authenticator_name = $request->combined_service_authenticator_name;
         $item->combined_service_authenticator_cert_no = $request->combined_service_authenticator_cert_no;
+        $item->combined_service_certified_on_card = $request->combined_service_certified_on_card;
         $item->combined_service_estimated_value = $request->combined_service_estimated_value;
         $item->reholder_certification_number = $request->reholder_certification_number;
         $item->reholder_estimated_value = $request->reholder_estimated_value;
