@@ -957,17 +957,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[1, 14, 17, 20]]);
       }))();
     },
-    // Item Grade & Auto Grade are required before grading
+    // Auto Grade is required only for autographed items
+    needsAutoGrade: function needsAutoGrade(entry) {
+      return !!(entry.prefix && entry[entry.prefix + '_autographed']);
+    },
+    // Item Grade is always required, Auto Grade only for autographed items
     validateGrades: function validateGrades(entries) {
+      var _this2 = this;
       var valid = true;
       entries.forEach(function (entry) {
-        entry.grade_error = !entry.item_grade || !entry.auto_grade;
+        entry.grade_error = !entry.item_grade || _this2.needsAutoGrade(entry) && !entry.auto_grade;
         if (entry.grade_error) valid = false;
       });
       if (!valid) {
         Swal.fire({
           title: "Grade required",
-          html: "Please select <b>Item Grade</b> and <b>Auto Grade</b> before grading.",
+          html: "Please select <b>Item Grade</b>.<br>Autographed items also need an <b>Auto Grade</b>.",
           icon: "warning"
         });
       }
@@ -992,10 +997,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     confirmAll: function confirmAll() {
-      var _this2 = this;
+      var _this3 = this;
       var self = this;
       var entries = this.form_data.entries.filter(function (entry) {
-        return _this2.selectedIds.includes(entry.entryItemId) && !_this2.isGraded(entry);
+        return _this3.selectedIds.includes(entry.entryItemId) && !_this3.isGraded(entry);
       });
       if (entries.length === 0) {
         Swal.fire("Please select at least one item.", "", "info");
@@ -1033,14 +1038,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // Old single submit (kept for compatibility)
     submit: function submit(ind) {
-      var _this3 = this;
+      var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var entry;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              entry = _this3.form_data.entries[ind];
-              if (entry) _this3.confirmOne(entry);
+              entry = _this4.form_data.entries[ind];
+              if (entry) _this4.confirmOne(entry);
             case 2:
             case "end":
               return _context2.stop();
@@ -1049,18 +1054,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     received: function received(id) {
-      var _this4 = this;
+      var _this5 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              if (!_this4.checkSixthStep()) {
+              if (!_this5.checkSixthStep()) {
                 _context3.next = 4;
                 break;
               }
               Swal.fire({
                 // title: "Are the selected product offerings applicable for drop off center: <br> West's Card Edmonton",
-                title: "Do you want to update this order to graded: <br> ".concat(_this4.form_data.name),
+                title: "Do you want to update this order to graded: <br> ".concat(_this5.form_data.name),
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: "Yes",
@@ -1111,21 +1116,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     checkFirstStep: function checkFirstStep() {
-      var _this5 = this;
+      var _this6 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              _this5.v$.$touch();
-              if (!_this5.v$.form_data.name.$invalid) {
+              _this6.v$.$touch();
+              if (!_this6.v$.form_data.name.$invalid) {
                 _context4.next = 4;
                 break;
               }
-              _this5.show_error_one = true;
+              _this6.show_error_one = true;
               return _context4.abrupt("return", false);
             case 4:
-              _this5.completed_step_count = 1;
-              _this5.form_wizard_subtitle = 'Please Continue to next';
+              _this6.completed_step_count = 1;
+              _this6.form_wizard_subtitle = 'Please Continue to next';
               return _context4.abrupt("return", true);
             case 7:
             case "end":
@@ -1358,16 +1363,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     customerNameChangeEvent: function customerNameChangeEvent() {
-      var _this6 = this;
+      var _this7 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
         var self;
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              self = _this6;
-              console.log(_this6.form_data.customer);
-              _this6.form_data.name = _this6.form_data.customer.name;
-              _this6.form_data.customerId = _this6.form_data.customer.id;
+              self = _this7;
+              console.log(_this7.form_data.customer);
+              _this7.form_data.name = _this7.form_data.customer.name;
+              _this7.form_data.customerId = _this7.form_data.customer.id;
               _context5.next = 6;
               return axios.get("/admin/entries/get-customer/info/".concat(self.form_data.customerId)).then(function (res) {
                 // console.log(res)
@@ -1512,13 +1517,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return true;
     },
     getEntryItemsList: function getEntryItemsList(id) {
-      var _this7 = this;
+      var _this8 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
         var self;
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
-              self = _this7;
+              self = _this8;
               _context6.next = 3;
               return axios.get("/admin/grading/entry/grade-list/".concat(id)).then(function (res) {
                 self.form_data.entries = res.data.data.map(function (entry) {
@@ -1543,13 +1548,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     removeItem: function removeItem(id) {
-      var _this8 = this;
+      var _this9 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
         var self;
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
-              self = _this8;
+              self = _this9;
               if (!id) {
                 _context7.next = 5;
                 break;
@@ -1602,9 +1607,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     selectableEntries: function selectableEntries() {
-      var _this9 = this;
+      var _this10 = this;
       return this.form_data.entries.filter(function (entry) {
-        return !_this9.isGraded(entry);
+        return !_this10.isGraded(entry);
       });
     }
   },
@@ -2093,7 +2098,7 @@ var render = function render() {
       }],
       staticClass: "form-select grade-select",
       "class": {
-        "grade-invalid": entry.grade_error && !entry.auto_grade
+        "grade-invalid": entry.grade_error && !entry.auto_grade && _vm.needsAutoGrade(entry)
       },
       attrs: {
         disabled: _vm.isGraded(entry)

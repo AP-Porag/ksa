@@ -105,7 +105,10 @@ class LabelController extends Controller
     public function printLabels($id)
     {
         $order = Entry::find($id);
-        $items = EntryItems::where('entry_id', $id)->orderBy('created_at', 'desc')->get();
+        $items = EntryItems::with(['cardAuthenticator', 'autoAuthenticator', 'combinedServiceAuthenticator', 'crossoverAuthenticator'])
+            ->where('entry_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('admin.label.print', compact('order', 'items'));
     }
 
@@ -114,9 +117,10 @@ class LabelController extends Controller
         $ids = $request->ids;
         $items = EntryItems::whereIn('entry_id', $ids)->get();
 
+        // Build fresh from the item (works for all item types, also old graded items)
         $data = $items->map(function ($item) {
-            return $item->label_info;
-        });
+            return $item->buildLabelInfo();
+        })->values();
 
         return response()->json($data);
     }

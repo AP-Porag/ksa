@@ -932,15 +932,14 @@
                                                         </label>
                                                     </th>
                                                     <th>No.</th>
-                                                    <th>Item Type</th>
+                                                    <th class="type-col">Item Type</th>
                                                     <th>Sub Type</th>
                                                     <th>Description</th>
                                                     <th>Serial Number</th>
                                                     <th>Autographed</th>
                                                     <th>Authenticator</th>
-                                                    <th>Certificate No.</th>
-                                                    <th>Edit</th>
-                                                    <th>Remove</th>
+                                                    <th class="cert-col">Certificate No.</th>
+                                                    <th>Actions</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -950,7 +949,7 @@
                                                         <input type="checkbox" :value="entry.entryItemId" v-model="form_data.selectedEntries">
                                                     </td>
                                                     <td class="text-capitalize">{{index+1}}</td>
-                                                    <td>{{entry.itemType}}</td>
+                                                    <td class="type-col">{{entry.itemType}}</td>
                                                     <td>{{entry.itemType == 'Crossover' ? entry.crossover_item_type : 'N/A'}}</td>
 
                                                     <!-- Description -->
@@ -977,27 +976,21 @@
                                                     <td>{{ authenticatorNameOf(entry) }}</td>
 
                                                     <!-- Certificate No. -->
-                                                    <td>{{ entry.prefix ? (entry[entry.prefix + '_authenticator_cert_no'] || 'N/A') : 'N/A' }}</td>
+                                                    <td class="cert-col">{{ entry.prefix ? (entry[entry.prefix + '_authenticator_cert_no'] || 'N/A') : 'N/A' }}</td>
 
-                                                    <td class="text-capitalize">
-                                                        <div class="text-center">
-                                                            <div class="">
-                                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`" @click="fillEntryFields(entry)">
-                                                                    <i class="fa fa-edit"> Edit</i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="">
+                                                    <!-- Actions (Edit + Remove) -->
+                                                    <td class="actions-col">
                                                         <div class="d-flex justify-content-center">
                                                             <div class="">
-                                                                <div class="text-center" v-if="entry.status === 'not-received'">
-                                                                    <button type="button" class="btn btn-sm btn-danger" @click="removeItem(entry.entryItemId)">
+                                                                <div class="action-buttons">
+                                                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" :data-bs-target="`#staticBackdropEdit-${entry.entryItemId}`" @click="fillEntryFields(entry)">
+                                                                        <i class="fa fa-edit"> Edit</i>
+                                                                    </button>
+
+                                                                    <button type="button" class="btn btn-sm btn-danger" v-if="entry.status === 'not-received'" @click="removeItem(entry.entryItemId)">
                                                                         <i class="fa fa-trash"> Delete</i>
                                                                     </button>
-                                                                </div>
-                                                                <div class="" v-else>
-                                                                    <button type="button" class="btn btn-sm btn-success" disabled style="padding-left: 10px;padding-right: 10px;">
+                                                                    <button type="button" class="btn btn-sm btn-success" v-else disabled>
                                                                         Already Received
                                                                     </button>
                                                                 </div>
@@ -3099,10 +3092,40 @@ tbody tr:nth-child(odd) {
     max-width: 560px;
 }
 
-/* Table description cell */
+/* Item Type: allow line break */
+.type-col {
+    white-space: normal !important;
+    min-width: 130px;
+    max-width: 170px;
+}
+
+/* Description: each description on its own single line */
+.item-description {
+    text-align: left !important;
+}
+
 .item-description span {
     display: block;
-    white-space: normal;
+    white-space: nowrap;
+}
+
+/* Certificate No: compact column */
+.cert-col {
+    width: 1%;
+    min-width: 90px;
+    max-width: 110px;
+    white-space: normal !important;
+    word-break: break-word;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+
+/* Actions: Edit + Remove side by side */
+.action-buttons {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
 }
 
 .text-muted-na {

@@ -3177,7 +3177,11 @@ var render = function render() {
         }
       }, _vm.toggleSelectAll]
     }
-  }), _vm._v(" Select All\n                                                    ")])]), _vm._v(" "), _c("th", [_vm._v("No.")]), _vm._v(" "), _c("th", [_vm._v("Item Type")]), _vm._v(" "), _c("th", [_vm._v("Sub Type")]), _vm._v(" "), _c("th", [_vm._v("Description")]), _vm._v(" "), _c("th", [_vm._v("Serial Number")]), _vm._v(" "), _c("th", [_vm._v("Autographed")]), _vm._v(" "), _c("th", [_vm._v("Authenticator")]), _vm._v(" "), _c("th", [_vm._v("Certificate No.")]), _vm._v(" "), _c("th", [_vm._v("Edit")]), _vm._v(" "), _c("th", [_vm._v("Remove")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.form_data.entries, function (entry, index) {
+  }), _vm._v(" Select All\n                                                    ")])]), _vm._v(" "), _c("th", [_vm._v("No.")]), _vm._v(" "), _c("th", {
+    staticClass: "type-col"
+  }, [_vm._v("Item Type")]), _vm._v(" "), _c("th", [_vm._v("Sub Type")]), _vm._v(" "), _c("th", [_vm._v("Description")]), _vm._v(" "), _c("th", [_vm._v("Serial Number")]), _vm._v(" "), _c("th", [_vm._v("Autographed")]), _vm._v(" "), _c("th", [_vm._v("Authenticator")]), _vm._v(" "), _c("th", {
+    staticClass: "cert-col"
+  }, [_vm._v("Certificate No.")]), _vm._v(" "), _c("th", [_vm._v("Actions")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.form_data.entries, function (entry, index) {
     return _c("tr", {
       key: entry.entryItemId
     }, [_c("td", [_c("input", {
@@ -3214,7 +3218,9 @@ var render = function render() {
       }
     })]), _vm._v(" "), _c("td", {
       staticClass: "text-capitalize"
-    }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entry.itemType))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entry.itemType == "Crossover" ? entry.crossover_item_type : "N/A"))]), _vm._v(" "), _c("td", {
+    }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c("td", {
+      staticClass: "type-col"
+    }, [_vm._v(_vm._s(entry.itemType))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entry.itemType == "Crossover" ? entry.crossover_item_type : "N/A"))]), _vm._v(" "), _c("td", {
       staticClass: "item-description"
     }, [entry.prefix ? [_vm._l(_vm.descriptionsOf(entry), function (line, i) {
       return _c("span", {
@@ -3226,11 +3232,15 @@ var render = function render() {
       staticClass: "text-muted-na"
     }, [_vm._v("N/A")])], 2), _vm._v(" "), _c("td", [_vm._v(_vm._s(entry.prefix ? entry[entry.prefix + "_serial_number"] || "" : ""))]), _vm._v(" "), _c("td", {
       staticClass: "text-center"
-    }, [entry.prefix ? [_vm._v("\n                                                        " + _vm._s(entry[entry.prefix + "_autographed"] ? "Yes" : "No") + "\n                                                    ")] : [_vm._v("N/A")]], 2), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.authenticatorNameOf(entry)))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(entry.prefix ? entry[entry.prefix + "_authenticator_cert_no"] || "N/A" : "N/A"))]), _vm._v(" "), _c("td", {
-      staticClass: "text-capitalize"
+    }, [entry.prefix ? [_vm._v("\n                                                        " + _vm._s(entry[entry.prefix + "_autographed"] ? "Yes" : "No") + "\n                                                    ")] : [_vm._v("N/A")]], 2), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.authenticatorNameOf(entry)))]), _vm._v(" "), _c("td", {
+      staticClass: "cert-col"
+    }, [_vm._v(_vm._s(entry.prefix ? entry[entry.prefix + "_authenticator_cert_no"] || "N/A" : "N/A"))]), _vm._v(" "), _c("td", {
+      staticClass: "actions-col"
     }, [_c("div", {
-      staticClass: "text-center"
-    }, [_c("div", {}, [_c("button", {
+      staticClass: "d-flex justify-content-center"
+    }, [_c("div", {}, [_c("div", {
+      staticClass: "action-buttons"
+    }, [_c("button", {
       staticClass: "btn btn-sm btn-primary",
       attrs: {
         type: "button",
@@ -3244,11 +3254,7 @@ var render = function render() {
       }
     }, [_c("i", {
       staticClass: "fa fa-edit"
-    }, [_vm._v(" Edit")])])])])]), _vm._v(" "), _c("td", {}, [_c("div", {
-      staticClass: "d-flex justify-content-center"
-    }, [_c("div", {}, [entry.status === "not-received" ? _c("div", {
-      staticClass: "text-center"
-    }, [_c("button", {
+    }, [_vm._v(" Edit")])]), _vm._v(" "), entry.status === "not-received" ? _c("button", {
       staticClass: "btn btn-sm btn-danger",
       attrs: {
         type: "button"
@@ -3260,12 +3266,8 @@ var render = function render() {
       }
     }, [_c("i", {
       staticClass: "fa fa-trash"
-    }, [_vm._v(" Delete")])])]) : _c("div", {}, [_c("button", {
+    }, [_vm._v(" Delete")])]) : _c("button", {
       staticClass: "btn btn-sm btn-success",
-      staticStyle: {
-        "padding-left": "10px",
-        "padding-right": "10px"
-      },
       attrs: {
         type: "button",
         disabled: ""
@@ -3743,7 +3745,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-66c506ad]::-webkit-outer-spin-button,\ninput[data-v-66c506ad]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-66c506ad] {\n    -moz-appearance: textfield;\n}\n\n/*responsive table css start*/\n.table-responsive[data-v-66c506ad] {\n    width: 100%;\n    overflow-x: auto;\n    -webkit-overflow-scrolling: touch;\n    border: 2px solid black;\n    margin-bottom: 1rem;\n    border-radius: 4px;\n}\ntable.table[data-v-66c506ad] {\n    width: 100%;\n    border-collapse: collapse;\n    min-width: 900px; /* Adjust based on content */\n}\nthead[data-v-66c506ad] {\n    background: cornflowerblue;\n    color: white;\n}\nthead th[data-v-66c506ad],\ntbody td[data-v-66c506ad] {\n    padding: 8px 12px;\n    text-align: center;\n    white-space: nowrap; /* Prevent wrapping */\n}\nthead th[data-v-66c506ad] {\n    height: 40px;\n    font-weight: bold;\n}\n\n/* Optional: Zebra striping */\ntbody tr[data-v-66c506ad]:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n/*responsive table css end*/\n\n\n/* ============================================================\n   RECEIVING EDIT MODAL - ITEM CARD (same design as Create Entry)\n   ============================================================ */\n.receiving-item-modal .modal-dialog[data-v-66c506ad] {\n    max-width: 1100px;\n    width: calc(100% - 30px);\n}\n.receiving-item-modal .modal-content[data-v-66c506ad] {\n    border: 0;\n    border-radius: 4px;\n    text-align: left;\n}\n.receiving-item-modal .modal-body[data-v-66c506ad] {\n    max-height: calc(100vh - 200px);\n    overflow-y: auto;\n}\n.receiving-item-modal .modal-footer[data-v-66c506ad] {\n    border-top: 1px solid #e5e7eb;\n}\n.receiving-item-modal tbody td[data-v-66c506ad],\n.receiving-item-modal td[data-v-66c506ad] {\n    white-space: normal;\n}\n.ksa-entry-ui[data-v-66c506ad] {\n    font-family: Arial, Helvetica, sans-serif;\n    color: #40536a;\n    background: #ffffff;\n    text-align: left;\n    white-space: normal;\n}\n.ksa-entry-ui *[data-v-66c506ad],\n.ksa-entry-ui *[data-v-66c506ad]::before,\n.ksa-entry-ui *[data-v-66c506ad]::after {\n    box-sizing: border-box;\n}\n.ksa-entry-ui .item-details-box[data-v-66c506ad] {\n    background: #eeeeee;\n    border-radius: 3px;\n    padding: 15px 12px 28px;\n    min-height: 420px;\n}\n.ksa-entry-ui .quantity-box[data-v-66c506ad] {\n    background: #f8f8f8;\n    min-height: 89px;\n    text-align: center;\n    padding-top: 8px;\n}\n.ksa-entry-ui .quantity-title[data-v-66c506ad] {\n    font-size: 16px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 27px;\n}\n.ksa-entry-ui .quantity-number[data-v-66c506ad] {\n    font-size: 20px;\n    line-height: 1;\n    color: #40536a;\n}\n.ksa-entry-ui .field-label[data-v-66c506ad] {\n    display: block;\n    font-size: 14px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .field-label-sub[data-v-66c506ad] {\n    display: block;\n    font-size: 15px;\n    font-weight: 500;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .form-control[data-v-66c506ad] {\n    height: 36px;\n    border: 1px solid #d0d5db;\n    border-radius: 4px;\n    background: #ffffff;\n    color: #40536a;\n    font-size: 14px;\n    box-shadow: none;\n}\n.ksa-entry-ui .form-control[data-v-66c506ad]:focus {\n    border-color: #8d9cf7;\n    box-shadow: 0 0 0 1px rgba(91, 105, 255, 0.18);\n}\n.ksa-entry-ui .description-row[data-v-66c506ad] {\n    margin-bottom: 17px;\n}\n.ksa-entry-ui .serial-input[data-v-66c506ad] {\n    max-width: 480px;\n}\n.ksa-entry-ui .autograph-row[data-v-66c506ad] {\n    margin-top: 8px;\n    align-items: end;\n}\n.ksa-entry-ui .autographed-wrapper[data-v-66c506ad],\n.ksa-entry-ui .certified-wrapper[data-v-66c506ad] {\n    display: flex;\n    align-items: center;\n    padding-top: 19px;\n    min-height: 55px;\n}\n.ksa-entry-ui .autographed-wrapper label[data-v-66c506ad] {\n    margin: 0 15px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n.ksa-entry-ui .certified-wrapper label[data-v-66c506ad] {\n    margin: 0 12px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n.ksa-entry-ui .custom-checkbox[data-v-66c506ad] {\n    width: 15px;\n    height: 15px;\n    margin: 0;\n}\n.ksa-entry-ui .reholder-box[data-v-66c506ad] {\n    min-height: 400px;\n}\n.ksa-entry-ui .reholder-cert-input[data-v-66c506ad] {\n    max-width: 560px;\n}\n\n/* Table description cell */\n.item-description span[data-v-66c506ad] {\n    display: block;\n    white-space: normal;\n}\n.text-muted-na[data-v-66c506ad] {\n    color: #9ca3af;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-66c506ad]::-webkit-outer-spin-button,\ninput[data-v-66c506ad]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-66c506ad] {\n    -moz-appearance: textfield;\n}\n\n/*responsive table css start*/\n.table-responsive[data-v-66c506ad] {\n    width: 100%;\n    overflow-x: auto;\n    -webkit-overflow-scrolling: touch;\n    border: 2px solid black;\n    margin-bottom: 1rem;\n    border-radius: 4px;\n}\ntable.table[data-v-66c506ad] {\n    width: 100%;\n    border-collapse: collapse;\n    min-width: 900px; /* Adjust based on content */\n}\nthead[data-v-66c506ad] {\n    background: cornflowerblue;\n    color: white;\n}\nthead th[data-v-66c506ad],\ntbody td[data-v-66c506ad] {\n    padding: 8px 12px;\n    text-align: center;\n    white-space: nowrap; /* Prevent wrapping */\n}\nthead th[data-v-66c506ad] {\n    height: 40px;\n    font-weight: bold;\n}\n\n/* Optional: Zebra striping */\ntbody tr[data-v-66c506ad]:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n/*responsive table css end*/\n\n\n/* ============================================================\n   RECEIVING EDIT MODAL - ITEM CARD (same design as Create Entry)\n   ============================================================ */\n.receiving-item-modal .modal-dialog[data-v-66c506ad] {\n    max-width: 1100px;\n    width: calc(100% - 30px);\n}\n.receiving-item-modal .modal-content[data-v-66c506ad] {\n    border: 0;\n    border-radius: 4px;\n    text-align: left;\n}\n.receiving-item-modal .modal-body[data-v-66c506ad] {\n    max-height: calc(100vh - 200px);\n    overflow-y: auto;\n}\n.receiving-item-modal .modal-footer[data-v-66c506ad] {\n    border-top: 1px solid #e5e7eb;\n}\n.receiving-item-modal tbody td[data-v-66c506ad],\n.receiving-item-modal td[data-v-66c506ad] {\n    white-space: normal;\n}\n.ksa-entry-ui[data-v-66c506ad] {\n    font-family: Arial, Helvetica, sans-serif;\n    color: #40536a;\n    background: #ffffff;\n    text-align: left;\n    white-space: normal;\n}\n.ksa-entry-ui *[data-v-66c506ad],\n.ksa-entry-ui *[data-v-66c506ad]::before,\n.ksa-entry-ui *[data-v-66c506ad]::after {\n    box-sizing: border-box;\n}\n.ksa-entry-ui .item-details-box[data-v-66c506ad] {\n    background: #eeeeee;\n    border-radius: 3px;\n    padding: 15px 12px 28px;\n    min-height: 420px;\n}\n.ksa-entry-ui .quantity-box[data-v-66c506ad] {\n    background: #f8f8f8;\n    min-height: 89px;\n    text-align: center;\n    padding-top: 8px;\n}\n.ksa-entry-ui .quantity-title[data-v-66c506ad] {\n    font-size: 16px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 27px;\n}\n.ksa-entry-ui .quantity-number[data-v-66c506ad] {\n    font-size: 20px;\n    line-height: 1;\n    color: #40536a;\n}\n.ksa-entry-ui .field-label[data-v-66c506ad] {\n    display: block;\n    font-size: 14px;\n    font-weight: 600;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .field-label-sub[data-v-66c506ad] {\n    display: block;\n    font-size: 15px;\n    font-weight: 500;\n    color: #40536a;\n    margin-bottom: 4px;\n    line-height: 1.1;\n}\n.ksa-entry-ui .form-control[data-v-66c506ad] {\n    height: 36px;\n    border: 1px solid #d0d5db;\n    border-radius: 4px;\n    background: #ffffff;\n    color: #40536a;\n    font-size: 14px;\n    box-shadow: none;\n}\n.ksa-entry-ui .form-control[data-v-66c506ad]:focus {\n    border-color: #8d9cf7;\n    box-shadow: 0 0 0 1px rgba(91, 105, 255, 0.18);\n}\n.ksa-entry-ui .description-row[data-v-66c506ad] {\n    margin-bottom: 17px;\n}\n.ksa-entry-ui .serial-input[data-v-66c506ad] {\n    max-width: 480px;\n}\n.ksa-entry-ui .autograph-row[data-v-66c506ad] {\n    margin-top: 8px;\n    align-items: end;\n}\n.ksa-entry-ui .autographed-wrapper[data-v-66c506ad],\n.ksa-entry-ui .certified-wrapper[data-v-66c506ad] {\n    display: flex;\n    align-items: center;\n    padding-top: 19px;\n    min-height: 55px;\n}\n.ksa-entry-ui .autographed-wrapper label[data-v-66c506ad] {\n    margin: 0 15px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n.ksa-entry-ui .certified-wrapper label[data-v-66c506ad] {\n    margin: 0 12px 0 0;\n    font-size: 14px;\n    font-weight: 500;\n    color: #40536a;\n}\n.ksa-entry-ui .custom-checkbox[data-v-66c506ad] {\n    width: 15px;\n    height: 15px;\n    margin: 0;\n}\n.ksa-entry-ui .reholder-box[data-v-66c506ad] {\n    min-height: 400px;\n}\n.ksa-entry-ui .reholder-cert-input[data-v-66c506ad] {\n    max-width: 560px;\n}\n\n/* Item Type: allow line break */\n.type-col[data-v-66c506ad] {\n    white-space: normal !important;\n    min-width: 130px;\n    max-width: 170px;\n}\n\n/* Description: each description on its own single line */\n.item-description[data-v-66c506ad] {\n    text-align: left !important;\n}\n.item-description span[data-v-66c506ad] {\n    display: block;\n    white-space: nowrap;\n}\n\n/* Certificate No: compact column */\n.cert-col[data-v-66c506ad] {\n    width: 1%;\n    min-width: 90px;\n    max-width: 110px;\n    white-space: normal !important;\n    word-break: break-word;\n    padding-left: 6px !important;\n    padding-right: 6px !important;\n}\n\n/* Actions: Edit + Remove side by side */\n.action-buttons[data-v-66c506ad] {\n    display: inline-flex;\n    align-items: center;\n    gap: 6px;\n    white-space: nowrap;\n}\n.text-muted-na[data-v-66c506ad] {\n    color: #9ca3af;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -998,7 +998,7 @@
 
                                 <!-- Auto Grade -->
                                 <td>
-                                    <select class="form-select grade-select" :class="{ 'grade-invalid': entry.grade_error && !entry.auto_grade }" v-model="entry.auto_grade" :disabled="isGraded(entry)">
+                                    <select class="form-select grade-select" :class="{ 'grade-invalid': entry.grade_error && !entry.auto_grade && needsAutoGrade(entry) }" v-model="entry.auto_grade" :disabled="isGraded(entry)">
                                         <option value=""></option>
                                         <option v-for="grade in autoGrades" :value="grade.name" :key="grade.id">{{ grade.name }}</option>
                                     </select>
@@ -2354,19 +2354,25 @@ export default {
             }
         },
 
-        // Item Grade & Auto Grade are required before grading
+        // Auto Grade is required only for autographed items
+        needsAutoGrade(entry){
+            return !!(entry.prefix && entry[entry.prefix + '_autographed']);
+        },
+
+        // Item Grade is always required, Auto Grade only for autographed items
         validateGrades(entries){
             let valid = true;
 
             entries.forEach(entry => {
-                entry.grade_error = !entry.item_grade || !entry.auto_grade;
+                entry.grade_error = !entry.item_grade
+                    || (this.needsAutoGrade(entry) && !entry.auto_grade);
                 if (entry.grade_error) valid = false;
             });
 
             if (!valid) {
                 Swal.fire({
                     title: "Grade required",
-                    html: "Please select <b>Item Grade</b> and <b>Auto Grade</b> before grading.",
+                    html: "Please select <b>Item Grade</b>.<br>Autographed items also need an <b>Auto Grade</b>.",
                     icon: "warning",
                 });
             }
